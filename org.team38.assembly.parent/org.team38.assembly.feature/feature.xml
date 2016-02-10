@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.team38.assembly.feature"
+      label="LC-2200 Plug-in"
+      version="1.0.0.qualifier"
+      provider-name="Team 38">
+
+   <description url="http://www.example.com/description">
+      Adds support for LC-2200 editing.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      LC-2200 Copyright Notice:
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      LC-2200 Plug-in License Agreement:
+   </license>
+
+   <plugin
+         id="org.team38.assembly"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.team38.assembly.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.team38.assembly.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.team38.assembly.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.team38.assembly.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

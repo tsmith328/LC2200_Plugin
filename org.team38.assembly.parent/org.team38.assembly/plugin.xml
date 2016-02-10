@@ -7,4 +7,16 @@
 			class = "org.team38.assembly.lC2200.LC2200Package"
 			genModel = "model/generated/LC2200.genmodel" />
 	</extension>
+ <extension
+       id="product"
+       point="org.eclipse.core.runtime.products">
+    <product
+          application="org.eclipse.ui.ide.workbench"
+          name="LC-2200">
+       <property
+             name="appName"
+             value="LC2200">
+       </property>
+    </product>
+ </extension>
 </plugin>
