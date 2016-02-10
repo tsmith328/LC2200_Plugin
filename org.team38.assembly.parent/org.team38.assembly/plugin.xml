@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.team38.org/assembly/LC2200"
+			class = "org.team38.assembly.lC2200.LC2200Package"
+			genModel = "model/generated/LC2200.genmodel" />
+	</extension>
+</plugin>

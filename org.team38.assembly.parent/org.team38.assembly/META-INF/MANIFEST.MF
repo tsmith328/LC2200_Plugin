@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.team38.assembly
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.team38.assembly; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.team38.assembly.validation,
+ org.team38.assembly.lC2200,
+ org.team38.assembly.scoping,
+ org.team38.assembly.generator,
+ org.team38.assembly.lC2200.util,
+ org.team38.assembly.serializer,
+ org.team38.assembly,
+ org.team38.assembly.services,
+ org.team38.assembly.parser.antlr.internal,
+ org.team38.assembly.parser.antlr,
+ org.team38.assembly.lC2200.impl
+Import-Package: org.apache.log4j
