@@ -12,10 +12,10 @@
        point="org.eclipse.core.runtime.products">
     <product
           application="org.eclipse.ui.ide.workbench"
-          name="LC-2200">
+          name="LC-2200 IDE">
        <property
              name="appName"
-             value="LC2200">
+             value="LC-2200 IDE">
        </property>
     </product>
  </extension>
