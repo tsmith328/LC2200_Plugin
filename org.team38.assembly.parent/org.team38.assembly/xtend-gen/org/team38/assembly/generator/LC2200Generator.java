@@ -3,10 +3,17 @@
  */
 package org.team38.assembly.generator;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.team38.assembly.lC2200.Directive;
+import org.team38.assembly.lC2200.Instruction;
+import org.team38.assembly.lC2200.Program;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +24,42 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class LC2200Generator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EList<EObject> _contents = resource.getContents();
+    EObject e_root = _contents.get(0);
+    EClass _eClass = e_root.eClass();
+    String _name = _eClass.getName();
+    boolean _equals = _name.equals("Program");
+    if (_equals) {
+      this.compileProgram(((Program) e_root));
+    }
+    fsa.generateFile("helloworld.txt", "hi");
+  }
+  
+  public void compileProgram(final Program root) {
+    EList<EObject> lines = root.getLines();
+    for (final EObject line : lines) {
+      EClass _eClass = line.eClass();
+      String _name = _eClass.getName();
+      boolean _equals = _name.equals("Directive");
+      if (_equals) {
+        this.compileDirective(((Directive) line));
+      } else {
+        EClass _eClass_1 = line.eClass();
+        String _name_1 = _eClass_1.getName();
+        boolean _equals_1 = _name_1.equals("Instruction");
+        if (_equals_1) {
+          this.compileInstruction(((Instruction) line));
+        }
+      }
+    }
+  }
+  
+  public EObject compileDirective(final Directive dir) {
+    EObject _directive = dir.getDirective();
+    return InputOutput.<EObject>println(_directive);
+  }
+  
+  public String compileInstruction(final Instruction instr) {
+    return InputOutput.<String>println("instr");
   }
 }

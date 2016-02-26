@@ -22,6 +22,7 @@ import org.team38.assembly.lC2200.WordDirective;
  * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getW_dir <em>Wdir</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getImm <em>Imm</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +48,26 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
    * @ordered
    */
   protected String w_dir = WDIR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getImm() <em>Imm</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImm()
+   * @generated
+   * @ordered
+   */
+  protected static final String IMM_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImm() <em>Imm</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImm()
+   * @generated
+   * @ordered
+   */
+  protected String imm = IMM_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,6 +118,29 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getImm()
+  {
+    return imm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setImm(String newImm)
+  {
+    String oldImm = imm;
+    imm = newImm;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.WORD_DIRECTIVE__IMM, oldImm, imm));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -104,6 +148,8 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
         return getW_dir();
+      case LC2200Package.WORD_DIRECTIVE__IMM:
+        return getImm();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,6 +166,9 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
         setW_dir((String)newValue);
+        return;
+      case LC2200Package.WORD_DIRECTIVE__IMM:
+        setImm((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,6 +187,9 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
       case LC2200Package.WORD_DIRECTIVE__WDIR:
         setW_dir(WDIR_EDEFAULT);
         return;
+      case LC2200Package.WORD_DIRECTIVE__IMM:
+        setImm(IMM_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -154,6 +206,8 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
         return WDIR_EDEFAULT == null ? w_dir != null : !WDIR_EDEFAULT.equals(w_dir);
+      case LC2200Package.WORD_DIRECTIVE__IMM:
+        return IMM_EDEFAULT == null ? imm != null : !IMM_EDEFAULT.equals(imm);
     }
     return super.eIsSet(featureID);
   }
@@ -171,6 +225,8 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (w_dir: ");
     result.append(w_dir);
+    result.append(", imm: ");
+    result.append(imm);
     result.append(')');
     return result.toString();
   }

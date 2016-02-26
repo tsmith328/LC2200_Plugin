@@ -171,7 +171,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_Program()
+  public EReference getProgram_Lines()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(0);
   }
@@ -261,6 +261,36 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getRInstruction_Reg1()
+  {
+    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRInstruction_Reg2()
+  {
+    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRInstruction_Reg3()
+  {
+    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getIInstruction()
   {
     return iInstructionEClass;
@@ -281,6 +311,36 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getIInstruction_Reg1()
+  {
+    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIInstruction_Reg2()
+  {
+    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIInstruction_Imm()
+  {
+    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getJInstruction()
   {
     return jInstructionEClass;
@@ -294,6 +354,26 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
   public EAttribute getJInstruction_J_opcode()
   {
     return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJInstruction_Reg1()
+  {
+    return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJInstruction_Reg2()
+  {
+    return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -361,6 +441,16 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getWordDirective_Imm()
+  {
+    return (EAttribute)wordDirectiveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LC2200Factory getLC2200Factory()
   {
     return (LC2200Factory)getEFactoryInstance();
@@ -387,7 +477,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
-    createEReference(programEClass, PROGRAM__PROGRAM);
+    createEReference(programEClass, PROGRAM__LINES);
 
     instructionEClass = createEClass(INSTRUCTION);
     createEAttribute(instructionEClass, INSTRUCTION__LABEL);
@@ -399,12 +489,20 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     rInstructionEClass = createEClass(RINSTRUCTION);
     createEAttribute(rInstructionEClass, RINSTRUCTION__ROPCODE);
+    createEAttribute(rInstructionEClass, RINSTRUCTION__REG1);
+    createEAttribute(rInstructionEClass, RINSTRUCTION__REG2);
+    createEAttribute(rInstructionEClass, RINSTRUCTION__REG3);
 
     iInstructionEClass = createEClass(IINSTRUCTION);
     createEAttribute(iInstructionEClass, IINSTRUCTION__IOPCODE);
+    createEAttribute(iInstructionEClass, IINSTRUCTION__REG1);
+    createEAttribute(iInstructionEClass, IINSTRUCTION__REG2);
+    createEAttribute(iInstructionEClass, IINSTRUCTION__IMM);
 
     jInstructionEClass = createEClass(JINSTRUCTION);
     createEAttribute(jInstructionEClass, JINSTRUCTION__JOPCODE);
+    createEAttribute(jInstructionEClass, JINSTRUCTION__REG1);
+    createEAttribute(jInstructionEClass, JINSTRUCTION__REG2);
 
     oInstructionEClass = createEClass(OINSTRUCTION);
     createEAttribute(oInstructionEClass, OINSTRUCTION__OOPCODE);
@@ -414,6 +512,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     wordDirectiveEClass = createEClass(WORD_DIRECTIVE);
     createEAttribute(wordDirectiveEClass, WORD_DIRECTIVE__WDIR);
+    createEAttribute(wordDirectiveEClass, WORD_DIRECTIVE__IMM);
   }
 
   /**
@@ -448,7 +547,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProgram_Program(), ecorePackage.getEObject(), null, "program", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Lines(), ecorePackage.getEObject(), null, "lines", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instructionEClass, Instruction.class, "Instruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInstruction_Label(), ecorePackage.getEString(), "label", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -460,12 +559,20 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     initEClass(rInstructionEClass, RInstruction.class, "RInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRInstruction_R_opcode(), ecorePackage.getEString(), "r_opcode", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRInstruction_Reg3(), ecorePackage.getEString(), "reg3", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(iInstructionEClass, IInstruction.class, "IInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIInstruction_I_opcode(), ecorePackage.getEString(), "i_opcode", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIInstruction_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jInstructionEClass, JInstruction.class, "JInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJInstruction_J_opcode(), ecorePackage.getEString(), "j_opcode", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(oInstructionEClass, OInstruction.class, "OInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOInstruction_O_opcode(), ecorePackage.getEString(), "o_opcode", null, 0, 1, OInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -475,6 +582,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     initEClass(wordDirectiveEClass, WordDirective.class, "WordDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWordDirective_W_dir(), ecorePackage.getEString(), "w_dir", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWordDirective_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

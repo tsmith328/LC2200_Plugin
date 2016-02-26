@@ -7,7 +7,11 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-
+import org.team38.assembly.lC2200.Program
+import org.team38.assembly.lC2200.Directive
+import org.team38.assembly.lC2200.Instruction
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 /**
  * Generates code from your model files on save.
  * 
@@ -16,10 +20,34 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class LC2200Generator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		var e_root = resource.getContents().get(0)
+		if (e_root.eClass().getName().equals("Program")) {
+			compileProgram(e_root as Program)
+		}
+		fsa.generateFile("helloworld.txt", "hi")
 	}
+	
+	def compileProgram(Program root) {
+		var EList<EObject> lines = root.getLines();
+		for(line : lines) {
+			if (line.eClass().getName().equals("Directive")) {
+				compileDirective(line as Directive)
+			}
+			else if (line.eClass().getName().equals("Instruction")) {
+				compileInstruction(line as Instruction)
+			}
+		}	
+	}
+	
+	def compileDirective(Directive dir) {
+		//Has Label
+		println(dir.getDirective())
+	}
+	
+	def compileInstruction(Instruction instr) {
+		//Has Label
+		println("instr")
+	}
+
+    
 }

@@ -7,7 +7,7 @@
   <genPackages prefix="LC2200" basePackage="org.team38.assembly" disposableProviderFactory="true"
       fileExtensions="s" ecorePackage="LC2200.ecore#/">
     <genClasses ecoreClass="LC2200.ecore#//Program">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/program"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/lines"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//Instruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//Instruction/label"/>
@@ -19,12 +19,20 @@
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//RInstruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RInstruction/r_opcode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RInstruction/reg1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RInstruction/reg2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RInstruction/reg3"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//IInstruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//IInstruction/i_opcode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//IInstruction/reg1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//IInstruction/reg2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//IInstruction/imm"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//JInstruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//JInstruction/j_opcode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//JInstruction/reg1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//JInstruction/reg2"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//OInstruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//OInstruction/o_opcode"/>
@@ -34,6 +42,7 @@
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//WordDirective">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//WordDirective/w_dir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//WordDirective/imm"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

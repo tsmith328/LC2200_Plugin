@@ -22,33 +22,33 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_COMMENT", "RULE_NEWLINE", "RULE_REG", "RULE_COMMA", "RULE_IMMEDIATE", "RULE_LPAREN", "RULE_RPAREN", "RULE_LABEL_IMM", "RULE_LABEL", "RULE_ROP", "RULE_IOP_IMM", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_JOP", "RULE_OOP", "RULE_NOOP", "RULE_WORD", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_COMMENT", "RULE_NEWLINE", "RULE_COMMA", "RULE_LPAREN", "RULE_RPAREN", "RULE_LABEL", "RULE_ROP", "RULE_REG", "RULE_IOP_IMM", "RULE_IMMEDIATE", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_LABEL_IMM", "RULE_JOP", "RULE_OOP", "RULE_NOOP", "RULE_WORD", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_LABEL=12;
-    public static final int RULE_IMMEDIATE=8;
+    public static final int RULE_LABEL=9;
+    public static final int RULE_IMMEDIATE=13;
     public static final int RULE_NEWLINE=5;
     public static final int RULE_WORD=20;
-    public static final int RULE_REG=6;
+    public static final int RULE_REG=11;
     public static final int RULE_STRING=23;
-    public static final int RULE_ROP=13;
-    public static final int RULE_LPAREN=9;
+    public static final int RULE_ROP=10;
+    public static final int RULE_LPAREN=7;
     public static final int RULE_SL_COMMENT=25;
-    public static final int RULE_IOP_OFFSET=15;
+    public static final int RULE_IOP_OFFSET=14;
     public static final int RULE_JOP=17;
     public static final int RULE_OOP=18;
-    public static final int RULE_LABEL_IMM=11;
+    public static final int RULE_LABEL_IMM=16;
     public static final int EOF=-1;
     public static final int RULE_NOOP=19;
     public static final int RULE_ID=22;
-    public static final int RULE_COMMA=7;
+    public static final int RULE_COMMA=6;
     public static final int RULE_WS=26;
     public static final int RULE_COMMENT=4;
     public static final int RULE_ANY_OTHER=27;
-    public static final int RULE_RPAREN=10;
-    public static final int RULE_IOP_LABEL=16;
+    public static final int RULE_RPAREN=8;
+    public static final int RULE_IOP_LABEL=15;
     public static final int RULE_INT=21;
     public static final int RULE_ML_COMMENT=24;
-    public static final int RULE_IOP_IMM=14;
+    public static final int RULE_IOP_IMM=12;
 
     // delegates
     // delegators
@@ -116,36 +116,36 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleProgram"
-    // InternalLC2200.g:62:1: ruleProgram : ( ( rule__Program__ProgramAssignment )* ) ;
+    // InternalLC2200.g:62:1: ruleProgram : ( ( rule__Program__LinesAssignment )* ) ;
     public final void ruleProgram() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:66:2: ( ( ( rule__Program__ProgramAssignment )* ) )
-            // InternalLC2200.g:67:2: ( ( rule__Program__ProgramAssignment )* )
+            // InternalLC2200.g:66:2: ( ( ( rule__Program__LinesAssignment )* ) )
+            // InternalLC2200.g:67:2: ( ( rule__Program__LinesAssignment )* )
             {
-            // InternalLC2200.g:67:2: ( ( rule__Program__ProgramAssignment )* )
-            // InternalLC2200.g:68:3: ( rule__Program__ProgramAssignment )*
+            // InternalLC2200.g:67:2: ( ( rule__Program__LinesAssignment )* )
+            // InternalLC2200.g:68:3: ( rule__Program__LinesAssignment )*
             {
-             before(grammarAccess.getProgramAccess().getProgramAssignment()); 
-            // InternalLC2200.g:69:3: ( rule__Program__ProgramAssignment )*
+             before(grammarAccess.getProgramAccess().getLinesAssignment()); 
+            // InternalLC2200.g:69:3: ( rule__Program__LinesAssignment )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=RULE_LABEL && LA1_0<=RULE_WORD)) ) {
+                if ( ((LA1_0>=RULE_LABEL && LA1_0<=RULE_ROP)||LA1_0==RULE_IOP_IMM||(LA1_0>=RULE_IOP_OFFSET && LA1_0<=RULE_IOP_LABEL)||(LA1_0>=RULE_JOP && LA1_0<=RULE_WORD)) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalLC2200.g:69:4: rule__Program__ProgramAssignment
+            	    // InternalLC2200.g:69:4: rule__Program__LinesAssignment
             	    {
             	    pushFollow(FOLLOW_3);
-            	    rule__Program__ProgramAssignment();
+            	    rule__Program__LinesAssignment();
 
             	    state._fsp--;
 
@@ -158,7 +158,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getProgramAccess().getProgramAssignment()); 
+             after(grammarAccess.getProgramAccess().getLinesAssignment()); 
 
             }
 
@@ -796,9 +796,9 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleWordDirective"
 
 
-    // $ANTLR start "rule__Program__ProgramAlternatives_0"
-    // InternalLC2200.g:277:1: rule__Program__ProgramAlternatives_0 : ( ( ruleInstruction ) | ( ruleDirective ) );
-    public final void rule__Program__ProgramAlternatives_0() throws RecognitionException {
+    // $ANTLR start "rule__Program__LinesAlternatives_0"
+    // InternalLC2200.g:277:1: rule__Program__LinesAlternatives_0 : ( ( ruleInstruction ) | ( ruleDirective ) );
+    public final void rule__Program__LinesAlternatives_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -810,11 +810,11 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                 {
                 int LA2_1 = input.LA(2);
 
-                if ( ((LA2_1>=RULE_NOOP && LA2_1<=RULE_WORD)) ) {
-                    alt2=2;
-                }
-                else if ( ((LA2_1>=RULE_ROP && LA2_1<=RULE_OOP)) ) {
+                if ( (LA2_1==RULE_ROP||LA2_1==RULE_IOP_IMM||(LA2_1>=RULE_IOP_OFFSET && LA2_1<=RULE_IOP_LABEL)||(LA2_1>=RULE_JOP && LA2_1<=RULE_OOP)) ) {
                     alt2=1;
+                }
+                else if ( ((LA2_1>=RULE_NOOP && LA2_1<=RULE_WORD)) ) {
+                    alt2=2;
                 }
                 else {
                     NoViableAltException nvae =
@@ -854,13 +854,13 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                     // InternalLC2200.g:282:2: ( ruleInstruction )
                     // InternalLC2200.g:283:3: ruleInstruction
                     {
-                     before(grammarAccess.getProgramAccess().getProgramInstructionParserRuleCall_0_0()); 
+                     before(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0()); 
                     pushFollow(FOLLOW_2);
                     ruleInstruction();
 
                     state._fsp--;
 
-                     after(grammarAccess.getProgramAccess().getProgramInstructionParserRuleCall_0_0()); 
+                     after(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0()); 
 
                     }
 
@@ -873,13 +873,13 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                     // InternalLC2200.g:288:2: ( ruleDirective )
                     // InternalLC2200.g:289:3: ruleDirective
                     {
-                     before(grammarAccess.getProgramAccess().getProgramDirectiveParserRuleCall_0_1()); 
+                     before(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1()); 
                     pushFollow(FOLLOW_2);
                     ruleDirective();
 
                     state._fsp--;
 
-                     after(grammarAccess.getProgramAccess().getProgramDirectiveParserRuleCall_0_1()); 
+                     after(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1()); 
 
                     }
 
@@ -900,7 +900,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Program__ProgramAlternatives_0"
+    // $ANTLR end "rule__Program__LinesAlternatives_0"
 
 
     // $ANTLR start "rule__Instruction__InstructionAlternatives_1_0"
@@ -2050,21 +2050,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RInstruction__Group__1__Impl"
-    // InternalLC2200.g:622:1: rule__RInstruction__Group__1__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:622:1: rule__RInstruction__Group__1__Impl : ( ( rule__RInstruction__Reg1Assignment_1 ) ) ;
     public final void rule__RInstruction__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:626:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:627:1: ( RULE_REG )
+            // InternalLC2200.g:626:1: ( ( ( rule__RInstruction__Reg1Assignment_1 ) ) )
+            // InternalLC2200.g:627:1: ( ( rule__RInstruction__Reg1Assignment_1 ) )
             {
-            // InternalLC2200.g:627:1: ( RULE_REG )
-            // InternalLC2200.g:628:2: RULE_REG
+            // InternalLC2200.g:627:1: ( ( rule__RInstruction__Reg1Assignment_1 ) )
+            // InternalLC2200.g:628:2: ( rule__RInstruction__Reg1Assignment_1 )
             {
-             before(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_1()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_1()); 
+             before(grammarAccess.getRInstructionAccess().getReg1Assignment_1()); 
+            // InternalLC2200.g:629:2: ( rule__RInstruction__Reg1Assignment_1 )
+            // InternalLC2200.g:629:3: rule__RInstruction__Reg1Assignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__RInstruction__Reg1Assignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getRInstructionAccess().getReg1Assignment_1()); 
 
             }
 
@@ -2200,21 +2210,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RInstruction__Group__3__Impl"
-    // InternalLC2200.g:676:1: rule__RInstruction__Group__3__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:676:1: rule__RInstruction__Group__3__Impl : ( ( rule__RInstruction__Reg2Assignment_3 ) ) ;
     public final void rule__RInstruction__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:680:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:681:1: ( RULE_REG )
+            // InternalLC2200.g:680:1: ( ( ( rule__RInstruction__Reg2Assignment_3 ) ) )
+            // InternalLC2200.g:681:1: ( ( rule__RInstruction__Reg2Assignment_3 ) )
             {
-            // InternalLC2200.g:681:1: ( RULE_REG )
-            // InternalLC2200.g:682:2: RULE_REG
+            // InternalLC2200.g:681:1: ( ( rule__RInstruction__Reg2Assignment_3 ) )
+            // InternalLC2200.g:682:2: ( rule__RInstruction__Reg2Assignment_3 )
             {
-             before(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_3()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_3()); 
+             before(grammarAccess.getRInstructionAccess().getReg2Assignment_3()); 
+            // InternalLC2200.g:683:2: ( rule__RInstruction__Reg2Assignment_3 )
+            // InternalLC2200.g:683:3: rule__RInstruction__Reg2Assignment_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__RInstruction__Reg2Assignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getRInstructionAccess().getReg2Assignment_3()); 
 
             }
 
@@ -2345,21 +2365,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RInstruction__Group__5__Impl"
-    // InternalLC2200.g:729:1: rule__RInstruction__Group__5__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:729:1: rule__RInstruction__Group__5__Impl : ( ( rule__RInstruction__Reg3Assignment_5 ) ) ;
     public final void rule__RInstruction__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:733:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:734:1: ( RULE_REG )
+            // InternalLC2200.g:733:1: ( ( ( rule__RInstruction__Reg3Assignment_5 ) ) )
+            // InternalLC2200.g:734:1: ( ( rule__RInstruction__Reg3Assignment_5 ) )
             {
-            // InternalLC2200.g:734:1: ( RULE_REG )
-            // InternalLC2200.g:735:2: RULE_REG
+            // InternalLC2200.g:734:1: ( ( rule__RInstruction__Reg3Assignment_5 ) )
+            // InternalLC2200.g:735:2: ( rule__RInstruction__Reg3Assignment_5 )
             {
-             before(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_5()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_5()); 
+             before(grammarAccess.getRInstructionAccess().getReg3Assignment_5()); 
+            // InternalLC2200.g:736:2: ( rule__RInstruction__Reg3Assignment_5 )
+            // InternalLC2200.g:736:3: rule__RInstruction__Reg3Assignment_5
+            {
+            pushFollow(FOLLOW_2);
+            rule__RInstruction__Reg3Assignment_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getRInstructionAccess().getReg3Assignment_5()); 
 
             }
 
@@ -2505,21 +2535,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_0__1__Impl"
-    // InternalLC2200.g:784:1: rule__IInstruction__Group_0__1__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:784:1: rule__IInstruction__Group_0__1__Impl : ( ( rule__IInstruction__Reg1Assignment_0_1 ) ) ;
     public final void rule__IInstruction__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:788:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:789:1: ( RULE_REG )
+            // InternalLC2200.g:788:1: ( ( ( rule__IInstruction__Reg1Assignment_0_1 ) ) )
+            // InternalLC2200.g:789:1: ( ( rule__IInstruction__Reg1Assignment_0_1 ) )
             {
-            // InternalLC2200.g:789:1: ( RULE_REG )
-            // InternalLC2200.g:790:2: RULE_REG
+            // InternalLC2200.g:789:1: ( ( rule__IInstruction__Reg1Assignment_0_1 ) )
+            // InternalLC2200.g:790:2: ( rule__IInstruction__Reg1Assignment_0_1 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_1()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_1()); 
+             before(grammarAccess.getIInstructionAccess().getReg1Assignment_0_1()); 
+            // InternalLC2200.g:791:2: ( rule__IInstruction__Reg1Assignment_0_1 )
+            // InternalLC2200.g:791:3: rule__IInstruction__Reg1Assignment_0_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg1Assignment_0_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg1Assignment_0_1()); 
 
             }
 
@@ -2655,21 +2695,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_0__3__Impl"
-    // InternalLC2200.g:838:1: rule__IInstruction__Group_0__3__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:838:1: rule__IInstruction__Group_0__3__Impl : ( ( rule__IInstruction__Reg2Assignment_0_3 ) ) ;
     public final void rule__IInstruction__Group_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:842:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:843:1: ( RULE_REG )
+            // InternalLC2200.g:842:1: ( ( ( rule__IInstruction__Reg2Assignment_0_3 ) ) )
+            // InternalLC2200.g:843:1: ( ( rule__IInstruction__Reg2Assignment_0_3 ) )
             {
-            // InternalLC2200.g:843:1: ( RULE_REG )
-            // InternalLC2200.g:844:2: RULE_REG
+            // InternalLC2200.g:843:1: ( ( rule__IInstruction__Reg2Assignment_0_3 ) )
+            // InternalLC2200.g:844:2: ( rule__IInstruction__Reg2Assignment_0_3 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_3()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_3()); 
+             before(grammarAccess.getIInstructionAccess().getReg2Assignment_0_3()); 
+            // InternalLC2200.g:845:2: ( rule__IInstruction__Reg2Assignment_0_3 )
+            // InternalLC2200.g:845:3: rule__IInstruction__Reg2Assignment_0_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg2Assignment_0_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg2Assignment_0_3()); 
 
             }
 
@@ -2800,21 +2850,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_0__5__Impl"
-    // InternalLC2200.g:891:1: rule__IInstruction__Group_0__5__Impl : ( RULE_IMMEDIATE ) ;
+    // InternalLC2200.g:891:1: rule__IInstruction__Group_0__5__Impl : ( ( rule__IInstruction__ImmAssignment_0_5 ) ) ;
     public final void rule__IInstruction__Group_0__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:895:1: ( ( RULE_IMMEDIATE ) )
-            // InternalLC2200.g:896:1: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:895:1: ( ( ( rule__IInstruction__ImmAssignment_0_5 ) ) )
+            // InternalLC2200.g:896:1: ( ( rule__IInstruction__ImmAssignment_0_5 ) )
             {
-            // InternalLC2200.g:896:1: ( RULE_IMMEDIATE )
-            // InternalLC2200.g:897:2: RULE_IMMEDIATE
+            // InternalLC2200.g:896:1: ( ( rule__IInstruction__ImmAssignment_0_5 ) )
+            // InternalLC2200.g:897:2: ( rule__IInstruction__ImmAssignment_0_5 )
             {
-             before(grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_0_5()); 
-            match(input,RULE_IMMEDIATE,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_0_5()); 
+             before(grammarAccess.getIInstructionAccess().getImmAssignment_0_5()); 
+            // InternalLC2200.g:898:2: ( rule__IInstruction__ImmAssignment_0_5 )
+            // InternalLC2200.g:898:3: rule__IInstruction__ImmAssignment_0_5
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__ImmAssignment_0_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getImmAssignment_0_5()); 
 
             }
 
@@ -2960,21 +3020,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_1__1__Impl"
-    // InternalLC2200.g:946:1: rule__IInstruction__Group_1__1__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:946:1: rule__IInstruction__Group_1__1__Impl : ( ( rule__IInstruction__Reg1Assignment_1_1 ) ) ;
     public final void rule__IInstruction__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:950:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:951:1: ( RULE_REG )
+            // InternalLC2200.g:950:1: ( ( ( rule__IInstruction__Reg1Assignment_1_1 ) ) )
+            // InternalLC2200.g:951:1: ( ( rule__IInstruction__Reg1Assignment_1_1 ) )
             {
-            // InternalLC2200.g:951:1: ( RULE_REG )
-            // InternalLC2200.g:952:2: RULE_REG
+            // InternalLC2200.g:951:1: ( ( rule__IInstruction__Reg1Assignment_1_1 ) )
+            // InternalLC2200.g:952:2: ( rule__IInstruction__Reg1Assignment_1_1 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_1()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_1()); 
+             before(grammarAccess.getIInstructionAccess().getReg1Assignment_1_1()); 
+            // InternalLC2200.g:953:2: ( rule__IInstruction__Reg1Assignment_1_1 )
+            // InternalLC2200.g:953:3: rule__IInstruction__Reg1Assignment_1_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg1Assignment_1_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg1Assignment_1_1()); 
 
             }
 
@@ -3110,21 +3180,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_1__3__Impl"
-    // InternalLC2200.g:1000:1: rule__IInstruction__Group_1__3__Impl : ( RULE_IMMEDIATE ) ;
+    // InternalLC2200.g:1000:1: rule__IInstruction__Group_1__3__Impl : ( ( rule__IInstruction__ImmAssignment_1_3 ) ) ;
     public final void rule__IInstruction__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1004:1: ( ( RULE_IMMEDIATE ) )
-            // InternalLC2200.g:1005:1: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:1004:1: ( ( ( rule__IInstruction__ImmAssignment_1_3 ) ) )
+            // InternalLC2200.g:1005:1: ( ( rule__IInstruction__ImmAssignment_1_3 ) )
             {
-            // InternalLC2200.g:1005:1: ( RULE_IMMEDIATE )
-            // InternalLC2200.g:1006:2: RULE_IMMEDIATE
+            // InternalLC2200.g:1005:1: ( ( rule__IInstruction__ImmAssignment_1_3 ) )
+            // InternalLC2200.g:1006:2: ( rule__IInstruction__ImmAssignment_1_3 )
             {
-             before(grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_1_3()); 
-            match(input,RULE_IMMEDIATE,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_1_3()); 
+             before(grammarAccess.getIInstructionAccess().getImmAssignment_1_3()); 
+            // InternalLC2200.g:1007:2: ( rule__IInstruction__ImmAssignment_1_3 )
+            // InternalLC2200.g:1007:3: rule__IInstruction__ImmAssignment_1_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__ImmAssignment_1_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getImmAssignment_1_3()); 
 
             }
 
@@ -3260,21 +3340,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_1__5__Impl"
-    // InternalLC2200.g:1054:1: rule__IInstruction__Group_1__5__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:1054:1: rule__IInstruction__Group_1__5__Impl : ( ( rule__IInstruction__Reg2Assignment_1_5 ) ) ;
     public final void rule__IInstruction__Group_1__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1058:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:1059:1: ( RULE_REG )
+            // InternalLC2200.g:1058:1: ( ( ( rule__IInstruction__Reg2Assignment_1_5 ) ) )
+            // InternalLC2200.g:1059:1: ( ( rule__IInstruction__Reg2Assignment_1_5 ) )
             {
-            // InternalLC2200.g:1059:1: ( RULE_REG )
-            // InternalLC2200.g:1060:2: RULE_REG
+            // InternalLC2200.g:1059:1: ( ( rule__IInstruction__Reg2Assignment_1_5 ) )
+            // InternalLC2200.g:1060:2: ( rule__IInstruction__Reg2Assignment_1_5 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_5()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_5()); 
+             before(grammarAccess.getIInstructionAccess().getReg2Assignment_1_5()); 
+            // InternalLC2200.g:1061:2: ( rule__IInstruction__Reg2Assignment_1_5 )
+            // InternalLC2200.g:1061:3: rule__IInstruction__Reg2Assignment_1_5
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg2Assignment_1_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg2Assignment_1_5()); 
 
             }
 
@@ -3490,21 +3580,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_2__1__Impl"
-    // InternalLC2200.g:1135:1: rule__IInstruction__Group_2__1__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:1135:1: rule__IInstruction__Group_2__1__Impl : ( ( rule__IInstruction__Reg1Assignment_2_1 ) ) ;
     public final void rule__IInstruction__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1139:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:1140:1: ( RULE_REG )
+            // InternalLC2200.g:1139:1: ( ( ( rule__IInstruction__Reg1Assignment_2_1 ) ) )
+            // InternalLC2200.g:1140:1: ( ( rule__IInstruction__Reg1Assignment_2_1 ) )
             {
-            // InternalLC2200.g:1140:1: ( RULE_REG )
-            // InternalLC2200.g:1141:2: RULE_REG
+            // InternalLC2200.g:1140:1: ( ( rule__IInstruction__Reg1Assignment_2_1 ) )
+            // InternalLC2200.g:1141:2: ( rule__IInstruction__Reg1Assignment_2_1 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_1()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_1()); 
+             before(grammarAccess.getIInstructionAccess().getReg1Assignment_2_1()); 
+            // InternalLC2200.g:1142:2: ( rule__IInstruction__Reg1Assignment_2_1 )
+            // InternalLC2200.g:1142:3: rule__IInstruction__Reg1Assignment_2_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg1Assignment_2_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg1Assignment_2_1()); 
 
             }
 
@@ -3640,21 +3740,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_2__3__Impl"
-    // InternalLC2200.g:1189:1: rule__IInstruction__Group_2__3__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:1189:1: rule__IInstruction__Group_2__3__Impl : ( ( rule__IInstruction__Reg2Assignment_2_3 ) ) ;
     public final void rule__IInstruction__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1193:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:1194:1: ( RULE_REG )
+            // InternalLC2200.g:1193:1: ( ( ( rule__IInstruction__Reg2Assignment_2_3 ) ) )
+            // InternalLC2200.g:1194:1: ( ( rule__IInstruction__Reg2Assignment_2_3 ) )
             {
-            // InternalLC2200.g:1194:1: ( RULE_REG )
-            // InternalLC2200.g:1195:2: RULE_REG
+            // InternalLC2200.g:1194:1: ( ( rule__IInstruction__Reg2Assignment_2_3 ) )
+            // InternalLC2200.g:1195:2: ( rule__IInstruction__Reg2Assignment_2_3 )
             {
-             before(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_3()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_3()); 
+             before(grammarAccess.getIInstructionAccess().getReg2Assignment_2_3()); 
+            // InternalLC2200.g:1196:2: ( rule__IInstruction__Reg2Assignment_2_3 )
+            // InternalLC2200.g:1196:3: rule__IInstruction__Reg2Assignment_2_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__Reg2Assignment_2_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getReg2Assignment_2_3()); 
 
             }
 
@@ -3785,21 +3895,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IInstruction__Group_2__5__Impl"
-    // InternalLC2200.g:1242:1: rule__IInstruction__Group_2__5__Impl : ( RULE_LABEL_IMM ) ;
+    // InternalLC2200.g:1242:1: rule__IInstruction__Group_2__5__Impl : ( ( rule__IInstruction__ImmAssignment_2_5 ) ) ;
     public final void rule__IInstruction__Group_2__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1246:1: ( ( RULE_LABEL_IMM ) )
-            // InternalLC2200.g:1247:1: ( RULE_LABEL_IMM )
+            // InternalLC2200.g:1246:1: ( ( ( rule__IInstruction__ImmAssignment_2_5 ) ) )
+            // InternalLC2200.g:1247:1: ( ( rule__IInstruction__ImmAssignment_2_5 ) )
             {
-            // InternalLC2200.g:1247:1: ( RULE_LABEL_IMM )
-            // InternalLC2200.g:1248:2: RULE_LABEL_IMM
+            // InternalLC2200.g:1247:1: ( ( rule__IInstruction__ImmAssignment_2_5 ) )
+            // InternalLC2200.g:1248:2: ( rule__IInstruction__ImmAssignment_2_5 )
             {
-             before(grammarAccess.getIInstructionAccess().getLABEL_IMMTerminalRuleCall_2_5()); 
-            match(input,RULE_LABEL_IMM,FOLLOW_2); 
-             after(grammarAccess.getIInstructionAccess().getLABEL_IMMTerminalRuleCall_2_5()); 
+             before(grammarAccess.getIInstructionAccess().getImmAssignment_2_5()); 
+            // InternalLC2200.g:1249:2: ( rule__IInstruction__ImmAssignment_2_5 )
+            // InternalLC2200.g:1249:3: rule__IInstruction__ImmAssignment_2_5
+            {
+            pushFollow(FOLLOW_2);
+            rule__IInstruction__ImmAssignment_2_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getIInstructionAccess().getImmAssignment_2_5()); 
 
             }
 
@@ -3945,21 +4065,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JInstruction__Group__1__Impl"
-    // InternalLC2200.g:1297:1: rule__JInstruction__Group__1__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:1297:1: rule__JInstruction__Group__1__Impl : ( ( rule__JInstruction__Reg1Assignment_1 ) ) ;
     public final void rule__JInstruction__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1301:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:1302:1: ( RULE_REG )
+            // InternalLC2200.g:1301:1: ( ( ( rule__JInstruction__Reg1Assignment_1 ) ) )
+            // InternalLC2200.g:1302:1: ( ( rule__JInstruction__Reg1Assignment_1 ) )
             {
-            // InternalLC2200.g:1302:1: ( RULE_REG )
-            // InternalLC2200.g:1303:2: RULE_REG
+            // InternalLC2200.g:1302:1: ( ( rule__JInstruction__Reg1Assignment_1 ) )
+            // InternalLC2200.g:1303:2: ( rule__JInstruction__Reg1Assignment_1 )
             {
-             before(grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_1()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_1()); 
+             before(grammarAccess.getJInstructionAccess().getReg1Assignment_1()); 
+            // InternalLC2200.g:1304:2: ( rule__JInstruction__Reg1Assignment_1 )
+            // InternalLC2200.g:1304:3: rule__JInstruction__Reg1Assignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__JInstruction__Reg1Assignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getJInstructionAccess().getReg1Assignment_1()); 
 
             }
 
@@ -4090,21 +4220,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JInstruction__Group__3__Impl"
-    // InternalLC2200.g:1350:1: rule__JInstruction__Group__3__Impl : ( RULE_REG ) ;
+    // InternalLC2200.g:1350:1: rule__JInstruction__Group__3__Impl : ( ( rule__JInstruction__Reg2Assignment_3 ) ) ;
     public final void rule__JInstruction__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1354:1: ( ( RULE_REG ) )
-            // InternalLC2200.g:1355:1: ( RULE_REG )
+            // InternalLC2200.g:1354:1: ( ( ( rule__JInstruction__Reg2Assignment_3 ) ) )
+            // InternalLC2200.g:1355:1: ( ( rule__JInstruction__Reg2Assignment_3 ) )
             {
-            // InternalLC2200.g:1355:1: ( RULE_REG )
-            // InternalLC2200.g:1356:2: RULE_REG
+            // InternalLC2200.g:1355:1: ( ( rule__JInstruction__Reg2Assignment_3 ) )
+            // InternalLC2200.g:1356:2: ( rule__JInstruction__Reg2Assignment_3 )
             {
-             before(grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_3()); 
-            match(input,RULE_REG,FOLLOW_2); 
-             after(grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_3()); 
+             before(grammarAccess.getJInstructionAccess().getReg2Assignment_3()); 
+            // InternalLC2200.g:1357:2: ( rule__JInstruction__Reg2Assignment_3 )
+            // InternalLC2200.g:1357:3: rule__JInstruction__Reg2Assignment_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__JInstruction__Reg2Assignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getJInstructionAccess().getReg2Assignment_3()); 
 
             }
 
@@ -4245,21 +4385,31 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__WordDirective__Group__1__Impl"
-    // InternalLC2200.g:1404:1: rule__WordDirective__Group__1__Impl : ( RULE_IMMEDIATE ) ;
+    // InternalLC2200.g:1404:1: rule__WordDirective__Group__1__Impl : ( ( rule__WordDirective__ImmAssignment_1 ) ) ;
     public final void rule__WordDirective__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1408:1: ( ( RULE_IMMEDIATE ) )
-            // InternalLC2200.g:1409:1: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:1408:1: ( ( ( rule__WordDirective__ImmAssignment_1 ) ) )
+            // InternalLC2200.g:1409:1: ( ( rule__WordDirective__ImmAssignment_1 ) )
             {
-            // InternalLC2200.g:1409:1: ( RULE_IMMEDIATE )
-            // InternalLC2200.g:1410:2: RULE_IMMEDIATE
+            // InternalLC2200.g:1409:1: ( ( rule__WordDirective__ImmAssignment_1 ) )
+            // InternalLC2200.g:1410:2: ( rule__WordDirective__ImmAssignment_1 )
             {
-             before(grammarAccess.getWordDirectiveAccess().getIMMEDIATETerminalRuleCall_1()); 
-            match(input,RULE_IMMEDIATE,FOLLOW_2); 
-             after(grammarAccess.getWordDirectiveAccess().getIMMEDIATETerminalRuleCall_1()); 
+             before(grammarAccess.getWordDirectiveAccess().getImmAssignment_1()); 
+            // InternalLC2200.g:1411:2: ( rule__WordDirective__ImmAssignment_1 )
+            // InternalLC2200.g:1411:3: rule__WordDirective__ImmAssignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__WordDirective__ImmAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getWordDirectiveAccess().getImmAssignment_1()); 
 
             }
 
@@ -4281,32 +4431,32 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__WordDirective__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Program__ProgramAssignment"
-    // InternalLC2200.g:1420:1: rule__Program__ProgramAssignment : ( ( rule__Program__ProgramAlternatives_0 ) ) ;
-    public final void rule__Program__ProgramAssignment() throws RecognitionException {
+    // $ANTLR start "rule__Program__LinesAssignment"
+    // InternalLC2200.g:1420:1: rule__Program__LinesAssignment : ( ( rule__Program__LinesAlternatives_0 ) ) ;
+    public final void rule__Program__LinesAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1424:1: ( ( ( rule__Program__ProgramAlternatives_0 ) ) )
-            // InternalLC2200.g:1425:2: ( ( rule__Program__ProgramAlternatives_0 ) )
+            // InternalLC2200.g:1424:1: ( ( ( rule__Program__LinesAlternatives_0 ) ) )
+            // InternalLC2200.g:1425:2: ( ( rule__Program__LinesAlternatives_0 ) )
             {
-            // InternalLC2200.g:1425:2: ( ( rule__Program__ProgramAlternatives_0 ) )
-            // InternalLC2200.g:1426:3: ( rule__Program__ProgramAlternatives_0 )
+            // InternalLC2200.g:1425:2: ( ( rule__Program__LinesAlternatives_0 ) )
+            // InternalLC2200.g:1426:3: ( rule__Program__LinesAlternatives_0 )
             {
-             before(grammarAccess.getProgramAccess().getProgramAlternatives_0()); 
-            // InternalLC2200.g:1427:3: ( rule__Program__ProgramAlternatives_0 )
-            // InternalLC2200.g:1427:4: rule__Program__ProgramAlternatives_0
+             before(grammarAccess.getProgramAccess().getLinesAlternatives_0()); 
+            // InternalLC2200.g:1427:3: ( rule__Program__LinesAlternatives_0 )
+            // InternalLC2200.g:1427:4: rule__Program__LinesAlternatives_0
             {
             pushFollow(FOLLOW_2);
-            rule__Program__ProgramAlternatives_0();
+            rule__Program__LinesAlternatives_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getProgramAccess().getProgramAlternatives_0()); 
+             after(grammarAccess.getProgramAccess().getLinesAlternatives_0()); 
 
             }
 
@@ -4325,7 +4475,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Program__ProgramAssignment"
+    // $ANTLR end "rule__Program__LinesAssignment"
 
 
     // $ANTLR start "rule__Instruction__LabelAssignment_0"
@@ -4533,18 +4683,129 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__RInstruction__R_opcodeAssignment_0"
 
 
+    // $ANTLR start "rule__RInstruction__Reg1Assignment_1"
+    // InternalLC2200.g:1510:1: rule__RInstruction__Reg1Assignment_1 : ( RULE_REG ) ;
+    public final void rule__RInstruction__Reg1Assignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1514:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1515:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1515:2: ( RULE_REG )
+            // InternalLC2200.g:1516:3: RULE_REG
+            {
+             before(grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RInstruction__Reg1Assignment_1"
+
+
+    // $ANTLR start "rule__RInstruction__Reg2Assignment_3"
+    // InternalLC2200.g:1525:1: rule__RInstruction__Reg2Assignment_3 : ( RULE_REG ) ;
+    public final void rule__RInstruction__Reg2Assignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1529:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1530:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1530:2: ( RULE_REG )
+            // InternalLC2200.g:1531:3: RULE_REG
+            {
+             before(grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RInstruction__Reg2Assignment_3"
+
+
+    // $ANTLR start "rule__RInstruction__Reg3Assignment_5"
+    // InternalLC2200.g:1540:1: rule__RInstruction__Reg3Assignment_5 : ( RULE_REG ) ;
+    public final void rule__RInstruction__Reg3Assignment_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1544:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1545:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1545:2: ( RULE_REG )
+            // InternalLC2200.g:1546:3: RULE_REG
+            {
+             before(grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RInstruction__Reg3Assignment_5"
+
+
     // $ANTLR start "rule__IInstruction__I_opcodeAssignment_0_0"
-    // InternalLC2200.g:1510:1: rule__IInstruction__I_opcodeAssignment_0_0 : ( RULE_IOP_IMM ) ;
+    // InternalLC2200.g:1555:1: rule__IInstruction__I_opcodeAssignment_0_0 : ( RULE_IOP_IMM ) ;
     public final void rule__IInstruction__I_opcodeAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1514:1: ( ( RULE_IOP_IMM ) )
-            // InternalLC2200.g:1515:2: ( RULE_IOP_IMM )
+            // InternalLC2200.g:1559:1: ( ( RULE_IOP_IMM ) )
+            // InternalLC2200.g:1560:2: ( RULE_IOP_IMM )
             {
-            // InternalLC2200.g:1515:2: ( RULE_IOP_IMM )
-            // InternalLC2200.g:1516:3: RULE_IOP_IMM
+            // InternalLC2200.g:1560:2: ( RULE_IOP_IMM )
+            // InternalLC2200.g:1561:3: RULE_IOP_IMM
             {
              before(grammarAccess.getIInstructionAccess().getI_opcodeIOP_IMMTerminalRuleCall_0_0_0()); 
             match(input,RULE_IOP_IMM,FOLLOW_2); 
@@ -4570,18 +4831,129 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__IInstruction__I_opcodeAssignment_0_0"
 
 
+    // $ANTLR start "rule__IInstruction__Reg1Assignment_0_1"
+    // InternalLC2200.g:1570:1: rule__IInstruction__Reg1Assignment_0_1 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg1Assignment_0_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1574:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1575:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1575:2: ( RULE_REG )
+            // InternalLC2200.g:1576:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_0_1_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_0_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg1Assignment_0_1"
+
+
+    // $ANTLR start "rule__IInstruction__Reg2Assignment_0_3"
+    // InternalLC2200.g:1585:1: rule__IInstruction__Reg2Assignment_0_3 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg2Assignment_0_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1589:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1590:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1590:2: ( RULE_REG )
+            // InternalLC2200.g:1591:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_0_3_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_0_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg2Assignment_0_3"
+
+
+    // $ANTLR start "rule__IInstruction__ImmAssignment_0_5"
+    // InternalLC2200.g:1600:1: rule__IInstruction__ImmAssignment_0_5 : ( RULE_IMMEDIATE ) ;
+    public final void rule__IInstruction__ImmAssignment_0_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1604:1: ( ( RULE_IMMEDIATE ) )
+            // InternalLC2200.g:1605:2: ( RULE_IMMEDIATE )
+            {
+            // InternalLC2200.g:1605:2: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:1606:3: RULE_IMMEDIATE
+            {
+             before(grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_0_5_0()); 
+            match(input,RULE_IMMEDIATE,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_0_5_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__ImmAssignment_0_5"
+
+
     // $ANTLR start "rule__IInstruction__I_opcodeAssignment_1_0"
-    // InternalLC2200.g:1525:1: rule__IInstruction__I_opcodeAssignment_1_0 : ( RULE_IOP_OFFSET ) ;
+    // InternalLC2200.g:1615:1: rule__IInstruction__I_opcodeAssignment_1_0 : ( RULE_IOP_OFFSET ) ;
     public final void rule__IInstruction__I_opcodeAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1529:1: ( ( RULE_IOP_OFFSET ) )
-            // InternalLC2200.g:1530:2: ( RULE_IOP_OFFSET )
+            // InternalLC2200.g:1619:1: ( ( RULE_IOP_OFFSET ) )
+            // InternalLC2200.g:1620:2: ( RULE_IOP_OFFSET )
             {
-            // InternalLC2200.g:1530:2: ( RULE_IOP_OFFSET )
-            // InternalLC2200.g:1531:3: RULE_IOP_OFFSET
+            // InternalLC2200.g:1620:2: ( RULE_IOP_OFFSET )
+            // InternalLC2200.g:1621:3: RULE_IOP_OFFSET
             {
              before(grammarAccess.getIInstructionAccess().getI_opcodeIOP_OFFSETTerminalRuleCall_1_0_0()); 
             match(input,RULE_IOP_OFFSET,FOLLOW_2); 
@@ -4607,18 +4979,129 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__IInstruction__I_opcodeAssignment_1_0"
 
 
+    // $ANTLR start "rule__IInstruction__Reg1Assignment_1_1"
+    // InternalLC2200.g:1630:1: rule__IInstruction__Reg1Assignment_1_1 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg1Assignment_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1634:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1635:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1635:2: ( RULE_REG )
+            // InternalLC2200.g:1636:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_1_1_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_1_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg1Assignment_1_1"
+
+
+    // $ANTLR start "rule__IInstruction__ImmAssignment_1_3"
+    // InternalLC2200.g:1645:1: rule__IInstruction__ImmAssignment_1_3 : ( RULE_IMMEDIATE ) ;
+    public final void rule__IInstruction__ImmAssignment_1_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1649:1: ( ( RULE_IMMEDIATE ) )
+            // InternalLC2200.g:1650:2: ( RULE_IMMEDIATE )
+            {
+            // InternalLC2200.g:1650:2: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:1651:3: RULE_IMMEDIATE
+            {
+             before(grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_1_3_0()); 
+            match(input,RULE_IMMEDIATE,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_1_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__ImmAssignment_1_3"
+
+
+    // $ANTLR start "rule__IInstruction__Reg2Assignment_1_5"
+    // InternalLC2200.g:1660:1: rule__IInstruction__Reg2Assignment_1_5 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg2Assignment_1_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1664:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1665:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1665:2: ( RULE_REG )
+            // InternalLC2200.g:1666:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_1_5_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_1_5_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg2Assignment_1_5"
+
+
     // $ANTLR start "rule__IInstruction__I_opcodeAssignment_2_0"
-    // InternalLC2200.g:1540:1: rule__IInstruction__I_opcodeAssignment_2_0 : ( RULE_IOP_LABEL ) ;
+    // InternalLC2200.g:1675:1: rule__IInstruction__I_opcodeAssignment_2_0 : ( RULE_IOP_LABEL ) ;
     public final void rule__IInstruction__I_opcodeAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1544:1: ( ( RULE_IOP_LABEL ) )
-            // InternalLC2200.g:1545:2: ( RULE_IOP_LABEL )
+            // InternalLC2200.g:1679:1: ( ( RULE_IOP_LABEL ) )
+            // InternalLC2200.g:1680:2: ( RULE_IOP_LABEL )
             {
-            // InternalLC2200.g:1545:2: ( RULE_IOP_LABEL )
-            // InternalLC2200.g:1546:3: RULE_IOP_LABEL
+            // InternalLC2200.g:1680:2: ( RULE_IOP_LABEL )
+            // InternalLC2200.g:1681:3: RULE_IOP_LABEL
             {
              before(grammarAccess.getIInstructionAccess().getI_opcodeIOP_LABELTerminalRuleCall_2_0_0()); 
             match(input,RULE_IOP_LABEL,FOLLOW_2); 
@@ -4644,18 +5127,129 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__IInstruction__I_opcodeAssignment_2_0"
 
 
+    // $ANTLR start "rule__IInstruction__Reg1Assignment_2_1"
+    // InternalLC2200.g:1690:1: rule__IInstruction__Reg1Assignment_2_1 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg1Assignment_2_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1694:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1695:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1695:2: ( RULE_REG )
+            // InternalLC2200.g:1696:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_2_1_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_2_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg1Assignment_2_1"
+
+
+    // $ANTLR start "rule__IInstruction__Reg2Assignment_2_3"
+    // InternalLC2200.g:1705:1: rule__IInstruction__Reg2Assignment_2_3 : ( RULE_REG ) ;
+    public final void rule__IInstruction__Reg2Assignment_2_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1709:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1710:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1710:2: ( RULE_REG )
+            // InternalLC2200.g:1711:3: RULE_REG
+            {
+             before(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_2_3_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_2_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__Reg2Assignment_2_3"
+
+
+    // $ANTLR start "rule__IInstruction__ImmAssignment_2_5"
+    // InternalLC2200.g:1720:1: rule__IInstruction__ImmAssignment_2_5 : ( RULE_LABEL_IMM ) ;
+    public final void rule__IInstruction__ImmAssignment_2_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1724:1: ( ( RULE_LABEL_IMM ) )
+            // InternalLC2200.g:1725:2: ( RULE_LABEL_IMM )
+            {
+            // InternalLC2200.g:1725:2: ( RULE_LABEL_IMM )
+            // InternalLC2200.g:1726:3: RULE_LABEL_IMM
+            {
+             before(grammarAccess.getIInstructionAccess().getImmLABEL_IMMTerminalRuleCall_2_5_0()); 
+            match(input,RULE_LABEL_IMM,FOLLOW_2); 
+             after(grammarAccess.getIInstructionAccess().getImmLABEL_IMMTerminalRuleCall_2_5_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__IInstruction__ImmAssignment_2_5"
+
+
     // $ANTLR start "rule__JInstruction__J_opcodeAssignment_0"
-    // InternalLC2200.g:1555:1: rule__JInstruction__J_opcodeAssignment_0 : ( RULE_JOP ) ;
+    // InternalLC2200.g:1735:1: rule__JInstruction__J_opcodeAssignment_0 : ( RULE_JOP ) ;
     public final void rule__JInstruction__J_opcodeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1559:1: ( ( RULE_JOP ) )
-            // InternalLC2200.g:1560:2: ( RULE_JOP )
+            // InternalLC2200.g:1739:1: ( ( RULE_JOP ) )
+            // InternalLC2200.g:1740:2: ( RULE_JOP )
             {
-            // InternalLC2200.g:1560:2: ( RULE_JOP )
-            // InternalLC2200.g:1561:3: RULE_JOP
+            // InternalLC2200.g:1740:2: ( RULE_JOP )
+            // InternalLC2200.g:1741:3: RULE_JOP
             {
              before(grammarAccess.getJInstructionAccess().getJ_opcodeJOPTerminalRuleCall_0_0()); 
             match(input,RULE_JOP,FOLLOW_2); 
@@ -4681,18 +5275,92 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JInstruction__J_opcodeAssignment_0"
 
 
+    // $ANTLR start "rule__JInstruction__Reg1Assignment_1"
+    // InternalLC2200.g:1750:1: rule__JInstruction__Reg1Assignment_1 : ( RULE_REG ) ;
+    public final void rule__JInstruction__Reg1Assignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1754:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1755:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1755:2: ( RULE_REG )
+            // InternalLC2200.g:1756:3: RULE_REG
+            {
+             before(grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JInstruction__Reg1Assignment_1"
+
+
+    // $ANTLR start "rule__JInstruction__Reg2Assignment_3"
+    // InternalLC2200.g:1765:1: rule__JInstruction__Reg2Assignment_3 : ( RULE_REG ) ;
+    public final void rule__JInstruction__Reg2Assignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1769:1: ( ( RULE_REG ) )
+            // InternalLC2200.g:1770:2: ( RULE_REG )
+            {
+            // InternalLC2200.g:1770:2: ( RULE_REG )
+            // InternalLC2200.g:1771:3: RULE_REG
+            {
+             before(grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0()); 
+            match(input,RULE_REG,FOLLOW_2); 
+             after(grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__JInstruction__Reg2Assignment_3"
+
+
     // $ANTLR start "rule__OInstruction__O_opcodeAssignment"
-    // InternalLC2200.g:1570:1: rule__OInstruction__O_opcodeAssignment : ( RULE_OOP ) ;
+    // InternalLC2200.g:1780:1: rule__OInstruction__O_opcodeAssignment : ( RULE_OOP ) ;
     public final void rule__OInstruction__O_opcodeAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1574:1: ( ( RULE_OOP ) )
-            // InternalLC2200.g:1575:2: ( RULE_OOP )
+            // InternalLC2200.g:1784:1: ( ( RULE_OOP ) )
+            // InternalLC2200.g:1785:2: ( RULE_OOP )
             {
-            // InternalLC2200.g:1575:2: ( RULE_OOP )
-            // InternalLC2200.g:1576:3: RULE_OOP
+            // InternalLC2200.g:1785:2: ( RULE_OOP )
+            // InternalLC2200.g:1786:3: RULE_OOP
             {
              before(grammarAccess.getOInstructionAccess().getO_opcodeOOPTerminalRuleCall_0()); 
             match(input,RULE_OOP,FOLLOW_2); 
@@ -4719,17 +5387,17 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NOOPDirective__N_dirAssignment"
-    // InternalLC2200.g:1585:1: rule__NOOPDirective__N_dirAssignment : ( RULE_NOOP ) ;
+    // InternalLC2200.g:1795:1: rule__NOOPDirective__N_dirAssignment : ( RULE_NOOP ) ;
     public final void rule__NOOPDirective__N_dirAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1589:1: ( ( RULE_NOOP ) )
-            // InternalLC2200.g:1590:2: ( RULE_NOOP )
+            // InternalLC2200.g:1799:1: ( ( RULE_NOOP ) )
+            // InternalLC2200.g:1800:2: ( RULE_NOOP )
             {
-            // InternalLC2200.g:1590:2: ( RULE_NOOP )
-            // InternalLC2200.g:1591:3: RULE_NOOP
+            // InternalLC2200.g:1800:2: ( RULE_NOOP )
+            // InternalLC2200.g:1801:3: RULE_NOOP
             {
              before(grammarAccess.getNOOPDirectiveAccess().getN_dirNOOPTerminalRuleCall_0()); 
             match(input,RULE_NOOP,FOLLOW_2); 
@@ -4756,17 +5424,17 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__WordDirective__W_dirAssignment_0"
-    // InternalLC2200.g:1600:1: rule__WordDirective__W_dirAssignment_0 : ( RULE_WORD ) ;
+    // InternalLC2200.g:1810:1: rule__WordDirective__W_dirAssignment_0 : ( RULE_WORD ) ;
     public final void rule__WordDirective__W_dirAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:1604:1: ( ( RULE_WORD ) )
-            // InternalLC2200.g:1605:2: ( RULE_WORD )
+            // InternalLC2200.g:1814:1: ( ( RULE_WORD ) )
+            // InternalLC2200.g:1815:2: ( RULE_WORD )
             {
-            // InternalLC2200.g:1605:2: ( RULE_WORD )
-            // InternalLC2200.g:1606:3: RULE_WORD
+            // InternalLC2200.g:1815:2: ( RULE_WORD )
+            // InternalLC2200.g:1816:3: RULE_WORD
             {
              before(grammarAccess.getWordDirectiveAccess().getW_dirWORDTerminalRuleCall_0_0()); 
             match(input,RULE_WORD,FOLLOW_2); 
@@ -4791,6 +5459,43 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     }
     // $ANTLR end "rule__WordDirective__W_dirAssignment_0"
 
+
+    // $ANTLR start "rule__WordDirective__ImmAssignment_1"
+    // InternalLC2200.g:1825:1: rule__WordDirective__ImmAssignment_1 : ( RULE_IMMEDIATE ) ;
+    public final void rule__WordDirective__ImmAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:1829:1: ( ( RULE_IMMEDIATE ) )
+            // InternalLC2200.g:1830:2: ( RULE_IMMEDIATE )
+            {
+            // InternalLC2200.g:1830:2: ( RULE_IMMEDIATE )
+            // InternalLC2200.g:1831:3: RULE_IMMEDIATE
+            {
+             before(grammarAccess.getWordDirectiveAccess().getImmIMMEDIATETerminalRuleCall_1_0()); 
+            match(input,RULE_IMMEDIATE,FOLLOW_2); 
+             after(grammarAccess.getWordDirectiveAccess().getImmIMMEDIATETerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__WordDirective__ImmAssignment_1"
+
     // Delegated rules
 
 
@@ -4798,15 +5503,15 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000001FF002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x000000000007F000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000001ED602L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x000000000006D600L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000001FF000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000001ED600L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000010000L});
 
 }

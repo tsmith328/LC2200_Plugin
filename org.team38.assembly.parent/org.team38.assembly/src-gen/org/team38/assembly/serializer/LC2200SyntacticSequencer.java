@@ -37,16 +37,10 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 			return getCOMMAToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getCOMMENTRule())
 			return getCOMMENTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getIMMEDIATERule())
-			return getIMMEDIATEToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getLABEL_IMMRule())
-			return getLABEL_IMMToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLPARENRule())
 			return getLPARENToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getNEWLINERule())
 			return getNEWLINEToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getREGRule())
-			return getREGToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getRPARENRule())
 			return getRPARENToken(semanticObject, ruleCall, node);
 		return "";
@@ -75,28 +69,6 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal IMMEDIATE:
-	 * 	('0x')?(INT)
-	 * ;
-	 */
-	protected String getIMMEDIATEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * terminal LABEL_IMM:
-	 * 	('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
-	 * ;
-	 */
-	protected String getLABEL_IMMToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
 	 * terminal LPAREN:
 	 * 	'('
 	 * ;
@@ -116,32 +88,6 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "\n";
-	}
-	
-	/**
-	 * terminal REG:
-	 * 	'$zero' |
-	 * 	'$at'	|
-	 * 	'$v0'	|
-	 * 	'$a0'	|
-	 * 	'$a1'	|
-	 * 	'$a2'	|
-	 * 	'$a3'	|
-	 * 	'$a4'	|
-	 * 	'$s0'	|
-	 * 	'$s1'	|
-	 * 	'$s2'	|
-	 * 	'$s3'	|
-	 * 	'$k0'	|
-	 * 	'$sp'	|
-	 * 	'$fp'	|
-	 * 	'$ra'
-	 * ;
-	 */
-	protected String getREGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "$zero";
 	}
 	
 	/**

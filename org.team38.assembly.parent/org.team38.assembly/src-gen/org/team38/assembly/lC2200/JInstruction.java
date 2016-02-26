@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}</li>
  * </ul>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction()
@@ -48,5 +50,57 @@ public interface JInstruction extends EObject
    * @generated
    */
   void setJ_opcode(String value);
+
+  /**
+   * Returns the value of the '<em><b>Reg1</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reg1</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reg1</em>' attribute.
+   * @see #setReg1(String)
+   * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction_Reg1()
+   * @model
+   * @generated
+   */
+  String getReg1();
+
+  /**
+   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reg1</em>' attribute.
+   * @see #getReg1()
+   * @generated
+   */
+  void setReg1(String value);
+
+  /**
+   * Returns the value of the '<em><b>Reg2</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reg2</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reg2</em>' attribute.
+   * @see #setReg2(String)
+   * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction_Reg2()
+   * @model
+   * @generated
+   */
+  String getReg2();
+
+  /**
+   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reg2</em>' attribute.
+   * @see #getReg2()
+   * @generated
+   */
+  void setReg2(String value);
 
 } // JInstruction

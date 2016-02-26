@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.team38.assembly.lC2200.Program#getProgram <em>Program</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.Program#getLines <em>Lines</em>}</li>
  * </ul>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getProgram()
@@ -26,19 +26,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Program extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Program</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Lines</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Program</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Lines</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Program</em>' containment reference list.
-   * @see org.team38.assembly.lC2200.LC2200Package#getProgram_Program()
+   * @return the value of the '<em>Lines</em>' containment reference list.
+   * @see org.team38.assembly.lC2200.LC2200Package#getProgram_Lines()
    * @model containment="true"
    * @generated
    */
-  EList<EObject> getProgram();
+  EList<EObject> getLines();
 
 } // Program

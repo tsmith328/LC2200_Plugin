@@ -4,7 +4,7 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	program+=(Instruction | Directive)*
+	lines+=(Instruction | Directive)*
 ;
 
 Instruction:
@@ -16,16 +16,16 @@ Directive:
 ;
 	
 RInstruction:
-	r_opcode=ROP REG COMMA REG COMMA REG;
+	r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG;
 
 IInstruction:
-	i_opcode=IOP_IMM REG COMMA REG COMMA IMMEDIATE  |
-	i_opcode=IOP_OFFSET REG COMMA IMMEDIATE LPAREN REG RPAREN  |
-	i_opcode=IOP_LABEL REG COMMA REG COMMA LABEL_IMM 
+	i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE  |
+	i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE LPAREN reg2=REG RPAREN  |
+	i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM 
 ;
 
 JInstruction:
-	j_opcode=JOP REG COMMA REG
+	j_opcode=JOP reg1=REG COMMA reg2=REG
 ;
 
 OInstruction:
@@ -37,7 +37,7 @@ NOOPDirective:
 ;
 
 WordDirective:
-	w_dir=WORD IMMEDIATE
+	w_dir=WORD imm=IMMEDIATE
 ;
 
 //Tokens

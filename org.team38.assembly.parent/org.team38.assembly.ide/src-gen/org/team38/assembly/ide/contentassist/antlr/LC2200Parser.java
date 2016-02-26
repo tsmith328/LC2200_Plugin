@@ -35,7 +35,7 @@ public class LC2200Parser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getProgramAccess().getProgramAlternatives_0(), "rule__Program__ProgramAlternatives_0");
+					put(grammarAccess.getProgramAccess().getLinesAlternatives_0(), "rule__Program__LinesAlternatives_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAlternatives_1_0(), "rule__Instruction__InstructionAlternatives_1_0");
 					put(grammarAccess.getInstructionAccess().getAlternatives_2(), "rule__Instruction__Alternatives_2");
 					put(grammarAccess.getDirectiveAccess().getDirectiveAlternatives_1_0(), "rule__Directive__DirectiveAlternatives_1_0");
@@ -49,19 +49,34 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getIInstructionAccess().getGroup_2(), "rule__IInstruction__Group_2__0");
 					put(grammarAccess.getJInstructionAccess().getGroup(), "rule__JInstruction__Group__0");
 					put(grammarAccess.getWordDirectiveAccess().getGroup(), "rule__WordDirective__Group__0");
-					put(grammarAccess.getProgramAccess().getProgramAssignment(), "rule__Program__ProgramAssignment");
+					put(grammarAccess.getProgramAccess().getLinesAssignment(), "rule__Program__LinesAssignment");
 					put(grammarAccess.getInstructionAccess().getLabelAssignment_0(), "rule__Instruction__LabelAssignment_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAssignment_1(), "rule__Instruction__InstructionAssignment_1");
 					put(grammarAccess.getDirectiveAccess().getLabelAssignment_0(), "rule__Directive__LabelAssignment_0");
 					put(grammarAccess.getDirectiveAccess().getDirectiveAssignment_1(), "rule__Directive__DirectiveAssignment_1");
 					put(grammarAccess.getRInstructionAccess().getR_opcodeAssignment_0(), "rule__RInstruction__R_opcodeAssignment_0");
+					put(grammarAccess.getRInstructionAccess().getReg1Assignment_1(), "rule__RInstruction__Reg1Assignment_1");
+					put(grammarAccess.getRInstructionAccess().getReg2Assignment_3(), "rule__RInstruction__Reg2Assignment_3");
+					put(grammarAccess.getRInstructionAccess().getReg3Assignment_5(), "rule__RInstruction__Reg3Assignment_5");
 					put(grammarAccess.getIInstructionAccess().getI_opcodeAssignment_0_0(), "rule__IInstruction__I_opcodeAssignment_0_0");
+					put(grammarAccess.getIInstructionAccess().getReg1Assignment_0_1(), "rule__IInstruction__Reg1Assignment_0_1");
+					put(grammarAccess.getIInstructionAccess().getReg2Assignment_0_3(), "rule__IInstruction__Reg2Assignment_0_3");
+					put(grammarAccess.getIInstructionAccess().getImmAssignment_0_5(), "rule__IInstruction__ImmAssignment_0_5");
 					put(grammarAccess.getIInstructionAccess().getI_opcodeAssignment_1_0(), "rule__IInstruction__I_opcodeAssignment_1_0");
+					put(grammarAccess.getIInstructionAccess().getReg1Assignment_1_1(), "rule__IInstruction__Reg1Assignment_1_1");
+					put(grammarAccess.getIInstructionAccess().getImmAssignment_1_3(), "rule__IInstruction__ImmAssignment_1_3");
+					put(grammarAccess.getIInstructionAccess().getReg2Assignment_1_5(), "rule__IInstruction__Reg2Assignment_1_5");
 					put(grammarAccess.getIInstructionAccess().getI_opcodeAssignment_2_0(), "rule__IInstruction__I_opcodeAssignment_2_0");
+					put(grammarAccess.getIInstructionAccess().getReg1Assignment_2_1(), "rule__IInstruction__Reg1Assignment_2_1");
+					put(grammarAccess.getIInstructionAccess().getReg2Assignment_2_3(), "rule__IInstruction__Reg2Assignment_2_3");
+					put(grammarAccess.getIInstructionAccess().getImmAssignment_2_5(), "rule__IInstruction__ImmAssignment_2_5");
 					put(grammarAccess.getJInstructionAccess().getJ_opcodeAssignment_0(), "rule__JInstruction__J_opcodeAssignment_0");
+					put(grammarAccess.getJInstructionAccess().getReg1Assignment_1(), "rule__JInstruction__Reg1Assignment_1");
+					put(grammarAccess.getJInstructionAccess().getReg2Assignment_3(), "rule__JInstruction__Reg2Assignment_3");
 					put(grammarAccess.getOInstructionAccess().getO_opcodeAssignment(), "rule__OInstruction__O_opcodeAssignment");
 					put(grammarAccess.getNOOPDirectiveAccess().getN_dirAssignment(), "rule__NOOPDirective__N_dirAssignment");
 					put(grammarAccess.getWordDirectiveAccess().getW_dirAssignment_0(), "rule__WordDirective__W_dirAssignment_0");
+					put(grammarAccess.getWordDirectiveAccess().getImmAssignment_1(), "rule__WordDirective__ImmAssignment_1");
 				}
 			};
 		}

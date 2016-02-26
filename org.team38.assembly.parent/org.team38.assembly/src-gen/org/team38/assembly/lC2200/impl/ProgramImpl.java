@@ -29,7 +29,7 @@ import org.team38.assembly.lC2200.Program;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.team38.assembly.lC2200.impl.ProgramImpl#getProgram <em>Program</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.impl.ProgramImpl#getLines <em>Lines</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.team38.assembly.lC2200.Program;
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
   /**
-   * The cached value of the '{@link #getProgram() <em>Program</em>}' containment reference list.
+   * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProgram()
+   * @see #getLines()
    * @generated
    * @ordered
    */
-  protected EList<EObject> program;
+  protected EList<EObject> lines;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,13 +72,13 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EObject> getProgram()
+  public EList<EObject> getLines()
   {
-    if (program == null)
+    if (lines == null)
     {
-      program = new EObjectContainmentEList<EObject>(EObject.class, this, LC2200Package.PROGRAM__PROGRAM);
+      lines = new EObjectContainmentEList<EObject>(EObject.class, this, LC2200Package.PROGRAM__LINES);
     }
-    return program;
+    return lines;
   }
 
   /**
@@ -91,8 +91,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__PROGRAM:
-        return ((InternalEList<?>)getProgram()).basicRemove(otherEnd, msgs);
+      case LC2200Package.PROGRAM__LINES:
+        return ((InternalEList<?>)getLines()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +107,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__PROGRAM:
-        return getProgram();
+      case LC2200Package.PROGRAM__LINES:
+        return getLines();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +124,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__PROGRAM:
-        getProgram().clear();
-        getProgram().addAll((Collection<? extends EObject>)newValue);
+      case LC2200Package.PROGRAM__LINES:
+        getLines().clear();
+        getLines().addAll((Collection<? extends EObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__PROGRAM:
-        getProgram().clear();
+      case LC2200Package.PROGRAM__LINES:
+        getLines().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,8 +159,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__PROGRAM:
-        return program != null && !program.isEmpty();
+      case LC2200Package.PROGRAM__LINES:
+        return lines != null && !lines.isEmpty();
     }
     return super.eIsSet(featureID);
   }

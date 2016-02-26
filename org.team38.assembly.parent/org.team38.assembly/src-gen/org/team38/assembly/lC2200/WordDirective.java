@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.WordDirective#getImm <em>Imm</em>}</li>
  * </ul>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getWordDirective()
@@ -48,5 +49,31 @@ public interface WordDirective extends EObject
    * @generated
    */
   void setW_dir(String value);
+
+  /**
+   * Returns the value of the '<em><b>Imm</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Imm</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Imm</em>' attribute.
+   * @see #setImm(String)
+   * @see org.team38.assembly.lC2200.LC2200Package#getWordDirective_Imm()
+   * @model
+   * @generated
+   */
+  String getImm();
+
+  /**
+   * Sets the value of the '{@link org.team38.assembly.lC2200.WordDirective#getImm <em>Imm</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Imm</em>' attribute.
+   * @see #getImm()
+   * @generated
+   */
+  void setImm(String value);
 
 } // WordDirective
