@@ -3,6 +3,7 @@
  */
 package org.team38.assembly.generator;
 
+import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -12,8 +13,14 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.team38.assembly.lC2200.Directive;
+import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.Instruction;
+import org.team38.assembly.lC2200.JInstruction;
+import org.team38.assembly.lC2200.NOOPDirective;
+import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
+import org.team38.assembly.lC2200.RInstruction;
+import org.team38.assembly.lC2200.WordDirective;
 
 /**
  * Generates code from your model files on save.
@@ -22,8 +29,16 @@ import org.team38.assembly.lC2200.Program;
  */
 @SuppressWarnings("all")
 public class LC2200Generator extends AbstractGenerator {
+  private StringBuffer assembledOutput;
+  
+  private HashMap<String, Integer> labelTable;
+  
+  private int offset;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    StringBuffer _stringBuffer = new StringBuffer();
+    this.assembledOutput = _stringBuffer;
     EList<EObject> _contents = resource.getContents();
     EObject e_root = _contents.get(0);
     EClass _eClass = e_root.eClass();
@@ -32,7 +47,8 @@ public class LC2200Generator extends AbstractGenerator {
     if (_equals) {
       this.compileProgram(((Program) e_root));
     }
-    fsa.generateFile("helloworld.txt", "hi");
+    String _string = this.assembledOutput.toString();
+    fsa.generateFile("helloworld.txt", _string);
   }
   
   public void compileProgram(final Program root) {
@@ -54,12 +70,136 @@ public class LC2200Generator extends AbstractGenerator {
     }
   }
   
-  public EObject compileDirective(final Directive dir) {
-    EObject _directive = dir.getDirective();
-    return InputOutput.<EObject>println(_directive);
+  public Object compileDirective(final Directive dir) {
+    Object _xblockexpression = null;
+    {
+      EObject dirType = dir.getDirective();
+      Object _xifexpression = null;
+      EClass _eClass = dirType.eClass();
+      String _name = _eClass.getName();
+      boolean _equals = _name.equals("NOOPDirective");
+      if (_equals) {
+        _xifexpression = this.compileNOOP(((NOOPDirective) dirType));
+      } else {
+        StringBuffer _xifexpression_1 = null;
+        EClass _eClass_1 = dirType.eClass();
+        String _name_1 = _eClass_1.getName();
+        boolean _equals_1 = _name_1.equals("WordDirective");
+        if (_equals_1) {
+          _xifexpression_1 = this.compileWord(((WordDirective) dirType));
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = ((Object)_xifexpression);
+    }
+    return _xblockexpression;
   }
   
   public String compileInstruction(final Instruction instr) {
-    return InputOutput.<String>println("instr");
+    String _xblockexpression = null;
+    {
+      EObject instrType = instr.getInstruction();
+      String _xifexpression = null;
+      EClass _eClass = instrType.eClass();
+      String _name = _eClass.getName();
+      boolean _equals = _name.equals("IInstruction");
+      if (_equals) {
+        _xifexpression = this.compileIInstruction(((IInstruction) instrType));
+      } else {
+        String _xifexpression_1 = null;
+        EClass _eClass_1 = instrType.eClass();
+        String _name_1 = _eClass_1.getName();
+        boolean _equals_1 = _name_1.equals("RInstruction");
+        if (_equals_1) {
+          _xifexpression_1 = this.compileRInstruction(((RInstruction) instrType));
+        } else {
+          String _xifexpression_2 = null;
+          EClass _eClass_2 = instrType.eClass();
+          String _name_2 = _eClass_2.getName();
+          boolean _equals_2 = _name_2.equals("JInstruction");
+          if (_equals_2) {
+            _xifexpression_2 = this.compileJInstruction(((JInstruction) instrType));
+          } else {
+            String _xifexpression_3 = null;
+            EClass _eClass_3 = instrType.eClass();
+            String _name_3 = _eClass_3.getName();
+            boolean _equals_3 = _name_3.equals("OInstruction");
+            if (_equals_3) {
+              _xifexpression_3 = this.compileOInstruction(((OInstruction) instrType));
+            }
+            _xifexpression_2 = _xifexpression_3;
+          }
+          _xifexpression_1 = _xifexpression_2;
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  public String compileNOOP(final NOOPDirective noop) {
+    return InputOutput.<String>println("NOOP ASSEMBLY");
+  }
+  
+  public StringBuffer compileWord(final WordDirective word) {
+    StringBuffer _xblockexpression = null;
+    {
+      String wordImm = word.getImm();
+      _xblockexpression = this.assembledOutput.append(("Word ASSEMBLY " + wordImm));
+    }
+    return _xblockexpression;
+  }
+  
+  public String compileIInstruction(final IInstruction iInstr) {
+    String _xblockexpression = null;
+    {
+      iInstr.getI_opcode();
+      iInstr.getReg1();
+      iInstr.getReg2();
+      iInstr.getImm();
+      _xblockexpression = InputOutput.<String>println("iinstr ASSEMBLY");
+    }
+    return _xblockexpression;
+  }
+  
+  public String compileRInstruction(final RInstruction rInstr) {
+    String _xblockexpression = null;
+    {
+      rInstr.getR_opcode();
+      rInstr.getReg1();
+      rInstr.getReg2();
+      rInstr.getReg3();
+      _xblockexpression = InputOutput.<String>println("rinstr ASSEMBLY");
+    }
+    return _xblockexpression;
+  }
+  
+  public String compileJInstruction(final JInstruction jInstr) {
+    String _xblockexpression = null;
+    {
+      jInstr.getJ_opcode();
+      jInstr.getReg1();
+      jInstr.getReg2();
+      _xblockexpression = InputOutput.<String>println("jinstr ASSEMBLY");
+    }
+    return _xblockexpression;
+  }
+  
+  public String compileOInstruction(final OInstruction oInstr) {
+    String _xblockexpression = null;
+    {
+      oInstr.getO_opcode();
+      _xblockexpression = InputOutput.<String>println("oinstr ASSEMBLY");
+    }
+    return _xblockexpression;
+  }
+  
+  public Object regToBinary(final String reg) {
+    return null;
+  }
+  
+  public Object immToBinary(final String imm) {
+    return null;
   }
 }
