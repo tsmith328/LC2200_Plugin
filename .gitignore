@@ -16,8 +16,6 @@ target/
 #All Java class files
 *.class
 
-# Eclipse Core
-.project
 
 # External tool builders
 .externalToolBuilders/
@@ -31,8 +29,6 @@ target/
 # CDT-specific (C/C++ Development Tooling)
 .cproject
 
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 # Java annotation processor (APT)
 .factorypath
