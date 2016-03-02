@@ -56,15 +56,13 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInstructionIInstructionParserRuleCall_1_0_1 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(1);
 		private final RuleCall cInstructionJInstructionParserRuleCall_1_0_2 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(2);
 		private final RuleCall cInstructionOInstructionParserRuleCall_1_0_3 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(3);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cCOMMENTTerminalRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
+		private final RuleCall cSL_COMMENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Instruction:
-		//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) (COMMENT | NEWLINE)?;
+		//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) (COMMENT | NEWLINE)?
+		//label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?
 		public Group getGroup() { return cGroup; }
 		
 		//label=LABEL?
@@ -91,14 +89,8 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//OInstruction
 		public RuleCall getInstructionOInstructionParserRuleCall_1_0_3() { return cInstructionOInstructionParserRuleCall_1_0_3; }
 		
-		//(COMMENT | NEWLINE)?
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//COMMENT
-		public RuleCall getCOMMENTTerminalRuleCall_2_0() { return cCOMMENTTerminalRuleCall_2_0; }
-		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_2_1() { return cNEWLINETerminalRuleCall_2_1; }
+		//SL_COMMENT?
+		public RuleCall getSL_COMMENTTerminalRuleCall_2() { return cSL_COMMENTTerminalRuleCall_2; }
 	}
 	public class DirectiveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Directive");
@@ -109,15 +101,13 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cDirectiveAlternatives_1_0 = (Alternatives)cDirectiveAssignment_1.eContents().get(0);
 		private final RuleCall cDirectiveNOOPDirectiveParserRuleCall_1_0_0 = (RuleCall)cDirectiveAlternatives_1_0.eContents().get(0);
 		private final RuleCall cDirectiveWordDirectiveParserRuleCall_1_0_1 = (RuleCall)cDirectiveAlternatives_1_0.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cCOMMENTTerminalRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
+		private final RuleCall cSL_COMMENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Directive:
-		//	label=LABEL? directive=(NOOPDirective | WordDirective) (COMMENT | NEWLINE)?;
+		//	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//label=LABEL? directive=(NOOPDirective | WordDirective) (COMMENT | NEWLINE)?
+		//label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?
 		public Group getGroup() { return cGroup; }
 		
 		//label=LABEL?
@@ -138,14 +128,8 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//WordDirective
 		public RuleCall getDirectiveWordDirectiveParserRuleCall_1_0_1() { return cDirectiveWordDirectiveParserRuleCall_1_0_1; }
 		
-		//(COMMENT | NEWLINE)?
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//COMMENT
-		public RuleCall getCOMMENTTerminalRuleCall_2_0() { return cCOMMENTTerminalRuleCall_2_0; }
-		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_2_1() { return cNEWLINETerminalRuleCall_2_1; }
+		//SL_COMMENT?
+		public RuleCall getSL_COMMENTTerminalRuleCall_2() { return cSL_COMMENTTerminalRuleCall_2; }
 	}
 	public class RInstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RInstruction");
@@ -454,19 +438,20 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	private final OInstructionElements pOInstruction;
 	private final NOOPDirectiveElements pNOOPDirective;
 	private final WordDirectiveElements pWordDirective;
-	private final TerminalRule tNOOP;
 	private final TerminalRule tWORD;
 	private final TerminalRule tOOP;
+	private final TerminalRule tNOOP;
 	private final TerminalRule tJOP;
+	private final TerminalRule tROP;
 	private final TerminalRule tIOP_IMM;
 	private final TerminalRule tIOP_OFFSET;
 	private final TerminalRule tIOP_LABEL;
 	private final TerminalRule tLPAREN;
 	private final TerminalRule tRPAREN;
 	private final TerminalRule tCOMMA;
-	private final TerminalRule tCOMMENT;
+	private final TerminalRule tSL_COMMENT;
+	private final TerminalRule tML_COMMENT;
 	private final TerminalRule tNEWLINE;
-	private final TerminalRule tROP;
 	private final TerminalRule tREG;
 	private final TerminalRule tIMMEDIATE;
 	private final TerminalRule tLABEL_IMM;
@@ -490,19 +475,20 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		this.pOInstruction = new OInstructionElements();
 		this.pNOOPDirective = new NOOPDirectiveElements();
 		this.pWordDirective = new WordDirectiveElements();
-		this.tNOOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.NOOP");
 		this.tWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.WORD");
 		this.tOOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.OOP");
+		this.tNOOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.NOOP");
 		this.tJOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.JOP");
+		this.tROP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.ROP");
 		this.tIOP_IMM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IOP_IMM");
 		this.tIOP_OFFSET = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IOP_OFFSET");
 		this.tIOP_LABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IOP_LABEL");
 		this.tLPAREN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.LPAREN");
 		this.tRPAREN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RPAREN");
 		this.tCOMMA = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.COMMA");
-		this.tCOMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.COMMENT");
+		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.SL_COMMENT");
+		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.ML_COMMENT");
 		this.tNEWLINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.NEWLINE");
-		this.tROP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.ROP");
 		this.tREG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.REG");
 		this.tIMMEDIATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IMMEDIATE");
 		this.tLABEL_IMM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.LABEL_IMM");
@@ -548,7 +534,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Instruction:
-	//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) (COMMENT | NEWLINE)?;
+	//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?;
 	public InstructionElements getInstructionAccess() {
 		return pInstruction;
 	}
@@ -558,7 +544,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Directive:
-	//	label=LABEL? directive=(NOOPDirective | WordDirective) (COMMENT | NEWLINE)?;
+	//	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?;
 	public DirectiveElements getDirectiveAccess() {
 		return pDirective;
 	}
@@ -628,12 +614,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		return getWordDirectiveAccess().getRule();
 	}
 	
-	//terminal NOOP:
-	//	'noop';
-	public TerminalRule getNOOPRule() {
-		return tNOOP;
-	}
-	
 	//terminal WORD:
 	//	'.word';
 	public TerminalRule getWORDRule() {
@@ -649,10 +629,23 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		return tOOP;
 	}
 	
+	//terminal NOOP:
+	//	'noop';
+	public TerminalRule getNOOPRule() {
+		return tNOOP;
+	}
+	
 	//terminal JOP:
 	//	'jalr';
 	public TerminalRule getJOPRule() {
 		return tJOP;
+	}
+	
+	//terminal ROP:
+	//	'add' |
+	//	'nand';
+	public TerminalRule getROPRule() {
+		return tROP;
 	}
 	
 	//terminal IOP_IMM:
@@ -692,23 +685,22 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		return tCOMMA;
 	}
 	
-	//terminal COMMENT:
+	//terminal SL_COMMENT:
 	//	';' !('\n' | '\r')* ('\r'? '\n')?;
-	public TerminalRule getCOMMENTRule() {
-		return tCOMMENT;
+	public TerminalRule getSL_COMMENTRule() {
+		return tSL_COMMENT;
+	}
+	
+	//terminal ML_COMMENT:
+	//	EOF;
+	public TerminalRule getML_COMMENTRule() {
+		return tML_COMMENT;
 	}
 	
 	//terminal NEWLINE:
 	//	'\n';
 	public TerminalRule getNEWLINERule() {
 		return tNEWLINE;
-	}
-	
-	//terminal ROP:
-	//	'add' |
-	//	'nand';
-	public TerminalRule getROPRule() {
-		return tROP;
 	}
 	
 	//terminal REG:
@@ -718,12 +710,12 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	//	'$a0' |
 	//	'$a1' |
 	//	'$a2' |
-	//	'$a3' |
-	//	'$a4' |
+	//	'$t0' |
+	//	'$t1' |
+	//	'$t2' |
 	//	'$s0' |
 	//	'$s1' |
 	//	'$s2' |
-	//	'$s3' |
 	//	'$k0' |
 	//	'$sp' |
 	//	'$fp' |
@@ -733,7 +725,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal IMMEDIATE:
-	//	'0x'? INT;
+	//	('0x' | '-')? INT;
 	public TerminalRule getIMMEDIATERule() {
 		return tIMMEDIATE;
 	}
@@ -766,18 +758,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
-	}
-	
-	//terminal ML_COMMENT:
-	//	'/ *'->'* /';
-	public TerminalRule getML_COMMENTRule() {
-		return gaTerminals.getML_COMMENTRule();
-	}
-	
-	//terminal SL_COMMENT:
-	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
-	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
 	}
 	
 	//terminal WS:

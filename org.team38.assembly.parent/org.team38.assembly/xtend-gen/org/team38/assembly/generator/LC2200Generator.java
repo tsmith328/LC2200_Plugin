@@ -8,10 +8,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.Instruction;
@@ -48,7 +48,8 @@ public class LC2200Generator extends AbstractGenerator {
       this.compileProgram(((Program) e_root));
     }
     String _string = this.assembledOutput.toString();
-    fsa.generateFile("helloworld.txt", _string);
+    String _trim = _string.trim();
+    fsa.generateFile("helloworld.txt", _trim);
   }
   
   public void compileProgram(final Program root) {
@@ -70,11 +71,11 @@ public class LC2200Generator extends AbstractGenerator {
     }
   }
   
-  public Object compileDirective(final Directive dir) {
-    Object _xblockexpression = null;
+  public StringBuffer compileDirective(final Directive dir) {
+    StringBuffer _xblockexpression = null;
     {
       EObject dirType = dir.getDirective();
-      Object _xifexpression = null;
+      StringBuffer _xifexpression = null;
       EClass _eClass = dirType.eClass();
       String _name = _eClass.getName();
       boolean _equals = _name.equals("NOOPDirective");
@@ -90,37 +91,37 @@ public class LC2200Generator extends AbstractGenerator {
         }
         _xifexpression = _xifexpression_1;
       }
-      _xblockexpression = ((Object)_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
   
-  public String compileInstruction(final Instruction instr) {
-    String _xblockexpression = null;
+  public StringBuffer compileInstruction(final Instruction instr) {
+    StringBuffer _xblockexpression = null;
     {
       EObject instrType = instr.getInstruction();
-      String _xifexpression = null;
+      StringBuffer _xifexpression = null;
       EClass _eClass = instrType.eClass();
       String _name = _eClass.getName();
       boolean _equals = _name.equals("IInstruction");
       if (_equals) {
         _xifexpression = this.compileIInstruction(((IInstruction) instrType));
       } else {
-        String _xifexpression_1 = null;
+        StringBuffer _xifexpression_1 = null;
         EClass _eClass_1 = instrType.eClass();
         String _name_1 = _eClass_1.getName();
         boolean _equals_1 = _name_1.equals("RInstruction");
         if (_equals_1) {
           _xifexpression_1 = this.compileRInstruction(((RInstruction) instrType));
         } else {
-          String _xifexpression_2 = null;
+          StringBuffer _xifexpression_2 = null;
           EClass _eClass_2 = instrType.eClass();
           String _name_2 = _eClass_2.getName();
           boolean _equals_2 = _name_2.equals("JInstruction");
           if (_equals_2) {
             _xifexpression_2 = this.compileJInstruction(((JInstruction) instrType));
           } else {
-            String _xifexpression_3 = null;
+            StringBuffer _xifexpression_3 = null;
             EClass _eClass_3 = instrType.eClass();
             String _name_3 = _eClass_3.getName();
             boolean _equals_3 = _name_3.equals("OInstruction");
@@ -138,68 +139,195 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  public String compileNOOP(final NOOPDirective noop) {
-    return InputOutput.<String>println("NOOP ASSEMBLY");
+  public StringBuffer compileNOOP(final NOOPDirective noop) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("0000000000000000");
+    _builder.newLine();
+    return this.assembledOutput.append(_builder);
   }
   
   public StringBuffer compileWord(final WordDirective word) {
     StringBuffer _xblockexpression = null;
     {
       String wordImm = word.getImm();
-      _xblockexpression = this.assembledOutput.append(("Word ASSEMBLY " + wordImm));
+      String wordImmBin = this.immToBinary(wordImm, 16);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(wordImmBin, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }
   
-  public String compileIInstruction(final IInstruction iInstr) {
-    String _xblockexpression = null;
+  public StringBuffer compileIInstruction(final IInstruction iInstr) {
+    StringBuffer _xblockexpression = null;
     {
-      iInstr.getI_opcode();
-      iInstr.getReg1();
-      iInstr.getReg2();
-      iInstr.getImm();
-      _xblockexpression = InputOutput.<String>println("iinstr ASSEMBLY");
+      String op = iInstr.getI_opcode();
+      String reg1 = iInstr.getReg1();
+      String reg2 = iInstr.getReg2();
+      String imm = iInstr.getImm();
+      String opBin = this.opToBinary(op);
+      String reg1Bin = this.regToBinary(reg1);
+      String reg2Bin = this.regToBinary(reg2);
+      String immBin = "";
+      boolean _equals = op.equals("beq");
+      if (_equals) {
+        immBin = "label";
+      } else {
+        String _immToBinary = this.immToBinary(imm, 5);
+        immBin = _immToBinary;
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(immBin, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }
   
-  public String compileRInstruction(final RInstruction rInstr) {
-    String _xblockexpression = null;
+  public StringBuffer compileRInstruction(final RInstruction rInstr) {
+    StringBuffer _xblockexpression = null;
     {
-      rInstr.getR_opcode();
-      rInstr.getReg1();
-      rInstr.getReg2();
-      rInstr.getReg3();
-      _xblockexpression = InputOutput.<String>println("rinstr ASSEMBLY");
+      String op = rInstr.getR_opcode();
+      String reg1 = rInstr.getReg1();
+      String reg2 = rInstr.getReg2();
+      String reg3 = rInstr.getReg3();
+      String opBin = this.opToBinary(op);
+      String reg1Bin = this.regToBinary(reg1);
+      String reg2Bin = this.regToBinary(reg2);
+      String reg3Bin = this.regToBinary(reg3);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(reg3Bin, "");
+      _builder.append(" 0");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }
   
-  public String compileJInstruction(final JInstruction jInstr) {
-    String _xblockexpression = null;
+  public StringBuffer compileJInstruction(final JInstruction jInstr) {
+    StringBuffer _xblockexpression = null;
     {
-      jInstr.getJ_opcode();
-      jInstr.getReg1();
-      jInstr.getReg2();
-      _xblockexpression = InputOutput.<String>println("jinstr ASSEMBLY");
+      String op = jInstr.getJ_opcode();
+      String reg1 = jInstr.getReg1();
+      String reg2 = jInstr.getReg2();
+      String opBin = this.opToBinary(op);
+      String reg1Bin = this.regToBinary(reg1);
+      String reg2Bin = this.regToBinary(reg2);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" 00000");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }
   
-  public String compileOInstruction(final OInstruction oInstr) {
-    String _xblockexpression = null;
+  public StringBuffer compileOInstruction(final OInstruction oInstr) {
+    StringBuffer _xblockexpression = null;
     {
-      oInstr.getO_opcode();
-      _xblockexpression = InputOutput.<String>println("oinstr ASSEMBLY");
+      String op = oInstr.getO_opcode();
+      String opBin = this.opToBinary(op);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(opBin, "");
+      _builder.append(" 00000000000 0");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }
   
-  public Object regToBinary(final String reg) {
-    return null;
+  public String opToBinary(final String op) {
+    switch (op) {
+      case "add":
+        return "000";
+      case "nand":
+        return "001";
+      case "addi":
+        return "010";
+      case "lw":
+        return "011";
+      case "sw":
+        return "100";
+      case "beq":
+        return "101";
+      case "jalr":
+        return "110";
+      case "halt":
+        return "111";
+      default:
+        return "";
+    }
   }
   
-  public Object immToBinary(final String imm) {
-    return null;
+  public String regToBinary(final String reg) {
+    switch (reg) {
+      case "$zero":
+        return "0000";
+      case "$at":
+        return "0001";
+      case "$v0":
+        return "0010";
+      case "$a0":
+        return "0011";
+      case "$a1":
+        return "0010";
+      case "$a2":
+        return "0101";
+      case "$t0":
+        return "0110";
+      case "$t1":
+        return "0111";
+      case "$t2":
+        return "1000";
+      case "$s0":
+        return "1001";
+      case "$s1":
+        return "1010";
+      case "$s2":
+        return "1011";
+      case "$k0":
+        return "1100";
+      case "$sp":
+        return "1101";
+      case "$fp":
+        return "1110";
+      case "$ra":
+        return "1111";
+      default:
+        return "";
+    }
+  }
+  
+  public String immToBinary(final String imm, final int bitLength) {
+    int _parseInt = Integer.parseInt(imm);
+    String immBin = Integer.toBinaryString(_parseInt);
+    int _length = immBin.length();
+    boolean _greaterThan = (_length > bitLength);
+    if (_greaterThan) {
+      String _substring = immBin.substring(0, bitLength);
+      immBin = _substring;
+    } else {
+      while (((immBin.length() - bitLength) < 0)) {
+        immBin = ("0" + immBin);
+      }
+    }
+    return immBin;
   }
 }

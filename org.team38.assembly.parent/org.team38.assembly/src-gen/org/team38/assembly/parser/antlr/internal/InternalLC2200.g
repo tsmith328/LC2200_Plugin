@@ -218,14 +218,9 @@ ruleInstruction returns [EObject current=null]
 			)
 		)
 		(
-			this_COMMENT_2=RULE_COMMENT
+			this_SL_COMMENT_2=RULE_SL_COMMENT
 			{
-				newLeafNode(this_COMMENT_2, grammarAccess.getInstructionAccess().getCOMMENTTerminalRuleCall_2_0());
-			}
-			    |
-			this_NEWLINE_3=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_3, grammarAccess.getInstructionAccess().getNEWLINETerminalRuleCall_2_1());
+				newLeafNode(this_SL_COMMENT_2, grammarAccess.getInstructionAccess().getSL_COMMENTTerminalRuleCall_2());
 			}
 		)?
 	)
@@ -303,14 +298,9 @@ ruleDirective returns [EObject current=null]
 			)
 		)
 		(
-			this_COMMENT_2=RULE_COMMENT
+			this_SL_COMMENT_2=RULE_SL_COMMENT
 			{
-				newLeafNode(this_COMMENT_2, grammarAccess.getDirectiveAccess().getCOMMENTTerminalRuleCall_2_0());
-			}
-			    |
-			this_NEWLINE_3=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_3, grammarAccess.getDirectiveAccess().getNEWLINETerminalRuleCall_2_1());
+				newLeafNode(this_SL_COMMENT_2, grammarAccess.getDirectiveAccess().getSL_COMMENTTerminalRuleCall_2());
 			}
 		)?
 	)
@@ -888,13 +878,15 @@ ruleWordDirective returns [EObject current=null]
 	)
 ;
 
-RULE_NOOP : 'noop';
-
 RULE_WORD : '.word';
 
 RULE_OOP : ('halt'|'ei'|'di'|'reti');
 
+RULE_NOOP : 'noop';
+
 RULE_JOP : 'jalr';
+
+RULE_ROP : ('add'|'nand');
 
 RULE_IOP_IMM : 'addi';
 
@@ -908,15 +900,15 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_COMMENT : ';' ~(('\n'|'\r'))* ('\r'? '\n')?;
+RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_ML_COMMENT : EOF;
 
 RULE_NEWLINE : '\n';
 
-RULE_ROP : ('add'|'nand');
+RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 
-RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$a3'|'$a4'|'$s0'|'$s1'|'$s2'|'$s3'|'$k0'|'$sp'|'$fp'|'$ra');
-
-RULE_IMMEDIATE : '0x'? RULE_INT;
+RULE_IMMEDIATE : ('0x'|'-')? RULE_INT;
 
 RULE_LABEL_IMM : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
@@ -927,10 +919,6 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
-
-RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
-
-RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 

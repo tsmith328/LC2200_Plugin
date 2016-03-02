@@ -35,7 +35,7 @@ class LC2200Generator extends AbstractGenerator {
 		if (e_root.eClass().getName().equals("Program")) {
 			compileProgram(e_root as Program)
 		}
-		fsa.generateFile("helloworld.txt", assembledOutput.toString())
+		fsa.generateFile("helloworld.txt", assembledOutput.toString().trim())
 	}
 	
 	def compileProgram(Program root) {
@@ -79,51 +79,147 @@ class LC2200Generator extends AbstractGenerator {
 	}
 	
 	def compileNOOP(NOOPDirective noop) {
-		println("NOOP ASSEMBLY")
+		assembledOutput.append('''0000000000000000
+		''')
 	}
 	
 	def compileWord(WordDirective word) {		
 		var wordImm = word.getImm()
-		assembledOutput.append("Word ASSEMBLY " + wordImm)
+		
+		var wordImmBin = immToBinary(wordImm, 16)
+		assembledOutput.append('''«wordImmBin»
+		''')
 	}
 	
 	def compileIInstruction(IInstruction iInstr) {
-		iInstr.getI_opcode()
-		iInstr.getReg1()
-		iInstr.getReg2()
-		iInstr.getImm()
+		var op = iInstr.getI_opcode()
+		var reg1 = iInstr.getReg1()
+		var reg2 = iInstr.getReg2()
+		var imm = iInstr.getImm()
 		
-		println("iinstr ASSEMBLY")
+		var opBin = opToBinary(op)
+		var reg1Bin = regToBinary(reg1)
+		var reg2Bin = regToBinary(reg2)
+		var immBin = ""
+		if(op.equals("beq")) {
+			immBin = "label"
+		} else {
+			immBin = immToBinary(imm, 5)
+		}		
+		
+		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
+		''')
 	}
 	
 	def compileRInstruction(RInstruction rInstr) {
-		rInstr.getR_opcode()
-		rInstr.getReg1()
-		rInstr.getReg2()
-		rInstr.getReg3()
+		var op = rInstr.getR_opcode()
+		var reg1 = rInstr.getReg1()
+		var reg2 = rInstr.getReg2()
+		var reg3 = rInstr.getReg3()
 		
-		println("rinstr ASSEMBLY")
+		var opBin = opToBinary(op)
+		var reg1Bin = regToBinary(reg1)
+		var reg2Bin = regToBinary(reg2)
+		var reg3Bin = regToBinary(reg3)
+		
+		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «reg3Bin» 0
+		''')
 	}
 	
 	def compileJInstruction(JInstruction jInstr) {
-		jInstr.getJ_opcode()
-		jInstr.getReg1()
-		jInstr.getReg2()
+		var op = jInstr.getJ_opcode()
+		var reg1 = jInstr.getReg1()
+		var reg2 = jInstr.getReg2()
 		
-		println("jinstr ASSEMBLY")
+		var opBin = opToBinary(op)
+		var reg1Bin = regToBinary(reg1)
+		var reg2Bin = regToBinary(reg2)
+		
+		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» 00000
+		''')
 	}
 	
 	def compileOInstruction(OInstruction oInstr) {
-		oInstr.getO_opcode()
+		var op = oInstr.getO_opcode()
 		
-		println("oinstr ASSEMBLY")
+		var opBin = opToBinary(op)
+		assembledOutput.append('''«opBin» 00000000000 0
+		''')
+	}
+	
+	def opToBinary(String op) {
+		switch (op) {
+			case "add":
+				return "000"
+			case "nand":
+				return "001"
+			case "addi":
+				return "010"
+			case "lw":
+				return "011"
+			case "sw":
+				return "100"
+			case "beq":
+				return "101"
+			case "jalr":
+				return "110"
+			case "halt":
+				return "111"
+			default:
+				return ""
+		}
 	}
 	
 	def regToBinary(String reg) {
-		
+		switch (reg) {
+			case "$zero":
+				return "0000"
+			case "$at":	
+				return "0001"
+			case "$v0":	
+				return "0010"
+			case "$a0":	
+				return "0011"
+			case "$a1":	
+				return "0010"
+			case "$a2":	
+				return "0101"
+			case "$t0":	
+				return "0110"
+			case "$t1":	
+				return "0111"
+			case"$t2":	
+				return "1000"
+			case "$s0":	
+				return "1001"
+			case "$s1":	
+				return "1010"
+			case "$s2":	
+				return "1011"
+			case"$k0":	
+				return "1100"
+			case "$sp":
+				return "1101"	
+			case "$fp":	
+				return "1110"
+			case "$ra":
+				return "1111"
+			default:
+				return ""
+		}
 	}
 	
-	def immToBinary(String imm) {
+	def immToBinary(String imm, int bitLength) {
+		var immBin = Integer.toBinaryString(Integer.parseInt(imm))
+		if(immBin.length() > bitLength) {
+			immBin = immBin.substring(0, bitLength)
+		}
+		else {
+			while(immBin.length() - bitLength < 0) {
+				immBin = "0" + immBin
+			}
+		}
+		return  immBin
 		
 	}
 	
