@@ -19,6 +19,8 @@ import org.team38.assembly.lC2200.IInstruction
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import java.util.HashMap;
+import org.team38.assembly.lC2200.IInstructionLabelTrans
+
 /**
  * Generates code from your model files on save.
  * 
@@ -42,7 +44,7 @@ class LC2200Generator extends AbstractGenerator {
 		}
 		filename = resource.toString();
 		filename = filename.substring(0, filename.length() - 2) + "bin";
-		fsa.generateFile("helloworld.txt", assembledOutput.toString().trim())
+		fsa.generateFile(filename, assembledOutput.toString().trim())
 	}
 	
 	//TODO add collision checks for label
@@ -53,14 +55,20 @@ class LC2200Generator extends AbstractGenerator {
 				var dir = (line as Directive)
 				var label = dir.getLabel()
 				if(label != null) {
-					labelTable.put(label.replace(":",""), offset)
+					var label2 = label.getLabel()
+					if (label2 != null) {
+						labelTable.put(label2.replace(":",""), offset)
+					}
 				}
 			}
 			else if (line.eClass().getName().equals("Instruction")) {
 				var instr = (line as Instruction)
 				var label = instr.getLabel()
 				if(label != null) {
-					labelTable.put(label.replace(":",""), offset)
+					var label2 = label.getLabel()
+					if (label2 !=null) {
+						labelTable.put(label2.replace(":",""), offset)
+					}
 				}
 			}
 			offset++
@@ -124,17 +132,30 @@ class LC2200Generator extends AbstractGenerator {
 		var reg1 = iInstr.getReg1()
 		var reg2 = iInstr.getReg2()
 		var imm = iInstr.getImm()
+		var label = iInstr.getLabel()
 		
 		var opBin = opToBinary(op.toString())
 		var reg1Bin = regToBinary(reg1.toString())
 		var reg2Bin = regToBinary(reg2.toString())
 		var immBin = ""
-		if(op.equals("beq")) {			
-			var labelLine = labelTable.get(imm)
-			if(labelLine != null) {
-				immBin = immToBinary(Integer.toString(labelLine - offset), 5)
-			} else {
-				immBin = "00000"
+		var op_code = ""
+		
+		if (op instanceof IInstructionLabelTrans) {
+			op_code = (op as IInstructionLabelTrans).getI_opcode().toString()	
+		}
+		
+		
+		if(op_code.equals("beq")) {
+			if (label != null) {
+				var label2 = label.getLabel()
+				if (label2 != null) {
+					var labelLine = labelTable.get(label2)
+					if(labelLine != null) {
+						immBin = immToBinary(Integer.toString(labelLine - offset), 5)
+					} else {
+						immBin = "00000"
+					}
+				}
 			}
 			
 		} else {

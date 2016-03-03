@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalLC2200Parser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_NEWLINE", "RULE_COMMA", "RULE_IMMEDIATE", "RULE_LPAREN", "RULE_RPAREN", "RULE_OOP", "RULE_NOOP", "RULE_ROP", "RULE_IOP_IMM", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_JOP", "RULE_WORD", "RULE_SL_COMMENT", "RULE_REG", "RULE_LABEL", "RULE_LABEL_IMM", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_NEWLINE", "RULE_COMMA", "RULE_IMMEDIATE", "RULE_LPAREN", "RULE_RPAREN", "RULE_OOP", "RULE_NOOP", "RULE_ROP", "RULE_IOP_IMM", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_JOP", "RULE_WORD", "RULE_COMMENT", "RULE_REG", "RULE_LABEL", "RULE_LABEL_IMM", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int RULE_LABEL=20;
     public static final int RULE_IMMEDIATE=7;
@@ -31,7 +31,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
     public static final int RULE_STRING=24;
     public static final int RULE_ROP=12;
     public static final int RULE_LPAREN=8;
-    public static final int RULE_SL_COMMENT=18;
+    public static final int RULE_SL_COMMENT=25;
     public static final int RULE_IOP_OFFSET=14;
     public static final int RULE_JOP=16;
     public static final int RULE_OOP=10;
@@ -40,8 +40,9 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
     public static final int RULE_NOOP=11;
     public static final int RULE_ID=23;
     public static final int RULE_COMMA=6;
-    public static final int RULE_WS=25;
-    public static final int RULE_ANY_OTHER=26;
+    public static final int RULE_WS=26;
+    public static final int RULE_COMMENT=18;
+    public static final int RULE_ANY_OTHER=27;
     public static final int RULE_RPAREN=9;
     public static final int RULE_IOP_LABEL=15;
     public static final int RULE_INT=22;
@@ -547,7 +548,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_SL_COMMENT) ) {
+            if ( (LA5_0==RULE_COMMENT) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -831,7 +832,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==RULE_SL_COMMENT) ) {
+            if ( (LA9_0==RULE_COMMENT) ) {
                 alt9=1;
             }
             switch (alt9) {
@@ -2802,7 +2803,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCommentTrans"
-    // InternalLC2200.g:1167:1: ruleCommentTrans returns [EObject current=null] : ( (lv_comment_0_0= RULE_SL_COMMENT ) ) ;
+    // InternalLC2200.g:1167:1: ruleCommentTrans returns [EObject current=null] : ( (lv_comment_0_0= RULE_COMMENT ) ) ;
     public final EObject ruleCommentTrans() throws RecognitionException {
         EObject current = null;
 
@@ -2812,18 +2813,18 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:1173:2: ( ( (lv_comment_0_0= RULE_SL_COMMENT ) ) )
-            // InternalLC2200.g:1174:2: ( (lv_comment_0_0= RULE_SL_COMMENT ) )
+            // InternalLC2200.g:1173:2: ( ( (lv_comment_0_0= RULE_COMMENT ) ) )
+            // InternalLC2200.g:1174:2: ( (lv_comment_0_0= RULE_COMMENT ) )
             {
-            // InternalLC2200.g:1174:2: ( (lv_comment_0_0= RULE_SL_COMMENT ) )
-            // InternalLC2200.g:1175:3: (lv_comment_0_0= RULE_SL_COMMENT )
+            // InternalLC2200.g:1174:2: ( (lv_comment_0_0= RULE_COMMENT ) )
+            // InternalLC2200.g:1175:3: (lv_comment_0_0= RULE_COMMENT )
             {
-            // InternalLC2200.g:1175:3: (lv_comment_0_0= RULE_SL_COMMENT )
-            // InternalLC2200.g:1176:4: lv_comment_0_0= RULE_SL_COMMENT
+            // InternalLC2200.g:1175:3: (lv_comment_0_0= RULE_COMMENT )
+            // InternalLC2200.g:1176:4: lv_comment_0_0= RULE_COMMENT
             {
-            lv_comment_0_0=(Token)match(input,RULE_SL_COMMENT,FOLLOW_2); 
+            lv_comment_0_0=(Token)match(input,RULE_COMMENT,FOLLOW_2); 
 
-            				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0());
+            				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0());
             			
 
             				if (current==null) {
@@ -2833,7 +2834,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             					current,
             					"comment",
             					lv_comment_0_0,
-            					"org.team38.assembly.LC2200.SL_COMMENT");
+            					"org.team38.assembly.LC2200.COMMENT");
             			
 
             }

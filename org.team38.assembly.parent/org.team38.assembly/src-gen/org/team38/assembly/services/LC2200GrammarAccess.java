@@ -558,17 +558,17 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	public class CommentTransElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.CommentTrans");
 		private final Assignment cCommentAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_0 = (RuleCall)cCommentAssignment.eContents().get(0);
+		private final RuleCall cCommentCOMMENTTerminalRuleCall_0 = (RuleCall)cCommentAssignment.eContents().get(0);
 		
 		//CommentTrans:
-		//	comment=SL_COMMENT;
+		//	comment=COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//comment=SL_COMMENT
+		//comment=COMMENT
 		public Assignment getCommentAssignment() { return cCommentAssignment; }
 		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_0() { return cCommentSL_COMMENTTerminalRuleCall_0; }
+		//COMMENT
+		public RuleCall getCommentCOMMENTTerminalRuleCall_0() { return cCommentCOMMENTTerminalRuleCall_0; }
 	}
 	public class RegTransElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RegTrans");
@@ -647,7 +647,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tLPAREN;
 	private final TerminalRule tRPAREN;
 	private final TerminalRule tCOMMA;
-	private final TerminalRule tSL_COMMENT;
+	private final TerminalRule tCOMMENT;
 	private final TerminalRule tML_COMMENT;
 	private final TerminalRule tNEWLINE;
 	private final TerminalRule tREG;
@@ -694,7 +694,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		this.tLPAREN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.LPAREN");
 		this.tRPAREN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RPAREN");
 		this.tCOMMA = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.COMMA");
-		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.SL_COMMENT");
+		this.tCOMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.COMMENT");
 		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.ML_COMMENT");
 		this.tNEWLINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.NEWLINE");
 		this.tREG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.REG");
@@ -887,7 +887,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//CommentTrans:
-	//	comment=SL_COMMENT;
+	//	comment=COMMENT;
 	public CommentTransElements getCommentTransAccess() {
 		return pCommentTrans;
 	}
@@ -997,10 +997,10 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		return tCOMMA;
 	}
 	
-	//terminal SL_COMMENT:
+	//terminal COMMENT:
 	//	';' !('\n' | '\r')* '\r'? '\n'?;
-	public TerminalRule getSL_COMMENTRule() {
-		return tSL_COMMENT;
+	public TerminalRule getCOMMENTRule() {
+		return tCOMMENT;
 	}
 	
 	//terminal ML_COMMENT:
@@ -1070,6 +1070,12 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
+	}
+	
+	//terminal SL_COMMENT:
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
+	public TerminalRule getSL_COMMENTRule() {
+		return gaTerminals.getSL_COMMENTRule();
 	}
 	
 	//terminal WS:

@@ -117,7 +117,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     CommentTrans returns CommentTrans
 	 *
 	 * Constraint:
-	 *     comment=SL_COMMENT
+	 *     comment=COMMENT
 	 */
 	protected void sequence_CommentTrans(ISerializationContext context, CommentTrans semanticObject) {
 		if (errorAcceptor != null) {
@@ -125,7 +125,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.COMMENT_TRANS__COMMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0(), semanticObject.getComment());
+		feeder.accept(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0(), semanticObject.getComment());
 		feeder.finish();
 	}
 	

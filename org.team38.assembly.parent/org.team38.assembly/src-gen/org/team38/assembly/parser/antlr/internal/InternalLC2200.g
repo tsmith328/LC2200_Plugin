@@ -1173,9 +1173,9 @@ ruleCommentTrans returns [EObject current=null]
 }:
 	(
 		(
-			lv_comment_0_0=RULE_SL_COMMENT
+			lv_comment_0_0=RULE_COMMENT
 			{
-				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0());
+				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0());
 			}
 			{
 				if ($current==null) {
@@ -1185,7 +1185,7 @@ ruleCommentTrans returns [EObject current=null]
 					$current,
 					"comment",
 					lv_comment_0_0,
-					"org.team38.assembly.LC2200.SL_COMMENT");
+					"org.team38.assembly.LC2200.COMMENT");
 			}
 		)
 	)
@@ -1318,7 +1318,7 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
+RULE_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
 
 RULE_ML_COMMENT : EOF;
 
@@ -1337,6 +1337,8 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
+
+RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 

@@ -68,7 +68,7 @@ WordTrans:
 ;
 
 CommentTrans:
-	comment=SL_COMMENT
+	comment=COMMENT
 ;
 
 RegTrans:
@@ -133,7 +133,7 @@ terminal COMMA:
 	','
 ;
 
-terminal SL_COMMENT:
+terminal COMMENT:
 	';' !('\n'|'\r')* '\r'? '\n'?
 ;
 

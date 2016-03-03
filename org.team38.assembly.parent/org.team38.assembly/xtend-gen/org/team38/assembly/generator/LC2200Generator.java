@@ -15,9 +15,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
+import org.team38.assembly.lC2200.IInstructionLabelTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
+import org.team38.assembly.lC2200.LabelBeg;
+import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
@@ -67,13 +70,49 @@ public class LC2200Generator extends AbstractGenerator {
     this.filename = _plus;
     String _string_1 = this.assembledOutput.toString();
     String _trim = _string_1.trim();
-    fsa.generateFile("helloworld.txt", _trim);
+    fsa.generateFile(this.filename, _trim);
   }
   
   public void populateLabels(final Program root) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method replace(String, String) is undefined for the type LabelBeg"
-      + "\nThe method replace(String, String) is undefined for the type LabelBeg");
+    EList<EObject> lines = root.getLines();
+    for (final EObject line : lines) {
+      {
+        EClass _eClass = line.eClass();
+        String _name = _eClass.getName();
+        boolean _equals = _name.equals("Directive");
+        if (_equals) {
+          Directive dir = ((Directive) line);
+          LabelBeg label = dir.getLabel();
+          boolean _notEquals = (!Objects.equal(label, null));
+          if (_notEquals) {
+            String label2 = label.getLabel();
+            boolean _notEquals_1 = (!Objects.equal(label2, null));
+            if (_notEquals_1) {
+              String _replace = label2.replace(":", "");
+              this.labelTable.put(_replace, Integer.valueOf(this.offset));
+            }
+          }
+        } else {
+          EClass _eClass_1 = line.eClass();
+          String _name_1 = _eClass_1.getName();
+          boolean _equals_1 = _name_1.equals("Instruction");
+          if (_equals_1) {
+            Instruction instr = ((Instruction) line);
+            LabelBeg label_1 = instr.getLabel();
+            boolean _notEquals_2 = (!Objects.equal(label_1, null));
+            if (_notEquals_2) {
+              String label2_1 = label_1.getLabel();
+              boolean _notEquals_3 = (!Objects.equal(label2_1, null));
+              if (_notEquals_3) {
+                String _replace_1 = label2_1.replace(":", "");
+                this.labelTable.put(_replace_1, Integer.valueOf(this.offset));
+              }
+            }
+          }
+        }
+        this.offset++;
+      }
+    }
   }
   
   public void compileProgram(final Program root) {
@@ -193,6 +232,7 @@ public class LC2200Generator extends AbstractGenerator {
       RegTrans reg1 = iInstr.getReg1();
       RegTrans reg2 = iInstr.getReg2();
       String imm = iInstr.getImm();
+      LabelEnd label = iInstr.getLabel();
       String _string = op.toString();
       String opBin = this.opToBinary(_string);
       String _string_1 = reg1.toString();
@@ -200,16 +240,29 @@ public class LC2200Generator extends AbstractGenerator {
       String _string_2 = reg2.toString();
       String reg2Bin = this.regToBinary(_string_2);
       String immBin = "";
-      boolean _equals = op.equals("beq");
+      String op_code = "";
+      if ((op instanceof IInstructionLabelTrans)) {
+        String _i_opcode = ((IInstructionLabelTrans) op).getI_opcode();
+        String _string_3 = _i_opcode.toString();
+        op_code = _string_3;
+      }
+      boolean _equals = op_code.equals("beq");
       if (_equals) {
-        Integer labelLine = this.labelTable.get(imm);
-        boolean _notEquals = (!Objects.equal(labelLine, null));
+        boolean _notEquals = (!Objects.equal(label, null));
         if (_notEquals) {
-          String _string_3 = Integer.toString(((labelLine).intValue() - this.offset));
-          String _immToBinary = this.immToBinary(_string_3, 5);
-          immBin = _immToBinary;
-        } else {
-          immBin = "00000";
+          String label2 = label.getLabel();
+          boolean _notEquals_1 = (!Objects.equal(label2, null));
+          if (_notEquals_1) {
+            Integer labelLine = this.labelTable.get(label2);
+            boolean _notEquals_2 = (!Objects.equal(labelLine, null));
+            if (_notEquals_2) {
+              String _string_4 = Integer.toString(((labelLine).intValue() - this.offset));
+              String _immToBinary = this.immToBinary(_string_4, 5);
+              immBin = _immToBinary;
+            } else {
+              immBin = "00000";
+            }
+          }
         }
       } else {
         String _immToBinary_1 = this.immToBinary(imm, 5);

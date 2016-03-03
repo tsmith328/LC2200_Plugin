@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_NEWLINE", "RULE_COMMA", "RULE_LPAREN", "RULE_RPAREN", "RULE_IMMEDIATE", "RULE_OOP", "RULE_NOOP", "RULE_ROP", "RULE_IOP_IMM", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_JOP", "RULE_WORD", "RULE_SL_COMMENT", "RULE_REG", "RULE_LABEL", "RULE_LABEL_IMM", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_NEWLINE", "RULE_COMMA", "RULE_LPAREN", "RULE_RPAREN", "RULE_IMMEDIATE", "RULE_OOP", "RULE_NOOP", "RULE_ROP", "RULE_IOP_IMM", "RULE_IOP_OFFSET", "RULE_IOP_LABEL", "RULE_JOP", "RULE_WORD", "RULE_COMMENT", "RULE_REG", "RULE_LABEL", "RULE_LABEL_IMM", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int RULE_LABEL=20;
     public static final int RULE_IMMEDIATE=9;
@@ -32,7 +32,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     public static final int RULE_STRING=24;
     public static final int RULE_ROP=12;
     public static final int RULE_LPAREN=7;
-    public static final int RULE_SL_COMMENT=18;
+    public static final int RULE_SL_COMMENT=25;
     public static final int RULE_IOP_OFFSET=14;
     public static final int RULE_JOP=16;
     public static final int RULE_OOP=10;
@@ -41,8 +41,9 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     public static final int RULE_NOOP=11;
     public static final int RULE_ID=23;
     public static final int RULE_COMMA=6;
-    public static final int RULE_WS=25;
-    public static final int RULE_ANY_OTHER=26;
+    public static final int RULE_WS=26;
+    public static final int RULE_COMMENT=18;
+    public static final int RULE_ANY_OTHER=27;
     public static final int RULE_RPAREN=8;
     public static final int RULE_IOP_LABEL=15;
     public static final int RULE_INT=22;
@@ -2388,7 +2389,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==RULE_SL_COMMENT) ) {
+            if ( (LA9_0==RULE_COMMENT) ) {
                 alt9=1;
             }
             switch (alt9) {
@@ -2756,7 +2757,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==RULE_SL_COMMENT) ) {
+            if ( (LA12_0==RULE_COMMENT) ) {
                 alt12=1;
             }
             switch (alt12) {
@@ -6843,21 +6844,21 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__CommentTrans__CommentAssignment"
-    // InternalLC2200.g:2264:1: rule__CommentTrans__CommentAssignment : ( RULE_SL_COMMENT ) ;
+    // InternalLC2200.g:2264:1: rule__CommentTrans__CommentAssignment : ( RULE_COMMENT ) ;
     public final void rule__CommentTrans__CommentAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:2268:1: ( ( RULE_SL_COMMENT ) )
-            // InternalLC2200.g:2269:2: ( RULE_SL_COMMENT )
+            // InternalLC2200.g:2268:1: ( ( RULE_COMMENT ) )
+            // InternalLC2200.g:2269:2: ( RULE_COMMENT )
             {
-            // InternalLC2200.g:2269:2: ( RULE_SL_COMMENT )
-            // InternalLC2200.g:2270:3: RULE_SL_COMMENT
+            // InternalLC2200.g:2269:2: ( RULE_COMMENT )
+            // InternalLC2200.g:2270:3: RULE_COMMENT
             {
-             before(grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0()); 
-            match(input,RULE_SL_COMMENT,FOLLOW_2); 
-             after(grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0()); 
+             before(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0()); 
+            match(input,RULE_COMMENT,FOLLOW_2); 
+             after(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0()); 
 
             }
 

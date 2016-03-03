@@ -2267,9 +2267,9 @@ rule__CommentTrans__CommentAssignment
 	}
 :
 	(
-		{ before(grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0()); }
-		RULE_SL_COMMENT
-		{ after(grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0()); }
+		{ before(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0()); }
+		RULE_COMMENT
+		{ after(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0()); }
 	)
 ;
 finally {
@@ -2343,7 +2343,7 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
+RULE_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
 
 RULE_ML_COMMENT : EOF;
 
@@ -2362,6 +2362,8 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
+
+RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
