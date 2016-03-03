@@ -4,28 +4,28 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	program+=(Instruction | Directive)*
+	{Program} lines+=(Instruction | Directive)* 
 ;
 
 Instruction:
-	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) (COMMENT | NEWLINE)?
+	label=LABEL? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction) SL_COMMENT?
 ;
 
 Directive:
-	label=LABEL? directive=(NOOPDirective | WordDirective) (COMMENT | NEWLINE)?
+	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT? 
 ;
 	
 RInstruction:
-	r_opcode=ROP REG COMMA REG COMMA REG;
+	r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG;
 
 IInstruction:
-	i_opcode=IOP_IMM REG COMMA REG COMMA IMMEDIATE  |
-	i_opcode=IOP_OFFSET REG COMMA IMMEDIATE LPAREN REG RPAREN  |
-	i_opcode=IOP_LABEL REG COMMA REG COMMA LABEL_IMM 
+	i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE  |
+	i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE LPAREN reg2=REG RPAREN  |
+	i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM 
 ;
 
 JInstruction:
-	j_opcode=JOP REG COMMA REG
+	j_opcode=JOP reg1=REG COMMA reg2=REG
 ;
 
 OInstruction:
@@ -37,14 +37,10 @@ NOOPDirective:
 ;
 
 WordDirective:
-	w_dir=WORD IMMEDIATE
+	w_dir=WORD imm=IMMEDIATE
 ;
 
 //Tokens
-terminal NOOP:
-	'noop'
-;
-
 terminal WORD:
 	'.word'
 ;
@@ -56,8 +52,17 @@ terminal OOP:
 	'reti'
 ;
 
+terminal NOOP:
+	'noop'
+;
+
 terminal JOP:
 	'jalr'
+;
+
+terminal ROP:
+	'add'	|
+	'nand'
 ;
 
 terminal IOP_IMM:
@@ -85,17 +90,18 @@ terminal COMMA:
 	','
 ;
 
-terminal COMMENT:
+terminal SL_COMMENT:
 	';' !('\n'|'\r')* ('\r'? '\n')?
+;
+
+//Do this for now so default Multi-line
+//comments aren't highlighted in editor
+terminal ML_COMMENT:
+	EOF
 ;
 
 terminal NEWLINE:
 	'\n'
-;
-
-terminal ROP:
-	'add'	|
-	'nand'
 ;
 
 terminal REG:
@@ -105,12 +111,12 @@ terminal REG:
 	'$a0'	|
 	'$a1'	|
 	'$a2'	|
-	'$a3'	|
-	'$a4'	|
+	'$t0'	|
+	'$t1'	|
+	'$t2'	|
 	'$s0'	|
 	'$s1'	|
 	'$s2'	|
-	'$s3'	|
 	'$k0'	|
 	'$sp'	|
 	'$fp'	|
@@ -118,7 +124,7 @@ terminal REG:
 ;
 
 terminal IMMEDIATE:
-	('0x')?(INT)
+	('0x' | '-')?(INT)
 ;
 
 terminal LABEL_IMM:
@@ -128,3 +134,5 @@ terminal LABEL_IMM:
 terminal LABEL:
 	LABEL_IMM':'
 ;
+
+

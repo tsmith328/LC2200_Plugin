@@ -77,41 +77,50 @@ ruleProgram returns [EObject current=null]
 }:
 	(
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getProgramInstructionParserRuleCall_0_0());
-				}
-				lv_program_0_1=ruleInstruction
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"program",
-						lv_program_0_1,
-						"org.team38.assembly.LC2200.Instruction");
-					afterParserOrEnumRuleCall();
-				}
-				    |
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getProgramDirectiveParserRuleCall_0_1());
-				}
-				lv_program_0_2=ruleDirective
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"program",
-						lv_program_0_2,
-						"org.team38.assembly.LC2200.Directive");
-					afterParserOrEnumRuleCall();
-				}
-			)
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getProgramAccess().getProgramAction_0(),
+					$current);
+			}
 		)
-	)*
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0());
+					}
+					lv_lines_1_1=ruleInstruction
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProgramRule());
+						}
+						add(
+							$current,
+							"lines",
+							lv_lines_1_1,
+							"org.team38.assembly.LC2200.Instruction");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1());
+					}
+					lv_lines_1_2=ruleDirective
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProgramRule());
+						}
+						add(
+							$current,
+							"lines",
+							lv_lines_1_2,
+							"org.team38.assembly.LC2200.Directive");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
 ;
 
 // Entry rule entryRuleInstruction
@@ -218,14 +227,9 @@ ruleInstruction returns [EObject current=null]
 			)
 		)
 		(
-			this_COMMENT_2=RULE_COMMENT
+			this_SL_COMMENT_2=RULE_SL_COMMENT
 			{
-				newLeafNode(this_COMMENT_2, grammarAccess.getInstructionAccess().getCOMMENTTerminalRuleCall_2_0());
-			}
-			    |
-			this_NEWLINE_3=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_3, grammarAccess.getInstructionAccess().getNEWLINETerminalRuleCall_2_1());
+				newLeafNode(this_SL_COMMENT_2, grammarAccess.getInstructionAccess().getSL_COMMENTTerminalRuleCall_2());
 			}
 		)?
 	)
@@ -303,14 +307,9 @@ ruleDirective returns [EObject current=null]
 			)
 		)
 		(
-			this_COMMENT_2=RULE_COMMENT
+			this_SL_COMMENT_2=RULE_SL_COMMENT
 			{
-				newLeafNode(this_COMMENT_2, grammarAccess.getDirectiveAccess().getCOMMENTTerminalRuleCall_2_0());
-			}
-			    |
-			this_NEWLINE_3=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_3, grammarAccess.getDirectiveAccess().getNEWLINETerminalRuleCall_2_1());
+				newLeafNode(this_SL_COMMENT_2, grammarAccess.getDirectiveAccess().getSL_COMMENTTerminalRuleCall_2());
 			}
 		)?
 	)
@@ -350,26 +349,68 @@ ruleRInstruction returns [EObject current=null]
 				}
 			)
 		)
-		this_REG_1=RULE_REG
-		{
-			newLeafNode(this_REG_1, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_1());
-		}
+		(
+			(
+				lv_reg1_1_0=RULE_REG
+				{
+					newLeafNode(lv_reg1_1_0, grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRInstructionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"reg1",
+						lv_reg1_1_0,
+						"org.team38.assembly.LC2200.REG");
+				}
+			)
+		)
 		this_COMMA_2=RULE_COMMA
 		{
 			newLeafNode(this_COMMA_2, grammarAccess.getRInstructionAccess().getCOMMATerminalRuleCall_2());
 		}
-		this_REG_3=RULE_REG
-		{
-			newLeafNode(this_REG_3, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_3());
-		}
+		(
+			(
+				lv_reg2_3_0=RULE_REG
+				{
+					newLeafNode(lv_reg2_3_0, grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRInstructionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"reg2",
+						lv_reg2_3_0,
+						"org.team38.assembly.LC2200.REG");
+				}
+			)
+		)
 		this_COMMA_4=RULE_COMMA
 		{
 			newLeafNode(this_COMMA_4, grammarAccess.getRInstructionAccess().getCOMMATerminalRuleCall_4());
 		}
-		this_REG_5=RULE_REG
-		{
-			newLeafNode(this_REG_5, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_5());
-		}
+		(
+			(
+				lv_reg3_5_0=RULE_REG
+				{
+					newLeafNode(lv_reg3_5_0, grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRInstructionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"reg3",
+						lv_reg3_5_0,
+						"org.team38.assembly.LC2200.REG");
+				}
+			)
+		)
 	)
 ;
 
@@ -408,26 +449,68 @@ ruleIInstruction returns [EObject current=null]
 					}
 				)
 			)
-			this_REG_1=RULE_REG
-			{
-				newLeafNode(this_REG_1, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_1());
-			}
+			(
+				(
+					lv_reg1_1_0=RULE_REG
+					{
+						newLeafNode(lv_reg1_1_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_0_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg1",
+							lv_reg1_1_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_COMMA_2=RULE_COMMA
 			{
 				newLeafNode(this_COMMA_2, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_0_2());
 			}
-			this_REG_3=RULE_REG
-			{
-				newLeafNode(this_REG_3, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_3());
-			}
+			(
+				(
+					lv_reg2_3_0=RULE_REG
+					{
+						newLeafNode(lv_reg2_3_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_0_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg2",
+							lv_reg2_3_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_COMMA_4=RULE_COMMA
 			{
 				newLeafNode(this_COMMA_4, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_0_4());
 			}
-			this_IMMEDIATE_5=RULE_IMMEDIATE
-			{
-				newLeafNode(this_IMMEDIATE_5, grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_0_5());
-			}
+			(
+				(
+					lv_imm_5_0=RULE_IMMEDIATE
+					{
+						newLeafNode(lv_imm_5_0, grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_0_5_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"imm",
+							lv_imm_5_0,
+							"org.team38.assembly.LC2200.IMMEDIATE");
+					}
+				)
+			)
 		)
 		    |
 		(
@@ -449,26 +532,68 @@ ruleIInstruction returns [EObject current=null]
 					}
 				)
 			)
-			this_REG_7=RULE_REG
-			{
-				newLeafNode(this_REG_7, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_1());
-			}
+			(
+				(
+					lv_reg1_7_0=RULE_REG
+					{
+						newLeafNode(lv_reg1_7_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg1",
+							lv_reg1_7_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_COMMA_8=RULE_COMMA
 			{
 				newLeafNode(this_COMMA_8, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_1_2());
 			}
-			this_IMMEDIATE_9=RULE_IMMEDIATE
-			{
-				newLeafNode(this_IMMEDIATE_9, grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_1_3());
-			}
+			(
+				(
+					lv_imm_9_0=RULE_IMMEDIATE
+					{
+						newLeafNode(lv_imm_9_0, grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_1_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"imm",
+							lv_imm_9_0,
+							"org.team38.assembly.LC2200.IMMEDIATE");
+					}
+				)
+			)
 			this_LPAREN_10=RULE_LPAREN
 			{
 				newLeafNode(this_LPAREN_10, grammarAccess.getIInstructionAccess().getLPARENTerminalRuleCall_1_4());
 			}
-			this_REG_11=RULE_REG
-			{
-				newLeafNode(this_REG_11, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_5());
-			}
+			(
+				(
+					lv_reg2_11_0=RULE_REG
+					{
+						newLeafNode(lv_reg2_11_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_1_5_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg2",
+							lv_reg2_11_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_RPAREN_12=RULE_RPAREN
 			{
 				newLeafNode(this_RPAREN_12, grammarAccess.getIInstructionAccess().getRPARENTerminalRuleCall_1_6());
@@ -494,26 +619,68 @@ ruleIInstruction returns [EObject current=null]
 					}
 				)
 			)
-			this_REG_14=RULE_REG
-			{
-				newLeafNode(this_REG_14, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_1());
-			}
+			(
+				(
+					lv_reg1_14_0=RULE_REG
+					{
+						newLeafNode(lv_reg1_14_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_2_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg1",
+							lv_reg1_14_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_COMMA_15=RULE_COMMA
 			{
 				newLeafNode(this_COMMA_15, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_2_2());
 			}
-			this_REG_16=RULE_REG
-			{
-				newLeafNode(this_REG_16, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_3());
-			}
+			(
+				(
+					lv_reg2_16_0=RULE_REG
+					{
+						newLeafNode(lv_reg2_16_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_2_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"reg2",
+							lv_reg2_16_0,
+							"org.team38.assembly.LC2200.REG");
+					}
+				)
+			)
 			this_COMMA_17=RULE_COMMA
 			{
 				newLeafNode(this_COMMA_17, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_2_4());
 			}
-			this_LABEL_IMM_18=RULE_LABEL_IMM
-			{
-				newLeafNode(this_LABEL_IMM_18, grammarAccess.getIInstructionAccess().getLABEL_IMMTerminalRuleCall_2_5());
-			}
+			(
+				(
+					lv_imm_18_0=RULE_LABEL_IMM
+					{
+						newLeafNode(lv_imm_18_0, grammarAccess.getIInstructionAccess().getImmLABEL_IMMTerminalRuleCall_2_5_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIInstructionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"imm",
+							lv_imm_18_0,
+							"org.team38.assembly.LC2200.LABEL_IMM");
+					}
+				)
+			)
 		)
 	)
 ;
@@ -552,18 +719,46 @@ ruleJInstruction returns [EObject current=null]
 				}
 			)
 		)
-		this_REG_1=RULE_REG
-		{
-			newLeafNode(this_REG_1, grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_1());
-		}
+		(
+			(
+				lv_reg1_1_0=RULE_REG
+				{
+					newLeafNode(lv_reg1_1_0, grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getJInstructionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"reg1",
+						lv_reg1_1_0,
+						"org.team38.assembly.LC2200.REG");
+				}
+			)
+		)
 		this_COMMA_2=RULE_COMMA
 		{
 			newLeafNode(this_COMMA_2, grammarAccess.getJInstructionAccess().getCOMMATerminalRuleCall_2());
 		}
-		this_REG_3=RULE_REG
-		{
-			newLeafNode(this_REG_3, grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_3());
-		}
+		(
+			(
+				lv_reg2_3_0=RULE_REG
+				{
+					newLeafNode(lv_reg2_3_0, grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getJInstructionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"reg2",
+						lv_reg2_3_0,
+						"org.team38.assembly.LC2200.REG");
+				}
+			)
+		)
 	)
 ;
 
@@ -671,20 +866,36 @@ ruleWordDirective returns [EObject current=null]
 				}
 			)
 		)
-		this_IMMEDIATE_1=RULE_IMMEDIATE
-		{
-			newLeafNode(this_IMMEDIATE_1, grammarAccess.getWordDirectiveAccess().getIMMEDIATETerminalRuleCall_1());
-		}
+		(
+			(
+				lv_imm_1_0=RULE_IMMEDIATE
+				{
+					newLeafNode(lv_imm_1_0, grammarAccess.getWordDirectiveAccess().getImmIMMEDIATETerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getWordDirectiveRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"imm",
+						lv_imm_1_0,
+						"org.team38.assembly.LC2200.IMMEDIATE");
+				}
+			)
+		)
 	)
 ;
-
-RULE_NOOP : 'noop';
 
 RULE_WORD : '.word';
 
 RULE_OOP : ('halt'|'ei'|'di'|'reti');
 
+RULE_NOOP : 'noop';
+
 RULE_JOP : 'jalr';
+
+RULE_ROP : ('add'|'nand');
 
 RULE_IOP_IMM : 'addi';
 
@@ -698,15 +909,15 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_COMMENT : ';' ~(('\n'|'\r'))* ('\r'? '\n')?;
+RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_ML_COMMENT : EOF;
 
 RULE_NEWLINE : '\n';
 
-RULE_ROP : ('add'|'nand');
+RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 
-RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$a3'|'$a4'|'$s0'|'$s1'|'$s2'|'$s3'|'$k0'|'$sp'|'$fp'|'$ra');
-
-RULE_IMMEDIATE : '0x'? RULE_INT;
+RULE_IMMEDIATE : ('0x'|'-')? RULE_INT;
 
 RULE_LABEL_IMM : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
@@ -717,10 +928,6 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
-
-RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
-
-RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 

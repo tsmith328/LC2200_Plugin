@@ -21,33 +21,32 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalLC2200Parser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_LABEL", "RULE_COMMENT", "RULE_NEWLINE", "RULE_ROP", "RULE_REG", "RULE_COMMA", "RULE_IOP_IMM", "RULE_IMMEDIATE", "RULE_IOP_OFFSET", "RULE_LPAREN", "RULE_RPAREN", "RULE_IOP_LABEL", "RULE_LABEL_IMM", "RULE_JOP", "RULE_OOP", "RULE_NOOP", "RULE_WORD", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_LABEL", "RULE_SL_COMMENT", "RULE_ROP", "RULE_REG", "RULE_COMMA", "RULE_IOP_IMM", "RULE_IMMEDIATE", "RULE_IOP_OFFSET", "RULE_LPAREN", "RULE_RPAREN", "RULE_IOP_LABEL", "RULE_LABEL_IMM", "RULE_JOP", "RULE_OOP", "RULE_NOOP", "RULE_WORD", "RULE_ML_COMMENT", "RULE_NEWLINE", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int RULE_LABEL=4;
-    public static final int RULE_IMMEDIATE=11;
-    public static final int RULE_NEWLINE=6;
-    public static final int RULE_WORD=20;
-    public static final int RULE_REG=8;
-    public static final int RULE_STRING=23;
-    public static final int RULE_ROP=7;
-    public static final int RULE_LPAREN=13;
-    public static final int RULE_SL_COMMENT=25;
-    public static final int RULE_IOP_OFFSET=12;
-    public static final int RULE_JOP=17;
-    public static final int RULE_OOP=18;
-    public static final int RULE_LABEL_IMM=16;
+    public static final int RULE_IMMEDIATE=10;
+    public static final int RULE_NEWLINE=21;
+    public static final int RULE_WORD=19;
+    public static final int RULE_REG=7;
+    public static final int RULE_STRING=24;
+    public static final int RULE_ROP=6;
+    public static final int RULE_LPAREN=12;
+    public static final int RULE_SL_COMMENT=5;
+    public static final int RULE_IOP_OFFSET=11;
+    public static final int RULE_JOP=16;
+    public static final int RULE_OOP=17;
+    public static final int RULE_LABEL_IMM=15;
     public static final int EOF=-1;
-    public static final int RULE_NOOP=19;
-    public static final int RULE_ID=22;
-    public static final int RULE_COMMA=9;
-    public static final int RULE_WS=26;
-    public static final int RULE_COMMENT=5;
-    public static final int RULE_ANY_OTHER=27;
-    public static final int RULE_RPAREN=14;
-    public static final int RULE_IOP_LABEL=15;
-    public static final int RULE_INT=21;
-    public static final int RULE_ML_COMMENT=24;
-    public static final int RULE_IOP_IMM=10;
+    public static final int RULE_NOOP=18;
+    public static final int RULE_ID=23;
+    public static final int RULE_COMMA=8;
+    public static final int RULE_WS=25;
+    public static final int RULE_ANY_OTHER=26;
+    public static final int RULE_RPAREN=13;
+    public static final int RULE_IOP_LABEL=14;
+    public static final int RULE_INT=22;
+    public static final int RULE_ML_COMMENT=20;
+    public static final int RULE_IOP_IMM=9;
 
     // delegates
     // delegators
@@ -125,23 +124,37 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProgram"
-    // InternalLC2200.g:71:1: ruleProgram returns [EObject current=null] : ( ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) ) )* ;
+    // InternalLC2200.g:71:1: ruleProgram returns [EObject current=null] : ( () ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )* ) ;
     public final EObject ruleProgram() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_program_0_1 = null;
+        EObject lv_lines_1_1 = null;
 
-        EObject lv_program_0_2 = null;
+        EObject lv_lines_1_2 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalLC2200.g:77:2: ( ( ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) ) )* )
-            // InternalLC2200.g:78:2: ( ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) ) )*
+            // InternalLC2200.g:77:2: ( ( () ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )* ) )
+            // InternalLC2200.g:78:2: ( () ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )* )
             {
-            // InternalLC2200.g:78:2: ( ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) ) )*
+            // InternalLC2200.g:78:2: ( () ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )* )
+            // InternalLC2200.g:79:3: () ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )*
+            {
+            // InternalLC2200.g:79:3: ()
+            // InternalLC2200.g:80:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getProgramAccess().getProgramAction_0(),
+            					current);
+            			
+
+            }
+
+            // InternalLC2200.g:86:3: ( ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) ) )*
             loop2:
             do {
                 int alt2=2;
@@ -154,23 +167,23 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalLC2200.g:79:3: ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) )
+            	    // InternalLC2200.g:87:4: ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) )
             	    {
-            	    // InternalLC2200.g:79:3: ( (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective ) )
-            	    // InternalLC2200.g:80:4: (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective )
+            	    // InternalLC2200.g:87:4: ( (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective ) )
+            	    // InternalLC2200.g:88:5: (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective )
             	    {
-            	    // InternalLC2200.g:80:4: (lv_program_0_1= ruleInstruction | lv_program_0_2= ruleDirective )
+            	    // InternalLC2200.g:88:5: (lv_lines_1_1= ruleInstruction | lv_lines_1_2= ruleDirective )
             	    int alt1=2;
             	    switch ( input.LA(1) ) {
             	    case RULE_LABEL:
             	        {
             	        int LA1_1 = input.LA(2);
 
-            	        if ( ((LA1_1>=RULE_NOOP && LA1_1<=RULE_WORD)) ) {
-            	            alt1=2;
-            	        }
-            	        else if ( (LA1_1==RULE_ROP||LA1_1==RULE_IOP_IMM||LA1_1==RULE_IOP_OFFSET||LA1_1==RULE_IOP_LABEL||(LA1_1>=RULE_JOP && LA1_1<=RULE_OOP)) ) {
+            	        if ( (LA1_1==RULE_ROP||LA1_1==RULE_IOP_IMM||LA1_1==RULE_IOP_OFFSET||LA1_1==RULE_IOP_LABEL||(LA1_1>=RULE_JOP && LA1_1<=RULE_OOP)) ) {
             	            alt1=1;
+            	        }
+            	        else if ( ((LA1_1>=RULE_NOOP && LA1_1<=RULE_WORD)) ) {
+            	            alt1=2;
             	        }
             	        else {
             	            NoViableAltException nvae =
@@ -205,52 +218,52 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             	    switch (alt1) {
             	        case 1 :
-            	            // InternalLC2200.g:81:5: lv_program_0_1= ruleInstruction
+            	            // InternalLC2200.g:89:6: lv_lines_1_1= ruleInstruction
             	            {
 
-            	            					newCompositeNode(grammarAccess.getProgramAccess().getProgramInstructionParserRuleCall_0_0());
-            	            				
+            	            						newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0());
+            	            					
             	            pushFollow(FOLLOW_3);
-            	            lv_program_0_1=ruleInstruction();
+            	            lv_lines_1_1=ruleInstruction();
 
             	            state._fsp--;
 
 
-            	            					if (current==null) {
-            	            						current = createModelElementForParent(grammarAccess.getProgramRule());
-            	            					}
-            	            					add(
-            	            						current,
-            	            						"program",
-            	            						lv_program_0_1,
-            	            						"org.team38.assembly.LC2200.Instruction");
-            	            					afterParserOrEnumRuleCall();
-            	            				
+            	            						if (current==null) {
+            	            							current = createModelElementForParent(grammarAccess.getProgramRule());
+            	            						}
+            	            						add(
+            	            							current,
+            	            							"lines",
+            	            							lv_lines_1_1,
+            	            							"org.team38.assembly.LC2200.Instruction");
+            	            						afterParserOrEnumRuleCall();
+            	            					
 
             	            }
             	            break;
             	        case 2 :
-            	            // InternalLC2200.g:97:5: lv_program_0_2= ruleDirective
+            	            // InternalLC2200.g:105:6: lv_lines_1_2= ruleDirective
             	            {
 
-            	            					newCompositeNode(grammarAccess.getProgramAccess().getProgramDirectiveParserRuleCall_0_1());
-            	            				
+            	            						newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1());
+            	            					
             	            pushFollow(FOLLOW_3);
-            	            lv_program_0_2=ruleDirective();
+            	            lv_lines_1_2=ruleDirective();
 
             	            state._fsp--;
 
 
-            	            					if (current==null) {
-            	            						current = createModelElementForParent(grammarAccess.getProgramRule());
-            	            					}
-            	            					add(
-            	            						current,
-            	            						"program",
-            	            						lv_program_0_2,
-            	            						"org.team38.assembly.LC2200.Directive");
-            	            					afterParserOrEnumRuleCall();
-            	            				
+            	            						if (current==null) {
+            	            							current = createModelElementForParent(grammarAccess.getProgramRule());
+            	            						}
+            	            						add(
+            	            							current,
+            	            							"lines",
+            	            							lv_lines_1_2,
+            	            							"org.team38.assembly.LC2200.Directive");
+            	            						afterParserOrEnumRuleCall();
+            	            					
 
             	            }
             	            break;
@@ -273,6 +286,9 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             }
 
 
+            }
+
+
             	leaveRule();
 
         }
@@ -289,7 +305,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInstruction"
-    // InternalLC2200.g:118:1: entryRuleInstruction returns [EObject current=null] : iv_ruleInstruction= ruleInstruction EOF ;
+    // InternalLC2200.g:127:1: entryRuleInstruction returns [EObject current=null] : iv_ruleInstruction= ruleInstruction EOF ;
     public final EObject entryRuleInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -297,8 +313,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:118:52: (iv_ruleInstruction= ruleInstruction EOF )
-            // InternalLC2200.g:119:2: iv_ruleInstruction= ruleInstruction EOF
+            // InternalLC2200.g:127:52: (iv_ruleInstruction= ruleInstruction EOF )
+            // InternalLC2200.g:128:2: iv_ruleInstruction= ruleInstruction EOF
             {
              newCompositeNode(grammarAccess.getInstructionRule()); 
             pushFollow(FOLLOW_1);
@@ -325,13 +341,12 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstruction"
-    // InternalLC2200.g:125:1: ruleInstruction returns [EObject current=null] : ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? ) ;
+    // InternalLC2200.g:134:1: ruleInstruction returns [EObject current=null] : ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? ) ;
     public final EObject ruleInstruction() throws RecognitionException {
         EObject current = null;
 
         Token lv_label_0_0=null;
-        Token this_COMMENT_2=null;
-        Token this_NEWLINE_3=null;
+        Token this_SL_COMMENT_2=null;
         EObject lv_instruction_1_1 = null;
 
         EObject lv_instruction_1_2 = null;
@@ -345,13 +360,13 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:131:2: ( ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? ) )
-            // InternalLC2200.g:132:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? )
+            // InternalLC2200.g:140:2: ( ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? ) )
+            // InternalLC2200.g:141:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? )
             {
-            // InternalLC2200.g:132:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? )
-            // InternalLC2200.g:133:3: ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )?
+            // InternalLC2200.g:141:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? )
+            // InternalLC2200.g:142:3: ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )?
             {
-            // InternalLC2200.g:133:3: ( (lv_label_0_0= RULE_LABEL ) )?
+            // InternalLC2200.g:142:3: ( (lv_label_0_0= RULE_LABEL ) )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -360,10 +375,10 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalLC2200.g:134:4: (lv_label_0_0= RULE_LABEL )
+                    // InternalLC2200.g:143:4: (lv_label_0_0= RULE_LABEL )
                     {
-                    // InternalLC2200.g:134:4: (lv_label_0_0= RULE_LABEL )
-                    // InternalLC2200.g:135:5: lv_label_0_0= RULE_LABEL
+                    // InternalLC2200.g:143:4: (lv_label_0_0= RULE_LABEL )
+                    // InternalLC2200.g:144:5: lv_label_0_0= RULE_LABEL
                     {
                     lv_label_0_0=(Token)match(input,RULE_LABEL,FOLLOW_4); 
 
@@ -388,13 +403,13 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalLC2200.g:151:3: ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) )
-            // InternalLC2200.g:152:4: ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) )
+            // InternalLC2200.g:160:3: ( ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) ) )
+            // InternalLC2200.g:161:4: ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) )
             {
-            // InternalLC2200.g:152:4: ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) )
-            // InternalLC2200.g:153:5: (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction )
+            // InternalLC2200.g:161:4: ( (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction ) )
+            // InternalLC2200.g:162:5: (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction )
             {
-            // InternalLC2200.g:153:5: (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction )
+            // InternalLC2200.g:162:5: (lv_instruction_1_1= ruleRInstruction | lv_instruction_1_2= ruleIInstruction | lv_instruction_1_3= ruleJInstruction | lv_instruction_1_4= ruleOInstruction )
             int alt4=4;
             switch ( input.LA(1) ) {
             case RULE_ROP:
@@ -428,7 +443,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             switch (alt4) {
                 case 1 :
-                    // InternalLC2200.g:154:6: lv_instruction_1_1= ruleRInstruction
+                    // InternalLC2200.g:163:6: lv_instruction_1_1= ruleRInstruction
                     {
 
                     						newCompositeNode(grammarAccess.getInstructionAccess().getInstructionRInstructionParserRuleCall_1_0_0());
@@ -453,7 +468,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalLC2200.g:170:6: lv_instruction_1_2= ruleIInstruction
+                    // InternalLC2200.g:179:6: lv_instruction_1_2= ruleIInstruction
                     {
 
                     						newCompositeNode(grammarAccess.getInstructionAccess().getInstructionIInstructionParserRuleCall_1_0_1());
@@ -478,7 +493,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalLC2200.g:186:6: lv_instruction_1_3= ruleJInstruction
+                    // InternalLC2200.g:195:6: lv_instruction_1_3= ruleJInstruction
                     {
 
                     						newCompositeNode(grammarAccess.getInstructionAccess().getInstructionJInstructionParserRuleCall_1_0_2());
@@ -503,7 +518,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalLC2200.g:202:6: lv_instruction_1_4= ruleOInstruction
+                    // InternalLC2200.g:211:6: lv_instruction_1_4= ruleOInstruction
                     {
 
                     						newCompositeNode(grammarAccess.getInstructionAccess().getInstructionOInstructionParserRuleCall_1_0_3());
@@ -536,33 +551,20 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalLC2200.g:220:3: (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )?
-            int alt5=3;
+            // InternalLC2200.g:229:3: (this_SL_COMMENT_2= RULE_SL_COMMENT )?
+            int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_COMMENT) ) {
+            if ( (LA5_0==RULE_SL_COMMENT) ) {
                 alt5=1;
-            }
-            else if ( (LA5_0==RULE_NEWLINE) ) {
-                alt5=2;
             }
             switch (alt5) {
                 case 1 :
-                    // InternalLC2200.g:221:4: this_COMMENT_2= RULE_COMMENT
+                    // InternalLC2200.g:230:4: this_SL_COMMENT_2= RULE_SL_COMMENT
                     {
-                    this_COMMENT_2=(Token)match(input,RULE_COMMENT,FOLLOW_2); 
+                    this_SL_COMMENT_2=(Token)match(input,RULE_SL_COMMENT,FOLLOW_2); 
 
-                    				newLeafNode(this_COMMENT_2, grammarAccess.getInstructionAccess().getCOMMENTTerminalRuleCall_2_0());
-                    			
-
-                    }
-                    break;
-                case 2 :
-                    // InternalLC2200.g:226:4: this_NEWLINE_3= RULE_NEWLINE
-                    {
-                    this_NEWLINE_3=(Token)match(input,RULE_NEWLINE,FOLLOW_2); 
-
-                    				newLeafNode(this_NEWLINE_3, grammarAccess.getInstructionAccess().getNEWLINETerminalRuleCall_2_1());
+                    				newLeafNode(this_SL_COMMENT_2, grammarAccess.getInstructionAccess().getSL_COMMENTTerminalRuleCall_2());
                     			
 
                     }
@@ -593,7 +595,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDirective"
-    // InternalLC2200.g:235:1: entryRuleDirective returns [EObject current=null] : iv_ruleDirective= ruleDirective EOF ;
+    // InternalLC2200.g:239:1: entryRuleDirective returns [EObject current=null] : iv_ruleDirective= ruleDirective EOF ;
     public final EObject entryRuleDirective() throws RecognitionException {
         EObject current = null;
 
@@ -601,8 +603,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:235:50: (iv_ruleDirective= ruleDirective EOF )
-            // InternalLC2200.g:236:2: iv_ruleDirective= ruleDirective EOF
+            // InternalLC2200.g:239:50: (iv_ruleDirective= ruleDirective EOF )
+            // InternalLC2200.g:240:2: iv_ruleDirective= ruleDirective EOF
             {
              newCompositeNode(grammarAccess.getDirectiveRule()); 
             pushFollow(FOLLOW_1);
@@ -629,13 +631,12 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDirective"
-    // InternalLC2200.g:242:1: ruleDirective returns [EObject current=null] : ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? ) ;
+    // InternalLC2200.g:246:1: ruleDirective returns [EObject current=null] : ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? ) ;
     public final EObject ruleDirective() throws RecognitionException {
         EObject current = null;
 
         Token lv_label_0_0=null;
-        Token this_COMMENT_2=null;
-        Token this_NEWLINE_3=null;
+        Token this_SL_COMMENT_2=null;
         EObject lv_directive_1_1 = null;
 
         EObject lv_directive_1_2 = null;
@@ -645,13 +646,13 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:248:2: ( ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? ) )
-            // InternalLC2200.g:249:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? )
+            // InternalLC2200.g:252:2: ( ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? ) )
+            // InternalLC2200.g:253:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? )
             {
-            // InternalLC2200.g:249:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )? )
-            // InternalLC2200.g:250:3: ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )?
+            // InternalLC2200.g:253:2: ( ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )? )
+            // InternalLC2200.g:254:3: ( (lv_label_0_0= RULE_LABEL ) )? ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) ) (this_SL_COMMENT_2= RULE_SL_COMMENT )?
             {
-            // InternalLC2200.g:250:3: ( (lv_label_0_0= RULE_LABEL ) )?
+            // InternalLC2200.g:254:3: ( (lv_label_0_0= RULE_LABEL ) )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -660,10 +661,10 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalLC2200.g:251:4: (lv_label_0_0= RULE_LABEL )
+                    // InternalLC2200.g:255:4: (lv_label_0_0= RULE_LABEL )
                     {
-                    // InternalLC2200.g:251:4: (lv_label_0_0= RULE_LABEL )
-                    // InternalLC2200.g:252:5: lv_label_0_0= RULE_LABEL
+                    // InternalLC2200.g:255:4: (lv_label_0_0= RULE_LABEL )
+                    // InternalLC2200.g:256:5: lv_label_0_0= RULE_LABEL
                     {
                     lv_label_0_0=(Token)match(input,RULE_LABEL,FOLLOW_6); 
 
@@ -688,13 +689,13 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalLC2200.g:268:3: ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) )
-            // InternalLC2200.g:269:4: ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) )
+            // InternalLC2200.g:272:3: ( ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) ) )
+            // InternalLC2200.g:273:4: ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) )
             {
-            // InternalLC2200.g:269:4: ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) )
-            // InternalLC2200.g:270:5: (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective )
+            // InternalLC2200.g:273:4: ( (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective ) )
+            // InternalLC2200.g:274:5: (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective )
             {
-            // InternalLC2200.g:270:5: (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective )
+            // InternalLC2200.g:274:5: (lv_directive_1_1= ruleNOOPDirective | lv_directive_1_2= ruleWordDirective )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -712,7 +713,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalLC2200.g:271:6: lv_directive_1_1= ruleNOOPDirective
+                    // InternalLC2200.g:275:6: lv_directive_1_1= ruleNOOPDirective
                     {
 
                     						newCompositeNode(grammarAccess.getDirectiveAccess().getDirectiveNOOPDirectiveParserRuleCall_1_0_0());
@@ -737,7 +738,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalLC2200.g:287:6: lv_directive_1_2= ruleWordDirective
+                    // InternalLC2200.g:291:6: lv_directive_1_2= ruleWordDirective
                     {
 
                     						newCompositeNode(grammarAccess.getDirectiveAccess().getDirectiveWordDirectiveParserRuleCall_1_0_1());
@@ -770,33 +771,20 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalLC2200.g:305:3: (this_COMMENT_2= RULE_COMMENT | this_NEWLINE_3= RULE_NEWLINE )?
-            int alt8=3;
+            // InternalLC2200.g:309:3: (this_SL_COMMENT_2= RULE_SL_COMMENT )?
+            int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==RULE_COMMENT) ) {
+            if ( (LA8_0==RULE_SL_COMMENT) ) {
                 alt8=1;
-            }
-            else if ( (LA8_0==RULE_NEWLINE) ) {
-                alt8=2;
             }
             switch (alt8) {
                 case 1 :
-                    // InternalLC2200.g:306:4: this_COMMENT_2= RULE_COMMENT
+                    // InternalLC2200.g:310:4: this_SL_COMMENT_2= RULE_SL_COMMENT
                     {
-                    this_COMMENT_2=(Token)match(input,RULE_COMMENT,FOLLOW_2); 
+                    this_SL_COMMENT_2=(Token)match(input,RULE_SL_COMMENT,FOLLOW_2); 
 
-                    				newLeafNode(this_COMMENT_2, grammarAccess.getDirectiveAccess().getCOMMENTTerminalRuleCall_2_0());
-                    			
-
-                    }
-                    break;
-                case 2 :
-                    // InternalLC2200.g:311:4: this_NEWLINE_3= RULE_NEWLINE
-                    {
-                    this_NEWLINE_3=(Token)match(input,RULE_NEWLINE,FOLLOW_2); 
-
-                    				newLeafNode(this_NEWLINE_3, grammarAccess.getDirectiveAccess().getNEWLINETerminalRuleCall_2_1());
+                    				newLeafNode(this_SL_COMMENT_2, grammarAccess.getDirectiveAccess().getSL_COMMENTTerminalRuleCall_2());
                     			
 
                     }
@@ -827,7 +815,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRInstruction"
-    // InternalLC2200.g:320:1: entryRuleRInstruction returns [EObject current=null] : iv_ruleRInstruction= ruleRInstruction EOF ;
+    // InternalLC2200.g:319:1: entryRuleRInstruction returns [EObject current=null] : iv_ruleRInstruction= ruleRInstruction EOF ;
     public final EObject entryRuleRInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -835,8 +823,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:320:53: (iv_ruleRInstruction= ruleRInstruction EOF )
-            // InternalLC2200.g:321:2: iv_ruleRInstruction= ruleRInstruction EOF
+            // InternalLC2200.g:319:53: (iv_ruleRInstruction= ruleRInstruction EOF )
+            // InternalLC2200.g:320:2: iv_ruleRInstruction= ruleRInstruction EOF
             {
              newCompositeNode(grammarAccess.getRInstructionRule()); 
             pushFollow(FOLLOW_1);
@@ -863,32 +851,32 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRInstruction"
-    // InternalLC2200.g:327:1: ruleRInstruction returns [EObject current=null] : ( ( (lv_r_opcode_0_0= RULE_ROP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_REG_5= RULE_REG ) ;
+    // InternalLC2200.g:326:1: ruleRInstruction returns [EObject current=null] : ( ( (lv_r_opcode_0_0= RULE_ROP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_reg3_5_0= RULE_REG ) ) ) ;
     public final EObject ruleRInstruction() throws RecognitionException {
         EObject current = null;
 
         Token lv_r_opcode_0_0=null;
-        Token this_REG_1=null;
+        Token lv_reg1_1_0=null;
         Token this_COMMA_2=null;
-        Token this_REG_3=null;
+        Token lv_reg2_3_0=null;
         Token this_COMMA_4=null;
-        Token this_REG_5=null;
+        Token lv_reg3_5_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalLC2200.g:333:2: ( ( ( (lv_r_opcode_0_0= RULE_ROP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_REG_5= RULE_REG ) )
-            // InternalLC2200.g:334:2: ( ( (lv_r_opcode_0_0= RULE_ROP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_REG_5= RULE_REG )
+            // InternalLC2200.g:332:2: ( ( ( (lv_r_opcode_0_0= RULE_ROP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_reg3_5_0= RULE_REG ) ) ) )
+            // InternalLC2200.g:333:2: ( ( (lv_r_opcode_0_0= RULE_ROP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_reg3_5_0= RULE_REG ) ) )
             {
-            // InternalLC2200.g:334:2: ( ( (lv_r_opcode_0_0= RULE_ROP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_REG_5= RULE_REG )
-            // InternalLC2200.g:335:3: ( (lv_r_opcode_0_0= RULE_ROP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_REG_5= RULE_REG
+            // InternalLC2200.g:333:2: ( ( (lv_r_opcode_0_0= RULE_ROP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_reg3_5_0= RULE_REG ) ) )
+            // InternalLC2200.g:334:3: ( (lv_r_opcode_0_0= RULE_ROP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_reg3_5_0= RULE_REG ) )
             {
-            // InternalLC2200.g:335:3: ( (lv_r_opcode_0_0= RULE_ROP ) )
-            // InternalLC2200.g:336:4: (lv_r_opcode_0_0= RULE_ROP )
+            // InternalLC2200.g:334:3: ( (lv_r_opcode_0_0= RULE_ROP ) )
+            // InternalLC2200.g:335:4: (lv_r_opcode_0_0= RULE_ROP )
             {
-            // InternalLC2200.g:336:4: (lv_r_opcode_0_0= RULE_ROP )
-            // InternalLC2200.g:337:5: lv_r_opcode_0_0= RULE_ROP
+            // InternalLC2200.g:335:4: (lv_r_opcode_0_0= RULE_ROP )
+            // InternalLC2200.g:336:5: lv_r_opcode_0_0= RULE_ROP
             {
             lv_r_opcode_0_0=(Token)match(input,RULE_ROP,FOLLOW_7); 
 
@@ -910,26 +898,92 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            this_REG_1=(Token)match(input,RULE_REG,FOLLOW_8); 
+            // InternalLC2200.g:352:3: ( (lv_reg1_1_0= RULE_REG ) )
+            // InternalLC2200.g:353:4: (lv_reg1_1_0= RULE_REG )
+            {
+            // InternalLC2200.g:353:4: (lv_reg1_1_0= RULE_REG )
+            // InternalLC2200.g:354:5: lv_reg1_1_0= RULE_REG
+            {
+            lv_reg1_1_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-            			newLeafNode(this_REG_1, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_1());
-            		
+            					newLeafNode(lv_reg1_1_0, grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getRInstructionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"reg1",
+            						lv_reg1_1_0,
+            						"org.team38.assembly.LC2200.REG");
+            				
+
+            }
+
+
+            }
+
             this_COMMA_2=(Token)match(input,RULE_COMMA,FOLLOW_7); 
 
             			newLeafNode(this_COMMA_2, grammarAccess.getRInstructionAccess().getCOMMATerminalRuleCall_2());
             		
-            this_REG_3=(Token)match(input,RULE_REG,FOLLOW_8); 
+            // InternalLC2200.g:374:3: ( (lv_reg2_3_0= RULE_REG ) )
+            // InternalLC2200.g:375:4: (lv_reg2_3_0= RULE_REG )
+            {
+            // InternalLC2200.g:375:4: (lv_reg2_3_0= RULE_REG )
+            // InternalLC2200.g:376:5: lv_reg2_3_0= RULE_REG
+            {
+            lv_reg2_3_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-            			newLeafNode(this_REG_3, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_3());
-            		
+            					newLeafNode(lv_reg2_3_0, grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getRInstructionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"reg2",
+            						lv_reg2_3_0,
+            						"org.team38.assembly.LC2200.REG");
+            				
+
+            }
+
+
+            }
+
             this_COMMA_4=(Token)match(input,RULE_COMMA,FOLLOW_7); 
 
             			newLeafNode(this_COMMA_4, grammarAccess.getRInstructionAccess().getCOMMATerminalRuleCall_4());
             		
-            this_REG_5=(Token)match(input,RULE_REG,FOLLOW_2); 
+            // InternalLC2200.g:396:3: ( (lv_reg3_5_0= RULE_REG ) )
+            // InternalLC2200.g:397:4: (lv_reg3_5_0= RULE_REG )
+            {
+            // InternalLC2200.g:397:4: (lv_reg3_5_0= RULE_REG )
+            // InternalLC2200.g:398:5: lv_reg3_5_0= RULE_REG
+            {
+            lv_reg3_5_0=(Token)match(input,RULE_REG,FOLLOW_2); 
 
-            			newLeafNode(this_REG_5, grammarAccess.getRInstructionAccess().getREGTerminalRuleCall_5());
-            		
+            					newLeafNode(lv_reg3_5_0, grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getRInstructionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"reg3",
+            						lv_reg3_5_0,
+            						"org.team38.assembly.LC2200.REG");
+            				
+
+            }
+
+
+            }
+
 
             }
 
@@ -953,7 +1007,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIInstruction"
-    // InternalLC2200.g:377:1: entryRuleIInstruction returns [EObject current=null] : iv_ruleIInstruction= ruleIInstruction EOF ;
+    // InternalLC2200.g:418:1: entryRuleIInstruction returns [EObject current=null] : iv_ruleIInstruction= ruleIInstruction EOF ;
     public final EObject entryRuleIInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -961,8 +1015,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:377:53: (iv_ruleIInstruction= ruleIInstruction EOF )
-            // InternalLC2200.g:378:2: iv_ruleIInstruction= ruleIInstruction EOF
+            // InternalLC2200.g:418:53: (iv_ruleIInstruction= ruleIInstruction EOF )
+            // InternalLC2200.g:419:2: iv_ruleIInstruction= ruleIInstruction EOF
             {
              newCompositeNode(grammarAccess.getIInstructionRule()); 
             pushFollow(FOLLOW_1);
@@ -989,38 +1043,38 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIInstruction"
-    // InternalLC2200.g:384:1: ruleIInstruction returns [EObject current=null] : ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM ) ) ;
+    // InternalLC2200.g:425:1: ruleIInstruction returns [EObject current=null] : ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) ) ) ;
     public final EObject ruleIInstruction() throws RecognitionException {
         EObject current = null;
 
         Token lv_i_opcode_0_0=null;
-        Token this_REG_1=null;
+        Token lv_reg1_1_0=null;
         Token this_COMMA_2=null;
-        Token this_REG_3=null;
+        Token lv_reg2_3_0=null;
         Token this_COMMA_4=null;
-        Token this_IMMEDIATE_5=null;
+        Token lv_imm_5_0=null;
         Token lv_i_opcode_6_0=null;
-        Token this_REG_7=null;
+        Token lv_reg1_7_0=null;
         Token this_COMMA_8=null;
-        Token this_IMMEDIATE_9=null;
+        Token lv_imm_9_0=null;
         Token this_LPAREN_10=null;
-        Token this_REG_11=null;
+        Token lv_reg2_11_0=null;
         Token this_RPAREN_12=null;
         Token lv_i_opcode_13_0=null;
-        Token this_REG_14=null;
+        Token lv_reg1_14_0=null;
         Token this_COMMA_15=null;
-        Token this_REG_16=null;
+        Token lv_reg2_16_0=null;
         Token this_COMMA_17=null;
-        Token this_LABEL_IMM_18=null;
+        Token lv_imm_18_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalLC2200.g:390:2: ( ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM ) ) )
-            // InternalLC2200.g:391:2: ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM ) )
+            // InternalLC2200.g:431:2: ( ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) ) ) )
+            // InternalLC2200.g:432:2: ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) ) )
             {
-            // InternalLC2200.g:391:2: ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM ) )
+            // InternalLC2200.g:432:2: ( ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) ) | ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN ) | ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) ) )
             int alt9=3;
             switch ( input.LA(1) ) {
             case RULE_IOP_IMM:
@@ -1047,16 +1101,16 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             switch (alt9) {
                 case 1 :
-                    // InternalLC2200.g:392:3: ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE )
+                    // InternalLC2200.g:433:3: ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) )
                     {
-                    // InternalLC2200.g:392:3: ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE )
-                    // InternalLC2200.g:393:4: ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG this_COMMA_4= RULE_COMMA this_IMMEDIATE_5= RULE_IMMEDIATE
+                    // InternalLC2200.g:433:3: ( ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) ) )
+                    // InternalLC2200.g:434:4: ( (lv_i_opcode_0_0= RULE_IOP_IMM ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) this_COMMA_4= RULE_COMMA ( (lv_imm_5_0= RULE_IMMEDIATE ) )
                     {
-                    // InternalLC2200.g:393:4: ( (lv_i_opcode_0_0= RULE_IOP_IMM ) )
-                    // InternalLC2200.g:394:5: (lv_i_opcode_0_0= RULE_IOP_IMM )
+                    // InternalLC2200.g:434:4: ( (lv_i_opcode_0_0= RULE_IOP_IMM ) )
+                    // InternalLC2200.g:435:5: (lv_i_opcode_0_0= RULE_IOP_IMM )
                     {
-                    // InternalLC2200.g:394:5: (lv_i_opcode_0_0= RULE_IOP_IMM )
-                    // InternalLC2200.g:395:6: lv_i_opcode_0_0= RULE_IOP_IMM
+                    // InternalLC2200.g:435:5: (lv_i_opcode_0_0= RULE_IOP_IMM )
+                    // InternalLC2200.g:436:6: lv_i_opcode_0_0= RULE_IOP_IMM
                     {
                     lv_i_opcode_0_0=(Token)match(input,RULE_IOP_IMM,FOLLOW_7); 
 
@@ -1078,26 +1132,92 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
                     }
 
-                    this_REG_1=(Token)match(input,RULE_REG,FOLLOW_8); 
+                    // InternalLC2200.g:452:4: ( (lv_reg1_1_0= RULE_REG ) )
+                    // InternalLC2200.g:453:5: (lv_reg1_1_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:453:5: (lv_reg1_1_0= RULE_REG )
+                    // InternalLC2200.g:454:6: lv_reg1_1_0= RULE_REG
+                    {
+                    lv_reg1_1_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-                    				newLeafNode(this_REG_1, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_1());
-                    			
+                    						newLeafNode(lv_reg1_1_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_0_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg1",
+                    							lv_reg1_1_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_COMMA_2=(Token)match(input,RULE_COMMA,FOLLOW_7); 
 
                     				newLeafNode(this_COMMA_2, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_0_2());
                     			
-                    this_REG_3=(Token)match(input,RULE_REG,FOLLOW_8); 
+                    // InternalLC2200.g:474:4: ( (lv_reg2_3_0= RULE_REG ) )
+                    // InternalLC2200.g:475:5: (lv_reg2_3_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:475:5: (lv_reg2_3_0= RULE_REG )
+                    // InternalLC2200.g:476:6: lv_reg2_3_0= RULE_REG
+                    {
+                    lv_reg2_3_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-                    				newLeafNode(this_REG_3, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_0_3());
-                    			
+                    						newLeafNode(lv_reg2_3_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_0_3_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg2",
+                    							lv_reg2_3_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_COMMA_4=(Token)match(input,RULE_COMMA,FOLLOW_9); 
 
                     				newLeafNode(this_COMMA_4, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_0_4());
                     			
-                    this_IMMEDIATE_5=(Token)match(input,RULE_IMMEDIATE,FOLLOW_2); 
+                    // InternalLC2200.g:496:4: ( (lv_imm_5_0= RULE_IMMEDIATE ) )
+                    // InternalLC2200.g:497:5: (lv_imm_5_0= RULE_IMMEDIATE )
+                    {
+                    // InternalLC2200.g:497:5: (lv_imm_5_0= RULE_IMMEDIATE )
+                    // InternalLC2200.g:498:6: lv_imm_5_0= RULE_IMMEDIATE
+                    {
+                    lv_imm_5_0=(Token)match(input,RULE_IMMEDIATE,FOLLOW_2); 
 
-                    				newLeafNode(this_IMMEDIATE_5, grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_0_5());
-                    			
+                    						newLeafNode(lv_imm_5_0, grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_0_5_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"imm",
+                    							lv_imm_5_0,
+                    							"org.team38.assembly.LC2200.IMMEDIATE");
+                    					
+
+                    }
+
+
+                    }
+
 
                     }
 
@@ -1105,16 +1225,16 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalLC2200.g:433:3: ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN )
+                    // InternalLC2200.g:516:3: ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN )
                     {
-                    // InternalLC2200.g:433:3: ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN )
-                    // InternalLC2200.g:434:4: ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) this_REG_7= RULE_REG this_COMMA_8= RULE_COMMA this_IMMEDIATE_9= RULE_IMMEDIATE this_LPAREN_10= RULE_LPAREN this_REG_11= RULE_REG this_RPAREN_12= RULE_RPAREN
+                    // InternalLC2200.g:516:3: ( ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN )
+                    // InternalLC2200.g:517:4: ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) ) ( (lv_reg1_7_0= RULE_REG ) ) this_COMMA_8= RULE_COMMA ( (lv_imm_9_0= RULE_IMMEDIATE ) ) this_LPAREN_10= RULE_LPAREN ( (lv_reg2_11_0= RULE_REG ) ) this_RPAREN_12= RULE_RPAREN
                     {
-                    // InternalLC2200.g:434:4: ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) )
-                    // InternalLC2200.g:435:5: (lv_i_opcode_6_0= RULE_IOP_OFFSET )
+                    // InternalLC2200.g:517:4: ( (lv_i_opcode_6_0= RULE_IOP_OFFSET ) )
+                    // InternalLC2200.g:518:5: (lv_i_opcode_6_0= RULE_IOP_OFFSET )
                     {
-                    // InternalLC2200.g:435:5: (lv_i_opcode_6_0= RULE_IOP_OFFSET )
-                    // InternalLC2200.g:436:6: lv_i_opcode_6_0= RULE_IOP_OFFSET
+                    // InternalLC2200.g:518:5: (lv_i_opcode_6_0= RULE_IOP_OFFSET )
+                    // InternalLC2200.g:519:6: lv_i_opcode_6_0= RULE_IOP_OFFSET
                     {
                     lv_i_opcode_6_0=(Token)match(input,RULE_IOP_OFFSET,FOLLOW_7); 
 
@@ -1136,26 +1256,92 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
                     }
 
-                    this_REG_7=(Token)match(input,RULE_REG,FOLLOW_8); 
+                    // InternalLC2200.g:535:4: ( (lv_reg1_7_0= RULE_REG ) )
+                    // InternalLC2200.g:536:5: (lv_reg1_7_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:536:5: (lv_reg1_7_0= RULE_REG )
+                    // InternalLC2200.g:537:6: lv_reg1_7_0= RULE_REG
+                    {
+                    lv_reg1_7_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-                    				newLeafNode(this_REG_7, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_1());
-                    			
+                    						newLeafNode(lv_reg1_7_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_1_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg1",
+                    							lv_reg1_7_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_COMMA_8=(Token)match(input,RULE_COMMA,FOLLOW_9); 
 
                     				newLeafNode(this_COMMA_8, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_1_2());
                     			
-                    this_IMMEDIATE_9=(Token)match(input,RULE_IMMEDIATE,FOLLOW_10); 
+                    // InternalLC2200.g:557:4: ( (lv_imm_9_0= RULE_IMMEDIATE ) )
+                    // InternalLC2200.g:558:5: (lv_imm_9_0= RULE_IMMEDIATE )
+                    {
+                    // InternalLC2200.g:558:5: (lv_imm_9_0= RULE_IMMEDIATE )
+                    // InternalLC2200.g:559:6: lv_imm_9_0= RULE_IMMEDIATE
+                    {
+                    lv_imm_9_0=(Token)match(input,RULE_IMMEDIATE,FOLLOW_10); 
 
-                    				newLeafNode(this_IMMEDIATE_9, grammarAccess.getIInstructionAccess().getIMMEDIATETerminalRuleCall_1_3());
-                    			
+                    						newLeafNode(lv_imm_9_0, grammarAccess.getIInstructionAccess().getImmIMMEDIATETerminalRuleCall_1_3_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"imm",
+                    							lv_imm_9_0,
+                    							"org.team38.assembly.LC2200.IMMEDIATE");
+                    					
+
+                    }
+
+
+                    }
+
                     this_LPAREN_10=(Token)match(input,RULE_LPAREN,FOLLOW_7); 
 
                     				newLeafNode(this_LPAREN_10, grammarAccess.getIInstructionAccess().getLPARENTerminalRuleCall_1_4());
                     			
-                    this_REG_11=(Token)match(input,RULE_REG,FOLLOW_11); 
+                    // InternalLC2200.g:579:4: ( (lv_reg2_11_0= RULE_REG ) )
+                    // InternalLC2200.g:580:5: (lv_reg2_11_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:580:5: (lv_reg2_11_0= RULE_REG )
+                    // InternalLC2200.g:581:6: lv_reg2_11_0= RULE_REG
+                    {
+                    lv_reg2_11_0=(Token)match(input,RULE_REG,FOLLOW_11); 
 
-                    				newLeafNode(this_REG_11, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_1_5());
-                    			
+                    						newLeafNode(lv_reg2_11_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_1_5_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg2",
+                    							lv_reg2_11_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_RPAREN_12=(Token)match(input,RULE_RPAREN,FOLLOW_2); 
 
                     				newLeafNode(this_RPAREN_12, grammarAccess.getIInstructionAccess().getRPARENTerminalRuleCall_1_6());
@@ -1167,16 +1353,16 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalLC2200.g:478:3: ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM )
+                    // InternalLC2200.g:603:3: ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) )
                     {
-                    // InternalLC2200.g:478:3: ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM )
-                    // InternalLC2200.g:479:4: ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) this_REG_14= RULE_REG this_COMMA_15= RULE_COMMA this_REG_16= RULE_REG this_COMMA_17= RULE_COMMA this_LABEL_IMM_18= RULE_LABEL_IMM
+                    // InternalLC2200.g:603:3: ( ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) ) )
+                    // InternalLC2200.g:604:4: ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) ) ( (lv_reg1_14_0= RULE_REG ) ) this_COMMA_15= RULE_COMMA ( (lv_reg2_16_0= RULE_REG ) ) this_COMMA_17= RULE_COMMA ( (lv_imm_18_0= RULE_LABEL_IMM ) )
                     {
-                    // InternalLC2200.g:479:4: ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) )
-                    // InternalLC2200.g:480:5: (lv_i_opcode_13_0= RULE_IOP_LABEL )
+                    // InternalLC2200.g:604:4: ( (lv_i_opcode_13_0= RULE_IOP_LABEL ) )
+                    // InternalLC2200.g:605:5: (lv_i_opcode_13_0= RULE_IOP_LABEL )
                     {
-                    // InternalLC2200.g:480:5: (lv_i_opcode_13_0= RULE_IOP_LABEL )
-                    // InternalLC2200.g:481:6: lv_i_opcode_13_0= RULE_IOP_LABEL
+                    // InternalLC2200.g:605:5: (lv_i_opcode_13_0= RULE_IOP_LABEL )
+                    // InternalLC2200.g:606:6: lv_i_opcode_13_0= RULE_IOP_LABEL
                     {
                     lv_i_opcode_13_0=(Token)match(input,RULE_IOP_LABEL,FOLLOW_7); 
 
@@ -1198,26 +1384,92 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
                     }
 
-                    this_REG_14=(Token)match(input,RULE_REG,FOLLOW_8); 
+                    // InternalLC2200.g:622:4: ( (lv_reg1_14_0= RULE_REG ) )
+                    // InternalLC2200.g:623:5: (lv_reg1_14_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:623:5: (lv_reg1_14_0= RULE_REG )
+                    // InternalLC2200.g:624:6: lv_reg1_14_0= RULE_REG
+                    {
+                    lv_reg1_14_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-                    				newLeafNode(this_REG_14, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_1());
-                    			
+                    						newLeafNode(lv_reg1_14_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_2_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg1",
+                    							lv_reg1_14_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_COMMA_15=(Token)match(input,RULE_COMMA,FOLLOW_7); 
 
                     				newLeafNode(this_COMMA_15, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_2_2());
                     			
-                    this_REG_16=(Token)match(input,RULE_REG,FOLLOW_8); 
+                    // InternalLC2200.g:644:4: ( (lv_reg2_16_0= RULE_REG ) )
+                    // InternalLC2200.g:645:5: (lv_reg2_16_0= RULE_REG )
+                    {
+                    // InternalLC2200.g:645:5: (lv_reg2_16_0= RULE_REG )
+                    // InternalLC2200.g:646:6: lv_reg2_16_0= RULE_REG
+                    {
+                    lv_reg2_16_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-                    				newLeafNode(this_REG_16, grammarAccess.getIInstructionAccess().getREGTerminalRuleCall_2_3());
-                    			
+                    						newLeafNode(lv_reg2_16_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_2_3_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"reg2",
+                    							lv_reg2_16_0,
+                    							"org.team38.assembly.LC2200.REG");
+                    					
+
+                    }
+
+
+                    }
+
                     this_COMMA_17=(Token)match(input,RULE_COMMA,FOLLOW_12); 
 
                     				newLeafNode(this_COMMA_17, grammarAccess.getIInstructionAccess().getCOMMATerminalRuleCall_2_4());
                     			
-                    this_LABEL_IMM_18=(Token)match(input,RULE_LABEL_IMM,FOLLOW_2); 
+                    // InternalLC2200.g:666:4: ( (lv_imm_18_0= RULE_LABEL_IMM ) )
+                    // InternalLC2200.g:667:5: (lv_imm_18_0= RULE_LABEL_IMM )
+                    {
+                    // InternalLC2200.g:667:5: (lv_imm_18_0= RULE_LABEL_IMM )
+                    // InternalLC2200.g:668:6: lv_imm_18_0= RULE_LABEL_IMM
+                    {
+                    lv_imm_18_0=(Token)match(input,RULE_LABEL_IMM,FOLLOW_2); 
 
-                    				newLeafNode(this_LABEL_IMM_18, grammarAccess.getIInstructionAccess().getLABEL_IMMTerminalRuleCall_2_5());
-                    			
+                    						newLeafNode(lv_imm_18_0, grammarAccess.getIInstructionAccess().getImmLABEL_IMMTerminalRuleCall_2_5_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getIInstructionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"imm",
+                    							lv_imm_18_0,
+                    							"org.team38.assembly.LC2200.LABEL_IMM");
+                    					
+
+                    }
+
+
+                    }
+
 
                     }
 
@@ -1247,7 +1499,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJInstruction"
-    // InternalLC2200.g:522:1: entryRuleJInstruction returns [EObject current=null] : iv_ruleJInstruction= ruleJInstruction EOF ;
+    // InternalLC2200.g:689:1: entryRuleJInstruction returns [EObject current=null] : iv_ruleJInstruction= ruleJInstruction EOF ;
     public final EObject entryRuleJInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -1255,8 +1507,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:522:53: (iv_ruleJInstruction= ruleJInstruction EOF )
-            // InternalLC2200.g:523:2: iv_ruleJInstruction= ruleJInstruction EOF
+            // InternalLC2200.g:689:53: (iv_ruleJInstruction= ruleJInstruction EOF )
+            // InternalLC2200.g:690:2: iv_ruleJInstruction= ruleJInstruction EOF
             {
              newCompositeNode(grammarAccess.getJInstructionRule()); 
             pushFollow(FOLLOW_1);
@@ -1283,30 +1535,30 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJInstruction"
-    // InternalLC2200.g:529:1: ruleJInstruction returns [EObject current=null] : ( ( (lv_j_opcode_0_0= RULE_JOP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG ) ;
+    // InternalLC2200.g:696:1: ruleJInstruction returns [EObject current=null] : ( ( (lv_j_opcode_0_0= RULE_JOP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) ) ;
     public final EObject ruleJInstruction() throws RecognitionException {
         EObject current = null;
 
         Token lv_j_opcode_0_0=null;
-        Token this_REG_1=null;
+        Token lv_reg1_1_0=null;
         Token this_COMMA_2=null;
-        Token this_REG_3=null;
+        Token lv_reg2_3_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalLC2200.g:535:2: ( ( ( (lv_j_opcode_0_0= RULE_JOP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG ) )
-            // InternalLC2200.g:536:2: ( ( (lv_j_opcode_0_0= RULE_JOP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG )
+            // InternalLC2200.g:702:2: ( ( ( (lv_j_opcode_0_0= RULE_JOP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) ) )
+            // InternalLC2200.g:703:2: ( ( (lv_j_opcode_0_0= RULE_JOP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) )
             {
-            // InternalLC2200.g:536:2: ( ( (lv_j_opcode_0_0= RULE_JOP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG )
-            // InternalLC2200.g:537:3: ( (lv_j_opcode_0_0= RULE_JOP ) ) this_REG_1= RULE_REG this_COMMA_2= RULE_COMMA this_REG_3= RULE_REG
+            // InternalLC2200.g:703:2: ( ( (lv_j_opcode_0_0= RULE_JOP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) ) )
+            // InternalLC2200.g:704:3: ( (lv_j_opcode_0_0= RULE_JOP ) ) ( (lv_reg1_1_0= RULE_REG ) ) this_COMMA_2= RULE_COMMA ( (lv_reg2_3_0= RULE_REG ) )
             {
-            // InternalLC2200.g:537:3: ( (lv_j_opcode_0_0= RULE_JOP ) )
-            // InternalLC2200.g:538:4: (lv_j_opcode_0_0= RULE_JOP )
+            // InternalLC2200.g:704:3: ( (lv_j_opcode_0_0= RULE_JOP ) )
+            // InternalLC2200.g:705:4: (lv_j_opcode_0_0= RULE_JOP )
             {
-            // InternalLC2200.g:538:4: (lv_j_opcode_0_0= RULE_JOP )
-            // InternalLC2200.g:539:5: lv_j_opcode_0_0= RULE_JOP
+            // InternalLC2200.g:705:4: (lv_j_opcode_0_0= RULE_JOP )
+            // InternalLC2200.g:706:5: lv_j_opcode_0_0= RULE_JOP
             {
             lv_j_opcode_0_0=(Token)match(input,RULE_JOP,FOLLOW_7); 
 
@@ -1328,18 +1580,62 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            this_REG_1=(Token)match(input,RULE_REG,FOLLOW_8); 
+            // InternalLC2200.g:722:3: ( (lv_reg1_1_0= RULE_REG ) )
+            // InternalLC2200.g:723:4: (lv_reg1_1_0= RULE_REG )
+            {
+            // InternalLC2200.g:723:4: (lv_reg1_1_0= RULE_REG )
+            // InternalLC2200.g:724:5: lv_reg1_1_0= RULE_REG
+            {
+            lv_reg1_1_0=(Token)match(input,RULE_REG,FOLLOW_8); 
 
-            			newLeafNode(this_REG_1, grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_1());
-            		
+            					newLeafNode(lv_reg1_1_0, grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getJInstructionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"reg1",
+            						lv_reg1_1_0,
+            						"org.team38.assembly.LC2200.REG");
+            				
+
+            }
+
+
+            }
+
             this_COMMA_2=(Token)match(input,RULE_COMMA,FOLLOW_7); 
 
             			newLeafNode(this_COMMA_2, grammarAccess.getJInstructionAccess().getCOMMATerminalRuleCall_2());
             		
-            this_REG_3=(Token)match(input,RULE_REG,FOLLOW_2); 
+            // InternalLC2200.g:744:3: ( (lv_reg2_3_0= RULE_REG ) )
+            // InternalLC2200.g:745:4: (lv_reg2_3_0= RULE_REG )
+            {
+            // InternalLC2200.g:745:4: (lv_reg2_3_0= RULE_REG )
+            // InternalLC2200.g:746:5: lv_reg2_3_0= RULE_REG
+            {
+            lv_reg2_3_0=(Token)match(input,RULE_REG,FOLLOW_2); 
 
-            			newLeafNode(this_REG_3, grammarAccess.getJInstructionAccess().getREGTerminalRuleCall_3());
-            		
+            					newLeafNode(lv_reg2_3_0, grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getJInstructionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"reg2",
+            						lv_reg2_3_0,
+            						"org.team38.assembly.LC2200.REG");
+            				
+
+            }
+
+
+            }
+
 
             }
 
@@ -1363,7 +1659,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOInstruction"
-    // InternalLC2200.g:571:1: entryRuleOInstruction returns [EObject current=null] : iv_ruleOInstruction= ruleOInstruction EOF ;
+    // InternalLC2200.g:766:1: entryRuleOInstruction returns [EObject current=null] : iv_ruleOInstruction= ruleOInstruction EOF ;
     public final EObject entryRuleOInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -1371,8 +1667,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:571:53: (iv_ruleOInstruction= ruleOInstruction EOF )
-            // InternalLC2200.g:572:2: iv_ruleOInstruction= ruleOInstruction EOF
+            // InternalLC2200.g:766:53: (iv_ruleOInstruction= ruleOInstruction EOF )
+            // InternalLC2200.g:767:2: iv_ruleOInstruction= ruleOInstruction EOF
             {
              newCompositeNode(grammarAccess.getOInstructionRule()); 
             pushFollow(FOLLOW_1);
@@ -1399,7 +1695,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOInstruction"
-    // InternalLC2200.g:578:1: ruleOInstruction returns [EObject current=null] : ( (lv_o_opcode_0_0= RULE_OOP ) ) ;
+    // InternalLC2200.g:773:1: ruleOInstruction returns [EObject current=null] : ( (lv_o_opcode_0_0= RULE_OOP ) ) ;
     public final EObject ruleOInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -1409,14 +1705,14 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:584:2: ( ( (lv_o_opcode_0_0= RULE_OOP ) ) )
-            // InternalLC2200.g:585:2: ( (lv_o_opcode_0_0= RULE_OOP ) )
+            // InternalLC2200.g:779:2: ( ( (lv_o_opcode_0_0= RULE_OOP ) ) )
+            // InternalLC2200.g:780:2: ( (lv_o_opcode_0_0= RULE_OOP ) )
             {
-            // InternalLC2200.g:585:2: ( (lv_o_opcode_0_0= RULE_OOP ) )
-            // InternalLC2200.g:586:3: (lv_o_opcode_0_0= RULE_OOP )
+            // InternalLC2200.g:780:2: ( (lv_o_opcode_0_0= RULE_OOP ) )
+            // InternalLC2200.g:781:3: (lv_o_opcode_0_0= RULE_OOP )
             {
-            // InternalLC2200.g:586:3: (lv_o_opcode_0_0= RULE_OOP )
-            // InternalLC2200.g:587:4: lv_o_opcode_0_0= RULE_OOP
+            // InternalLC2200.g:781:3: (lv_o_opcode_0_0= RULE_OOP )
+            // InternalLC2200.g:782:4: lv_o_opcode_0_0= RULE_OOP
             {
             lv_o_opcode_0_0=(Token)match(input,RULE_OOP,FOLLOW_2); 
 
@@ -1458,7 +1754,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNOOPDirective"
-    // InternalLC2200.g:606:1: entryRuleNOOPDirective returns [EObject current=null] : iv_ruleNOOPDirective= ruleNOOPDirective EOF ;
+    // InternalLC2200.g:801:1: entryRuleNOOPDirective returns [EObject current=null] : iv_ruleNOOPDirective= ruleNOOPDirective EOF ;
     public final EObject entryRuleNOOPDirective() throws RecognitionException {
         EObject current = null;
 
@@ -1466,8 +1762,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:606:54: (iv_ruleNOOPDirective= ruleNOOPDirective EOF )
-            // InternalLC2200.g:607:2: iv_ruleNOOPDirective= ruleNOOPDirective EOF
+            // InternalLC2200.g:801:54: (iv_ruleNOOPDirective= ruleNOOPDirective EOF )
+            // InternalLC2200.g:802:2: iv_ruleNOOPDirective= ruleNOOPDirective EOF
             {
              newCompositeNode(grammarAccess.getNOOPDirectiveRule()); 
             pushFollow(FOLLOW_1);
@@ -1494,7 +1790,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNOOPDirective"
-    // InternalLC2200.g:613:1: ruleNOOPDirective returns [EObject current=null] : ( (lv_n_dir_0_0= RULE_NOOP ) ) ;
+    // InternalLC2200.g:808:1: ruleNOOPDirective returns [EObject current=null] : ( (lv_n_dir_0_0= RULE_NOOP ) ) ;
     public final EObject ruleNOOPDirective() throws RecognitionException {
         EObject current = null;
 
@@ -1504,14 +1800,14 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:619:2: ( ( (lv_n_dir_0_0= RULE_NOOP ) ) )
-            // InternalLC2200.g:620:2: ( (lv_n_dir_0_0= RULE_NOOP ) )
+            // InternalLC2200.g:814:2: ( ( (lv_n_dir_0_0= RULE_NOOP ) ) )
+            // InternalLC2200.g:815:2: ( (lv_n_dir_0_0= RULE_NOOP ) )
             {
-            // InternalLC2200.g:620:2: ( (lv_n_dir_0_0= RULE_NOOP ) )
-            // InternalLC2200.g:621:3: (lv_n_dir_0_0= RULE_NOOP )
+            // InternalLC2200.g:815:2: ( (lv_n_dir_0_0= RULE_NOOP ) )
+            // InternalLC2200.g:816:3: (lv_n_dir_0_0= RULE_NOOP )
             {
-            // InternalLC2200.g:621:3: (lv_n_dir_0_0= RULE_NOOP )
-            // InternalLC2200.g:622:4: lv_n_dir_0_0= RULE_NOOP
+            // InternalLC2200.g:816:3: (lv_n_dir_0_0= RULE_NOOP )
+            // InternalLC2200.g:817:4: lv_n_dir_0_0= RULE_NOOP
             {
             lv_n_dir_0_0=(Token)match(input,RULE_NOOP,FOLLOW_2); 
 
@@ -1553,7 +1849,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleWordDirective"
-    // InternalLC2200.g:641:1: entryRuleWordDirective returns [EObject current=null] : iv_ruleWordDirective= ruleWordDirective EOF ;
+    // InternalLC2200.g:836:1: entryRuleWordDirective returns [EObject current=null] : iv_ruleWordDirective= ruleWordDirective EOF ;
     public final EObject entryRuleWordDirective() throws RecognitionException {
         EObject current = null;
 
@@ -1561,8 +1857,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalLC2200.g:641:54: (iv_ruleWordDirective= ruleWordDirective EOF )
-            // InternalLC2200.g:642:2: iv_ruleWordDirective= ruleWordDirective EOF
+            // InternalLC2200.g:836:54: (iv_ruleWordDirective= ruleWordDirective EOF )
+            // InternalLC2200.g:837:2: iv_ruleWordDirective= ruleWordDirective EOF
             {
              newCompositeNode(grammarAccess.getWordDirectiveRule()); 
             pushFollow(FOLLOW_1);
@@ -1589,28 +1885,28 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWordDirective"
-    // InternalLC2200.g:648:1: ruleWordDirective returns [EObject current=null] : ( ( (lv_w_dir_0_0= RULE_WORD ) ) this_IMMEDIATE_1= RULE_IMMEDIATE ) ;
+    // InternalLC2200.g:843:1: ruleWordDirective returns [EObject current=null] : ( ( (lv_w_dir_0_0= RULE_WORD ) ) ( (lv_imm_1_0= RULE_IMMEDIATE ) ) ) ;
     public final EObject ruleWordDirective() throws RecognitionException {
         EObject current = null;
 
         Token lv_w_dir_0_0=null;
-        Token this_IMMEDIATE_1=null;
+        Token lv_imm_1_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalLC2200.g:654:2: ( ( ( (lv_w_dir_0_0= RULE_WORD ) ) this_IMMEDIATE_1= RULE_IMMEDIATE ) )
-            // InternalLC2200.g:655:2: ( ( (lv_w_dir_0_0= RULE_WORD ) ) this_IMMEDIATE_1= RULE_IMMEDIATE )
+            // InternalLC2200.g:849:2: ( ( ( (lv_w_dir_0_0= RULE_WORD ) ) ( (lv_imm_1_0= RULE_IMMEDIATE ) ) ) )
+            // InternalLC2200.g:850:2: ( ( (lv_w_dir_0_0= RULE_WORD ) ) ( (lv_imm_1_0= RULE_IMMEDIATE ) ) )
             {
-            // InternalLC2200.g:655:2: ( ( (lv_w_dir_0_0= RULE_WORD ) ) this_IMMEDIATE_1= RULE_IMMEDIATE )
-            // InternalLC2200.g:656:3: ( (lv_w_dir_0_0= RULE_WORD ) ) this_IMMEDIATE_1= RULE_IMMEDIATE
+            // InternalLC2200.g:850:2: ( ( (lv_w_dir_0_0= RULE_WORD ) ) ( (lv_imm_1_0= RULE_IMMEDIATE ) ) )
+            // InternalLC2200.g:851:3: ( (lv_w_dir_0_0= RULE_WORD ) ) ( (lv_imm_1_0= RULE_IMMEDIATE ) )
             {
-            // InternalLC2200.g:656:3: ( (lv_w_dir_0_0= RULE_WORD ) )
-            // InternalLC2200.g:657:4: (lv_w_dir_0_0= RULE_WORD )
+            // InternalLC2200.g:851:3: ( (lv_w_dir_0_0= RULE_WORD ) )
+            // InternalLC2200.g:852:4: (lv_w_dir_0_0= RULE_WORD )
             {
-            // InternalLC2200.g:657:4: (lv_w_dir_0_0= RULE_WORD )
-            // InternalLC2200.g:658:5: lv_w_dir_0_0= RULE_WORD
+            // InternalLC2200.g:852:4: (lv_w_dir_0_0= RULE_WORD )
+            // InternalLC2200.g:853:5: lv_w_dir_0_0= RULE_WORD
             {
             lv_w_dir_0_0=(Token)match(input,RULE_WORD,FOLLOW_9); 
 
@@ -1632,10 +1928,32 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            this_IMMEDIATE_1=(Token)match(input,RULE_IMMEDIATE,FOLLOW_2); 
+            // InternalLC2200.g:869:3: ( (lv_imm_1_0= RULE_IMMEDIATE ) )
+            // InternalLC2200.g:870:4: (lv_imm_1_0= RULE_IMMEDIATE )
+            {
+            // InternalLC2200.g:870:4: (lv_imm_1_0= RULE_IMMEDIATE )
+            // InternalLC2200.g:871:5: lv_imm_1_0= RULE_IMMEDIATE
+            {
+            lv_imm_1_0=(Token)match(input,RULE_IMMEDIATE,FOLLOW_2); 
 
-            			newLeafNode(this_IMMEDIATE_1, grammarAccess.getWordDirectiveAccess().getIMMEDIATETerminalRuleCall_1());
-            		
+            					newLeafNode(lv_imm_1_0, grammarAccess.getWordDirectiveAccess().getImmIMMEDIATETerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getWordDirectiveRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"imm",
+            						lv_imm_1_0,
+            						"org.team38.assembly.LC2200.IMMEDIATE");
+            				
+
+            }
+
+
+            }
+
 
             }
 
@@ -1664,15 +1982,15 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000001E9492L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000069490L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000062L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000001E94F0L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000000F4A52L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000034A50L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000000F4A70L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000008000L});
 
 }

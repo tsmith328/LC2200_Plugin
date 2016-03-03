@@ -89,7 +89,11 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     IInstruction returns IInstruction
 	 *
 	 * Constraint:
-	 *     (i_opcode=IOP_IMM | i_opcode=IOP_OFFSET | i_opcode=IOP_LABEL)
+	 *     (
+	 *         (i_opcode=IOP_IMM reg1=REG reg2=REG imm=IMMEDIATE) | 
+	 *         (i_opcode=IOP_OFFSET reg1=REG imm=IMMEDIATE reg2=REG) | 
+	 *         (i_opcode=IOP_LABEL reg1=REG reg2=REG imm=LABEL_IMM)
+	 *     )
 	 */
 	protected void sequence_IInstruction(ISerializationContext context, IInstruction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -113,15 +117,21 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     JInstruction returns JInstruction
 	 *
 	 * Constraint:
-	 *     j_opcode=JOP
+	 *     (j_opcode=JOP reg1=REG reg2=REG)
 	 */
 	protected void sequence_JInstruction(ISerializationContext context, JInstruction semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.JINSTRUCTION__JOPCODE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.JINSTRUCTION__JOPCODE));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.JINSTRUCTION__REG1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.JINSTRUCTION__REG1));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.JINSTRUCTION__REG2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.JINSTRUCTION__REG2));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getJInstructionAccess().getJ_opcodeJOPTerminalRuleCall_0_0(), semanticObject.getJ_opcode());
+		feeder.accept(grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0(), semanticObject.getReg1());
+		feeder.accept(grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0(), semanticObject.getReg2());
 		feeder.finish();
 	}
 	
@@ -167,7 +177,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (program+=Instruction | program+=Directive)+
+	 *     (lines+=Instruction | lines+=Directive)*
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -179,15 +189,24 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     RInstruction returns RInstruction
 	 *
 	 * Constraint:
-	 *     r_opcode=ROP
+	 *     (r_opcode=ROP reg1=REG reg2=REG reg3=REG)
 	 */
 	protected void sequence_RInstruction(ISerializationContext context, RInstruction semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.RINSTRUCTION__ROPCODE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.RINSTRUCTION__ROPCODE));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG1));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG2));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG3) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.RINSTRUCTION__REG3));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRInstructionAccess().getR_opcodeROPTerminalRuleCall_0_0(), semanticObject.getR_opcode());
+		feeder.accept(grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0(), semanticObject.getReg1());
+		feeder.accept(grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0(), semanticObject.getReg2());
+		feeder.accept(grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0(), semanticObject.getReg3());
 		feeder.finish();
 	}
 	
@@ -197,15 +216,18 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     WordDirective returns WordDirective
 	 *
 	 * Constraint:
-	 *     w_dir=WORD
+	 *     (w_dir=WORD imm=IMMEDIATE)
 	 */
 	protected void sequence_WordDirective(ISerializationContext context, WordDirective semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.WORD_DIRECTIVE__WDIR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.WORD_DIRECTIVE__WDIR));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.WORD_DIRECTIVE__IMM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.WORD_DIRECTIVE__IMM));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getWordDirectiveAccess().getW_dirWORDTerminalRuleCall_0_0(), semanticObject.getW_dir());
+		feeder.accept(grammarAccess.getWordDirectiveAccess().getImmIMMEDIATETerminalRuleCall_1_0(), semanticObject.getImm());
 		feeder.finish();
 	}
 	

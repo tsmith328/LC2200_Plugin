@@ -16,15 +16,15 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.eclipse.core.runtime;bundle-version="3.11.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.team38.assembly.validation,
- org.team38.assembly.lC2200,
- org.team38.assembly.scoping,
+Export-Package: org.team38.assembly,
  org.team38.assembly.generator,
+ org.team38.assembly.lC2200,
+ org.team38.assembly.lC2200.impl,
  org.team38.assembly.lC2200.util,
- org.team38.assembly.serializer,
- org.team38.assembly,
- org.team38.assembly.services,
- org.team38.assembly.parser.antlr.internal,
  org.team38.assembly.parser.antlr,
- org.team38.assembly.lC2200.impl
+ org.team38.assembly.parser.antlr.internal,
+ org.team38.assembly.scoping,
+ org.team38.assembly.serializer,
+ org.team38.assembly.services,
+ org.team38.assembly.validation
 Import-Package: org.apache.log4j
