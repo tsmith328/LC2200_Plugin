@@ -19,4 +19,31 @@
 	      </property>
 	   </product>
 	</extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <category
+          id="org.team38.assembly.wizards"
+          name="LC-2200">
+    </category>
+    <wizard
+          category="org.team38.assembly.wizards"
+          class="org.team38.assembly.wizards.LC2200ProjectNewWizard"
+          id="org.team38.assembly.wizard.new.lc2200"
+          name="LC-2200 Project">
+    </wizard>
+ </extension>
+ <extension
+       point="org.eclipse.ui.perspectives">
+    <perspective
+          class="org.team38.assembly.perspectives.Perspective"
+          id="org.team38.assembly.lc2200perspective"
+          name="LC-2200">
+    </perspective>
+ </extension>
+ <extension
+       point="org.eclipse.ui.perspectiveExtensions">
+    <perspectiveExtension
+          targetID="org.team38.assembly.lc2200perspective">
+    </perspectiveExtension>
+ </extension>
 </plugin>

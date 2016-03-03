@@ -76,14 +76,6 @@
 		</definition>
 	</extension>
 	<extension
-			point="org.eclipse.ui.perspectives">
-		<perspective
-			name="LC-2200"
-			id="org.eclipse.ui.articles.perspective.LC2200"
-			class="org.eclipse.ui.articles.perspective.LC2200Perspective">
-		</perspective>
-	</extension>			
-	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
 			class="org.team38.assembly.ui.LC2200ExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
