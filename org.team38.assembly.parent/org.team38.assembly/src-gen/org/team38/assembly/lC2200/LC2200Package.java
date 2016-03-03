@@ -96,7 +96,7 @@ public interface LC2200Package extends EPackage
   int INSTRUCTION = 1;
 
   /**
-   * The feature id for the '<em><b>Label</b></em>' attribute.
+   * The feature id for the '<em><b>Label</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -114,13 +114,22 @@ public interface LC2200Package extends EPackage
   int INSTRUCTION__INSTRUCTION = 1;
 
   /**
+   * The feature id for the '<em><b>Comment</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTION__COMMENT = 2;
+
+  /**
    * The number of structural features of the '<em>Instruction</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_FEATURE_COUNT = 2;
+  int INSTRUCTION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.DirectiveImpl <em>Directive</em>}' class.
@@ -133,7 +142,7 @@ public interface LC2200Package extends EPackage
   int DIRECTIVE = 2;
 
   /**
-   * The feature id for the '<em><b>Label</b></em>' attribute.
+   * The feature id for the '<em><b>Label</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -151,13 +160,22 @@ public interface LC2200Package extends EPackage
   int DIRECTIVE__DIRECTIVE = 1;
 
   /**
+   * The feature id for the '<em><b>Comment</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIRECTIVE__COMMENT = 2;
+
+  /**
    * The number of structural features of the '<em>Directive</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DIRECTIVE_FEATURE_COUNT = 2;
+  int DIRECTIVE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.RInstructionImpl <em>RInstruction</em>}' class.
@@ -170,7 +188,7 @@ public interface LC2200Package extends EPackage
   int RINSTRUCTION = 3;
 
   /**
-   * The feature id for the '<em><b>Ropcode</b></em>' attribute.
+   * The feature id for the '<em><b>Ropcode</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -179,7 +197,7 @@ public interface LC2200Package extends EPackage
   int RINSTRUCTION__ROPCODE = 0;
 
   /**
-   * The feature id for the '<em><b>Reg1</b></em>' attribute.
+   * The feature id for the '<em><b>Reg1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -188,7 +206,7 @@ public interface LC2200Package extends EPackage
   int RINSTRUCTION__REG1 = 1;
 
   /**
-   * The feature id for the '<em><b>Reg2</b></em>' attribute.
+   * The feature id for the '<em><b>Reg2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -197,7 +215,7 @@ public interface LC2200Package extends EPackage
   int RINSTRUCTION__REG2 = 2;
 
   /**
-   * The feature id for the '<em><b>Reg3</b></em>' attribute.
+   * The feature id for the '<em><b>Reg3</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -225,7 +243,7 @@ public interface LC2200Package extends EPackage
   int IINSTRUCTION = 4;
 
   /**
-   * The feature id for the '<em><b>Iopcode</b></em>' attribute.
+   * The feature id for the '<em><b>Iopcode</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -234,7 +252,7 @@ public interface LC2200Package extends EPackage
   int IINSTRUCTION__IOPCODE = 0;
 
   /**
-   * The feature id for the '<em><b>Reg1</b></em>' attribute.
+   * The feature id for the '<em><b>Reg1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -243,7 +261,7 @@ public interface LC2200Package extends EPackage
   int IINSTRUCTION__REG1 = 1;
 
   /**
-   * The feature id for the '<em><b>Reg2</b></em>' attribute.
+   * The feature id for the '<em><b>Reg2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -261,13 +279,22 @@ public interface LC2200Package extends EPackage
   int IINSTRUCTION__IMM = 3;
 
   /**
+   * The feature id for the '<em><b>Label</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION__LABEL = 4;
+
+  /**
    * The number of structural features of the '<em>IInstruction</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IINSTRUCTION_FEATURE_COUNT = 4;
+  int IINSTRUCTION_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.JInstructionImpl <em>JInstruction</em>}' class.
@@ -280,7 +307,7 @@ public interface LC2200Package extends EPackage
   int JINSTRUCTION = 5;
 
   /**
-   * The feature id for the '<em><b>Jopcode</b></em>' attribute.
+   * The feature id for the '<em><b>Jopcode</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -289,7 +316,7 @@ public interface LC2200Package extends EPackage
   int JINSTRUCTION__JOPCODE = 0;
 
   /**
-   * The feature id for the '<em><b>Reg1</b></em>' attribute.
+   * The feature id for the '<em><b>Reg1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -298,7 +325,7 @@ public interface LC2200Package extends EPackage
   int JINSTRUCTION__REG1 = 1;
 
   /**
-   * The feature id for the '<em><b>Reg2</b></em>' attribute.
+   * The feature id for the '<em><b>Reg2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -382,7 +409,7 @@ public interface LC2200Package extends EPackage
   int WORD_DIRECTIVE = 8;
 
   /**
-   * The feature id for the '<em><b>Wdir</b></em>' attribute.
+   * The feature id for the '<em><b>Wdir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -407,6 +434,286 @@ public interface LC2200Package extends EPackage
    * @ordered
    */
   int WORD_DIRECTIVE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.RInstructionTransImpl <em>RInstruction Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.RInstructionTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRInstructionTrans()
+   * @generated
+   */
+  int RINSTRUCTION_TRANS = 9;
+
+  /**
+   * The feature id for the '<em><b>Ropcode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RINSTRUCTION_TRANS__ROPCODE = 0;
+
+  /**
+   * The number of structural features of the '<em>RInstruction Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RINSTRUCTION_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.IInstructionImmTransImpl <em>IInstruction Imm Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.IInstructionImmTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionImmTrans()
+   * @generated
+   */
+  int IINSTRUCTION_IMM_TRANS = 10;
+
+  /**
+   * The feature id for the '<em><b>Iopcode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_IMM_TRANS__IOPCODE = 0;
+
+  /**
+   * The number of structural features of the '<em>IInstruction Imm Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_IMM_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.IInstructionOffsetTransImpl <em>IInstruction Offset Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.IInstructionOffsetTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionOffsetTrans()
+   * @generated
+   */
+  int IINSTRUCTION_OFFSET_TRANS = 11;
+
+  /**
+   * The feature id for the '<em><b>Iopcode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_OFFSET_TRANS__IOPCODE = 0;
+
+  /**
+   * The number of structural features of the '<em>IInstruction Offset Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_OFFSET_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.IInstructionLabelTransImpl <em>IInstruction Label Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.IInstructionLabelTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionLabelTrans()
+   * @generated
+   */
+  int IINSTRUCTION_LABEL_TRANS = 12;
+
+  /**
+   * The feature id for the '<em><b>Iopcode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_LABEL_TRANS__IOPCODE = 0;
+
+  /**
+   * The number of structural features of the '<em>IInstruction Label Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IINSTRUCTION_LABEL_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.JInstructionTransImpl <em>JInstruction Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.JInstructionTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getJInstructionTrans()
+   * @generated
+   */
+  int JINSTRUCTION_TRANS = 13;
+
+  /**
+   * The feature id for the '<em><b>Jopcode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JINSTRUCTION_TRANS__JOPCODE = 0;
+
+  /**
+   * The number of structural features of the '<em>JInstruction Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JINSTRUCTION_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.WordTransImpl <em>Word Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.WordTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getWordTrans()
+   * @generated
+   */
+  int WORD_TRANS = 14;
+
+  /**
+   * The feature id for the '<em><b>Word</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORD_TRANS__WORD = 0;
+
+  /**
+   * The number of structural features of the '<em>Word Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORD_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.CommentTransImpl <em>Comment Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.CommentTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getCommentTrans()
+   * @generated
+   */
+  int COMMENT_TRANS = 15;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMENT_TRANS__COMMENT = 0;
+
+  /**
+   * The number of structural features of the '<em>Comment Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMENT_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.RegTransImpl <em>Reg Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.RegTransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRegTrans()
+   * @generated
+   */
+  int REG_TRANS = 16;
+
+  /**
+   * The feature id for the '<em><b>Reg</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REG_TRANS__REG = 0;
+
+  /**
+   * The number of structural features of the '<em>Reg Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REG_TRANS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.LabelBegImpl <em>Label Beg</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.LabelBegImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelBeg()
+   * @generated
+   */
+  int LABEL_BEG = 17;
+
+  /**
+   * The feature id for the '<em><b>Label</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_BEG__LABEL = 0;
+
+  /**
+   * The number of structural features of the '<em>Label Beg</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_BEG_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.LabelEndImpl <em>Label End</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.LabelEndImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelEnd()
+   * @generated
+   */
+  int LABEL_END = 18;
+
+  /**
+   * The feature id for the '<em><b>Label</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_END__LABEL = 0;
+
+  /**
+   * The number of structural features of the '<em>Label End</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_END_FEATURE_COUNT = 1;
 
 
   /**
@@ -441,15 +748,15 @@ public interface LC2200Package extends EPackage
   EClass getInstruction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.Instruction#getLabel <em>Label</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Instruction#getLabel <em>Label</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Label</em>'.
+   * @return the meta object for the containment reference '<em>Label</em>'.
    * @see org.team38.assembly.lC2200.Instruction#getLabel()
    * @see #getInstruction()
    * @generated
    */
-  EAttribute getInstruction_Label();
+  EReference getInstruction_Label();
 
   /**
    * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Instruction#getInstruction <em>Instruction</em>}'.
@@ -463,6 +770,17 @@ public interface LC2200Package extends EPackage
   EReference getInstruction_Instruction();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Instruction#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Comment</em>'.
+   * @see org.team38.assembly.lC2200.Instruction#getComment()
+   * @see #getInstruction()
+   * @generated
+   */
+  EReference getInstruction_Comment();
+
+  /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.Directive <em>Directive</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -473,15 +791,15 @@ public interface LC2200Package extends EPackage
   EClass getDirective();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.Directive#getLabel <em>Label</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Directive#getLabel <em>Label</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Label</em>'.
+   * @return the meta object for the containment reference '<em>Label</em>'.
    * @see org.team38.assembly.lC2200.Directive#getLabel()
    * @see #getDirective()
    * @generated
    */
-  EAttribute getDirective_Label();
+  EReference getDirective_Label();
 
   /**
    * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Directive#getDirective <em>Directive</em>}'.
@@ -495,6 +813,17 @@ public interface LC2200Package extends EPackage
   EReference getDirective_Directive();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.Directive#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Comment</em>'.
+   * @see org.team38.assembly.lC2200.Directive#getComment()
+   * @see #getDirective()
+   * @generated
+   */
+  EReference getDirective_Comment();
+
+  /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.RInstruction <em>RInstruction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -505,48 +834,48 @@ public interface LC2200Package extends EPackage
   EClass getRInstruction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RInstruction#getR_opcode <em>Ropcode</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.RInstruction#getR_opcode <em>Ropcode</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ropcode</em>'.
+   * @return the meta object for the containment reference '<em>Ropcode</em>'.
    * @see org.team38.assembly.lC2200.RInstruction#getR_opcode()
    * @see #getRInstruction()
    * @generated
    */
-  EAttribute getRInstruction_R_opcode();
+  EReference getRInstruction_R_opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RInstruction#getReg1 <em>Reg1</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.RInstruction#getReg1 <em>Reg1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg1</em>'.
+   * @return the meta object for the containment reference '<em>Reg1</em>'.
    * @see org.team38.assembly.lC2200.RInstruction#getReg1()
    * @see #getRInstruction()
    * @generated
    */
-  EAttribute getRInstruction_Reg1();
+  EReference getRInstruction_Reg1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RInstruction#getReg2 <em>Reg2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.RInstruction#getReg2 <em>Reg2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg2</em>'.
+   * @return the meta object for the containment reference '<em>Reg2</em>'.
    * @see org.team38.assembly.lC2200.RInstruction#getReg2()
    * @see #getRInstruction()
    * @generated
    */
-  EAttribute getRInstruction_Reg2();
+  EReference getRInstruction_Reg2();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RInstruction#getReg3 <em>Reg3</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.RInstruction#getReg3 <em>Reg3</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg3</em>'.
+   * @return the meta object for the containment reference '<em>Reg3</em>'.
    * @see org.team38.assembly.lC2200.RInstruction#getReg3()
    * @see #getRInstruction()
    * @generated
    */
-  EAttribute getRInstruction_Reg3();
+  EReference getRInstruction_Reg3();
 
   /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.IInstruction <em>IInstruction</em>}'.
@@ -559,37 +888,37 @@ public interface LC2200Package extends EPackage
   EClass getIInstruction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstruction#getI_opcode <em>Iopcode</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.IInstruction#getI_opcode <em>Iopcode</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Iopcode</em>'.
+   * @return the meta object for the containment reference '<em>Iopcode</em>'.
    * @see org.team38.assembly.lC2200.IInstruction#getI_opcode()
    * @see #getIInstruction()
    * @generated
    */
-  EAttribute getIInstruction_I_opcode();
+  EReference getIInstruction_I_opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstruction#getReg1 <em>Reg1</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.IInstruction#getReg1 <em>Reg1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg1</em>'.
+   * @return the meta object for the containment reference '<em>Reg1</em>'.
    * @see org.team38.assembly.lC2200.IInstruction#getReg1()
    * @see #getIInstruction()
    * @generated
    */
-  EAttribute getIInstruction_Reg1();
+  EReference getIInstruction_Reg1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstruction#getReg2 <em>Reg2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.IInstruction#getReg2 <em>Reg2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg2</em>'.
+   * @return the meta object for the containment reference '<em>Reg2</em>'.
    * @see org.team38.assembly.lC2200.IInstruction#getReg2()
    * @see #getIInstruction()
    * @generated
    */
-  EAttribute getIInstruction_Reg2();
+  EReference getIInstruction_Reg2();
 
   /**
    * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstruction#getImm <em>Imm</em>}'.
@@ -603,6 +932,17 @@ public interface LC2200Package extends EPackage
   EAttribute getIInstruction_Imm();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.IInstruction#getLabel <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Label</em>'.
+   * @see org.team38.assembly.lC2200.IInstruction#getLabel()
+   * @see #getIInstruction()
+   * @generated
+   */
+  EReference getIInstruction_Label();
+
+  /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.JInstruction <em>JInstruction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -613,37 +953,37 @@ public interface LC2200Package extends EPackage
   EClass getJInstruction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Jopcode</em>'.
+   * @return the meta object for the containment reference '<em>Jopcode</em>'.
    * @see org.team38.assembly.lC2200.JInstruction#getJ_opcode()
    * @see #getJInstruction()
    * @generated
    */
-  EAttribute getJInstruction_J_opcode();
+  EReference getJInstruction_J_opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg1</em>'.
+   * @return the meta object for the containment reference '<em>Reg1</em>'.
    * @see org.team38.assembly.lC2200.JInstruction#getReg1()
    * @see #getJInstruction()
    * @generated
    */
-  EAttribute getJInstruction_Reg1();
+  EReference getJInstruction_Reg1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Reg2</em>'.
+   * @return the meta object for the containment reference '<em>Reg2</em>'.
    * @see org.team38.assembly.lC2200.JInstruction#getReg2()
    * @see #getJInstruction()
    * @generated
    */
-  EAttribute getJInstruction_Reg2();
+  EReference getJInstruction_Reg2();
 
   /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.OInstruction <em>OInstruction</em>}'.
@@ -698,15 +1038,15 @@ public interface LC2200Package extends EPackage
   EClass getWordDirective();
 
   /**
-   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}'.
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Wdir</em>'.
+   * @return the meta object for the containment reference '<em>Wdir</em>'.
    * @see org.team38.assembly.lC2200.WordDirective#getW_dir()
    * @see #getWordDirective()
    * @generated
    */
-  EAttribute getWordDirective_W_dir();
+  EReference getWordDirective_W_dir();
 
   /**
    * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.WordDirective#getImm <em>Imm</em>}'.
@@ -718,6 +1058,216 @@ public interface LC2200Package extends EPackage
    * @generated
    */
   EAttribute getWordDirective_Imm();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.RInstructionTrans <em>RInstruction Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>RInstruction Trans</em>'.
+   * @see org.team38.assembly.lC2200.RInstructionTrans
+   * @generated
+   */
+  EClass getRInstructionTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RInstructionTrans#getR_opcode <em>Ropcode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ropcode</em>'.
+   * @see org.team38.assembly.lC2200.RInstructionTrans#getR_opcode()
+   * @see #getRInstructionTrans()
+   * @generated
+   */
+  EAttribute getRInstructionTrans_R_opcode();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.IInstructionImmTrans <em>IInstruction Imm Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>IInstruction Imm Trans</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionImmTrans
+   * @generated
+   */
+  EClass getIInstructionImmTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstructionImmTrans#getI_opcode <em>Iopcode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Iopcode</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionImmTrans#getI_opcode()
+   * @see #getIInstructionImmTrans()
+   * @generated
+   */
+  EAttribute getIInstructionImmTrans_I_opcode();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.IInstructionOffsetTrans <em>IInstruction Offset Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>IInstruction Offset Trans</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionOffsetTrans
+   * @generated
+   */
+  EClass getIInstructionOffsetTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstructionOffsetTrans#getI_opcode <em>Iopcode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Iopcode</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionOffsetTrans#getI_opcode()
+   * @see #getIInstructionOffsetTrans()
+   * @generated
+   */
+  EAttribute getIInstructionOffsetTrans_I_opcode();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.IInstructionLabelTrans <em>IInstruction Label Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>IInstruction Label Trans</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionLabelTrans
+   * @generated
+   */
+  EClass getIInstructionLabelTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.IInstructionLabelTrans#getI_opcode <em>Iopcode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Iopcode</em>'.
+   * @see org.team38.assembly.lC2200.IInstructionLabelTrans#getI_opcode()
+   * @see #getIInstructionLabelTrans()
+   * @generated
+   */
+  EAttribute getIInstructionLabelTrans_I_opcode();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.JInstructionTrans <em>JInstruction Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>JInstruction Trans</em>'.
+   * @see org.team38.assembly.lC2200.JInstructionTrans
+   * @generated
+   */
+  EClass getJInstructionTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.JInstructionTrans#getJ_opcode <em>Jopcode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Jopcode</em>'.
+   * @see org.team38.assembly.lC2200.JInstructionTrans#getJ_opcode()
+   * @see #getJInstructionTrans()
+   * @generated
+   */
+  EAttribute getJInstructionTrans_J_opcode();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.WordTrans <em>Word Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Word Trans</em>'.
+   * @see org.team38.assembly.lC2200.WordTrans
+   * @generated
+   */
+  EClass getWordTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.WordTrans#getWord <em>Word</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Word</em>'.
+   * @see org.team38.assembly.lC2200.WordTrans#getWord()
+   * @see #getWordTrans()
+   * @generated
+   */
+  EAttribute getWordTrans_Word();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.CommentTrans <em>Comment Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comment Trans</em>'.
+   * @see org.team38.assembly.lC2200.CommentTrans
+   * @generated
+   */
+  EClass getCommentTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.CommentTrans#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comment</em>'.
+   * @see org.team38.assembly.lC2200.CommentTrans#getComment()
+   * @see #getCommentTrans()
+   * @generated
+   */
+  EAttribute getCommentTrans_Comment();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.RegTrans <em>Reg Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reg Trans</em>'.
+   * @see org.team38.assembly.lC2200.RegTrans
+   * @generated
+   */
+  EClass getRegTrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.RegTrans#getReg <em>Reg</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Reg</em>'.
+   * @see org.team38.assembly.lC2200.RegTrans#getReg()
+   * @see #getRegTrans()
+   * @generated
+   */
+  EAttribute getRegTrans_Reg();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.LabelBeg <em>Label Beg</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Label Beg</em>'.
+   * @see org.team38.assembly.lC2200.LabelBeg
+   * @generated
+   */
+  EClass getLabelBeg();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.LabelBeg#getLabel <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label</em>'.
+   * @see org.team38.assembly.lC2200.LabelBeg#getLabel()
+   * @see #getLabelBeg()
+   * @generated
+   */
+  EAttribute getLabelBeg_Label();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.LabelEnd <em>Label End</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Label End</em>'.
+   * @see org.team38.assembly.lC2200.LabelEnd
+   * @generated
+   */
+  EClass getLabelEnd();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.LabelEnd#getLabel <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label</em>'.
+   * @see org.team38.assembly.lC2200.LabelEnd#getLabel()
+   * @see #getLabelEnd()
+   * @generated
+   */
+  EAttribute getLabelEnd_Label();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -771,12 +1321,12 @@ public interface LC2200Package extends EPackage
     EClass INSTRUCTION = eINSTANCE.getInstruction();
 
     /**
-     * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Label</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTRUCTION__LABEL = eINSTANCE.getInstruction_Label();
+    EReference INSTRUCTION__LABEL = eINSTANCE.getInstruction_Label();
 
     /**
      * The meta object literal for the '<em><b>Instruction</b></em>' containment reference feature.
@@ -785,6 +1335,14 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EReference INSTRUCTION__INSTRUCTION = eINSTANCE.getInstruction_Instruction();
+
+    /**
+     * The meta object literal for the '<em><b>Comment</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INSTRUCTION__COMMENT = eINSTANCE.getInstruction_Comment();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.DirectiveImpl <em>Directive</em>}' class.
@@ -797,12 +1355,12 @@ public interface LC2200Package extends EPackage
     EClass DIRECTIVE = eINSTANCE.getDirective();
 
     /**
-     * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Label</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DIRECTIVE__LABEL = eINSTANCE.getDirective_Label();
+    EReference DIRECTIVE__LABEL = eINSTANCE.getDirective_Label();
 
     /**
      * The meta object literal for the '<em><b>Directive</b></em>' containment reference feature.
@@ -811,6 +1369,14 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EReference DIRECTIVE__DIRECTIVE = eINSTANCE.getDirective_Directive();
+
+    /**
+     * The meta object literal for the '<em><b>Comment</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIRECTIVE__COMMENT = eINSTANCE.getDirective_Comment();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.RInstructionImpl <em>RInstruction</em>}' class.
@@ -823,36 +1389,36 @@ public interface LC2200Package extends EPackage
     EClass RINSTRUCTION = eINSTANCE.getRInstruction();
 
     /**
-     * The meta object literal for the '<em><b>Ropcode</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Ropcode</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RINSTRUCTION__ROPCODE = eINSTANCE.getRInstruction_R_opcode();
+    EReference RINSTRUCTION__ROPCODE = eINSTANCE.getRInstruction_R_opcode();
 
     /**
-     * The meta object literal for the '<em><b>Reg1</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg1</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RINSTRUCTION__REG1 = eINSTANCE.getRInstruction_Reg1();
+    EReference RINSTRUCTION__REG1 = eINSTANCE.getRInstruction_Reg1();
 
     /**
-     * The meta object literal for the '<em><b>Reg2</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RINSTRUCTION__REG2 = eINSTANCE.getRInstruction_Reg2();
+    EReference RINSTRUCTION__REG2 = eINSTANCE.getRInstruction_Reg2();
 
     /**
-     * The meta object literal for the '<em><b>Reg3</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg3</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RINSTRUCTION__REG3 = eINSTANCE.getRInstruction_Reg3();
+    EReference RINSTRUCTION__REG3 = eINSTANCE.getRInstruction_Reg3();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.IInstructionImpl <em>IInstruction</em>}' class.
@@ -865,28 +1431,28 @@ public interface LC2200Package extends EPackage
     EClass IINSTRUCTION = eINSTANCE.getIInstruction();
 
     /**
-     * The meta object literal for the '<em><b>Iopcode</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Iopcode</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IINSTRUCTION__IOPCODE = eINSTANCE.getIInstruction_I_opcode();
+    EReference IINSTRUCTION__IOPCODE = eINSTANCE.getIInstruction_I_opcode();
 
     /**
-     * The meta object literal for the '<em><b>Reg1</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg1</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IINSTRUCTION__REG1 = eINSTANCE.getIInstruction_Reg1();
+    EReference IINSTRUCTION__REG1 = eINSTANCE.getIInstruction_Reg1();
 
     /**
-     * The meta object literal for the '<em><b>Reg2</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IINSTRUCTION__REG2 = eINSTANCE.getIInstruction_Reg2();
+    EReference IINSTRUCTION__REG2 = eINSTANCE.getIInstruction_Reg2();
 
     /**
      * The meta object literal for the '<em><b>Imm</b></em>' attribute feature.
@@ -895,6 +1461,14 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EAttribute IINSTRUCTION__IMM = eINSTANCE.getIInstruction_Imm();
+
+    /**
+     * The meta object literal for the '<em><b>Label</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IINSTRUCTION__LABEL = eINSTANCE.getIInstruction_Label();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.JInstructionImpl <em>JInstruction</em>}' class.
@@ -907,28 +1481,28 @@ public interface LC2200Package extends EPackage
     EClass JINSTRUCTION = eINSTANCE.getJInstruction();
 
     /**
-     * The meta object literal for the '<em><b>Jopcode</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Jopcode</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JINSTRUCTION__JOPCODE = eINSTANCE.getJInstruction_J_opcode();
+    EReference JINSTRUCTION__JOPCODE = eINSTANCE.getJInstruction_J_opcode();
 
     /**
-     * The meta object literal for the '<em><b>Reg1</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg1</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JINSTRUCTION__REG1 = eINSTANCE.getJInstruction_Reg1();
+    EReference JINSTRUCTION__REG1 = eINSTANCE.getJInstruction_Reg1();
 
     /**
-     * The meta object literal for the '<em><b>Reg2</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reg2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JINSTRUCTION__REG2 = eINSTANCE.getJInstruction_Reg2();
+    EReference JINSTRUCTION__REG2 = eINSTANCE.getJInstruction_Reg2();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.OInstructionImpl <em>OInstruction</em>}' class.
@@ -977,12 +1551,12 @@ public interface LC2200Package extends EPackage
     EClass WORD_DIRECTIVE = eINSTANCE.getWordDirective();
 
     /**
-     * The meta object literal for the '<em><b>Wdir</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Wdir</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WORD_DIRECTIVE__WDIR = eINSTANCE.getWordDirective_W_dir();
+    EReference WORD_DIRECTIVE__WDIR = eINSTANCE.getWordDirective_W_dir();
 
     /**
      * The meta object literal for the '<em><b>Imm</b></em>' attribute feature.
@@ -991,6 +1565,186 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EAttribute WORD_DIRECTIVE__IMM = eINSTANCE.getWordDirective_Imm();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.RInstructionTransImpl <em>RInstruction Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.RInstructionTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRInstructionTrans()
+     * @generated
+     */
+    EClass RINSTRUCTION_TRANS = eINSTANCE.getRInstructionTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Ropcode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RINSTRUCTION_TRANS__ROPCODE = eINSTANCE.getRInstructionTrans_R_opcode();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.IInstructionImmTransImpl <em>IInstruction Imm Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.IInstructionImmTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionImmTrans()
+     * @generated
+     */
+    EClass IINSTRUCTION_IMM_TRANS = eINSTANCE.getIInstructionImmTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Iopcode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IINSTRUCTION_IMM_TRANS__IOPCODE = eINSTANCE.getIInstructionImmTrans_I_opcode();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.IInstructionOffsetTransImpl <em>IInstruction Offset Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.IInstructionOffsetTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionOffsetTrans()
+     * @generated
+     */
+    EClass IINSTRUCTION_OFFSET_TRANS = eINSTANCE.getIInstructionOffsetTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Iopcode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IINSTRUCTION_OFFSET_TRANS__IOPCODE = eINSTANCE.getIInstructionOffsetTrans_I_opcode();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.IInstructionLabelTransImpl <em>IInstruction Label Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.IInstructionLabelTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionLabelTrans()
+     * @generated
+     */
+    EClass IINSTRUCTION_LABEL_TRANS = eINSTANCE.getIInstructionLabelTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Iopcode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IINSTRUCTION_LABEL_TRANS__IOPCODE = eINSTANCE.getIInstructionLabelTrans_I_opcode();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.JInstructionTransImpl <em>JInstruction Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.JInstructionTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getJInstructionTrans()
+     * @generated
+     */
+    EClass JINSTRUCTION_TRANS = eINSTANCE.getJInstructionTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Jopcode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JINSTRUCTION_TRANS__JOPCODE = eINSTANCE.getJInstructionTrans_J_opcode();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.WordTransImpl <em>Word Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.WordTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getWordTrans()
+     * @generated
+     */
+    EClass WORD_TRANS = eINSTANCE.getWordTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Word</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WORD_TRANS__WORD = eINSTANCE.getWordTrans_Word();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.CommentTransImpl <em>Comment Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.CommentTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getCommentTrans()
+     * @generated
+     */
+    EClass COMMENT_TRANS = eINSTANCE.getCommentTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMENT_TRANS__COMMENT = eINSTANCE.getCommentTrans_Comment();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.RegTransImpl <em>Reg Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.RegTransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRegTrans()
+     * @generated
+     */
+    EClass REG_TRANS = eINSTANCE.getRegTrans();
+
+    /**
+     * The meta object literal for the '<em><b>Reg</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REG_TRANS__REG = eINSTANCE.getRegTrans_Reg();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.LabelBegImpl <em>Label Beg</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.LabelBegImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelBeg()
+     * @generated
+     */
+    EClass LABEL_BEG = eINSTANCE.getLabelBeg();
+
+    /**
+     * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL_BEG__LABEL = eINSTANCE.getLabelBeg_Label();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.LabelEndImpl <em>Label End</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.LabelEndImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelEnd()
+     * @generated
+     */
+    EClass LABEL_END = eINSTANCE.getLabelEnd();
+
+    /**
+     * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL_END__LABEL = eINSTANCE.getLabelEnd_Label();
 
   }
 

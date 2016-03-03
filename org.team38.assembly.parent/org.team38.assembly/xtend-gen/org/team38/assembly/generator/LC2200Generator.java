@@ -17,10 +17,13 @@ import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
+import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
 import org.team38.assembly.lC2200.RInstruction;
+import org.team38.assembly.lC2200.RInstructionTrans;
+import org.team38.assembly.lC2200.RegTrans;
 import org.team38.assembly.lC2200.WordDirective;
 
 /**
@@ -35,6 +38,8 @@ public class LC2200Generator extends AbstractGenerator {
   private HashMap<String, Integer> labelTable;
   
   private int offset;
+  
+  private String filename;
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -53,43 +58,22 @@ public class LC2200Generator extends AbstractGenerator {
       this.offset = 0;
       this.compileProgram(((Program) e_root));
     }
-    String _string = this.assembledOutput.toString();
-    String _trim = _string.trim();
+    String _string = resource.toString();
+    this.filename = _string;
+    int _length = this.filename.length();
+    int _minus = (_length - 2);
+    String _substring = this.filename.substring(0, _minus);
+    String _plus = (_substring + "bin");
+    this.filename = _plus;
+    String _string_1 = this.assembledOutput.toString();
+    String _trim = _string_1.trim();
     fsa.generateFile("helloworld.txt", _trim);
   }
   
   public void populateLabels(final Program root) {
-    EList<EObject> lines = root.getLines();
-    for (final EObject line : lines) {
-      {
-        EClass _eClass = line.eClass();
-        String _name = _eClass.getName();
-        boolean _equals = _name.equals("Directive");
-        if (_equals) {
-          Directive dir = ((Directive) line);
-          String label = dir.getLabel();
-          boolean _notEquals = (!Objects.equal(label, null));
-          if (_notEquals) {
-            String _replace = label.replace(":", "");
-            this.labelTable.put(_replace, Integer.valueOf(this.offset));
-          }
-        } else {
-          EClass _eClass_1 = line.eClass();
-          String _name_1 = _eClass_1.getName();
-          boolean _equals_1 = _name_1.equals("Instruction");
-          if (_equals_1) {
-            Instruction instr = ((Instruction) line);
-            String label_1 = instr.getLabel();
-            boolean _notEquals_1 = (!Objects.equal(label_1, null));
-            if (_notEquals_1) {
-              String _replace_1 = label_1.replace(":", "");
-              this.labelTable.put(_replace_1, Integer.valueOf(this.offset));
-            }
-          }
-        }
-        this.offset++;
-      }
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method replace(String, String) is undefined for the type LabelBeg"
+      + "\nThe method replace(String, String) is undefined for the type LabelBeg");
   }
   
   public void compileProgram(final Program root) {
@@ -205,21 +189,24 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileIInstruction(final IInstruction iInstr) {
     StringBuffer _xblockexpression = null;
     {
-      String op = iInstr.getI_opcode();
-      String reg1 = iInstr.getReg1();
-      String reg2 = iInstr.getReg2();
+      EObject op = iInstr.getI_opcode();
+      RegTrans reg1 = iInstr.getReg1();
+      RegTrans reg2 = iInstr.getReg2();
       String imm = iInstr.getImm();
-      String opBin = this.opToBinary(op);
-      String reg1Bin = this.regToBinary(reg1);
-      String reg2Bin = this.regToBinary(reg2);
+      String _string = op.toString();
+      String opBin = this.opToBinary(_string);
+      String _string_1 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_1);
+      String _string_2 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_2);
       String immBin = "";
       boolean _equals = op.equals("beq");
       if (_equals) {
         Integer labelLine = this.labelTable.get(imm);
         boolean _notEquals = (!Objects.equal(labelLine, null));
         if (_notEquals) {
-          String _string = Integer.toString(((labelLine).intValue() - this.offset));
-          String _immToBinary = this.immToBinary(_string, 5);
+          String _string_3 = Integer.toString(((labelLine).intValue() - this.offset));
+          String _immToBinary = this.immToBinary(_string_3, 5);
           immBin = _immToBinary;
         } else {
           immBin = "00000";
@@ -245,14 +232,18 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileRInstruction(final RInstruction rInstr) {
     StringBuffer _xblockexpression = null;
     {
-      String op = rInstr.getR_opcode();
-      String reg1 = rInstr.getReg1();
-      String reg2 = rInstr.getReg2();
-      String reg3 = rInstr.getReg3();
-      String opBin = this.opToBinary(op);
-      String reg1Bin = this.regToBinary(reg1);
-      String reg2Bin = this.regToBinary(reg2);
-      String reg3Bin = this.regToBinary(reg3);
+      RInstructionTrans op = rInstr.getR_opcode();
+      RegTrans reg1 = rInstr.getReg1();
+      RegTrans reg2 = rInstr.getReg2();
+      RegTrans reg3 = rInstr.getReg3();
+      String _string = op.toString();
+      String opBin = this.opToBinary(_string);
+      String _string_1 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_1);
+      String _string_2 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_2);
+      String _string_3 = reg3.toString();
+      String reg3Bin = this.regToBinary(_string_3);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(opBin, "");
       _builder.append(" ");
@@ -271,12 +262,15 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileJInstruction(final JInstruction jInstr) {
     StringBuffer _xblockexpression = null;
     {
-      String op = jInstr.getJ_opcode();
-      String reg1 = jInstr.getReg1();
-      String reg2 = jInstr.getReg2();
-      String opBin = this.opToBinary(op);
-      String reg1Bin = this.regToBinary(reg1);
-      String reg2Bin = this.regToBinary(reg2);
+      JInstructionTrans op = jInstr.getJ_opcode();
+      RegTrans reg1 = jInstr.getReg1();
+      RegTrans reg2 = jInstr.getReg2();
+      String _string = op.toString();
+      String opBin = this.opToBinary(_string);
+      String _string_1 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_1);
+      String _string_2 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_2);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(opBin, "");
       _builder.append(" ");

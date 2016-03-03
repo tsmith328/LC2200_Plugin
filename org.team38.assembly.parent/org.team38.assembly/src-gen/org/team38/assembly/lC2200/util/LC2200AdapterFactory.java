@@ -121,6 +121,56 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
         return createWordDirectiveAdapter();
       }
       @Override
+      public Adapter caseRInstructionTrans(RInstructionTrans object)
+      {
+        return createRInstructionTransAdapter();
+      }
+      @Override
+      public Adapter caseIInstructionImmTrans(IInstructionImmTrans object)
+      {
+        return createIInstructionImmTransAdapter();
+      }
+      @Override
+      public Adapter caseIInstructionOffsetTrans(IInstructionOffsetTrans object)
+      {
+        return createIInstructionOffsetTransAdapter();
+      }
+      @Override
+      public Adapter caseIInstructionLabelTrans(IInstructionLabelTrans object)
+      {
+        return createIInstructionLabelTransAdapter();
+      }
+      @Override
+      public Adapter caseJInstructionTrans(JInstructionTrans object)
+      {
+        return createJInstructionTransAdapter();
+      }
+      @Override
+      public Adapter caseWordTrans(WordTrans object)
+      {
+        return createWordTransAdapter();
+      }
+      @Override
+      public Adapter caseCommentTrans(CommentTrans object)
+      {
+        return createCommentTransAdapter();
+      }
+      @Override
+      public Adapter caseRegTrans(RegTrans object)
+      {
+        return createRegTransAdapter();
+      }
+      @Override
+      public Adapter caseLabelBeg(LabelBeg object)
+      {
+        return createLabelBegAdapter();
+      }
+      @Override
+      public Adapter caseLabelEnd(LabelEnd object)
+      {
+        return createLabelEndAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -273,6 +323,156 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWordDirectiveAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.RInstructionTrans <em>RInstruction Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.RInstructionTrans
+   * @generated
+   */
+  public Adapter createRInstructionTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.IInstructionImmTrans <em>IInstruction Imm Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.IInstructionImmTrans
+   * @generated
+   */
+  public Adapter createIInstructionImmTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.IInstructionOffsetTrans <em>IInstruction Offset Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.IInstructionOffsetTrans
+   * @generated
+   */
+  public Adapter createIInstructionOffsetTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.IInstructionLabelTrans <em>IInstruction Label Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.IInstructionLabelTrans
+   * @generated
+   */
+  public Adapter createIInstructionLabelTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.JInstructionTrans <em>JInstruction Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.JInstructionTrans
+   * @generated
+   */
+  public Adapter createJInstructionTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.WordTrans <em>Word Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.WordTrans
+   * @generated
+   */
+  public Adapter createWordTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.CommentTrans <em>Comment Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.CommentTrans
+   * @generated
+   */
+  public Adapter createCommentTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.RegTrans <em>Reg Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.RegTrans
+   * @generated
+   */
+  public Adapter createRegTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.LabelBeg <em>Label Beg</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.LabelBeg
+   * @generated
+   */
+  public Adapter createLabelBegAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.LabelEnd <em>Label End</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.LabelEnd
+   * @generated
+   */
+  public Adapter createLabelEndAdapter()
   {
     return null;
   }

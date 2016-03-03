@@ -74,6 +74,16 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
       case LC2200Package.OINSTRUCTION: return createOInstruction();
       case LC2200Package.NOOP_DIRECTIVE: return createNOOPDirective();
       case LC2200Package.WORD_DIRECTIVE: return createWordDirective();
+      case LC2200Package.RINSTRUCTION_TRANS: return createRInstructionTrans();
+      case LC2200Package.IINSTRUCTION_IMM_TRANS: return createIInstructionImmTrans();
+      case LC2200Package.IINSTRUCTION_OFFSET_TRANS: return createIInstructionOffsetTrans();
+      case LC2200Package.IINSTRUCTION_LABEL_TRANS: return createIInstructionLabelTrans();
+      case LC2200Package.JINSTRUCTION_TRANS: return createJInstructionTrans();
+      case LC2200Package.WORD_TRANS: return createWordTrans();
+      case LC2200Package.COMMENT_TRANS: return createCommentTrans();
+      case LC2200Package.REG_TRANS: return createRegTrans();
+      case LC2200Package.LABEL_BEG: return createLabelBeg();
+      case LC2200Package.LABEL_END: return createLabelEnd();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -176,6 +186,116 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
   {
     WordDirectiveImpl wordDirective = new WordDirectiveImpl();
     return wordDirective;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RInstructionTrans createRInstructionTrans()
+  {
+    RInstructionTransImpl rInstructionTrans = new RInstructionTransImpl();
+    return rInstructionTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IInstructionImmTrans createIInstructionImmTrans()
+  {
+    IInstructionImmTransImpl iInstructionImmTrans = new IInstructionImmTransImpl();
+    return iInstructionImmTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IInstructionOffsetTrans createIInstructionOffsetTrans()
+  {
+    IInstructionOffsetTransImpl iInstructionOffsetTrans = new IInstructionOffsetTransImpl();
+    return iInstructionOffsetTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IInstructionLabelTrans createIInstructionLabelTrans()
+  {
+    IInstructionLabelTransImpl iInstructionLabelTrans = new IInstructionLabelTransImpl();
+    return iInstructionLabelTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JInstructionTrans createJInstructionTrans()
+  {
+    JInstructionTransImpl jInstructionTrans = new JInstructionTransImpl();
+    return jInstructionTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WordTrans createWordTrans()
+  {
+    WordTransImpl wordTrans = new WordTransImpl();
+    return wordTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CommentTrans createCommentTrans()
+  {
+    CommentTransImpl commentTrans = new CommentTransImpl();
+    return commentTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans createRegTrans()
+  {
+    RegTransImpl regTrans = new RegTransImpl();
+    return regTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LabelBeg createLabelBeg()
+  {
+    LabelBegImpl labelBeg = new LabelBegImpl();
+    return labelBeg;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LabelEnd createLabelEnd()
+  {
+    LabelEndImpl labelEnd = new LabelEndImpl();
+    return labelEnd;
   }
 
   /**

@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.NOOPDirective#getN_dir <em>Ndir</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getNOOPDirective()
  * @model

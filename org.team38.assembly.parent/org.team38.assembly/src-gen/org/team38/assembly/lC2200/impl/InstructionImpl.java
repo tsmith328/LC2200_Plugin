@@ -13,8 +13,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.team38.assembly.lC2200.CommentTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.LabelBeg;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,35 +24,26 @@ import org.team38.assembly.lC2200.LC2200Package;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getInstruction <em>Instruction</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getComment <em>Comment</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class InstructionImpl extends MinimalEObjectImpl.Container implements Instruction
 {
   /**
-   * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+   * The cached value of the '{@link #getLabel() <em>Label</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getLabel()
    * @generated
    * @ordered
    */
-  protected static final String LABEL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLabel()
-   * @generated
-   * @ordered
-   */
-  protected String label = LABEL_EDEFAULT;
+  protected LabelBeg label;
 
   /**
    * The cached value of the '{@link #getInstruction() <em>Instruction</em>}' containment reference.
@@ -61,6 +54,16 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
    * @ordered
    */
   protected EObject instruction;
+
+  /**
+   * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComment()
+   * @generated
+   * @ordered
+   */
+  protected CommentTrans comment;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,7 +91,7 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLabel()
+  public LabelBeg getLabel()
   {
     return label;
   }
@@ -98,12 +101,37 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLabel(String newLabel)
+  public NotificationChain basicSetLabel(LabelBeg newLabel, NotificationChain msgs)
   {
-    String oldLabel = label;
+    LabelBeg oldLabel = label;
     label = newLabel;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.INSTRUCTION__LABEL, oldLabel, label));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.INSTRUCTION__LABEL, oldLabel, newLabel);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLabel(LabelBeg newLabel)
+  {
+    if (newLabel != label)
+    {
+      NotificationChain msgs = null;
+      if (label != null)
+        msgs = ((InternalEObject)label).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.INSTRUCTION__LABEL, null, msgs);
+      if (newLabel != null)
+        msgs = ((InternalEObject)newLabel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.INSTRUCTION__LABEL, null, msgs);
+      msgs = basicSetLabel(newLabel, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.INSTRUCTION__LABEL, newLabel, newLabel));
   }
 
   /**
@@ -159,13 +187,65 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
    * <!-- end-user-doc -->
    * @generated
    */
+  public CommentTrans getComment()
+  {
+    return comment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetComment(CommentTrans newComment, NotificationChain msgs)
+  {
+    CommentTrans oldComment = comment;
+    comment = newComment;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.INSTRUCTION__COMMENT, oldComment, newComment);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setComment(CommentTrans newComment)
+  {
+    if (newComment != comment)
+    {
+      NotificationChain msgs = null;
+      if (comment != null)
+        msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.INSTRUCTION__COMMENT, null, msgs);
+      if (newComment != null)
+        msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.INSTRUCTION__COMMENT, null, msgs);
+      msgs = basicSetComment(newComment, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.INSTRUCTION__COMMENT, newComment, newComment));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
+      case LC2200Package.INSTRUCTION__LABEL:
+        return basicSetLabel(null, msgs);
       case LC2200Package.INSTRUCTION__INSTRUCTION:
         return basicSetInstruction(null, msgs);
+      case LC2200Package.INSTRUCTION__COMMENT:
+        return basicSetComment(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -184,6 +264,8 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
         return getLabel();
       case LC2200Package.INSTRUCTION__INSTRUCTION:
         return getInstruction();
+      case LC2200Package.INSTRUCTION__COMMENT:
+        return getComment();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -199,10 +281,13 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
     switch (featureID)
     {
       case LC2200Package.INSTRUCTION__LABEL:
-        setLabel((String)newValue);
+        setLabel((LabelBeg)newValue);
         return;
       case LC2200Package.INSTRUCTION__INSTRUCTION:
         setInstruction((EObject)newValue);
+        return;
+      case LC2200Package.INSTRUCTION__COMMENT:
+        setComment((CommentTrans)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -219,10 +304,13 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
     switch (featureID)
     {
       case LC2200Package.INSTRUCTION__LABEL:
-        setLabel(LABEL_EDEFAULT);
+        setLabel((LabelBeg)null);
         return;
       case LC2200Package.INSTRUCTION__INSTRUCTION:
         setInstruction((EObject)null);
+        return;
+      case LC2200Package.INSTRUCTION__COMMENT:
+        setComment((CommentTrans)null);
         return;
     }
     super.eUnset(featureID);
@@ -239,28 +327,13 @@ public class InstructionImpl extends MinimalEObjectImpl.Container implements Ins
     switch (featureID)
     {
       case LC2200Package.INSTRUCTION__LABEL:
-        return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+        return label != null;
       case LC2200Package.INSTRUCTION__INSTRUCTION:
         return instruction != null;
+      case LC2200Package.INSTRUCTION__COMMENT:
+        return comment != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (label: ");
-    result.append(label);
-    result.append(')');
-    return result.toString();
   }
 
 } //InstructionImpl

@@ -28,6 +28,7 @@ class LC2200Generator extends AbstractGenerator {
 	private StringBuffer assembledOutput;
 	private HashMap<String, Integer> labelTable;
 	private int offset;
+	private String filename;
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		assembledOutput = new StringBuffer()
@@ -39,6 +40,8 @@ class LC2200Generator extends AbstractGenerator {
 			offset = 0
 			compileProgram(e_root as Program)
 		}
+		filename = resource.toString();
+		filename = filename.substring(0, filename.length() - 2) + "bin";
 		fsa.generateFile("helloworld.txt", assembledOutput.toString().trim())
 	}
 	
@@ -122,9 +125,9 @@ class LC2200Generator extends AbstractGenerator {
 		var reg2 = iInstr.getReg2()
 		var imm = iInstr.getImm()
 		
-		var opBin = opToBinary(op)
-		var reg1Bin = regToBinary(reg1)
-		var reg2Bin = regToBinary(reg2)
+		var opBin = opToBinary(op.toString())
+		var reg1Bin = regToBinary(reg1.toString())
+		var reg2Bin = regToBinary(reg2.toString())
 		var immBin = ""
 		if(op.equals("beq")) {			
 			var labelLine = labelTable.get(imm)
@@ -148,10 +151,10 @@ class LC2200Generator extends AbstractGenerator {
 		var reg2 = rInstr.getReg2()
 		var reg3 = rInstr.getReg3()
 		
-		var opBin = opToBinary(op)
-		var reg1Bin = regToBinary(reg1)
-		var reg2Bin = regToBinary(reg2)
-		var reg3Bin = regToBinary(reg3)
+		var opBin = opToBinary(op.toString())
+		var reg1Bin = regToBinary(reg1.toString())
+		var reg2Bin = regToBinary(reg2.toString())
+		var reg3Bin = regToBinary(reg3.toString())
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «reg3Bin» 0
 		''')
@@ -162,9 +165,9 @@ class LC2200Generator extends AbstractGenerator {
 		var reg1 = jInstr.getReg1()
 		var reg2 = jInstr.getReg2()
 		
-		var opBin = opToBinary(op)
-		var reg1Bin = regToBinary(reg1)
-		var reg2Bin = regToBinary(reg2)
+		var opBin = opToBinary(op.toString())
+		var reg1Bin = regToBinary(reg1.toString())
+		var reg2Bin = regToBinary(reg2.toString())
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» 00000
 		''')

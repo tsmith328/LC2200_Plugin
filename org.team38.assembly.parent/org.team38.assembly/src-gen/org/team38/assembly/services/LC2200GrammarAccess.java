@@ -6,7 +6,6 @@ package org.team38.assembly.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
-import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
@@ -24,61 +23,59 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Program");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cProgramAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cLinesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cLinesAlternatives_1_0 = (Alternatives)cLinesAssignment_1.eContents().get(0);
-		private final RuleCall cLinesInstructionParserRuleCall_1_0_0 = (RuleCall)cLinesAlternatives_1_0.eContents().get(0);
-		private final RuleCall cLinesDirectiveParserRuleCall_1_0_1 = (RuleCall)cLinesAlternatives_1_0.eContents().get(1);
+		private final Assignment cLinesAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cLinesAlternatives_0 = (Alternatives)cLinesAssignment.eContents().get(0);
+		private final RuleCall cLinesInstructionParserRuleCall_0_0 = (RuleCall)cLinesAlternatives_0.eContents().get(0);
+		private final RuleCall cLinesDirectiveParserRuleCall_0_1 = (RuleCall)cLinesAlternatives_0.eContents().get(1);
 		
 		////Rules
 		//Program:
-		//	{Program} lines+=(Instruction | Directive)*;
+		//	lines+=(Instruction | Directive)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Program} lines+=(Instruction | Directive)*
-		public Group getGroup() { return cGroup; }
-		
-		//{Program}
-		public Action getProgramAction_0() { return cProgramAction_0; }
-		
 		//lines+=(Instruction | Directive)*
-		public Assignment getLinesAssignment_1() { return cLinesAssignment_1; }
+		public Assignment getLinesAssignment() { return cLinesAssignment; }
 		
 		//(Instruction | Directive)
-		public Alternatives getLinesAlternatives_1_0() { return cLinesAlternatives_1_0; }
+		public Alternatives getLinesAlternatives_0() { return cLinesAlternatives_0; }
 		
 		//Instruction
-		public RuleCall getLinesInstructionParserRuleCall_1_0_0() { return cLinesInstructionParserRuleCall_1_0_0; }
+		public RuleCall getLinesInstructionParserRuleCall_0_0() { return cLinesInstructionParserRuleCall_0_0; }
 		
 		//Directive
-		public RuleCall getLinesDirectiveParserRuleCall_1_0_1() { return cLinesDirectiveParserRuleCall_1_0_1; }
+		public RuleCall getLinesDirectiveParserRuleCall_0_1() { return cLinesDirectiveParserRuleCall_0_1; }
 	}
 	public class InstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Instruction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cLabelAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLabelLABELTerminalRuleCall_0_0 = (RuleCall)cLabelAssignment_0.eContents().get(0);
+		private final RuleCall cLabelLabelBegParserRuleCall_0_0 = (RuleCall)cLabelAssignment_0.eContents().get(0);
 		private final Assignment cInstructionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Alternatives cInstructionAlternatives_1_0 = (Alternatives)cInstructionAssignment_1.eContents().get(0);
 		private final RuleCall cInstructionRInstructionParserRuleCall_1_0_0 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(0);
 		private final RuleCall cInstructionIInstructionParserRuleCall_1_0_1 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(1);
 		private final RuleCall cInstructionJInstructionParserRuleCall_1_0_2 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(2);
 		private final RuleCall cInstructionOInstructionParserRuleCall_1_0_3 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(3);
-		private final RuleCall cSL_COMMENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentCommentTransParserRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final RuleCall cML_COMMENTTerminalRuleCall_3_0 = (RuleCall)cAlternatives_3.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
 		
 		//Instruction:
-		//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?;
+		//	label=LabelBeg? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) comment=CommentTrans?
+		//	(ML_COMMENT | NEWLINE)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?
+		//label=LabelBeg? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) comment=CommentTrans?
+		//(ML_COMMENT | NEWLINE)?
 		public Group getGroup() { return cGroup; }
 		
-		//label=LABEL?
+		//label=LabelBeg?
 		public Assignment getLabelAssignment_0() { return cLabelAssignment_0; }
 		
-		//LABEL
-		public RuleCall getLabelLABELTerminalRuleCall_0_0() { return cLabelLABELTerminalRuleCall_0_0; }
+		//LabelBeg
+		public RuleCall getLabelLabelBegParserRuleCall_0_0() { return cLabelLabelBegParserRuleCall_0_0; }
 		
 		//instruction=(RInstruction | IInstruction | JInstruction | OInstruction)
 		public Assignment getInstructionAssignment_1() { return cInstructionAssignment_1; }
@@ -98,32 +95,48 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//OInstruction
 		public RuleCall getInstructionOInstructionParserRuleCall_1_0_3() { return cInstructionOInstructionParserRuleCall_1_0_3; }
 		
-		//SL_COMMENT?
-		public RuleCall getSL_COMMENTTerminalRuleCall_2() { return cSL_COMMENTTerminalRuleCall_2; }
+		//comment=CommentTrans?
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//CommentTrans
+		public RuleCall getCommentCommentTransParserRuleCall_2_0() { return cCommentCommentTransParserRuleCall_2_0; }
+		
+		//(ML_COMMENT | NEWLINE)?
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//ML_COMMENT
+		public RuleCall getML_COMMENTTerminalRuleCall_3_0() { return cML_COMMENTTerminalRuleCall_3_0; }
+		
+		//NEWLINE
+		public RuleCall getNEWLINETerminalRuleCall_3_1() { return cNEWLINETerminalRuleCall_3_1; }
 	}
 	public class DirectiveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Directive");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cLabelAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLabelLABELTerminalRuleCall_0_0 = (RuleCall)cLabelAssignment_0.eContents().get(0);
+		private final RuleCall cLabelLabelBegParserRuleCall_0_0 = (RuleCall)cLabelAssignment_0.eContents().get(0);
 		private final Assignment cDirectiveAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Alternatives cDirectiveAlternatives_1_0 = (Alternatives)cDirectiveAssignment_1.eContents().get(0);
 		private final RuleCall cDirectiveNOOPDirectiveParserRuleCall_1_0_0 = (RuleCall)cDirectiveAlternatives_1_0.eContents().get(0);
 		private final RuleCall cDirectiveWordDirectiveParserRuleCall_1_0_1 = (RuleCall)cDirectiveAlternatives_1_0.eContents().get(1);
-		private final RuleCall cSL_COMMENTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentCommentTransParserRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final RuleCall cML_COMMENTTerminalRuleCall_3_0 = (RuleCall)cAlternatives_3.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
 		
 		//Directive:
-		//	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?;
+		//	label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?
+		//label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 		public Group getGroup() { return cGroup; }
 		
-		//label=LABEL?
+		//label=LabelBeg?
 		public Assignment getLabelAssignment_0() { return cLabelAssignment_0; }
 		
-		//LABEL
-		public RuleCall getLabelLABELTerminalRuleCall_0_0() { return cLabelLABELTerminalRuleCall_0_0; }
+		//LabelBeg
+		public RuleCall getLabelLabelBegParserRuleCall_0_0() { return cLabelLabelBegParserRuleCall_0_0; }
 		
 		//directive=(NOOPDirective | WordDirective)
 		public Assignment getDirectiveAssignment_1() { return cDirectiveAssignment_1; }
@@ -137,130 +150,144 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//WordDirective
 		public RuleCall getDirectiveWordDirectiveParserRuleCall_1_0_1() { return cDirectiveWordDirectiveParserRuleCall_1_0_1; }
 		
-		//SL_COMMENT?
-		public RuleCall getSL_COMMENTTerminalRuleCall_2() { return cSL_COMMENTTerminalRuleCall_2; }
+		//comment=CommentTrans?
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//CommentTrans
+		public RuleCall getCommentCommentTransParserRuleCall_2_0() { return cCommentCommentTransParserRuleCall_2_0; }
+		
+		//(ML_COMMENT | NEWLINE)?
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//ML_COMMENT
+		public RuleCall getML_COMMENTTerminalRuleCall_3_0() { return cML_COMMENTTerminalRuleCall_3_0; }
+		
+		//NEWLINE
+		public RuleCall getNEWLINETerminalRuleCall_3_1() { return cNEWLINETerminalRuleCall_3_1; }
 	}
 	public class RInstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RInstruction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cR_opcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cR_opcodeROPTerminalRuleCall_0_0 = (RuleCall)cR_opcodeAssignment_0.eContents().get(0);
+		private final RuleCall cR_opcodeRInstructionTransParserRuleCall_0_0 = (RuleCall)cR_opcodeAssignment_0.eContents().get(0);
 		private final Assignment cReg1Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cReg1REGTerminalRuleCall_1_0 = (RuleCall)cReg1Assignment_1.eContents().get(0);
+		private final RuleCall cReg1RegTransParserRuleCall_1_0 = (RuleCall)cReg1Assignment_1.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cReg2Assignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cReg2REGTerminalRuleCall_3_0 = (RuleCall)cReg2Assignment_3.eContents().get(0);
+		private final RuleCall cReg2RegTransParserRuleCall_3_0 = (RuleCall)cReg2Assignment_3.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		private final Assignment cReg3Assignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cReg3REGTerminalRuleCall_5_0 = (RuleCall)cReg3Assignment_5.eContents().get(0);
+		private final RuleCall cReg3RegTransParserRuleCall_5_0 = (RuleCall)cReg3Assignment_5.eContents().get(0);
 		
 		//RInstruction:
-		//	r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG;
+		//	r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG
+		//r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans
 		public Group getGroup() { return cGroup; }
 		
-		//r_opcode=ROP
+		//r_opcode=RInstructionTrans
 		public Assignment getR_opcodeAssignment_0() { return cR_opcodeAssignment_0; }
 		
-		//ROP
-		public RuleCall getR_opcodeROPTerminalRuleCall_0_0() { return cR_opcodeROPTerminalRuleCall_0_0; }
+		//RInstructionTrans
+		public RuleCall getR_opcodeRInstructionTransParserRuleCall_0_0() { return cR_opcodeRInstructionTransParserRuleCall_0_0; }
 		
-		//reg1=REG
+		//reg1=RegTrans
 		public Assignment getReg1Assignment_1() { return cReg1Assignment_1; }
 		
-		//REG
-		public RuleCall getReg1REGTerminalRuleCall_1_0() { return cReg1REGTerminalRuleCall_1_0; }
+		//RegTrans
+		public RuleCall getReg1RegTransParserRuleCall_1_0() { return cReg1RegTransParserRuleCall_1_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_2() { return cCOMMATerminalRuleCall_2; }
 		
-		//reg2=REG
+		//reg2=RegTrans
 		public Assignment getReg2Assignment_3() { return cReg2Assignment_3; }
 		
-		//REG
-		public RuleCall getReg2REGTerminalRuleCall_3_0() { return cReg2REGTerminalRuleCall_3_0; }
+		//RegTrans
+		public RuleCall getReg2RegTransParserRuleCall_3_0() { return cReg2RegTransParserRuleCall_3_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_4() { return cCOMMATerminalRuleCall_4; }
 		
-		//reg3=REG
+		//reg3=RegTrans
 		public Assignment getReg3Assignment_5() { return cReg3Assignment_5; }
 		
-		//REG
-		public RuleCall getReg3REGTerminalRuleCall_5_0() { return cReg3REGTerminalRuleCall_5_0; }
+		//RegTrans
+		public RuleCall getReg3RegTransParserRuleCall_5_0() { return cReg3RegTransParserRuleCall_5_0; }
 	}
 	public class IInstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IInstruction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cI_opcodeAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cI_opcodeIOP_IMMTerminalRuleCall_0_0_0 = (RuleCall)cI_opcodeAssignment_0_0.eContents().get(0);
+		private final RuleCall cI_opcodeIInstructionImmTransParserRuleCall_0_0_0 = (RuleCall)cI_opcodeAssignment_0_0.eContents().get(0);
 		private final Assignment cReg1Assignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cReg1REGTerminalRuleCall_0_1_0 = (RuleCall)cReg1Assignment_0_1.eContents().get(0);
+		private final RuleCall cReg1RegTransParserRuleCall_0_1_0 = (RuleCall)cReg1Assignment_0_1.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final Assignment cReg2Assignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final RuleCall cReg2REGTerminalRuleCall_0_3_0 = (RuleCall)cReg2Assignment_0_3.eContents().get(0);
+		private final RuleCall cReg2RegTransParserRuleCall_0_3_0 = (RuleCall)cReg2Assignment_0_3.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_0_4 = (RuleCall)cGroup_0.eContents().get(4);
 		private final Assignment cImmAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
 		private final RuleCall cImmIMMEDIATETerminalRuleCall_0_5_0 = (RuleCall)cImmAssignment_0_5.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Assignment cI_opcodeAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cI_opcodeIOP_OFFSETTerminalRuleCall_1_0_0 = (RuleCall)cI_opcodeAssignment_1_0.eContents().get(0);
+		private final RuleCall cI_opcodeIInstructionOffsetTransParserRuleCall_1_0_0 = (RuleCall)cI_opcodeAssignment_1_0.eContents().get(0);
 		private final Assignment cReg1Assignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cReg1REGTerminalRuleCall_1_1_0 = (RuleCall)cReg1Assignment_1_1.eContents().get(0);
+		private final RuleCall cReg1RegTransParserRuleCall_1_1_0 = (RuleCall)cReg1Assignment_1_1.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		private final Assignment cImmAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
 		private final RuleCall cImmIMMEDIATETerminalRuleCall_1_3_0 = (RuleCall)cImmAssignment_1_3.eContents().get(0);
 		private final RuleCall cLPARENTerminalRuleCall_1_4 = (RuleCall)cGroup_1.eContents().get(4);
 		private final Assignment cReg2Assignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
-		private final RuleCall cReg2REGTerminalRuleCall_1_5_0 = (RuleCall)cReg2Assignment_1_5.eContents().get(0);
+		private final RuleCall cReg2RegTransParserRuleCall_1_5_0 = (RuleCall)cReg2Assignment_1_5.eContents().get(0);
 		private final RuleCall cRPARENTerminalRuleCall_1_6 = (RuleCall)cGroup_1.eContents().get(6);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Assignment cI_opcodeAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cI_opcodeIOP_LABELTerminalRuleCall_2_0_0 = (RuleCall)cI_opcodeAssignment_2_0.eContents().get(0);
+		private final RuleCall cI_opcodeIInstructionLabelTransParserRuleCall_2_0_0 = (RuleCall)cI_opcodeAssignment_2_0.eContents().get(0);
 		private final Assignment cReg1Assignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cReg1REGTerminalRuleCall_2_1_0 = (RuleCall)cReg1Assignment_2_1.eContents().get(0);
+		private final RuleCall cReg1RegTransParserRuleCall_2_1_0 = (RuleCall)cReg1Assignment_2_1.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		private final Assignment cReg2Assignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cReg2REGTerminalRuleCall_2_3_0 = (RuleCall)cReg2Assignment_2_3.eContents().get(0);
+		private final RuleCall cReg2RegTransParserRuleCall_2_3_0 = (RuleCall)cReg2Assignment_2_3.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_2_4 = (RuleCall)cGroup_2.eContents().get(4);
-		private final Assignment cImmAssignment_2_5 = (Assignment)cGroup_2.eContents().get(5);
-		private final RuleCall cImmLABEL_IMMTerminalRuleCall_2_5_0 = (RuleCall)cImmAssignment_2_5.eContents().get(0);
+		private final Assignment cLabelAssignment_2_5 = (Assignment)cGroup_2.eContents().get(5);
+		private final RuleCall cLabelLabelEndParserRuleCall_2_5_0 = (RuleCall)cLabelAssignment_2_5.eContents().get(0);
 		
 		//IInstruction:
-		//	i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE | i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE
-		//	LPAREN reg2=REG RPAREN | i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM;
+		//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE |
+		//	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN |
+		//	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE | i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE LPAREN
-		//reg2=REG RPAREN | i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM
+		//i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE | i_opcode=IInstructionOffsetTrans
+		//reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN | i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA
+		//reg2=RegTrans COMMA label=LabelEnd
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE
+		//i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//i_opcode=IOP_IMM
+		//i_opcode=IInstructionImmTrans
 		public Assignment getI_opcodeAssignment_0_0() { return cI_opcodeAssignment_0_0; }
 		
-		//IOP_IMM
-		public RuleCall getI_opcodeIOP_IMMTerminalRuleCall_0_0_0() { return cI_opcodeIOP_IMMTerminalRuleCall_0_0_0; }
+		//IInstructionImmTrans
+		public RuleCall getI_opcodeIInstructionImmTransParserRuleCall_0_0_0() { return cI_opcodeIInstructionImmTransParserRuleCall_0_0_0; }
 		
-		//reg1=REG
+		//reg1=RegTrans
 		public Assignment getReg1Assignment_0_1() { return cReg1Assignment_0_1; }
 		
-		//REG
-		public RuleCall getReg1REGTerminalRuleCall_0_1_0() { return cReg1REGTerminalRuleCall_0_1_0; }
+		//RegTrans
+		public RuleCall getReg1RegTransParserRuleCall_0_1_0() { return cReg1RegTransParserRuleCall_0_1_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_0_2() { return cCOMMATerminalRuleCall_0_2; }
 		
-		//reg2=REG
+		//reg2=RegTrans
 		public Assignment getReg2Assignment_0_3() { return cReg2Assignment_0_3; }
 		
-		//REG
-		public RuleCall getReg2REGTerminalRuleCall_0_3_0() { return cReg2REGTerminalRuleCall_0_3_0; }
+		//RegTrans
+		public RuleCall getReg2RegTransParserRuleCall_0_3_0() { return cReg2RegTransParserRuleCall_0_3_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_0_4() { return cCOMMATerminalRuleCall_0_4; }
@@ -271,20 +298,20 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//IMMEDIATE
 		public RuleCall getImmIMMEDIATETerminalRuleCall_0_5_0() { return cImmIMMEDIATETerminalRuleCall_0_5_0; }
 		
-		//i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE LPAREN reg2=REG RPAREN
+		//i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//i_opcode=IOP_OFFSET
+		//i_opcode=IInstructionOffsetTrans
 		public Assignment getI_opcodeAssignment_1_0() { return cI_opcodeAssignment_1_0; }
 		
-		//IOP_OFFSET
-		public RuleCall getI_opcodeIOP_OFFSETTerminalRuleCall_1_0_0() { return cI_opcodeIOP_OFFSETTerminalRuleCall_1_0_0; }
+		//IInstructionOffsetTrans
+		public RuleCall getI_opcodeIInstructionOffsetTransParserRuleCall_1_0_0() { return cI_opcodeIInstructionOffsetTransParserRuleCall_1_0_0; }
 		
-		//reg1=REG
+		//reg1=RegTrans
 		public Assignment getReg1Assignment_1_1() { return cReg1Assignment_1_1; }
 		
-		//REG
-		public RuleCall getReg1REGTerminalRuleCall_1_1_0() { return cReg1REGTerminalRuleCall_1_1_0; }
+		//RegTrans
+		public RuleCall getReg1RegTransParserRuleCall_1_1_0() { return cReg1RegTransParserRuleCall_1_1_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_1_2() { return cCOMMATerminalRuleCall_1_2; }
@@ -298,86 +325,86 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		//LPAREN
 		public RuleCall getLPARENTerminalRuleCall_1_4() { return cLPARENTerminalRuleCall_1_4; }
 		
-		//reg2=REG
+		//reg2=RegTrans
 		public Assignment getReg2Assignment_1_5() { return cReg2Assignment_1_5; }
 		
-		//REG
-		public RuleCall getReg2REGTerminalRuleCall_1_5_0() { return cReg2REGTerminalRuleCall_1_5_0; }
+		//RegTrans
+		public RuleCall getReg2RegTransParserRuleCall_1_5_0() { return cReg2RegTransParserRuleCall_1_5_0; }
 		
 		//RPAREN
 		public RuleCall getRPARENTerminalRuleCall_1_6() { return cRPARENTerminalRuleCall_1_6; }
 		
-		//i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM
+		//i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//i_opcode=IOP_LABEL
+		//i_opcode=IInstructionLabelTrans
 		public Assignment getI_opcodeAssignment_2_0() { return cI_opcodeAssignment_2_0; }
 		
-		//IOP_LABEL
-		public RuleCall getI_opcodeIOP_LABELTerminalRuleCall_2_0_0() { return cI_opcodeIOP_LABELTerminalRuleCall_2_0_0; }
+		//IInstructionLabelTrans
+		public RuleCall getI_opcodeIInstructionLabelTransParserRuleCall_2_0_0() { return cI_opcodeIInstructionLabelTransParserRuleCall_2_0_0; }
 		
-		//reg1=REG
+		//reg1=RegTrans
 		public Assignment getReg1Assignment_2_1() { return cReg1Assignment_2_1; }
 		
-		//REG
-		public RuleCall getReg1REGTerminalRuleCall_2_1_0() { return cReg1REGTerminalRuleCall_2_1_0; }
+		//RegTrans
+		public RuleCall getReg1RegTransParserRuleCall_2_1_0() { return cReg1RegTransParserRuleCall_2_1_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_2_2() { return cCOMMATerminalRuleCall_2_2; }
 		
-		//reg2=REG
+		//reg2=RegTrans
 		public Assignment getReg2Assignment_2_3() { return cReg2Assignment_2_3; }
 		
-		//REG
-		public RuleCall getReg2REGTerminalRuleCall_2_3_0() { return cReg2REGTerminalRuleCall_2_3_0; }
+		//RegTrans
+		public RuleCall getReg2RegTransParserRuleCall_2_3_0() { return cReg2RegTransParserRuleCall_2_3_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_2_4() { return cCOMMATerminalRuleCall_2_4; }
 		
-		//imm=LABEL_IMM
-		public Assignment getImmAssignment_2_5() { return cImmAssignment_2_5; }
+		//label=LabelEnd
+		public Assignment getLabelAssignment_2_5() { return cLabelAssignment_2_5; }
 		
-		//LABEL_IMM
-		public RuleCall getImmLABEL_IMMTerminalRuleCall_2_5_0() { return cImmLABEL_IMMTerminalRuleCall_2_5_0; }
+		//LabelEnd
+		public RuleCall getLabelLabelEndParserRuleCall_2_5_0() { return cLabelLabelEndParserRuleCall_2_5_0; }
 	}
 	public class JInstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.JInstruction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cJ_opcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cJ_opcodeJOPTerminalRuleCall_0_0 = (RuleCall)cJ_opcodeAssignment_0.eContents().get(0);
+		private final RuleCall cJ_opcodeJInstructionTransParserRuleCall_0_0 = (RuleCall)cJ_opcodeAssignment_0.eContents().get(0);
 		private final Assignment cReg1Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cReg1REGTerminalRuleCall_1_0 = (RuleCall)cReg1Assignment_1.eContents().get(0);
+		private final RuleCall cReg1RegTransParserRuleCall_1_0 = (RuleCall)cReg1Assignment_1.eContents().get(0);
 		private final RuleCall cCOMMATerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cReg2Assignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cReg2REGTerminalRuleCall_3_0 = (RuleCall)cReg2Assignment_3.eContents().get(0);
+		private final RuleCall cReg2RegTransParserRuleCall_3_0 = (RuleCall)cReg2Assignment_3.eContents().get(0);
 		
 		//JInstruction:
-		//	j_opcode=JOP reg1=REG COMMA reg2=REG;
+		//	j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//j_opcode=JOP reg1=REG COMMA reg2=REG
+		//j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans
 		public Group getGroup() { return cGroup; }
 		
-		//j_opcode=JOP
+		//j_opcode=JInstructionTrans
 		public Assignment getJ_opcodeAssignment_0() { return cJ_opcodeAssignment_0; }
 		
-		//JOP
-		public RuleCall getJ_opcodeJOPTerminalRuleCall_0_0() { return cJ_opcodeJOPTerminalRuleCall_0_0; }
+		//JInstructionTrans
+		public RuleCall getJ_opcodeJInstructionTransParserRuleCall_0_0() { return cJ_opcodeJInstructionTransParserRuleCall_0_0; }
 		
-		//reg1=REG
+		//reg1=RegTrans
 		public Assignment getReg1Assignment_1() { return cReg1Assignment_1; }
 		
-		//REG
-		public RuleCall getReg1REGTerminalRuleCall_1_0() { return cReg1REGTerminalRuleCall_1_0; }
+		//RegTrans
+		public RuleCall getReg1RegTransParserRuleCall_1_0() { return cReg1RegTransParserRuleCall_1_0; }
 		
 		//COMMA
 		public RuleCall getCOMMATerminalRuleCall_2() { return cCOMMATerminalRuleCall_2; }
 		
-		//reg2=REG
+		//reg2=RegTrans
 		public Assignment getReg2Assignment_3() { return cReg2Assignment_3; }
 		
-		//REG
-		public RuleCall getReg2REGTerminalRuleCall_3_0() { return cReg2REGTerminalRuleCall_3_0; }
+		//RegTrans
+		public RuleCall getReg2RegTransParserRuleCall_3_0() { return cReg2RegTransParserRuleCall_3_0; }
 	}
 	public class OInstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.OInstruction");
@@ -413,28 +440,180 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.WordDirective");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cW_dirAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cW_dirWORDTerminalRuleCall_0_0 = (RuleCall)cW_dirAssignment_0.eContents().get(0);
+		private final RuleCall cW_dirWordTransParserRuleCall_0_0 = (RuleCall)cW_dirAssignment_0.eContents().get(0);
 		private final Assignment cImmAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImmIMMEDIATETerminalRuleCall_1_0 = (RuleCall)cImmAssignment_1.eContents().get(0);
 		
 		//WordDirective:
-		//	w_dir=WORD imm=IMMEDIATE;
+		//	w_dir=WordTrans imm=IMMEDIATE;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//w_dir=WORD imm=IMMEDIATE
+		//w_dir=WordTrans imm=IMMEDIATE
 		public Group getGroup() { return cGroup; }
 		
-		//w_dir=WORD
+		//w_dir=WordTrans
 		public Assignment getW_dirAssignment_0() { return cW_dirAssignment_0; }
 		
-		//WORD
-		public RuleCall getW_dirWORDTerminalRuleCall_0_0() { return cW_dirWORDTerminalRuleCall_0_0; }
+		//WordTrans
+		public RuleCall getW_dirWordTransParserRuleCall_0_0() { return cW_dirWordTransParserRuleCall_0_0; }
 		
 		//imm=IMMEDIATE
 		public Assignment getImmAssignment_1() { return cImmAssignment_1; }
 		
 		//IMMEDIATE
 		public RuleCall getImmIMMEDIATETerminalRuleCall_1_0() { return cImmIMMEDIATETerminalRuleCall_1_0; }
+	}
+	public class RInstructionTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RInstructionTrans");
+		private final Assignment cR_opcodeAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cR_opcodeROPTerminalRuleCall_0 = (RuleCall)cR_opcodeAssignment.eContents().get(0);
+		
+		////Transition Rules
+		////Used for Syntax Coloring
+		//RInstructionTrans:
+		//	r_opcode=ROP;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//r_opcode=ROP
+		public Assignment getR_opcodeAssignment() { return cR_opcodeAssignment; }
+		
+		//ROP
+		public RuleCall getR_opcodeROPTerminalRuleCall_0() { return cR_opcodeROPTerminalRuleCall_0; }
+	}
+	public class IInstructionImmTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IInstructionImmTrans");
+		private final Assignment cI_opcodeAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cI_opcodeIOP_IMMTerminalRuleCall_0 = (RuleCall)cI_opcodeAssignment.eContents().get(0);
+		
+		//IInstructionImmTrans:
+		//	i_opcode=IOP_IMM;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//i_opcode=IOP_IMM
+		public Assignment getI_opcodeAssignment() { return cI_opcodeAssignment; }
+		
+		//IOP_IMM
+		public RuleCall getI_opcodeIOP_IMMTerminalRuleCall_0() { return cI_opcodeIOP_IMMTerminalRuleCall_0; }
+	}
+	public class IInstructionOffsetTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IInstructionOffsetTrans");
+		private final Assignment cI_opcodeAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cI_opcodeIOP_OFFSETTerminalRuleCall_0 = (RuleCall)cI_opcodeAssignment.eContents().get(0);
+		
+		//IInstructionOffsetTrans:
+		//	i_opcode=IOP_OFFSET;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//i_opcode=IOP_OFFSET
+		public Assignment getI_opcodeAssignment() { return cI_opcodeAssignment; }
+		
+		//IOP_OFFSET
+		public RuleCall getI_opcodeIOP_OFFSETTerminalRuleCall_0() { return cI_opcodeIOP_OFFSETTerminalRuleCall_0; }
+	}
+	public class IInstructionLabelTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.IInstructionLabelTrans");
+		private final Assignment cI_opcodeAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cI_opcodeIOP_LABELTerminalRuleCall_0 = (RuleCall)cI_opcodeAssignment.eContents().get(0);
+		
+		//IInstructionLabelTrans:
+		//	i_opcode=IOP_LABEL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//i_opcode=IOP_LABEL
+		public Assignment getI_opcodeAssignment() { return cI_opcodeAssignment; }
+		
+		//IOP_LABEL
+		public RuleCall getI_opcodeIOP_LABELTerminalRuleCall_0() { return cI_opcodeIOP_LABELTerminalRuleCall_0; }
+	}
+	public class JInstructionTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.JInstructionTrans");
+		private final Assignment cJ_opcodeAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cJ_opcodeJOPTerminalRuleCall_0 = (RuleCall)cJ_opcodeAssignment.eContents().get(0);
+		
+		//JInstructionTrans:
+		//	j_opcode=JOP;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//j_opcode=JOP
+		public Assignment getJ_opcodeAssignment() { return cJ_opcodeAssignment; }
+		
+		//JOP
+		public RuleCall getJ_opcodeJOPTerminalRuleCall_0() { return cJ_opcodeJOPTerminalRuleCall_0; }
+	}
+	public class WordTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.WordTrans");
+		private final Assignment cWordAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cWordWORDTerminalRuleCall_0 = (RuleCall)cWordAssignment.eContents().get(0);
+		
+		//WordTrans:
+		//	word=WORD;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//word=WORD
+		public Assignment getWordAssignment() { return cWordAssignment; }
+		
+		//WORD
+		public RuleCall getWordWORDTerminalRuleCall_0() { return cWordWORDTerminalRuleCall_0; }
+	}
+	public class CommentTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.CommentTrans");
+		private final Assignment cCommentAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_0 = (RuleCall)cCommentAssignment.eContents().get(0);
+		
+		//CommentTrans:
+		//	comment=SL_COMMENT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment() { return cCommentAssignment; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_0() { return cCommentSL_COMMENTTerminalRuleCall_0; }
+	}
+	public class RegTransElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.RegTrans");
+		private final Assignment cRegAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cRegREGTerminalRuleCall_0 = (RuleCall)cRegAssignment.eContents().get(0);
+		
+		//RegTrans:
+		//	reg=REG;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//reg=REG
+		public Assignment getRegAssignment() { return cRegAssignment; }
+		
+		//REG
+		public RuleCall getRegREGTerminalRuleCall_0() { return cRegREGTerminalRuleCall_0; }
+	}
+	public class LabelBegElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.LabelBeg");
+		private final Assignment cLabelAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cLabelLABELTerminalRuleCall_0 = (RuleCall)cLabelAssignment.eContents().get(0);
+		
+		//LabelBeg:
+		//	label=LABEL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//label=LABEL
+		public Assignment getLabelAssignment() { return cLabelAssignment; }
+		
+		//LABEL
+		public RuleCall getLabelLABELTerminalRuleCall_0() { return cLabelLABELTerminalRuleCall_0; }
+	}
+	public class LabelEndElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.LabelEnd");
+		private final Assignment cLabelAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cLabelLABEL_IMMTerminalRuleCall_0 = (RuleCall)cLabelAssignment.eContents().get(0);
+		
+		//LabelEnd:
+		//	label=LABEL_IMM;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//label=LABEL_IMM
+		public Assignment getLabelAssignment() { return cLabelAssignment; }
+		
+		//LABEL_IMM
+		public RuleCall getLabelLABEL_IMMTerminalRuleCall_0() { return cLabelLABEL_IMMTerminalRuleCall_0; }
 	}
 	
 	
@@ -447,6 +626,16 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	private final OInstructionElements pOInstruction;
 	private final NOOPDirectiveElements pNOOPDirective;
 	private final WordDirectiveElements pWordDirective;
+	private final RInstructionTransElements pRInstructionTrans;
+	private final IInstructionImmTransElements pIInstructionImmTrans;
+	private final IInstructionOffsetTransElements pIInstructionOffsetTrans;
+	private final IInstructionLabelTransElements pIInstructionLabelTrans;
+	private final JInstructionTransElements pJInstructionTrans;
+	private final WordTransElements pWordTrans;
+	private final CommentTransElements pCommentTrans;
+	private final RegTransElements pRegTrans;
+	private final LabelBegElements pLabelBeg;
+	private final LabelEndElements pLabelEnd;
 	private final TerminalRule tWORD;
 	private final TerminalRule tOOP;
 	private final TerminalRule tNOOP;
@@ -484,6 +673,16 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		this.pOInstruction = new OInstructionElements();
 		this.pNOOPDirective = new NOOPDirectiveElements();
 		this.pWordDirective = new WordDirectiveElements();
+		this.pRInstructionTrans = new RInstructionTransElements();
+		this.pIInstructionImmTrans = new IInstructionImmTransElements();
+		this.pIInstructionOffsetTrans = new IInstructionOffsetTransElements();
+		this.pIInstructionLabelTrans = new IInstructionLabelTransElements();
+		this.pJInstructionTrans = new JInstructionTransElements();
+		this.pWordTrans = new WordTransElements();
+		this.pCommentTrans = new CommentTransElements();
+		this.pRegTrans = new RegTransElements();
+		this.pLabelBeg = new LabelBegElements();
+		this.pLabelEnd = new LabelEndElements();
 		this.tWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.WORD");
 		this.tOOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.OOP");
 		this.tNOOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.NOOP");
@@ -533,7 +732,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	////Rules
 	//Program:
-	//	{Program} lines+=(Instruction | Directive)*;
+	//	lines+=(Instruction | Directive)*;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -543,7 +742,8 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Instruction:
-	//	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) SL_COMMENT?;
+	//	label=LabelBeg? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) comment=CommentTrans?
+	//	(ML_COMMENT | NEWLINE)?;
 	public InstructionElements getInstructionAccess() {
 		return pInstruction;
 	}
@@ -553,7 +753,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Directive:
-	//	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT?;
+	//	label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?;
 	public DirectiveElements getDirectiveAccess() {
 		return pDirective;
 	}
@@ -563,7 +763,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//RInstruction:
-	//	r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG;
+	//	r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans;
 	public RInstructionElements getRInstructionAccess() {
 		return pRInstruction;
 	}
@@ -573,8 +773,9 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IInstruction:
-	//	i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE | i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE
-	//	LPAREN reg2=REG RPAREN | i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM;
+	//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE |
+	//	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN |
+	//	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd;
 	public IInstructionElements getIInstructionAccess() {
 		return pIInstruction;
 	}
@@ -584,7 +785,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//JInstruction:
-	//	j_opcode=JOP reg1=REG COMMA reg2=REG;
+	//	j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans;
 	public JInstructionElements getJInstructionAccess() {
 		return pJInstruction;
 	}
@@ -614,13 +815,115 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//WordDirective:
-	//	w_dir=WORD imm=IMMEDIATE;
+	//	w_dir=WordTrans imm=IMMEDIATE;
 	public WordDirectiveElements getWordDirectiveAccess() {
 		return pWordDirective;
 	}
 	
 	public ParserRule getWordDirectiveRule() {
 		return getWordDirectiveAccess().getRule();
+	}
+	
+	////Transition Rules
+	////Used for Syntax Coloring
+	//RInstructionTrans:
+	//	r_opcode=ROP;
+	public RInstructionTransElements getRInstructionTransAccess() {
+		return pRInstructionTrans;
+	}
+	
+	public ParserRule getRInstructionTransRule() {
+		return getRInstructionTransAccess().getRule();
+	}
+	
+	//IInstructionImmTrans:
+	//	i_opcode=IOP_IMM;
+	public IInstructionImmTransElements getIInstructionImmTransAccess() {
+		return pIInstructionImmTrans;
+	}
+	
+	public ParserRule getIInstructionImmTransRule() {
+		return getIInstructionImmTransAccess().getRule();
+	}
+	
+	//IInstructionOffsetTrans:
+	//	i_opcode=IOP_OFFSET;
+	public IInstructionOffsetTransElements getIInstructionOffsetTransAccess() {
+		return pIInstructionOffsetTrans;
+	}
+	
+	public ParserRule getIInstructionOffsetTransRule() {
+		return getIInstructionOffsetTransAccess().getRule();
+	}
+	
+	//IInstructionLabelTrans:
+	//	i_opcode=IOP_LABEL;
+	public IInstructionLabelTransElements getIInstructionLabelTransAccess() {
+		return pIInstructionLabelTrans;
+	}
+	
+	public ParserRule getIInstructionLabelTransRule() {
+		return getIInstructionLabelTransAccess().getRule();
+	}
+	
+	//JInstructionTrans:
+	//	j_opcode=JOP;
+	public JInstructionTransElements getJInstructionTransAccess() {
+		return pJInstructionTrans;
+	}
+	
+	public ParserRule getJInstructionTransRule() {
+		return getJInstructionTransAccess().getRule();
+	}
+	
+	//WordTrans:
+	//	word=WORD;
+	public WordTransElements getWordTransAccess() {
+		return pWordTrans;
+	}
+	
+	public ParserRule getWordTransRule() {
+		return getWordTransAccess().getRule();
+	}
+	
+	//CommentTrans:
+	//	comment=SL_COMMENT;
+	public CommentTransElements getCommentTransAccess() {
+		return pCommentTrans;
+	}
+	
+	public ParserRule getCommentTransRule() {
+		return getCommentTransAccess().getRule();
+	}
+	
+	//RegTrans:
+	//	reg=REG;
+	public RegTransElements getRegTransAccess() {
+		return pRegTrans;
+	}
+	
+	public ParserRule getRegTransRule() {
+		return getRegTransAccess().getRule();
+	}
+	
+	//LabelBeg:
+	//	label=LABEL;
+	public LabelBegElements getLabelBegAccess() {
+		return pLabelBeg;
+	}
+	
+	public ParserRule getLabelBegRule() {
+		return getLabelBegAccess().getRule();
+	}
+	
+	//LabelEnd:
+	//	label=LABEL_IMM;
+	public LabelEndElements getLabelEndAccess() {
+		return pLabelEnd;
+	}
+	
+	public ParserRule getLabelEndRule() {
+		return getLabelEndAccess().getRule();
 	}
 	
 	//terminal WORD:
@@ -695,7 +998,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal SL_COMMENT:
-	//	';' !('\n' | '\r')* ('\r'? '\n')?;
+	//	';' !('\n' | '\r')* '\r'? '\n'?;
 	public TerminalRule getSL_COMMENTRule() {
 		return tSL_COMMENT;
 	}

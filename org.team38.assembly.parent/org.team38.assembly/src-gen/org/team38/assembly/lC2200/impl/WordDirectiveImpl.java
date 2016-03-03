@@ -4,14 +4,17 @@
 package org.team38.assembly.lC2200.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.WordDirective;
+import org.team38.assembly.lC2200.WordTrans;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,35 +22,25 @@ import org.team38.assembly.lC2200.WordDirective;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getW_dir <em>Wdir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getImm <em>Imm</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements WordDirective
 {
   /**
-   * The default value of the '{@link #getW_dir() <em>Wdir</em>}' attribute.
+   * The cached value of the '{@link #getW_dir() <em>Wdir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getW_dir()
    * @generated
    * @ordered
    */
-  protected static final String WDIR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getW_dir() <em>Wdir</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getW_dir()
-   * @generated
-   * @ordered
-   */
-  protected String w_dir = WDIR_EDEFAULT;
+  protected WordTrans w_dir;
 
   /**
    * The default value of the '{@link #getImm() <em>Imm</em>}' attribute.
@@ -95,7 +88,7 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getW_dir()
+  public WordTrans getW_dir()
   {
     return w_dir;
   }
@@ -105,12 +98,37 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setW_dir(String newW_dir)
+  public NotificationChain basicSetW_dir(WordTrans newW_dir, NotificationChain msgs)
   {
-    String oldW_dir = w_dir;
+    WordTrans oldW_dir = w_dir;
     w_dir = newW_dir;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.WORD_DIRECTIVE__WDIR, oldW_dir, w_dir));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.WORD_DIRECTIVE__WDIR, oldW_dir, newW_dir);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setW_dir(WordTrans newW_dir)
+  {
+    if (newW_dir != w_dir)
+    {
+      NotificationChain msgs = null;
+      if (w_dir != null)
+        msgs = ((InternalEObject)w_dir).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.WORD_DIRECTIVE__WDIR, null, msgs);
+      if (newW_dir != null)
+        msgs = ((InternalEObject)newW_dir).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.WORD_DIRECTIVE__WDIR, null, msgs);
+      msgs = basicSetW_dir(newW_dir, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.WORD_DIRECTIVE__WDIR, newW_dir, newW_dir));
   }
 
   /**
@@ -142,6 +160,22 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LC2200Package.WORD_DIRECTIVE__WDIR:
+        return basicSetW_dir(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -165,7 +199,7 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     switch (featureID)
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
-        setW_dir((String)newValue);
+        setW_dir((WordTrans)newValue);
         return;
       case LC2200Package.WORD_DIRECTIVE__IMM:
         setImm((String)newValue);
@@ -185,7 +219,7 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     switch (featureID)
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
-        setW_dir(WDIR_EDEFAULT);
+        setW_dir((WordTrans)null);
         return;
       case LC2200Package.WORD_DIRECTIVE__IMM:
         setImm(IMM_EDEFAULT);
@@ -205,7 +239,7 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     switch (featureID)
     {
       case LC2200Package.WORD_DIRECTIVE__WDIR:
-        return WDIR_EDEFAULT == null ? w_dir != null : !WDIR_EDEFAULT.equals(w_dir);
+        return w_dir != null;
       case LC2200Package.WORD_DIRECTIVE__IMM:
         return IMM_EDEFAULT == null ? imm != null : !IMM_EDEFAULT.equals(imm);
     }
@@ -223,9 +257,7 @@ public class WordDirectiveImpl extends MinimalEObjectImpl.Container implements W
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (w_dir: ");
-    result.append(w_dir);
-    result.append(", imm: ");
+    result.append(" (imm: ");
     result.append(imm);
     result.append(')');
     return result.toString();

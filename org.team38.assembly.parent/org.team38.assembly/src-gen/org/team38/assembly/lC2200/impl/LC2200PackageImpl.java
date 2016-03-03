@@ -10,17 +10,27 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.team38.assembly.lC2200.CommentTrans;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
+import org.team38.assembly.lC2200.IInstructionImmTrans;
+import org.team38.assembly.lC2200.IInstructionLabelTrans;
+import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
+import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.LC2200Factory;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.LabelBeg;
+import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
 import org.team38.assembly.lC2200.RInstruction;
+import org.team38.assembly.lC2200.RInstructionTrans;
+import org.team38.assembly.lC2200.RegTrans;
 import org.team38.assembly.lC2200.WordDirective;
+import org.team38.assembly.lC2200.WordTrans;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,6 +102,76 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * @generated
    */
   private EClass wordDirectiveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rInstructionTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass iInstructionImmTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass iInstructionOffsetTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass iInstructionLabelTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jInstructionTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wordTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass commentTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass regTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelBegEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelEndEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -191,9 +271,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getInstruction_Label()
+  public EReference getInstruction_Label()
   {
-    return (EAttribute)instructionEClass.getEStructuralFeatures().get(0);
+    return (EReference)instructionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -211,6 +291,16 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getInstruction_Comment()
+  {
+    return (EReference)instructionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDirective()
   {
     return directiveEClass;
@@ -221,9 +311,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDirective_Label()
+  public EReference getDirective_Label()
   {
-    return (EAttribute)directiveEClass.getEStructuralFeatures().get(0);
+    return (EReference)directiveEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -241,6 +331,16 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getDirective_Comment()
+  {
+    return (EReference)directiveEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRInstruction()
   {
     return rInstructionEClass;
@@ -251,9 +351,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRInstruction_R_opcode()
+  public EReference getRInstruction_R_opcode()
   {
-    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(0);
+    return (EReference)rInstructionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -261,9 +361,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRInstruction_Reg1()
+  public EReference getRInstruction_Reg1()
   {
-    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(1);
+    return (EReference)rInstructionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -271,9 +371,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRInstruction_Reg2()
+  public EReference getRInstruction_Reg2()
   {
-    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(2);
+    return (EReference)rInstructionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -281,9 +381,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRInstruction_Reg3()
+  public EReference getRInstruction_Reg3()
   {
-    return (EAttribute)rInstructionEClass.getEStructuralFeatures().get(3);
+    return (EReference)rInstructionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -301,9 +401,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIInstruction_I_opcode()
+  public EReference getIInstruction_I_opcode()
   {
-    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(0);
+    return (EReference)iInstructionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -311,9 +411,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIInstruction_Reg1()
+  public EReference getIInstruction_Reg1()
   {
-    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(1);
+    return (EReference)iInstructionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -321,9 +421,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIInstruction_Reg2()
+  public EReference getIInstruction_Reg2()
   {
-    return (EAttribute)iInstructionEClass.getEStructuralFeatures().get(2);
+    return (EReference)iInstructionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -341,6 +441,16 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getIInstruction_Label()
+  {
+    return (EReference)iInstructionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getJInstruction()
   {
     return jInstructionEClass;
@@ -351,9 +461,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJInstruction_J_opcode()
+  public EReference getJInstruction_J_opcode()
   {
-    return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(0);
+    return (EReference)jInstructionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -361,9 +471,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJInstruction_Reg1()
+  public EReference getJInstruction_Reg1()
   {
-    return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(1);
+    return (EReference)jInstructionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -371,9 +481,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getJInstruction_Reg2()
+  public EReference getJInstruction_Reg2()
   {
-    return (EAttribute)jInstructionEClass.getEStructuralFeatures().get(2);
+    return (EReference)jInstructionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -431,9 +541,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWordDirective_W_dir()
+  public EReference getWordDirective_W_dir()
   {
-    return (EAttribute)wordDirectiveEClass.getEStructuralFeatures().get(0);
+    return (EReference)wordDirectiveEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -444,6 +554,206 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
   public EAttribute getWordDirective_Imm()
   {
     return (EAttribute)wordDirectiveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRInstructionTrans()
+  {
+    return rInstructionTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRInstructionTrans_R_opcode()
+  {
+    return (EAttribute)rInstructionTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIInstructionImmTrans()
+  {
+    return iInstructionImmTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIInstructionImmTrans_I_opcode()
+  {
+    return (EAttribute)iInstructionImmTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIInstructionOffsetTrans()
+  {
+    return iInstructionOffsetTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIInstructionOffsetTrans_I_opcode()
+  {
+    return (EAttribute)iInstructionOffsetTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIInstructionLabelTrans()
+  {
+    return iInstructionLabelTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIInstructionLabelTrans_I_opcode()
+  {
+    return (EAttribute)iInstructionLabelTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJInstructionTrans()
+  {
+    return jInstructionTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJInstructionTrans_J_opcode()
+  {
+    return (EAttribute)jInstructionTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWordTrans()
+  {
+    return wordTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWordTrans_Word()
+  {
+    return (EAttribute)wordTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCommentTrans()
+  {
+    return commentTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommentTrans_Comment()
+  {
+    return (EAttribute)commentTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRegTrans()
+  {
+    return regTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRegTrans_Reg()
+  {
+    return (EAttribute)regTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLabelBeg()
+  {
+    return labelBegEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLabelBeg_Label()
+  {
+    return (EAttribute)labelBegEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLabelEnd()
+  {
+    return labelEndEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLabelEnd_Label()
+  {
+    return (EAttribute)labelEndEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -480,29 +790,32 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     createEReference(programEClass, PROGRAM__LINES);
 
     instructionEClass = createEClass(INSTRUCTION);
-    createEAttribute(instructionEClass, INSTRUCTION__LABEL);
+    createEReference(instructionEClass, INSTRUCTION__LABEL);
     createEReference(instructionEClass, INSTRUCTION__INSTRUCTION);
+    createEReference(instructionEClass, INSTRUCTION__COMMENT);
 
     directiveEClass = createEClass(DIRECTIVE);
-    createEAttribute(directiveEClass, DIRECTIVE__LABEL);
+    createEReference(directiveEClass, DIRECTIVE__LABEL);
     createEReference(directiveEClass, DIRECTIVE__DIRECTIVE);
+    createEReference(directiveEClass, DIRECTIVE__COMMENT);
 
     rInstructionEClass = createEClass(RINSTRUCTION);
-    createEAttribute(rInstructionEClass, RINSTRUCTION__ROPCODE);
-    createEAttribute(rInstructionEClass, RINSTRUCTION__REG1);
-    createEAttribute(rInstructionEClass, RINSTRUCTION__REG2);
-    createEAttribute(rInstructionEClass, RINSTRUCTION__REG3);
+    createEReference(rInstructionEClass, RINSTRUCTION__ROPCODE);
+    createEReference(rInstructionEClass, RINSTRUCTION__REG1);
+    createEReference(rInstructionEClass, RINSTRUCTION__REG2);
+    createEReference(rInstructionEClass, RINSTRUCTION__REG3);
 
     iInstructionEClass = createEClass(IINSTRUCTION);
-    createEAttribute(iInstructionEClass, IINSTRUCTION__IOPCODE);
-    createEAttribute(iInstructionEClass, IINSTRUCTION__REG1);
-    createEAttribute(iInstructionEClass, IINSTRUCTION__REG2);
+    createEReference(iInstructionEClass, IINSTRUCTION__IOPCODE);
+    createEReference(iInstructionEClass, IINSTRUCTION__REG1);
+    createEReference(iInstructionEClass, IINSTRUCTION__REG2);
     createEAttribute(iInstructionEClass, IINSTRUCTION__IMM);
+    createEReference(iInstructionEClass, IINSTRUCTION__LABEL);
 
     jInstructionEClass = createEClass(JINSTRUCTION);
-    createEAttribute(jInstructionEClass, JINSTRUCTION__JOPCODE);
-    createEAttribute(jInstructionEClass, JINSTRUCTION__REG1);
-    createEAttribute(jInstructionEClass, JINSTRUCTION__REG2);
+    createEReference(jInstructionEClass, JINSTRUCTION__JOPCODE);
+    createEReference(jInstructionEClass, JINSTRUCTION__REG1);
+    createEReference(jInstructionEClass, JINSTRUCTION__REG2);
 
     oInstructionEClass = createEClass(OINSTRUCTION);
     createEAttribute(oInstructionEClass, OINSTRUCTION__OOPCODE);
@@ -511,8 +824,38 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     createEAttribute(noopDirectiveEClass, NOOP_DIRECTIVE__NDIR);
 
     wordDirectiveEClass = createEClass(WORD_DIRECTIVE);
-    createEAttribute(wordDirectiveEClass, WORD_DIRECTIVE__WDIR);
+    createEReference(wordDirectiveEClass, WORD_DIRECTIVE__WDIR);
     createEAttribute(wordDirectiveEClass, WORD_DIRECTIVE__IMM);
+
+    rInstructionTransEClass = createEClass(RINSTRUCTION_TRANS);
+    createEAttribute(rInstructionTransEClass, RINSTRUCTION_TRANS__ROPCODE);
+
+    iInstructionImmTransEClass = createEClass(IINSTRUCTION_IMM_TRANS);
+    createEAttribute(iInstructionImmTransEClass, IINSTRUCTION_IMM_TRANS__IOPCODE);
+
+    iInstructionOffsetTransEClass = createEClass(IINSTRUCTION_OFFSET_TRANS);
+    createEAttribute(iInstructionOffsetTransEClass, IINSTRUCTION_OFFSET_TRANS__IOPCODE);
+
+    iInstructionLabelTransEClass = createEClass(IINSTRUCTION_LABEL_TRANS);
+    createEAttribute(iInstructionLabelTransEClass, IINSTRUCTION_LABEL_TRANS__IOPCODE);
+
+    jInstructionTransEClass = createEClass(JINSTRUCTION_TRANS);
+    createEAttribute(jInstructionTransEClass, JINSTRUCTION_TRANS__JOPCODE);
+
+    wordTransEClass = createEClass(WORD_TRANS);
+    createEAttribute(wordTransEClass, WORD_TRANS__WORD);
+
+    commentTransEClass = createEClass(COMMENT_TRANS);
+    createEAttribute(commentTransEClass, COMMENT_TRANS__COMMENT);
+
+    regTransEClass = createEClass(REG_TRANS);
+    createEAttribute(regTransEClass, REG_TRANS__REG);
+
+    labelBegEClass = createEClass(LABEL_BEG);
+    createEAttribute(labelBegEClass, LABEL_BEG__LABEL);
+
+    labelEndEClass = createEClass(LABEL_END);
+    createEAttribute(labelEndEClass, LABEL_END__LABEL);
   }
 
   /**
@@ -550,29 +893,32 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     initEReference(getProgram_Lines(), ecorePackage.getEObject(), null, "lines", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instructionEClass, Instruction.class, "Instruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getInstruction_Label(), ecorePackage.getEString(), "label", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_Label(), this.getLabelBeg(), null, "label", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_Instruction(), ecorePackage.getEObject(), null, "instruction", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_Comment(), this.getCommentTrans(), null, "comment", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(directiveEClass, Directive.class, "Directive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDirective_Label(), ecorePackage.getEString(), "label", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDirective_Label(), this.getLabelBeg(), null, "label", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDirective_Directive(), ecorePackage.getEObject(), null, "directive", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDirective_Comment(), this.getCommentTrans(), null, "comment", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rInstructionEClass, RInstruction.class, "RInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRInstruction_R_opcode(), ecorePackage.getEString(), "r_opcode", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRInstruction_Reg3(), ecorePackage.getEString(), "reg3", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRInstruction_R_opcode(), this.getRInstructionTrans(), null, "r_opcode", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRInstruction_Reg1(), this.getRegTrans(), null, "reg1", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRInstruction_Reg2(), this.getRegTrans(), null, "reg2", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRInstruction_Reg3(), this.getRegTrans(), null, "reg3", null, 0, 1, RInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(iInstructionEClass, IInstruction.class, "IInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIInstruction_I_opcode(), ecorePackage.getEString(), "i_opcode", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIInstruction_I_opcode(), ecorePackage.getEObject(), null, "i_opcode", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIInstruction_Reg1(), this.getRegTrans(), null, "reg1", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIInstruction_Reg2(), this.getRegTrans(), null, "reg2", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getIInstruction_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIInstruction_Label(), this.getLabelEnd(), null, "label", null, 0, 1, IInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jInstructionEClass, JInstruction.class, "JInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJInstruction_J_opcode(), ecorePackage.getEString(), "j_opcode", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJInstruction_Reg1(), ecorePackage.getEString(), "reg1", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJInstruction_Reg2(), ecorePackage.getEString(), "reg2", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJInstruction_J_opcode(), this.getJInstructionTrans(), null, "j_opcode", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJInstruction_Reg1(), this.getRegTrans(), null, "reg1", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJInstruction_Reg2(), this.getRegTrans(), null, "reg2", null, 0, 1, JInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(oInstructionEClass, OInstruction.class, "OInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOInstruction_O_opcode(), ecorePackage.getEString(), "o_opcode", null, 0, 1, OInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -581,8 +927,38 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     initEAttribute(getNOOPDirective_N_dir(), ecorePackage.getEString(), "n_dir", null, 0, 1, NOOPDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wordDirectiveEClass, WordDirective.class, "WordDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWordDirective_W_dir(), ecorePackage.getEString(), "w_dir", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWordDirective_W_dir(), this.getWordTrans(), null, "w_dir", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWordDirective_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rInstructionTransEClass, RInstructionTrans.class, "RInstructionTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRInstructionTrans_R_opcode(), ecorePackage.getEString(), "r_opcode", null, 0, 1, RInstructionTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(iInstructionImmTransEClass, IInstructionImmTrans.class, "IInstructionImmTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIInstructionImmTrans_I_opcode(), ecorePackage.getEString(), "i_opcode", null, 0, 1, IInstructionImmTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(iInstructionOffsetTransEClass, IInstructionOffsetTrans.class, "IInstructionOffsetTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIInstructionOffsetTrans_I_opcode(), ecorePackage.getEString(), "i_opcode", null, 0, 1, IInstructionOffsetTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(iInstructionLabelTransEClass, IInstructionLabelTrans.class, "IInstructionLabelTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIInstructionLabelTrans_I_opcode(), ecorePackage.getEString(), "i_opcode", null, 0, 1, IInstructionLabelTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jInstructionTransEClass, JInstructionTrans.class, "JInstructionTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJInstructionTrans_J_opcode(), ecorePackage.getEString(), "j_opcode", null, 0, 1, JInstructionTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wordTransEClass, WordTrans.class, "WordTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWordTrans_Word(), ecorePackage.getEString(), "word", null, 0, 1, WordTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(commentTransEClass, CommentTrans.class, "CommentTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCommentTrans_Comment(), ecorePackage.getEString(), "comment", null, 0, 1, CommentTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(regTransEClass, RegTrans.class, "RegTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRegTrans_Reg(), ecorePackage.getEString(), "reg", null, 0, 1, RegTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(labelBegEClass, LabelBeg.class, "LabelBeg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLabelBeg_Label(), ecorePackage.getEString(), "label", null, 0, 1, LabelBeg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(labelEndEClass, LabelEnd.class, "LabelEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLabelEnd_Label(), ecorePackage.getEString(), "label", null, 0, 1, LabelEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

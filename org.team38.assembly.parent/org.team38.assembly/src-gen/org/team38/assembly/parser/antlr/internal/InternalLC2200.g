@@ -77,50 +77,41 @@ ruleProgram returns [EObject current=null]
 }:
 	(
 		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getProgramAccess().getProgramAction_0(),
-					$current);
-			}
-		)
-		(
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0());
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0());
+				}
+				lv_lines_0_1=ruleInstruction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
 					}
-					lv_lines_1_1=ruleInstruction
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProgramRule());
-						}
-						add(
-							$current,
-							"lines",
-							lv_lines_1_1,
-							"org.team38.assembly.LC2200.Instruction");
-						afterParserOrEnumRuleCall();
+					add(
+						$current,
+						"lines",
+						lv_lines_0_1,
+						"org.team38.assembly.LC2200.Instruction");
+					afterParserOrEnumRuleCall();
+				}
+				    |
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1());
+				}
+				lv_lines_0_2=ruleDirective
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
 					}
-					    |
-					{
-						newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1());
-					}
-					lv_lines_1_2=ruleDirective
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProgramRule());
-						}
-						add(
-							$current,
-							"lines",
-							lv_lines_1_2,
-							"org.team38.assembly.LC2200.Directive");
-						afterParserOrEnumRuleCall();
-					}
-				)
+					add(
+						$current,
+						"lines",
+						lv_lines_0_2,
+						"org.team38.assembly.LC2200.Directive");
+					afterParserOrEnumRuleCall();
+				}
 			)
-		)*
-	)
+		)
+	)*
 ;
 
 // Entry rule entryRuleInstruction
@@ -141,19 +132,20 @@ ruleInstruction returns [EObject current=null]
 	(
 		(
 			(
-				lv_label_0_0=RULE_LABEL
 				{
-					newLeafNode(lv_label_0_0, grammarAccess.getInstructionAccess().getLabelLABELTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getInstructionAccess().getLabelLabelBegParserRuleCall_0_0());
 				}
+				lv_label_0_0=ruleLabelBeg
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"label",
 						lv_label_0_0,
-						"org.team38.assembly.LC2200.LABEL");
+						"org.team38.assembly.LC2200.LabelBeg");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
@@ -227,9 +219,33 @@ ruleInstruction returns [EObject current=null]
 			)
 		)
 		(
-			this_SL_COMMENT_2=RULE_SL_COMMENT
+			(
+				{
+					newCompositeNode(grammarAccess.getInstructionAccess().getCommentCommentTransParserRuleCall_2_0());
+				}
+				lv_comment_2_0=ruleCommentTrans
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInstructionRule());
+					}
+					set(
+						$current,
+						"comment",
+						lv_comment_2_0,
+						"org.team38.assembly.LC2200.CommentTrans");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			this_ML_COMMENT_3=RULE_ML_COMMENT
 			{
-				newLeafNode(this_SL_COMMENT_2, grammarAccess.getInstructionAccess().getSL_COMMENTTerminalRuleCall_2());
+				newLeafNode(this_ML_COMMENT_3, grammarAccess.getInstructionAccess().getML_COMMENTTerminalRuleCall_3_0());
+			}
+			    |
+			this_NEWLINE_4=RULE_NEWLINE
+			{
+				newLeafNode(this_NEWLINE_4, grammarAccess.getInstructionAccess().getNEWLINETerminalRuleCall_3_1());
 			}
 		)?
 	)
@@ -253,19 +269,20 @@ ruleDirective returns [EObject current=null]
 	(
 		(
 			(
-				lv_label_0_0=RULE_LABEL
 				{
-					newLeafNode(lv_label_0_0, grammarAccess.getDirectiveAccess().getLabelLABELTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getDirectiveAccess().getLabelLabelBegParserRuleCall_0_0());
 				}
+				lv_label_0_0=ruleLabelBeg
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getDirectiveRule());
+						$current = createModelElementForParent(grammarAccess.getDirectiveRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"label",
 						lv_label_0_0,
-						"org.team38.assembly.LC2200.LABEL");
+						"org.team38.assembly.LC2200.LabelBeg");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
@@ -307,9 +324,33 @@ ruleDirective returns [EObject current=null]
 			)
 		)
 		(
-			this_SL_COMMENT_2=RULE_SL_COMMENT
+			(
+				{
+					newCompositeNode(grammarAccess.getDirectiveAccess().getCommentCommentTransParserRuleCall_2_0());
+				}
+				lv_comment_2_0=ruleCommentTrans
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDirectiveRule());
+					}
+					set(
+						$current,
+						"comment",
+						lv_comment_2_0,
+						"org.team38.assembly.LC2200.CommentTrans");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			this_ML_COMMENT_3=RULE_ML_COMMENT
 			{
-				newLeafNode(this_SL_COMMENT_2, grammarAccess.getDirectiveAccess().getSL_COMMENTTerminalRuleCall_2());
+				newLeafNode(this_ML_COMMENT_3, grammarAccess.getDirectiveAccess().getML_COMMENTTerminalRuleCall_3_0());
+			}
+			    |
+			this_NEWLINE_4=RULE_NEWLINE
+			{
+				newLeafNode(this_NEWLINE_4, grammarAccess.getDirectiveAccess().getNEWLINETerminalRuleCall_3_1());
 			}
 		)?
 	)
@@ -333,37 +374,39 @@ ruleRInstruction returns [EObject current=null]
 	(
 		(
 			(
-				lv_r_opcode_0_0=RULE_ROP
 				{
-					newLeafNode(lv_r_opcode_0_0, grammarAccess.getRInstructionAccess().getR_opcodeROPTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getRInstructionAccess().getR_opcodeRInstructionTransParserRuleCall_0_0());
 				}
+				lv_r_opcode_0_0=ruleRInstructionTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getRInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"r_opcode",
 						lv_r_opcode_0_0,
-						"org.team38.assembly.LC2200.ROP");
+						"org.team38.assembly.LC2200.RInstructionTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
 			(
-				lv_reg1_1_0=RULE_REG
 				{
-					newLeafNode(lv_reg1_1_0, grammarAccess.getRInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getRInstructionAccess().getReg1RegTransParserRuleCall_1_0());
 				}
+				lv_reg1_1_0=ruleRegTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getRInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"reg1",
 						lv_reg1_1_0,
-						"org.team38.assembly.LC2200.REG");
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -373,19 +416,20 @@ ruleRInstruction returns [EObject current=null]
 		}
 		(
 			(
-				lv_reg2_3_0=RULE_REG
 				{
-					newLeafNode(lv_reg2_3_0, grammarAccess.getRInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getRInstructionAccess().getReg2RegTransParserRuleCall_3_0());
 				}
+				lv_reg2_3_0=ruleRegTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getRInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"reg2",
 						lv_reg2_3_0,
-						"org.team38.assembly.LC2200.REG");
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -395,19 +439,20 @@ ruleRInstruction returns [EObject current=null]
 		}
 		(
 			(
-				lv_reg3_5_0=RULE_REG
 				{
-					newLeafNode(lv_reg3_5_0, grammarAccess.getRInstructionAccess().getReg3REGTerminalRuleCall_5_0());
+					newCompositeNode(grammarAccess.getRInstructionAccess().getReg3RegTransParserRuleCall_5_0());
 				}
+				lv_reg3_5_0=ruleRegTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getRInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"reg3",
 						lv_reg3_5_0,
-						"org.team38.assembly.LC2200.REG");
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -433,37 +478,39 @@ ruleIInstruction returns [EObject current=null]
 		(
 			(
 				(
-					lv_i_opcode_0_0=RULE_IOP_IMM
 					{
-						newLeafNode(lv_i_opcode_0_0, grammarAccess.getIInstructionAccess().getI_opcodeIOP_IMMTerminalRuleCall_0_0_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getI_opcodeIInstructionImmTransParserRuleCall_0_0_0());
 					}
+					lv_i_opcode_0_0=ruleIInstructionImmTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"i_opcode",
 							lv_i_opcode_0_0,
-							"org.team38.assembly.LC2200.IOP_IMM");
+							"org.team38.assembly.LC2200.IInstructionImmTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
 				(
-					lv_reg1_1_0=RULE_REG
 					{
-						newLeafNode(lv_reg1_1_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_0_1_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg1RegTransParserRuleCall_0_1_0());
 					}
+					lv_reg1_1_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg1",
 							lv_reg1_1_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -473,19 +520,20 @@ ruleIInstruction returns [EObject current=null]
 			}
 			(
 				(
-					lv_reg2_3_0=RULE_REG
 					{
-						newLeafNode(lv_reg2_3_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_0_3_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg2RegTransParserRuleCall_0_3_0());
 					}
+					lv_reg2_3_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg2",
 							lv_reg2_3_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -516,37 +564,39 @@ ruleIInstruction returns [EObject current=null]
 		(
 			(
 				(
-					lv_i_opcode_6_0=RULE_IOP_OFFSET
 					{
-						newLeafNode(lv_i_opcode_6_0, grammarAccess.getIInstructionAccess().getI_opcodeIOP_OFFSETTerminalRuleCall_1_0_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getI_opcodeIInstructionOffsetTransParserRuleCall_1_0_0());
 					}
+					lv_i_opcode_6_0=ruleIInstructionOffsetTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"i_opcode",
 							lv_i_opcode_6_0,
-							"org.team38.assembly.LC2200.IOP_OFFSET");
+							"org.team38.assembly.LC2200.IInstructionOffsetTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
 				(
-					lv_reg1_7_0=RULE_REG
 					{
-						newLeafNode(lv_reg1_7_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg1RegTransParserRuleCall_1_1_0());
 					}
+					lv_reg1_7_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg1",
 							lv_reg1_7_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -578,19 +628,20 @@ ruleIInstruction returns [EObject current=null]
 			}
 			(
 				(
-					lv_reg2_11_0=RULE_REG
 					{
-						newLeafNode(lv_reg2_11_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_1_5_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg2RegTransParserRuleCall_1_5_0());
 					}
+					lv_reg2_11_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg2",
 							lv_reg2_11_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -603,37 +654,39 @@ ruleIInstruction returns [EObject current=null]
 		(
 			(
 				(
-					lv_i_opcode_13_0=RULE_IOP_LABEL
 					{
-						newLeafNode(lv_i_opcode_13_0, grammarAccess.getIInstructionAccess().getI_opcodeIOP_LABELTerminalRuleCall_2_0_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getI_opcodeIInstructionLabelTransParserRuleCall_2_0_0());
 					}
+					lv_i_opcode_13_0=ruleIInstructionLabelTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"i_opcode",
 							lv_i_opcode_13_0,
-							"org.team38.assembly.LC2200.IOP_LABEL");
+							"org.team38.assembly.LC2200.IInstructionLabelTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
 				(
-					lv_reg1_14_0=RULE_REG
 					{
-						newLeafNode(lv_reg1_14_0, grammarAccess.getIInstructionAccess().getReg1REGTerminalRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg1RegTransParserRuleCall_2_1_0());
 					}
+					lv_reg1_14_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg1",
 							lv_reg1_14_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -643,19 +696,20 @@ ruleIInstruction returns [EObject current=null]
 			}
 			(
 				(
-					lv_reg2_16_0=RULE_REG
 					{
-						newLeafNode(lv_reg2_16_0, grammarAccess.getIInstructionAccess().getReg2REGTerminalRuleCall_2_3_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getReg2RegTransParserRuleCall_2_3_0());
 					}
+					lv_reg2_16_0=ruleRegTrans
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"reg2",
 							lv_reg2_16_0,
-							"org.team38.assembly.LC2200.REG");
+							"org.team38.assembly.LC2200.RegTrans");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -665,19 +719,20 @@ ruleIInstruction returns [EObject current=null]
 			}
 			(
 				(
-					lv_imm_18_0=RULE_LABEL_IMM
 					{
-						newLeafNode(lv_imm_18_0, grammarAccess.getIInstructionAccess().getImmLABEL_IMMTerminalRuleCall_2_5_0());
+						newCompositeNode(grammarAccess.getIInstructionAccess().getLabelLabelEndParserRuleCall_2_5_0());
 					}
+					lv_label_18_0=ruleLabelEnd
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getIInstructionRule());
+							$current = createModelElementForParent(grammarAccess.getIInstructionRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
-							"imm",
-							lv_imm_18_0,
-							"org.team38.assembly.LC2200.LABEL_IMM");
+							"label",
+							lv_label_18_0,
+							"org.team38.assembly.LC2200.LabelEnd");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -703,37 +758,39 @@ ruleJInstruction returns [EObject current=null]
 	(
 		(
 			(
-				lv_j_opcode_0_0=RULE_JOP
 				{
-					newLeafNode(lv_j_opcode_0_0, grammarAccess.getJInstructionAccess().getJ_opcodeJOPTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getJInstructionAccess().getJ_opcodeJInstructionTransParserRuleCall_0_0());
 				}
+				lv_j_opcode_0_0=ruleJInstructionTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getJInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getJInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"j_opcode",
 						lv_j_opcode_0_0,
-						"org.team38.assembly.LC2200.JOP");
+						"org.team38.assembly.LC2200.JInstructionTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
 			(
-				lv_reg1_1_0=RULE_REG
 				{
-					newLeafNode(lv_reg1_1_0, grammarAccess.getJInstructionAccess().getReg1REGTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getJInstructionAccess().getReg1RegTransParserRuleCall_1_0());
 				}
+				lv_reg1_1_0=ruleRegTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getJInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getJInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"reg1",
 						lv_reg1_1_0,
-						"org.team38.assembly.LC2200.REG");
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -743,19 +800,20 @@ ruleJInstruction returns [EObject current=null]
 		}
 		(
 			(
-				lv_reg2_3_0=RULE_REG
 				{
-					newLeafNode(lv_reg2_3_0, grammarAccess.getJInstructionAccess().getReg2REGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getJInstructionAccess().getReg2RegTransParserRuleCall_3_0());
 				}
+				lv_reg2_3_0=ruleRegTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getJInstructionRule());
+						$current = createModelElementForParent(grammarAccess.getJInstructionRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"reg2",
 						lv_reg2_3_0,
-						"org.team38.assembly.LC2200.REG");
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -850,19 +908,20 @@ ruleWordDirective returns [EObject current=null]
 	(
 		(
 			(
-				lv_w_dir_0_0=RULE_WORD
 				{
-					newLeafNode(lv_w_dir_0_0, grammarAccess.getWordDirectiveAccess().getW_dirWORDTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getWordDirectiveAccess().getW_dirWordTransParserRuleCall_0_0());
 				}
+				lv_w_dir_0_0=ruleWordTrans
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWordDirectiveRule());
+						$current = createModelElementForParent(grammarAccess.getWordDirectiveRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"w_dir",
 						lv_w_dir_0_0,
-						"org.team38.assembly.LC2200.WORD");
+						"org.team38.assembly.LC2200.WordTrans");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -883,6 +942,356 @@ ruleWordDirective returns [EObject current=null]
 						"org.team38.assembly.LC2200.IMMEDIATE");
 				}
 			)
+		)
+	)
+;
+
+// Entry rule entryRuleRInstructionTrans
+entryRuleRInstructionTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRInstructionTransRule()); }
+	iv_ruleRInstructionTrans=ruleRInstructionTrans
+	{ $current=$iv_ruleRInstructionTrans.current; }
+	EOF;
+
+// Rule RInstructionTrans
+ruleRInstructionTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_r_opcode_0_0=RULE_ROP
+			{
+				newLeafNode(lv_r_opcode_0_0, grammarAccess.getRInstructionTransAccess().getR_opcodeROPTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getRInstructionTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"r_opcode",
+					lv_r_opcode_0_0,
+					"org.team38.assembly.LC2200.ROP");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleIInstructionImmTrans
+entryRuleIInstructionImmTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIInstructionImmTransRule()); }
+	iv_ruleIInstructionImmTrans=ruleIInstructionImmTrans
+	{ $current=$iv_ruleIInstructionImmTrans.current; }
+	EOF;
+
+// Rule IInstructionImmTrans
+ruleIInstructionImmTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_i_opcode_0_0=RULE_IOP_IMM
+			{
+				newLeafNode(lv_i_opcode_0_0, grammarAccess.getIInstructionImmTransAccess().getI_opcodeIOP_IMMTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getIInstructionImmTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"i_opcode",
+					lv_i_opcode_0_0,
+					"org.team38.assembly.LC2200.IOP_IMM");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleIInstructionOffsetTrans
+entryRuleIInstructionOffsetTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIInstructionOffsetTransRule()); }
+	iv_ruleIInstructionOffsetTrans=ruleIInstructionOffsetTrans
+	{ $current=$iv_ruleIInstructionOffsetTrans.current; }
+	EOF;
+
+// Rule IInstructionOffsetTrans
+ruleIInstructionOffsetTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_i_opcode_0_0=RULE_IOP_OFFSET
+			{
+				newLeafNode(lv_i_opcode_0_0, grammarAccess.getIInstructionOffsetTransAccess().getI_opcodeIOP_OFFSETTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getIInstructionOffsetTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"i_opcode",
+					lv_i_opcode_0_0,
+					"org.team38.assembly.LC2200.IOP_OFFSET");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleIInstructionLabelTrans
+entryRuleIInstructionLabelTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIInstructionLabelTransRule()); }
+	iv_ruleIInstructionLabelTrans=ruleIInstructionLabelTrans
+	{ $current=$iv_ruleIInstructionLabelTrans.current; }
+	EOF;
+
+// Rule IInstructionLabelTrans
+ruleIInstructionLabelTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_i_opcode_0_0=RULE_IOP_LABEL
+			{
+				newLeafNode(lv_i_opcode_0_0, grammarAccess.getIInstructionLabelTransAccess().getI_opcodeIOP_LABELTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getIInstructionLabelTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"i_opcode",
+					lv_i_opcode_0_0,
+					"org.team38.assembly.LC2200.IOP_LABEL");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleJInstructionTrans
+entryRuleJInstructionTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getJInstructionTransRule()); }
+	iv_ruleJInstructionTrans=ruleJInstructionTrans
+	{ $current=$iv_ruleJInstructionTrans.current; }
+	EOF;
+
+// Rule JInstructionTrans
+ruleJInstructionTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_j_opcode_0_0=RULE_JOP
+			{
+				newLeafNode(lv_j_opcode_0_0, grammarAccess.getJInstructionTransAccess().getJ_opcodeJOPTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getJInstructionTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"j_opcode",
+					lv_j_opcode_0_0,
+					"org.team38.assembly.LC2200.JOP");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleWordTrans
+entryRuleWordTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWordTransRule()); }
+	iv_ruleWordTrans=ruleWordTrans
+	{ $current=$iv_ruleWordTrans.current; }
+	EOF;
+
+// Rule WordTrans
+ruleWordTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_word_0_0=RULE_WORD
+			{
+				newLeafNode(lv_word_0_0, grammarAccess.getWordTransAccess().getWordWORDTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getWordTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"word",
+					lv_word_0_0,
+					"org.team38.assembly.LC2200.WORD");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleCommentTrans
+entryRuleCommentTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCommentTransRule()); }
+	iv_ruleCommentTrans=ruleCommentTrans
+	{ $current=$iv_ruleCommentTrans.current; }
+	EOF;
+
+// Rule CommentTrans
+ruleCommentTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_comment_0_0=RULE_SL_COMMENT
+			{
+				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentSL_COMMENTTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getCommentTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"comment",
+					lv_comment_0_0,
+					"org.team38.assembly.LC2200.SL_COMMENT");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleRegTrans
+entryRuleRegTrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRegTransRule()); }
+	iv_ruleRegTrans=ruleRegTrans
+	{ $current=$iv_ruleRegTrans.current; }
+	EOF;
+
+// Rule RegTrans
+ruleRegTrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_reg_0_0=RULE_REG
+			{
+				newLeafNode(lv_reg_0_0, grammarAccess.getRegTransAccess().getRegREGTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getRegTransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"reg",
+					lv_reg_0_0,
+					"org.team38.assembly.LC2200.REG");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleLabelBeg
+entryRuleLabelBeg returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLabelBegRule()); }
+	iv_ruleLabelBeg=ruleLabelBeg
+	{ $current=$iv_ruleLabelBeg.current; }
+	EOF;
+
+// Rule LabelBeg
+ruleLabelBeg returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_label_0_0=RULE_LABEL
+			{
+				newLeafNode(lv_label_0_0, grammarAccess.getLabelBegAccess().getLabelLABELTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getLabelBegRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"label",
+					lv_label_0_0,
+					"org.team38.assembly.LC2200.LABEL");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleLabelEnd
+entryRuleLabelEnd returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLabelEndRule()); }
+	iv_ruleLabelEnd=ruleLabelEnd
+	{ $current=$iv_ruleLabelEnd.current; }
+	EOF;
+
+// Rule LabelEnd
+ruleLabelEnd returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_label_0_0=RULE_LABEL_IMM
+			{
+				newLeafNode(lv_label_0_0, grammarAccess.getLabelEndAccess().getLabelLABEL_IMMTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getLabelEndRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"label",
+					lv_label_0_0,
+					"org.team38.assembly.LC2200.LABEL_IMM");
+			}
 		)
 	)
 ;
@@ -909,7 +1318,7 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* ('\r'? '\n')?;
+RULE_SL_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
 
 RULE_ML_COMMENT : EOF;
 

@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.WordDirective#getImm <em>Imm</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getWordDirective()
  * @model
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface WordDirective extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Wdir</b></em>' attribute.
+   * Returns the value of the '<em><b>Wdir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Wdir</em>' attribute isn't clear,
+   * If the meaning of the '<em>Wdir</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Wdir</em>' attribute.
-   * @see #setW_dir(String)
+   * @return the value of the '<em>Wdir</em>' containment reference.
+   * @see #setW_dir(WordTrans)
    * @see org.team38.assembly.lC2200.LC2200Package#getWordDirective_W_dir()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getW_dir();
+  WordTrans getW_dir();
 
   /**
-   * Sets the value of the '{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}' attribute.
+   * Sets the value of the '{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Wdir</em>' attribute.
+   * @param value the new value of the '<em>Wdir</em>' containment reference.
    * @see #getW_dir()
    * @generated
    */
-  void setW_dir(String value);
+  void setW_dir(WordTrans value);
 
   /**
    * Returns the value of the '<em><b>Imm</b></em>' attribute.

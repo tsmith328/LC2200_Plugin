@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction()
  * @model
@@ -26,81 +26,81 @@ import org.eclipse.emf.ecore.EObject;
 public interface JInstruction extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Jopcode</b></em>' attribute.
+   * Returns the value of the '<em><b>Jopcode</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Jopcode</em>' attribute isn't clear,
+   * If the meaning of the '<em>Jopcode</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jopcode</em>' attribute.
-   * @see #setJ_opcode(String)
+   * @return the value of the '<em>Jopcode</em>' containment reference.
+   * @see #setJ_opcode(JInstructionTrans)
    * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction_J_opcode()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getJ_opcode();
+  JInstructionTrans getJ_opcode();
 
   /**
-   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}' attribute.
+   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getJ_opcode <em>Jopcode</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Jopcode</em>' attribute.
+   * @param value the new value of the '<em>Jopcode</em>' containment reference.
    * @see #getJ_opcode()
    * @generated
    */
-  void setJ_opcode(String value);
+  void setJ_opcode(JInstructionTrans value);
 
   /**
-   * Returns the value of the '<em><b>Reg1</b></em>' attribute.
+   * Returns the value of the '<em><b>Reg1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reg1</em>' attribute isn't clear,
+   * If the meaning of the '<em>Reg1</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reg1</em>' attribute.
-   * @see #setReg1(String)
+   * @return the value of the '<em>Reg1</em>' containment reference.
+   * @see #setReg1(RegTrans)
    * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction_Reg1()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getReg1();
+  RegTrans getReg1();
 
   /**
-   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}' attribute.
+   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg1 <em>Reg1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Reg1</em>' attribute.
+   * @param value the new value of the '<em>Reg1</em>' containment reference.
    * @see #getReg1()
    * @generated
    */
-  void setReg1(String value);
+  void setReg1(RegTrans value);
 
   /**
-   * Returns the value of the '<em><b>Reg2</b></em>' attribute.
+   * Returns the value of the '<em><b>Reg2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reg2</em>' attribute isn't clear,
+   * If the meaning of the '<em>Reg2</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reg2</em>' attribute.
-   * @see #setReg2(String)
+   * @return the value of the '<em>Reg2</em>' containment reference.
+   * @see #setReg2(RegTrans)
    * @see org.team38.assembly.lC2200.LC2200Package#getJInstruction_Reg2()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getReg2();
+  RegTrans getReg2();
 
   /**
-   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}' attribute.
+   * Sets the value of the '{@link org.team38.assembly.lC2200.JInstruction#getReg2 <em>Reg2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Reg2</em>' attribute.
+   * @param value the new value of the '<em>Reg2</em>' containment reference.
    * @see #getReg2()
    * @generated
    */
-  void setReg2(String value);
+  void setReg2(RegTrans value);
 
 } // JInstruction

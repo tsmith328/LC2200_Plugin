@@ -4,14 +4,18 @@
 package org.team38.assembly.lC2200.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.RInstruction;
+import org.team38.assembly.lC2200.RInstructionTrans;
+import org.team38.assembly.lC2200.RegTrans;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,97 +23,57 @@ import org.team38.assembly.lC2200.RInstruction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getR_opcode <em>Ropcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg2 <em>Reg2</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg3 <em>Reg3</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class RInstructionImpl extends MinimalEObjectImpl.Container implements RInstruction
 {
   /**
-   * The default value of the '{@link #getR_opcode() <em>Ropcode</em>}' attribute.
+   * The cached value of the '{@link #getR_opcode() <em>Ropcode</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getR_opcode()
    * @generated
    * @ordered
    */
-  protected static final String ROPCODE_EDEFAULT = null;
+  protected RInstructionTrans r_opcode;
 
   /**
-   * The cached value of the '{@link #getR_opcode() <em>Ropcode</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getR_opcode()
-   * @generated
-   * @ordered
-   */
-  protected String r_opcode = ROPCODE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
+   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg1()
    * @generated
    * @ordered
    */
-  protected static final String REG1_EDEFAULT = null;
+  protected RegTrans reg1;
 
   /**
-   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg1()
-   * @generated
-   * @ordered
-   */
-  protected String reg1 = REG1_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
+   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg2()
    * @generated
    * @ordered
    */
-  protected static final String REG2_EDEFAULT = null;
+  protected RegTrans reg2;
 
   /**
-   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg2()
-   * @generated
-   * @ordered
-   */
-  protected String reg2 = REG2_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg3() <em>Reg3</em>}' attribute.
+   * The cached value of the '{@link #getReg3() <em>Reg3</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg3()
    * @generated
    * @ordered
    */
-  protected static final String REG3_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getReg3() <em>Reg3</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg3()
-   * @generated
-   * @ordered
-   */
-  protected String reg3 = REG3_EDEFAULT;
+  protected RegTrans reg3;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,7 +101,7 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getR_opcode()
+  public RInstructionTrans getR_opcode()
   {
     return r_opcode;
   }
@@ -147,12 +111,16 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setR_opcode(String newR_opcode)
+  public NotificationChain basicSetR_opcode(RInstructionTrans newR_opcode, NotificationChain msgs)
   {
-    String oldR_opcode = r_opcode;
+    RInstructionTrans oldR_opcode = r_opcode;
     r_opcode = newR_opcode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__ROPCODE, oldR_opcode, r_opcode));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__ROPCODE, oldR_opcode, newR_opcode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -160,7 +128,28 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg1()
+  public void setR_opcode(RInstructionTrans newR_opcode)
+  {
+    if (newR_opcode != r_opcode)
+    {
+      NotificationChain msgs = null;
+      if (r_opcode != null)
+        msgs = ((InternalEObject)r_opcode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__ROPCODE, null, msgs);
+      if (newR_opcode != null)
+        msgs = ((InternalEObject)newR_opcode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__ROPCODE, null, msgs);
+      msgs = basicSetR_opcode(newR_opcode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__ROPCODE, newR_opcode, newR_opcode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg1()
   {
     return reg1;
   }
@@ -170,12 +159,16 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg1(String newReg1)
+  public NotificationChain basicSetReg1(RegTrans newReg1, NotificationChain msgs)
   {
-    String oldReg1 = reg1;
+    RegTrans oldReg1 = reg1;
     reg1 = newReg1;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG1, oldReg1, reg1));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG1, oldReg1, newReg1);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -183,7 +176,28 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg2()
+  public void setReg1(RegTrans newReg1)
+  {
+    if (newReg1 != reg1)
+    {
+      NotificationChain msgs = null;
+      if (reg1 != null)
+        msgs = ((InternalEObject)reg1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG1, null, msgs);
+      if (newReg1 != null)
+        msgs = ((InternalEObject)newReg1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG1, null, msgs);
+      msgs = basicSetReg1(newReg1, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG1, newReg1, newReg1));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg2()
   {
     return reg2;
   }
@@ -193,12 +207,16 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg2(String newReg2)
+  public NotificationChain basicSetReg2(RegTrans newReg2, NotificationChain msgs)
   {
-    String oldReg2 = reg2;
+    RegTrans oldReg2 = reg2;
     reg2 = newReg2;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG2, oldReg2, reg2));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG2, oldReg2, newReg2);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -206,7 +224,28 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg3()
+  public void setReg2(RegTrans newReg2)
+  {
+    if (newReg2 != reg2)
+    {
+      NotificationChain msgs = null;
+      if (reg2 != null)
+        msgs = ((InternalEObject)reg2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG2, null, msgs);
+      if (newReg2 != null)
+        msgs = ((InternalEObject)newReg2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG2, null, msgs);
+      msgs = basicSetReg2(newReg2, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG2, newReg2, newReg2));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg3()
   {
     return reg3;
   }
@@ -216,12 +255,59 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg3(String newReg3)
+  public NotificationChain basicSetReg3(RegTrans newReg3, NotificationChain msgs)
   {
-    String oldReg3 = reg3;
+    RegTrans oldReg3 = reg3;
     reg3 = newReg3;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG3, oldReg3, reg3));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG3, oldReg3, newReg3);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReg3(RegTrans newReg3)
+  {
+    if (newReg3 != reg3)
+    {
+      NotificationChain msgs = null;
+      if (reg3 != null)
+        msgs = ((InternalEObject)reg3).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG3, null, msgs);
+      if (newReg3 != null)
+        msgs = ((InternalEObject)newReg3).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.RINSTRUCTION__REG3, null, msgs);
+      msgs = basicSetReg3(newReg3, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.RINSTRUCTION__REG3, newReg3, newReg3));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LC2200Package.RINSTRUCTION__ROPCODE:
+        return basicSetR_opcode(null, msgs);
+      case LC2200Package.RINSTRUCTION__REG1:
+        return basicSetReg1(null, msgs);
+      case LC2200Package.RINSTRUCTION__REG2:
+        return basicSetReg2(null, msgs);
+      case LC2200Package.RINSTRUCTION__REG3:
+        return basicSetReg3(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -257,16 +343,16 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
     switch (featureID)
     {
       case LC2200Package.RINSTRUCTION__ROPCODE:
-        setR_opcode((String)newValue);
+        setR_opcode((RInstructionTrans)newValue);
         return;
       case LC2200Package.RINSTRUCTION__REG1:
-        setReg1((String)newValue);
+        setReg1((RegTrans)newValue);
         return;
       case LC2200Package.RINSTRUCTION__REG2:
-        setReg2((String)newValue);
+        setReg2((RegTrans)newValue);
         return;
       case LC2200Package.RINSTRUCTION__REG3:
-        setReg3((String)newValue);
+        setReg3((RegTrans)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,16 +369,16 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
     switch (featureID)
     {
       case LC2200Package.RINSTRUCTION__ROPCODE:
-        setR_opcode(ROPCODE_EDEFAULT);
+        setR_opcode((RInstructionTrans)null);
         return;
       case LC2200Package.RINSTRUCTION__REG1:
-        setReg1(REG1_EDEFAULT);
+        setReg1((RegTrans)null);
         return;
       case LC2200Package.RINSTRUCTION__REG2:
-        setReg2(REG2_EDEFAULT);
+        setReg2((RegTrans)null);
         return;
       case LC2200Package.RINSTRUCTION__REG3:
-        setReg3(REG3_EDEFAULT);
+        setReg3((RegTrans)null);
         return;
     }
     super.eUnset(featureID);
@@ -309,38 +395,15 @@ public class RInstructionImpl extends MinimalEObjectImpl.Container implements RI
     switch (featureID)
     {
       case LC2200Package.RINSTRUCTION__ROPCODE:
-        return ROPCODE_EDEFAULT == null ? r_opcode != null : !ROPCODE_EDEFAULT.equals(r_opcode);
+        return r_opcode != null;
       case LC2200Package.RINSTRUCTION__REG1:
-        return REG1_EDEFAULT == null ? reg1 != null : !REG1_EDEFAULT.equals(reg1);
+        return reg1 != null;
       case LC2200Package.RINSTRUCTION__REG2:
-        return REG2_EDEFAULT == null ? reg2 != null : !REG2_EDEFAULT.equals(reg2);
+        return reg2 != null;
       case LC2200Package.RINSTRUCTION__REG3:
-        return REG3_EDEFAULT == null ? reg3 != null : !REG3_EDEFAULT.equals(reg3);
+        return reg3 != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (r_opcode: ");
-    result.append(r_opcode);
-    result.append(", reg1: ");
-    result.append(reg1);
-    result.append(", reg2: ");
-    result.append(reg2);
-    result.append(", reg3: ");
-    result.append(reg3);
-    result.append(')');
-    return result.toString();
   }
 
 } //RInstructionImpl

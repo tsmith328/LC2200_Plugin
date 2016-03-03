@@ -4,28 +4,28 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	{Program} lines+=(Instruction | Directive)* 
+	lines+=(Instruction| Directive)*
 ;
 
 Instruction:
-	label=LABEL? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction) SL_COMMENT?
+	label=LabelBeg? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 ;
 
 Directive:
-	label=LABEL? directive=(NOOPDirective | WordDirective) SL_COMMENT? 
+	label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 ;
 	
 RInstruction:
-	r_opcode=ROP reg1=REG COMMA reg2=REG COMMA reg3=REG;
+	r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans;
 
 IInstruction:
-	i_opcode=IOP_IMM reg1=REG COMMA reg2=REG COMMA imm=IMMEDIATE  |
-	i_opcode=IOP_OFFSET reg1=REG COMMA imm=IMMEDIATE LPAREN reg2=REG RPAREN  |
-	i_opcode=IOP_LABEL reg1=REG COMMA reg2=REG COMMA imm=LABEL_IMM 
+	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE  |
+	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN  |
+	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd
 ;
 
 JInstruction:
-	j_opcode=JOP reg1=REG COMMA reg2=REG
+	j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans
 ;
 
 OInstruction:
@@ -37,7 +37,50 @@ NOOPDirective:
 ;
 
 WordDirective:
-	w_dir=WORD imm=IMMEDIATE
+	w_dir=WordTrans imm=IMMEDIATE
+;
+
+
+//Transition Rules
+//Used for Syntax Coloring
+RInstructionTrans:
+	r_opcode=ROP
+;
+
+IInstructionImmTrans:
+	i_opcode=IOP_IMM
+;
+
+IInstructionOffsetTrans:
+	i_opcode=IOP_OFFSET
+;
+
+IInstructionLabelTrans:
+	i_opcode=IOP_LABEL
+;
+
+JInstructionTrans:
+	j_opcode=JOP
+;
+
+WordTrans:
+	word=WORD
+;
+
+CommentTrans:
+	comment=SL_COMMENT
+;
+
+RegTrans:
+	reg=REG
+;
+
+LabelBeg:
+	label=LABEL
+;
+
+LabelEnd:
+	label=LABEL_IMM
 ;
 
 //Tokens
@@ -91,7 +134,7 @@ terminal COMMA:
 ;
 
 terminal SL_COMMENT:
-	';' !('\n'|'\r')* ('\r'? '\n')?
+	';' !('\n'|'\r')* '\r'? '\n'?
 ;
 
 //Do this for now so default Multi-line

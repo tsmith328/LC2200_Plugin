@@ -4,14 +4,18 @@
 package org.team38.assembly.lC2200.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.team38.assembly.lC2200.JInstruction;
+import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.RegTrans;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,76 +23,46 @@ import org.team38.assembly.lC2200.LC2200Package;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getJ_opcode <em>Jopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getReg2 <em>Reg2</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class JInstructionImpl extends MinimalEObjectImpl.Container implements JInstruction
 {
   /**
-   * The default value of the '{@link #getJ_opcode() <em>Jopcode</em>}' attribute.
+   * The cached value of the '{@link #getJ_opcode() <em>Jopcode</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getJ_opcode()
    * @generated
    * @ordered
    */
-  protected static final String JOPCODE_EDEFAULT = null;
+  protected JInstructionTrans j_opcode;
 
   /**
-   * The cached value of the '{@link #getJ_opcode() <em>Jopcode</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getJ_opcode()
-   * @generated
-   * @ordered
-   */
-  protected String j_opcode = JOPCODE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
+   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg1()
    * @generated
    * @ordered
    */
-  protected static final String REG1_EDEFAULT = null;
+  protected RegTrans reg1;
 
   /**
-   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg1()
-   * @generated
-   * @ordered
-   */
-  protected String reg1 = REG1_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
+   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg2()
    * @generated
    * @ordered
    */
-  protected static final String REG2_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg2()
-   * @generated
-   * @ordered
-   */
-  protected String reg2 = REG2_EDEFAULT;
+  protected RegTrans reg2;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,7 +90,7 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getJ_opcode()
+  public JInstructionTrans getJ_opcode()
   {
     return j_opcode;
   }
@@ -126,12 +100,16 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setJ_opcode(String newJ_opcode)
+  public NotificationChain basicSetJ_opcode(JInstructionTrans newJ_opcode, NotificationChain msgs)
   {
-    String oldJ_opcode = j_opcode;
+    JInstructionTrans oldJ_opcode = j_opcode;
     j_opcode = newJ_opcode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__JOPCODE, oldJ_opcode, j_opcode));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__JOPCODE, oldJ_opcode, newJ_opcode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -139,7 +117,28 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg1()
+  public void setJ_opcode(JInstructionTrans newJ_opcode)
+  {
+    if (newJ_opcode != j_opcode)
+    {
+      NotificationChain msgs = null;
+      if (j_opcode != null)
+        msgs = ((InternalEObject)j_opcode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__JOPCODE, null, msgs);
+      if (newJ_opcode != null)
+        msgs = ((InternalEObject)newJ_opcode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__JOPCODE, null, msgs);
+      msgs = basicSetJ_opcode(newJ_opcode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__JOPCODE, newJ_opcode, newJ_opcode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg1()
   {
     return reg1;
   }
@@ -149,12 +148,16 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg1(String newReg1)
+  public NotificationChain basicSetReg1(RegTrans newReg1, NotificationChain msgs)
   {
-    String oldReg1 = reg1;
+    RegTrans oldReg1 = reg1;
     reg1 = newReg1;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG1, oldReg1, reg1));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG1, oldReg1, newReg1);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -162,7 +165,28 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg2()
+  public void setReg1(RegTrans newReg1)
+  {
+    if (newReg1 != reg1)
+    {
+      NotificationChain msgs = null;
+      if (reg1 != null)
+        msgs = ((InternalEObject)reg1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__REG1, null, msgs);
+      if (newReg1 != null)
+        msgs = ((InternalEObject)newReg1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__REG1, null, msgs);
+      msgs = basicSetReg1(newReg1, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG1, newReg1, newReg1));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg2()
   {
     return reg2;
   }
@@ -172,12 +196,57 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg2(String newReg2)
+  public NotificationChain basicSetReg2(RegTrans newReg2, NotificationChain msgs)
   {
-    String oldReg2 = reg2;
+    RegTrans oldReg2 = reg2;
     reg2 = newReg2;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG2, oldReg2, reg2));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG2, oldReg2, newReg2);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReg2(RegTrans newReg2)
+  {
+    if (newReg2 != reg2)
+    {
+      NotificationChain msgs = null;
+      if (reg2 != null)
+        msgs = ((InternalEObject)reg2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__REG2, null, msgs);
+      if (newReg2 != null)
+        msgs = ((InternalEObject)newReg2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.JINSTRUCTION__REG2, null, msgs);
+      msgs = basicSetReg2(newReg2, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.JINSTRUCTION__REG2, newReg2, newReg2));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LC2200Package.JINSTRUCTION__JOPCODE:
+        return basicSetJ_opcode(null, msgs);
+      case LC2200Package.JINSTRUCTION__REG1:
+        return basicSetReg1(null, msgs);
+      case LC2200Package.JINSTRUCTION__REG2:
+        return basicSetReg2(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -211,13 +280,13 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
     switch (featureID)
     {
       case LC2200Package.JINSTRUCTION__JOPCODE:
-        setJ_opcode((String)newValue);
+        setJ_opcode((JInstructionTrans)newValue);
         return;
       case LC2200Package.JINSTRUCTION__REG1:
-        setReg1((String)newValue);
+        setReg1((RegTrans)newValue);
         return;
       case LC2200Package.JINSTRUCTION__REG2:
-        setReg2((String)newValue);
+        setReg2((RegTrans)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,13 +303,13 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
     switch (featureID)
     {
       case LC2200Package.JINSTRUCTION__JOPCODE:
-        setJ_opcode(JOPCODE_EDEFAULT);
+        setJ_opcode((JInstructionTrans)null);
         return;
       case LC2200Package.JINSTRUCTION__REG1:
-        setReg1(REG1_EDEFAULT);
+        setReg1((RegTrans)null);
         return;
       case LC2200Package.JINSTRUCTION__REG2:
-        setReg2(REG2_EDEFAULT);
+        setReg2((RegTrans)null);
         return;
     }
     super.eUnset(featureID);
@@ -257,34 +326,13 @@ public class JInstructionImpl extends MinimalEObjectImpl.Container implements JI
     switch (featureID)
     {
       case LC2200Package.JINSTRUCTION__JOPCODE:
-        return JOPCODE_EDEFAULT == null ? j_opcode != null : !JOPCODE_EDEFAULT.equals(j_opcode);
+        return j_opcode != null;
       case LC2200Package.JINSTRUCTION__REG1:
-        return REG1_EDEFAULT == null ? reg1 != null : !REG1_EDEFAULT.equals(reg1);
+        return reg1 != null;
       case LC2200Package.JINSTRUCTION__REG2:
-        return REG2_EDEFAULT == null ? reg2 != null : !REG2_EDEFAULT.equals(reg2);
+        return reg2 != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (j_opcode: ");
-    result.append(j_opcode);
-    result.append(", reg1: ");
-    result.append(reg1);
-    result.append(", reg2: ");
-    result.append(reg2);
-    result.append(')');
-    return result.toString();
   }
 
 } //JInstructionImpl

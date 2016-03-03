@@ -4,14 +4,19 @@
 package org.team38.assembly.lC2200.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.LabelEnd;
+import org.team38.assembly.lC2200.RegTrans;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,77 +24,48 @@ import org.team38.assembly.lC2200.LC2200Package;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getI_opcode <em>Iopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getReg2 <em>Reg2</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getImm <em>Imm</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getLabel <em>Label</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class IInstructionImpl extends MinimalEObjectImpl.Container implements IInstruction
 {
   /**
-   * The default value of the '{@link #getI_opcode() <em>Iopcode</em>}' attribute.
+   * The cached value of the '{@link #getI_opcode() <em>Iopcode</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getI_opcode()
    * @generated
    * @ordered
    */
-  protected static final String IOPCODE_EDEFAULT = null;
+  protected EObject i_opcode;
 
   /**
-   * The cached value of the '{@link #getI_opcode() <em>Iopcode</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getI_opcode()
-   * @generated
-   * @ordered
-   */
-  protected String i_opcode = IOPCODE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
+   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg1()
    * @generated
    * @ordered
    */
-  protected static final String REG1_EDEFAULT = null;
+  protected RegTrans reg1;
 
   /**
-   * The cached value of the '{@link #getReg1() <em>Reg1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg1()
-   * @generated
-   * @ordered
-   */
-  protected String reg1 = REG1_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
+   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReg2()
    * @generated
    * @ordered
    */
-  protected static final String REG2_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getReg2() <em>Reg2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReg2()
-   * @generated
-   * @ordered
-   */
-  protected String reg2 = REG2_EDEFAULT;
+  protected RegTrans reg2;
 
   /**
    * The default value of the '{@link #getImm() <em>Imm</em>}' attribute.
@@ -110,6 +86,16 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * @ordered
    */
   protected String imm = IMM_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLabel() <em>Label</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabel()
+   * @generated
+   * @ordered
+   */
+  protected LabelEnd label;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,7 +123,7 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getI_opcode()
+  public EObject getI_opcode()
   {
     return i_opcode;
   }
@@ -147,12 +133,16 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setI_opcode(String newI_opcode)
+  public NotificationChain basicSetI_opcode(EObject newI_opcode, NotificationChain msgs)
   {
-    String oldI_opcode = i_opcode;
+    EObject oldI_opcode = i_opcode;
     i_opcode = newI_opcode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__IOPCODE, oldI_opcode, i_opcode));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__IOPCODE, oldI_opcode, newI_opcode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -160,7 +150,28 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg1()
+  public void setI_opcode(EObject newI_opcode)
+  {
+    if (newI_opcode != i_opcode)
+    {
+      NotificationChain msgs = null;
+      if (i_opcode != null)
+        msgs = ((InternalEObject)i_opcode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__IOPCODE, null, msgs);
+      if (newI_opcode != null)
+        msgs = ((InternalEObject)newI_opcode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__IOPCODE, null, msgs);
+      msgs = basicSetI_opcode(newI_opcode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__IOPCODE, newI_opcode, newI_opcode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg1()
   {
     return reg1;
   }
@@ -170,12 +181,16 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg1(String newReg1)
+  public NotificationChain basicSetReg1(RegTrans newReg1, NotificationChain msgs)
   {
-    String oldReg1 = reg1;
+    RegTrans oldReg1 = reg1;
     reg1 = newReg1;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG1, oldReg1, reg1));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG1, oldReg1, newReg1);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -183,7 +198,28 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReg2()
+  public void setReg1(RegTrans newReg1)
+  {
+    if (newReg1 != reg1)
+    {
+      NotificationChain msgs = null;
+      if (reg1 != null)
+        msgs = ((InternalEObject)reg1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__REG1, null, msgs);
+      if (newReg1 != null)
+        msgs = ((InternalEObject)newReg1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__REG1, null, msgs);
+      msgs = basicSetReg1(newReg1, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG1, newReg1, newReg1));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegTrans getReg2()
   {
     return reg2;
   }
@@ -193,12 +229,37 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReg2(String newReg2)
+  public NotificationChain basicSetReg2(RegTrans newReg2, NotificationChain msgs)
   {
-    String oldReg2 = reg2;
+    RegTrans oldReg2 = reg2;
     reg2 = newReg2;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG2, oldReg2, reg2));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG2, oldReg2, newReg2);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReg2(RegTrans newReg2)
+  {
+    if (newReg2 != reg2)
+    {
+      NotificationChain msgs = null;
+      if (reg2 != null)
+        msgs = ((InternalEObject)reg2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__REG2, null, msgs);
+      if (newReg2 != null)
+        msgs = ((InternalEObject)newReg2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__REG2, null, msgs);
+      msgs = basicSetReg2(newReg2, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__REG2, newReg2, newReg2));
   }
 
   /**
@@ -229,6 +290,76 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
    * <!-- end-user-doc -->
    * @generated
    */
+  public LabelEnd getLabel()
+  {
+    return label;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLabel(LabelEnd newLabel, NotificationChain msgs)
+  {
+    LabelEnd oldLabel = label;
+    label = newLabel;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__LABEL, oldLabel, newLabel);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLabel(LabelEnd newLabel)
+  {
+    if (newLabel != label)
+    {
+      NotificationChain msgs = null;
+      if (label != null)
+        msgs = ((InternalEObject)label).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__LABEL, null, msgs);
+      if (newLabel != null)
+        msgs = ((InternalEObject)newLabel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.IINSTRUCTION__LABEL, null, msgs);
+      msgs = basicSetLabel(newLabel, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.IINSTRUCTION__LABEL, newLabel, newLabel));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LC2200Package.IINSTRUCTION__IOPCODE:
+        return basicSetI_opcode(null, msgs);
+      case LC2200Package.IINSTRUCTION__REG1:
+        return basicSetReg1(null, msgs);
+      case LC2200Package.IINSTRUCTION__REG2:
+        return basicSetReg2(null, msgs);
+      case LC2200Package.IINSTRUCTION__LABEL:
+        return basicSetLabel(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -242,6 +373,8 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
         return getReg2();
       case LC2200Package.IINSTRUCTION__IMM:
         return getImm();
+      case LC2200Package.IINSTRUCTION__LABEL:
+        return getLabel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -257,16 +390,19 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
     switch (featureID)
     {
       case LC2200Package.IINSTRUCTION__IOPCODE:
-        setI_opcode((String)newValue);
+        setI_opcode((EObject)newValue);
         return;
       case LC2200Package.IINSTRUCTION__REG1:
-        setReg1((String)newValue);
+        setReg1((RegTrans)newValue);
         return;
       case LC2200Package.IINSTRUCTION__REG2:
-        setReg2((String)newValue);
+        setReg2((RegTrans)newValue);
         return;
       case LC2200Package.IINSTRUCTION__IMM:
         setImm((String)newValue);
+        return;
+      case LC2200Package.IINSTRUCTION__LABEL:
+        setLabel((LabelEnd)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,16 +419,19 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
     switch (featureID)
     {
       case LC2200Package.IINSTRUCTION__IOPCODE:
-        setI_opcode(IOPCODE_EDEFAULT);
+        setI_opcode((EObject)null);
         return;
       case LC2200Package.IINSTRUCTION__REG1:
-        setReg1(REG1_EDEFAULT);
+        setReg1((RegTrans)null);
         return;
       case LC2200Package.IINSTRUCTION__REG2:
-        setReg2(REG2_EDEFAULT);
+        setReg2((RegTrans)null);
         return;
       case LC2200Package.IINSTRUCTION__IMM:
         setImm(IMM_EDEFAULT);
+        return;
+      case LC2200Package.IINSTRUCTION__LABEL:
+        setLabel((LabelEnd)null);
         return;
     }
     super.eUnset(featureID);
@@ -309,13 +448,15 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
     switch (featureID)
     {
       case LC2200Package.IINSTRUCTION__IOPCODE:
-        return IOPCODE_EDEFAULT == null ? i_opcode != null : !IOPCODE_EDEFAULT.equals(i_opcode);
+        return i_opcode != null;
       case LC2200Package.IINSTRUCTION__REG1:
-        return REG1_EDEFAULT == null ? reg1 != null : !REG1_EDEFAULT.equals(reg1);
+        return reg1 != null;
       case LC2200Package.IINSTRUCTION__REG2:
-        return REG2_EDEFAULT == null ? reg2 != null : !REG2_EDEFAULT.equals(reg2);
+        return reg2 != null;
       case LC2200Package.IINSTRUCTION__IMM:
         return IMM_EDEFAULT == null ? imm != null : !IMM_EDEFAULT.equals(imm);
+      case LC2200Package.IINSTRUCTION__LABEL:
+        return label != null;
     }
     return super.eIsSet(featureID);
   }
@@ -331,13 +472,7 @@ public class IInstructionImpl extends MinimalEObjectImpl.Container implements II
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (i_opcode: ");
-    result.append(i_opcode);
-    result.append(", reg1: ");
-    result.append(reg1);
-    result.append(", reg2: ");
-    result.append(reg2);
-    result.append(", imm: ");
+    result.append(" (imm: ");
     result.append(imm);
     result.append(')');
     return result.toString();

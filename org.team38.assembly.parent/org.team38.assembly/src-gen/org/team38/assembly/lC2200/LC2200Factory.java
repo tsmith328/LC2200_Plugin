@@ -105,6 +105,96 @@ public interface LC2200Factory extends EFactory
   WordDirective createWordDirective();
 
   /**
+   * Returns a new object of class '<em>RInstruction Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>RInstruction Trans</em>'.
+   * @generated
+   */
+  RInstructionTrans createRInstructionTrans();
+
+  /**
+   * Returns a new object of class '<em>IInstruction Imm Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>IInstruction Imm Trans</em>'.
+   * @generated
+   */
+  IInstructionImmTrans createIInstructionImmTrans();
+
+  /**
+   * Returns a new object of class '<em>IInstruction Offset Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>IInstruction Offset Trans</em>'.
+   * @generated
+   */
+  IInstructionOffsetTrans createIInstructionOffsetTrans();
+
+  /**
+   * Returns a new object of class '<em>IInstruction Label Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>IInstruction Label Trans</em>'.
+   * @generated
+   */
+  IInstructionLabelTrans createIInstructionLabelTrans();
+
+  /**
+   * Returns a new object of class '<em>JInstruction Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>JInstruction Trans</em>'.
+   * @generated
+   */
+  JInstructionTrans createJInstructionTrans();
+
+  /**
+   * Returns a new object of class '<em>Word Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Word Trans</em>'.
+   * @generated
+   */
+  WordTrans createWordTrans();
+
+  /**
+   * Returns a new object of class '<em>Comment Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comment Trans</em>'.
+   * @generated
+   */
+  CommentTrans createCommentTrans();
+
+  /**
+   * Returns a new object of class '<em>Reg Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reg Trans</em>'.
+   * @generated
+   */
+  RegTrans createRegTrans();
+
+  /**
+   * Returns a new object of class '<em>Label Beg</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Label Beg</em>'.
+   * @generated
+   */
+  LabelBeg createLabelBeg();
+
+  /**
+   * Returns a new object of class '<em>Label End</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Label End</em>'.
+   * @generated
+   */
+  LabelEnd createLabelEnd();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

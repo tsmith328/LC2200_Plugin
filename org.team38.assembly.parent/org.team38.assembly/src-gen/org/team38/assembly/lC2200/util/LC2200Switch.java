@@ -51,7 +51,7 @@ public class LC2200Switch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param ePackage the package in question.
+   * @parameter ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -133,6 +133,76 @@ public class LC2200Switch<T> extends Switch<T>
       {
         WordDirective wordDirective = (WordDirective)theEObject;
         T result = caseWordDirective(wordDirective);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.RINSTRUCTION_TRANS:
+      {
+        RInstructionTrans rInstructionTrans = (RInstructionTrans)theEObject;
+        T result = caseRInstructionTrans(rInstructionTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.IINSTRUCTION_IMM_TRANS:
+      {
+        IInstructionImmTrans iInstructionImmTrans = (IInstructionImmTrans)theEObject;
+        T result = caseIInstructionImmTrans(iInstructionImmTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.IINSTRUCTION_OFFSET_TRANS:
+      {
+        IInstructionOffsetTrans iInstructionOffsetTrans = (IInstructionOffsetTrans)theEObject;
+        T result = caseIInstructionOffsetTrans(iInstructionOffsetTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.IINSTRUCTION_LABEL_TRANS:
+      {
+        IInstructionLabelTrans iInstructionLabelTrans = (IInstructionLabelTrans)theEObject;
+        T result = caseIInstructionLabelTrans(iInstructionLabelTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.JINSTRUCTION_TRANS:
+      {
+        JInstructionTrans jInstructionTrans = (JInstructionTrans)theEObject;
+        T result = caseJInstructionTrans(jInstructionTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.WORD_TRANS:
+      {
+        WordTrans wordTrans = (WordTrans)theEObject;
+        T result = caseWordTrans(wordTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.COMMENT_TRANS:
+      {
+        CommentTrans commentTrans = (CommentTrans)theEObject;
+        T result = caseCommentTrans(commentTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.REG_TRANS:
+      {
+        RegTrans regTrans = (RegTrans)theEObject;
+        T result = caseRegTrans(regTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.LABEL_BEG:
+      {
+        LabelBeg labelBeg = (LabelBeg)theEObject;
+        T result = caseLabelBeg(labelBeg);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.LABEL_END:
+      {
+        LabelEnd labelEnd = (LabelEnd)theEObject;
+        T result = caseLabelEnd(labelEnd);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -280,6 +350,166 @@ public class LC2200Switch<T> extends Switch<T>
    * @generated
    */
   public T caseWordDirective(WordDirective object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>RInstruction Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>RInstruction Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRInstructionTrans(RInstructionTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>IInstruction Imm Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IInstruction Imm Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIInstructionImmTrans(IInstructionImmTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>IInstruction Offset Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IInstruction Offset Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIInstructionOffsetTrans(IInstructionOffsetTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>IInstruction Label Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IInstruction Label Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIInstructionLabelTrans(IInstructionLabelTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>JInstruction Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>JInstruction Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJInstructionTrans(JInstructionTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Word Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Word Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWordTrans(WordTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comment Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comment Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCommentTrans(CommentTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reg Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reg Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRegTrans(RegTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Label Beg</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Label Beg</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLabelBeg(LabelBeg object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Label End</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Label End</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLabelEnd(LabelEnd object)
   {
     return null;
   }
