@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.Directive#getLabel <em>Label</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.Directive#getDirective <em>Directive</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.Directive#getComment <em>Comment</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getDirective()
  * @model

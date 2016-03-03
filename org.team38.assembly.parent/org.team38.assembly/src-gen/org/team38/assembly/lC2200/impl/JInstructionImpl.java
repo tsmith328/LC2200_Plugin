@@ -23,12 +23,12 @@ import org.team38.assembly.lC2200.RegTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getJ_opcode <em>Jopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.JInstructionImpl#getReg2 <em>Reg2</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

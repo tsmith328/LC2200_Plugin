@@ -24,6 +24,7 @@ import org.team38.assembly.lC2200.RegTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getI_opcode <em>Iopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getReg1 <em>Reg1</em>}</li>
@@ -31,7 +32,6 @@ import org.team38.assembly.lC2200.RegTrans;
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getImm <em>Imm</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.IInstructionImpl#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

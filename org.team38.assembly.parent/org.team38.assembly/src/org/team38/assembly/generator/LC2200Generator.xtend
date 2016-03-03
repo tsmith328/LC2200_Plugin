@@ -16,10 +16,15 @@ import org.team38.assembly.lC2200.OInstruction
 import org.team38.assembly.lC2200.RInstruction
 import org.team38.assembly.lC2200.JInstruction
 import org.team38.assembly.lC2200.IInstruction
+import org.team38.assembly.lC2200.RInstructionTrans
+import org.team38.assembly.lC2200.IInstructionImmTrans
+import org.team38.assembly.lC2200.IInstructionOffsetTrans
+import org.team38.assembly.lC2200.IInstructionLabelTrans
+import org.team38.assembly.lC2200.JInstructionTrans
+import org.team38.assembly.lC2200.RegTrans
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import java.util.HashMap;
-import org.team38.assembly.lC2200.IInstructionLabelTrans
 
 /**
  * Generates code from your model files on save.
@@ -53,21 +58,21 @@ class LC2200Generator extends AbstractGenerator {
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {
 				var dir = (line as Directive)
-				var label = dir.getLabel()
-				if(label != null) {
-					var label2 = label.getLabel()
-					if (label2 != null) {
-						labelTable.put(label2.replace(":",""), offset)
+				var labelBeg = dir.getLabel()
+				if(labelBeg != null) {
+					var label = labelBeg.getLabel()
+					if (label != null) {
+						labelTable.put(label.replace(":",""), offset)
 					}
 				}
 			}
 			else if (line.eClass().getName().equals("Instruction")) {
 				var instr = (line as Instruction)
-				var label = instr.getLabel()
-				if(label != null) {
-					var label2 = label.getLabel()
-					if (label2 !=null) {
-						labelTable.put(label2.replace(":",""), offset)
+				var labelBeg = instr.getLabel()
+				if(labelBeg != null) {
+					var label = labelBeg.getLabel()
+					if (label !=null) {
+						labelTable.put(label.replace(":",""), offset)
 					}
 				}
 			}
@@ -128,28 +133,33 @@ class LC2200Generator extends AbstractGenerator {
 	}
 	
 	def compileIInstruction(IInstruction iInstr) {
-		var op = iInstr.getI_opcode()
-		var reg1 = iInstr.getReg1()
-		var reg2 = iInstr.getReg2()
+		var opTrans = iInstr.getI_opcode()
+		var op = ""
+		if(opTrans instanceof IInstructionImmTrans) {
+			op = (opTrans as IInstructionImmTrans).getI_opcode()	
+		} else if(opTrans instanceof IInstructionOffsetTrans) {
+			op = (opTrans as IInstructionOffsetTrans).getI_opcode()
+		}		
+		else if (opTrans instanceof IInstructionLabelTrans){
+			op = (opTrans as IInstructionLabelTrans).getI_opcode()
+		}
+		var reg1Trans = iInstr.getReg1()
+		var reg1 = (reg1Trans as RegTrans).getReg()
+		var reg2Trans = iInstr.getReg2()
+		var reg2 = (reg2Trans as RegTrans).getReg()
 		var imm = iInstr.getImm()
-		var label = iInstr.getLabel()
+		var labelTrans = iInstr.getLabel()
 		
 		var opBin = opToBinary(op.toString())
 		var reg1Bin = regToBinary(reg1.toString())
 		var reg2Bin = regToBinary(reg2.toString())
 		var immBin = ""
-		var op_code = ""
 		
-		if (op instanceof IInstructionLabelTrans) {
-			op_code = (op as IInstructionLabelTrans).getI_opcode().toString()	
-		}
-		
-		
-		if(op_code.equals("beq")) {
-			if (label != null) {
-				var label2 = label.getLabel()
-				if (label2 != null) {
-					var labelLine = labelTable.get(label2)
+		if(op.equals("beq")) {
+			if (labelTrans != null) {
+				var label = labelTrans.getLabel()
+				if (label != null) {
+					var labelLine = labelTable.get(label)
 					if(labelLine != null) {
 						immBin = immToBinary(Integer.toString(labelLine - offset), 5)
 					} else {
@@ -167,10 +177,14 @@ class LC2200Generator extends AbstractGenerator {
 	}
 	
 	def compileRInstruction(RInstruction rInstr) {
-		var op = rInstr.getR_opcode()
-		var reg1 = rInstr.getReg1()
-		var reg2 = rInstr.getReg2()
-		var reg3 = rInstr.getReg3()
+		var opTrans = rInstr.getR_opcode()
+		var op = (opTrans as RInstructionTrans).getR_opcode()
+		var reg1Trans = rInstr.getReg1()
+		var reg1 = (reg1Trans as RegTrans).getReg()
+		var reg2Trans = rInstr.getReg2()
+		var reg2 = (reg2Trans as RegTrans).getReg()
+		var reg3Trans = rInstr.getReg3()
+		var reg3 = (reg3Trans as RegTrans).getReg()
 		
 		var opBin = opToBinary(op.toString())
 		var reg1Bin = regToBinary(reg1.toString())
@@ -182,9 +196,12 @@ class LC2200Generator extends AbstractGenerator {
 	}
 	
 	def compileJInstruction(JInstruction jInstr) {
-		var op = jInstr.getJ_opcode()
-		var reg1 = jInstr.getReg1()
-		var reg2 = jInstr.getReg2()
+		var opTrans = jInstr.getJ_opcode()
+		var op = (opTrans as JInstructionTrans).getJ_opcode()
+		var reg1Trans = jInstr.getReg1()
+		var reg1 = (reg1Trans as RegTrans).getReg()
+		var reg2Trans = jInstr.getReg2()
+		var reg2 = (reg2Trans as RegTrans).getReg()
 		
 		var opBin = opToBinary(op.toString())
 		var reg1Bin = regToBinary(reg1.toString())

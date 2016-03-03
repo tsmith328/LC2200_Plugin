@@ -24,12 +24,12 @@ import org.team38.assembly.lC2200.LabelBeg;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getInstruction <em>Instruction</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getComment <em>Comment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

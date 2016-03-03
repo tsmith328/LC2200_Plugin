@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.Instruction#getLabel <em>Label</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.Instruction#getInstruction <em>Instruction</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.Instruction#getComment <em>Comment</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getInstruction()
  * @model

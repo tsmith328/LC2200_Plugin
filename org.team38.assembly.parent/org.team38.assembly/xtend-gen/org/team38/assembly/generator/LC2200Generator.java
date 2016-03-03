@@ -15,7 +15,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
+import org.team38.assembly.lC2200.IInstructionImmTrans;
 import org.team38.assembly.lC2200.IInstructionLabelTrans;
+import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
@@ -82,13 +84,13 @@ public class LC2200Generator extends AbstractGenerator {
         boolean _equals = _name.equals("Directive");
         if (_equals) {
           Directive dir = ((Directive) line);
-          LabelBeg label = dir.getLabel();
-          boolean _notEquals = (!Objects.equal(label, null));
+          LabelBeg labelBeg = dir.getLabel();
+          boolean _notEquals = (!Objects.equal(labelBeg, null));
           if (_notEquals) {
-            String label2 = label.getLabel();
-            boolean _notEquals_1 = (!Objects.equal(label2, null));
+            String label = labelBeg.getLabel();
+            boolean _notEquals_1 = (!Objects.equal(label, null));
             if (_notEquals_1) {
-              String _replace = label2.replace(":", "");
+              String _replace = label.replace(":", "");
               this.labelTable.put(_replace, Integer.valueOf(this.offset));
             }
           }
@@ -98,13 +100,13 @@ public class LC2200Generator extends AbstractGenerator {
           boolean _equals_1 = _name_1.equals("Instruction");
           if (_equals_1) {
             Instruction instr = ((Instruction) line);
-            LabelBeg label_1 = instr.getLabel();
-            boolean _notEquals_2 = (!Objects.equal(label_1, null));
+            LabelBeg labelBeg_1 = instr.getLabel();
+            boolean _notEquals_2 = (!Objects.equal(labelBeg_1, null));
             if (_notEquals_2) {
-              String label2_1 = label_1.getLabel();
-              boolean _notEquals_3 = (!Objects.equal(label2_1, null));
+              String label_1 = labelBeg_1.getLabel();
+              boolean _notEquals_3 = (!Objects.equal(label_1, null));
               if (_notEquals_3) {
-                String _replace_1 = label2_1.replace(":", "");
+                String _replace_1 = label_1.replace(":", "");
                 this.labelTable.put(_replace_1, Integer.valueOf(this.offset));
               }
             }
@@ -228,11 +230,28 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileIInstruction(final IInstruction iInstr) {
     StringBuffer _xblockexpression = null;
     {
-      EObject op = iInstr.getI_opcode();
-      RegTrans reg1 = iInstr.getReg1();
-      RegTrans reg2 = iInstr.getReg2();
+      EObject opTrans = iInstr.getI_opcode();
+      String op = "";
+      if ((opTrans instanceof IInstructionImmTrans)) {
+        String _i_opcode = ((IInstructionImmTrans) opTrans).getI_opcode();
+        op = _i_opcode;
+      } else {
+        if ((opTrans instanceof IInstructionOffsetTrans)) {
+          String _i_opcode_1 = ((IInstructionOffsetTrans) opTrans).getI_opcode();
+          op = _i_opcode_1;
+        } else {
+          if ((opTrans instanceof IInstructionLabelTrans)) {
+            String _i_opcode_2 = ((IInstructionLabelTrans) opTrans).getI_opcode();
+            op = _i_opcode_2;
+          }
+        }
+      }
+      RegTrans reg1Trans = iInstr.getReg1();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
+      RegTrans reg2Trans = iInstr.getReg2();
+      String reg2 = ((RegTrans) reg2Trans).getReg();
       String imm = iInstr.getImm();
-      LabelEnd label = iInstr.getLabel();
+      LabelEnd labelTrans = iInstr.getLabel();
       String _string = op.toString();
       String opBin = this.opToBinary(_string);
       String _string_1 = reg1.toString();
@@ -240,24 +259,18 @@ public class LC2200Generator extends AbstractGenerator {
       String _string_2 = reg2.toString();
       String reg2Bin = this.regToBinary(_string_2);
       String immBin = "";
-      String op_code = "";
-      if ((op instanceof IInstructionLabelTrans)) {
-        String _i_opcode = ((IInstructionLabelTrans) op).getI_opcode();
-        String _string_3 = _i_opcode.toString();
-        op_code = _string_3;
-      }
-      boolean _equals = op_code.equals("beq");
+      boolean _equals = op.equals("beq");
       if (_equals) {
-        boolean _notEquals = (!Objects.equal(label, null));
+        boolean _notEquals = (!Objects.equal(labelTrans, null));
         if (_notEquals) {
-          String label2 = label.getLabel();
-          boolean _notEquals_1 = (!Objects.equal(label2, null));
+          String label = labelTrans.getLabel();
+          boolean _notEquals_1 = (!Objects.equal(label, null));
           if (_notEquals_1) {
-            Integer labelLine = this.labelTable.get(label2);
+            Integer labelLine = this.labelTable.get(label);
             boolean _notEquals_2 = (!Objects.equal(labelLine, null));
             if (_notEquals_2) {
-              String _string_4 = Integer.toString(((labelLine).intValue() - this.offset));
-              String _immToBinary = this.immToBinary(_string_4, 5);
+              String _string_3 = Integer.toString(((labelLine).intValue() - this.offset));
+              String _immToBinary = this.immToBinary(_string_3, 5);
               immBin = _immToBinary;
             } else {
               immBin = "00000";
@@ -285,10 +298,14 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileRInstruction(final RInstruction rInstr) {
     StringBuffer _xblockexpression = null;
     {
-      RInstructionTrans op = rInstr.getR_opcode();
-      RegTrans reg1 = rInstr.getReg1();
-      RegTrans reg2 = rInstr.getReg2();
-      RegTrans reg3 = rInstr.getReg3();
+      RInstructionTrans opTrans = rInstr.getR_opcode();
+      String op = ((RInstructionTrans) opTrans).getR_opcode();
+      RegTrans reg1Trans = rInstr.getReg1();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
+      RegTrans reg2Trans = rInstr.getReg2();
+      String reg2 = ((RegTrans) reg2Trans).getReg();
+      RegTrans reg3Trans = rInstr.getReg3();
+      String reg3 = ((RegTrans) reg3Trans).getReg();
       String _string = op.toString();
       String opBin = this.opToBinary(_string);
       String _string_1 = reg1.toString();
@@ -315,9 +332,12 @@ public class LC2200Generator extends AbstractGenerator {
   public StringBuffer compileJInstruction(final JInstruction jInstr) {
     StringBuffer _xblockexpression = null;
     {
-      JInstructionTrans op = jInstr.getJ_opcode();
-      RegTrans reg1 = jInstr.getReg1();
-      RegTrans reg2 = jInstr.getReg2();
+      JInstructionTrans opTrans = jInstr.getJ_opcode();
+      String op = ((JInstructionTrans) opTrans).getJ_opcode();
+      RegTrans reg1Trans = jInstr.getReg1();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
+      RegTrans reg2Trans = jInstr.getReg2();
+      String reg2 = ((RegTrans) reg2Trans).getReg();
       String _string = op.toString();
       String opBin = this.opToBinary(_string);
       String _string_1 = reg1.toString();
