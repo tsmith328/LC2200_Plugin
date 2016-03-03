@@ -4,28 +4,28 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	program+=(Instruction | Directive)*
+	lines+=(Instruction| Directive)*
 ;
 
 Instruction:
-	label=LABEL? instruction=(RInstruction | IInstruction | JInstruction | OInstruction) (COMMENT | NEWLINE)?
+	label=LabelBeg? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 ;
 
 Directive:
-	label=LABEL? directive=(NOOPDirective | WordDirective) (COMMENT | NEWLINE)?
+	label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 ;
 	
 RInstruction:
-	r_opcode=ROP REG COMMA REG COMMA REG;
+	r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans;
 
 IInstruction:
-	i_opcode=IOP_IMM REG COMMA REG COMMA IMMEDIATE  |
-	i_opcode=IOP_OFFSET REG COMMA IMMEDIATE LPAREN REG RPAREN  |
-	i_opcode=IOP_LABEL REG COMMA REG COMMA LABEL_IMM 
+	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE  |
+	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN  |
+	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd
 ;
 
 JInstruction:
-	j_opcode=JOP REG COMMA REG
+	j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans
 ;
 
 OInstruction:
@@ -37,14 +37,54 @@ NOOPDirective:
 ;
 
 WordDirective:
-	w_dir=WORD IMMEDIATE
+	w_dir=WordTrans imm=IMMEDIATE
 ;
+
+
+//Transition Rules
+//Used for Syntax Coloring
+RInstructionTrans:
+	r_opcode=ROP
+;
+
+IInstructionImmTrans:
+	i_opcode=IOP_IMM
+;
+
+IInstructionOffsetTrans:
+	i_opcode=IOP_OFFSET
+;
+
+IInstructionLabelTrans:
+	i_opcode=IOP_LABEL
+;
+
+JInstructionTrans:
+	j_opcode=JOP
+;
+
+WordTrans:
+	word=WORD
+;
+
+CommentTrans:
+	comment=SL_COMMENT
+;
+
+RegTrans:
+	reg=REG
+;
+
+LabelBeg:
+	label=LABEL
+;
+
+LabelEnd:
+	label=LABEL_IMM
+;
+
 
 //Tokens
-terminal NOOP:
-	'noop'
-;
-
 terminal WORD:
 	'.word'
 ;
@@ -56,8 +96,17 @@ terminal OOP:
 	'reti'
 ;
 
+terminal NOOP:
+	'noop'
+;
+
 terminal JOP:
 	'jalr'
+;
+
+terminal ROP:
+	'add'	|
+	'nand'
 ;
 
 terminal IOP_IMM:
@@ -85,17 +134,18 @@ terminal COMMA:
 	','
 ;
 
-terminal COMMENT:
-	';' !('\n'|'\r')* ('\r'? '\n')?
+terminal SL_COMMENT:
+	';' !('\n'|'\r')* '\r'? '\n'?
+;
+
+//Do this for now so default Multi-line
+//comments aren't highlighted in editor
+terminal ML_COMMENT:
+	EOF
 ;
 
 terminal NEWLINE:
 	'\n'
-;
-
-terminal ROP:
-	'add'	|
-	'nand'
 ;
 
 terminal REG:
@@ -105,12 +155,12 @@ terminal REG:
 	'$a0'	|
 	'$a1'	|
 	'$a2'	|
-	'$a3'	|
-	'$a4'	|
+	'$t0'	|
+	'$t1'	|
+	'$t2'	|
 	'$s0'	|
 	'$s1'	|
 	'$s2'	|
-	'$s3'	|
 	'$k0'	|
 	'$sp'	|
 	'$fp'	|
@@ -118,7 +168,7 @@ terminal REG:
 ;
 
 terminal IMMEDIATE:
-	('0x')?(INT)
+	('0x' | '-')?(INT)
 ;
 
 terminal LABEL_IMM:
