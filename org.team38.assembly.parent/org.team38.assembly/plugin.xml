@@ -28,6 +28,7 @@
     <wizard
           category="org.team38.assembly.wizards"
           class="org.team38.assembly.wizards.LC2200ProjectNewWizard"
+          finalPerspective="org.team38.assembly.lc2200perspective"
           id="org.team38.assembly.wizard.new.lc2200"
           name="LC-2200 Project">
     </wizard>
@@ -44,6 +45,66 @@
        point="org.eclipse.ui.perspectiveExtensions">
     <perspectiveExtension
           targetID="org.team38.assembly.lc2200perspective">
+       <view
+             id="org.team38.assembly.navigator"
+             minimized="false"
+             ratio="0.25"
+             relationship="left"
+             relative="org.eclipse.ui.editorss">
+       </view>
+       <view
+             id="org.eclipse.ui.views.ProblemView"
+             minimized="false"
+             ratio="0.75"
+             relationship="bottom"
+             relative="org.eclipse.ui.editorss">
+       </view>
     </perspectiveExtension>
+    <perspectiveExtension
+          targetID="org.eclipse.ui.resourcePerspective">
+       <view
+             id="org.team38.assembly.navigator"
+             ratio="0.5"
+             relationship="stack"
+             relative="org.eclipse.ui.navigator.ProjectExplorer">
+       </view>
+    </perspectiveExtension>
+ </extension>
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.eclipse.ui.navigator.CommonNavigator"
+          icon="icons/sample.gif"
+          id="org.team38.assembly.navigator"
+          name="LC-2200">
+    </view>
+ </extension>
+ <extension
+       point="org.eclipse.ui.navigator.viewer">
+    <viewerActionBinding
+          viewerId="org.team38.assembly.navigator">
+       <includes>
+          <actionExtension
+                pattern="org.eclipse.ui.navigator.resources.*">
+          </actionExtension>
+       </includes>
+    </viewerActionBinding>
+    <viewerContentBinding
+          viewerId="org.team38.assembly.navigator">
+       <includes>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resourceContent">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.filters.*">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.linkHelper">
+          </contentExtension>
+          <contentExtension
+                pattern="org.eclipse.ui.navigator.resources.workingSets">
+          </contentExtension>
+       </includes>
+    </viewerContentBinding>
  </extension>
 </plugin>
