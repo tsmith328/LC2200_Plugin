@@ -35,12 +35,13 @@ public class LC2200Parser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getProgramAccess().getLinesAlternatives_0(), "rule__Program__LinesAlternatives_0");
+					put(grammarAccess.getProgramAccess().getLinesAlternatives_1_0(), "rule__Program__LinesAlternatives_1_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAlternatives_1_0(), "rule__Instruction__InstructionAlternatives_1_0");
 					put(grammarAccess.getInstructionAccess().getAlternatives_3(), "rule__Instruction__Alternatives_3");
 					put(grammarAccess.getDirectiveAccess().getDirectiveAlternatives_1_0(), "rule__Directive__DirectiveAlternatives_1_0");
 					put(grammarAccess.getDirectiveAccess().getAlternatives_3(), "rule__Directive__Alternatives_3");
 					put(grammarAccess.getIInstructionAccess().getAlternatives(), "rule__IInstruction__Alternatives");
+					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
 					put(grammarAccess.getInstructionAccess().getGroup(), "rule__Instruction__Group__0");
 					put(grammarAccess.getDirectiveAccess().getGroup(), "rule__Directive__Group__0");
 					put(grammarAccess.getRInstructionAccess().getGroup(), "rule__RInstruction__Group__0");
@@ -49,7 +50,7 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getIInstructionAccess().getGroup_2(), "rule__IInstruction__Group_2__0");
 					put(grammarAccess.getJInstructionAccess().getGroup(), "rule__JInstruction__Group__0");
 					put(grammarAccess.getWordDirectiveAccess().getGroup(), "rule__WordDirective__Group__0");
-					put(grammarAccess.getProgramAccess().getLinesAssignment(), "rule__Program__LinesAssignment");
+					put(grammarAccess.getProgramAccess().getLinesAssignment_1(), "rule__Program__LinesAssignment_1");
 					put(grammarAccess.getInstructionAccess().getLabelAssignment_0(), "rule__Instruction__LabelAssignment_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAssignment_1(), "rule__Instruction__InstructionAssignment_1");
 					put(grammarAccess.getInstructionAccess().getCommentAssignment_2(), "rule__Instruction__CommentAssignment_2");

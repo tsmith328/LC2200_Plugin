@@ -65,9 +65,9 @@ ruleProgram
 	}
 	:
 	(
-		{ before(grammarAccess.getProgramAccess().getLinesAssignment()); }
-		(rule__Program__LinesAssignment)*
-		{ after(grammarAccess.getProgramAccess().getLinesAssignment()); }
+		{ before(grammarAccess.getProgramAccess().getGroup()); }
+		(rule__Program__Group__0)
+		{ after(grammarAccess.getProgramAccess().getGroup()); }
 	)
 ;
 finally {
@@ -524,21 +524,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Program__LinesAlternatives_0
+rule__Program__LinesAlternatives_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0()); }
+		{ before(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0()); }
 		ruleInstruction
-		{ after(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0()); }
+		{ after(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1()); }
+		{ before(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1()); }
 		ruleDirective
-		{ after(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1()); }
+		{ after(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1()); }
 	)
 ;
 finally {
@@ -667,6 +667,60 @@ rule__IInstruction__Alternatives
 finally {
 	restoreStackSize(stackSize);
 }
+
+rule__Program__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Program__Group__0__Impl
+	rule__Program__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Program__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProgramAccess().getProgramAction_0()); }
+	()
+	{ after(grammarAccess.getProgramAccess().getProgramAction_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Program__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Program__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Program__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProgramAccess().getLinesAssignment_1()); }
+	(rule__Program__LinesAssignment_1)*
+	{ after(grammarAccess.getProgramAccess().getLinesAssignment_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 
 rule__Instruction__Group__0
 	@init {
@@ -1721,15 +1775,15 @@ finally {
 }
 
 
-rule__Program__LinesAssignment
+rule__Program__LinesAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getProgramAccess().getLinesAlternatives_0()); }
-		(rule__Program__LinesAlternatives_0)
-		{ after(grammarAccess.getProgramAccess().getLinesAlternatives_0()); }
+		{ before(grammarAccess.getProgramAccess().getLinesAlternatives_1_0()); }
+		(rule__Program__LinesAlternatives_1_0)
+		{ after(grammarAccess.getProgramAccess().getLinesAlternatives_1_0()); }
 	)
 ;
 finally {

@@ -347,7 +347,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (lines+=Instruction | lines+=Directive)+
+	 *     (lines+=Instruction | lines+=Directive)*
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -6,6 +6,7 @@ package org.team38.assembly.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
@@ -23,27 +24,35 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Program");
-		private final Assignment cLinesAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cLinesAlternatives_0 = (Alternatives)cLinesAssignment.eContents().get(0);
-		private final RuleCall cLinesInstructionParserRuleCall_0_0 = (RuleCall)cLinesAlternatives_0.eContents().get(0);
-		private final RuleCall cLinesDirectiveParserRuleCall_0_1 = (RuleCall)cLinesAlternatives_0.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cProgramAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cLinesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cLinesAlternatives_1_0 = (Alternatives)cLinesAssignment_1.eContents().get(0);
+		private final RuleCall cLinesInstructionParserRuleCall_1_0_0 = (RuleCall)cLinesAlternatives_1_0.eContents().get(0);
+		private final RuleCall cLinesDirectiveParserRuleCall_1_0_1 = (RuleCall)cLinesAlternatives_1_0.eContents().get(1);
 		
 		////Rules
 		//Program:
-		//	lines+=(Instruction | Directive)*;
+		//	{Program} lines+=(Instruction | Directive)*;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//{Program} lines+=(Instruction | Directive)*
+		public Group getGroup() { return cGroup; }
+		
+		//{Program}
+		public Action getProgramAction_0() { return cProgramAction_0; }
+		
 		//lines+=(Instruction | Directive)*
-		public Assignment getLinesAssignment() { return cLinesAssignment; }
+		public Assignment getLinesAssignment_1() { return cLinesAssignment_1; }
 		
 		//(Instruction | Directive)
-		public Alternatives getLinesAlternatives_0() { return cLinesAlternatives_0; }
+		public Alternatives getLinesAlternatives_1_0() { return cLinesAlternatives_1_0; }
 		
 		//Instruction
-		public RuleCall getLinesInstructionParserRuleCall_0_0() { return cLinesInstructionParserRuleCall_0_0; }
+		public RuleCall getLinesInstructionParserRuleCall_1_0_0() { return cLinesInstructionParserRuleCall_1_0_0; }
 		
 		//Directive
-		public RuleCall getLinesDirectiveParserRuleCall_0_1() { return cLinesDirectiveParserRuleCall_0_1; }
+		public RuleCall getLinesDirectiveParserRuleCall_1_0_1() { return cLinesDirectiveParserRuleCall_1_0_1; }
 	}
 	public class InstructionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Instruction");
@@ -732,7 +741,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	////Rules
 	//Program:
-	//	lines+=(Instruction | Directive)*;
+	//	{Program} lines+=(Instruction | Directive)*;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
