@@ -3,6 +3,7 @@
  */
 package org.team38.assembly.generator;
 
+import com.google.common.base.Objects;
 import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -39,12 +40,17 @@ public class LC2200Generator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     StringBuffer _stringBuffer = new StringBuffer();
     this.assembledOutput = _stringBuffer;
+    HashMap<String, Integer> _hashMap = new HashMap<String, Integer>();
+    this.labelTable = _hashMap;
     EList<EObject> _contents = resource.getContents();
     EObject e_root = _contents.get(0);
     EClass _eClass = e_root.eClass();
     String _name = _eClass.getName();
     boolean _equals = _name.equals("Program");
     if (_equals) {
+      this.offset = 0;
+      this.populateLabels(((Program) e_root));
+      this.offset = 0;
       this.compileProgram(((Program) e_root));
     }
     String _string = this.assembledOutput.toString();
@@ -52,21 +58,58 @@ public class LC2200Generator extends AbstractGenerator {
     fsa.generateFile("helloworld.txt", _trim);
   }
   
+  public void populateLabels(final Program root) {
+    EList<EObject> lines = root.getLines();
+    for (final EObject line : lines) {
+      {
+        EClass _eClass = line.eClass();
+        String _name = _eClass.getName();
+        boolean _equals = _name.equals("Directive");
+        if (_equals) {
+          Directive dir = ((Directive) line);
+          String label = dir.getLabel();
+          boolean _notEquals = (!Objects.equal(label, null));
+          if (_notEquals) {
+            String _replace = label.replace(":", "");
+            this.labelTable.put(_replace, Integer.valueOf(this.offset));
+          }
+        } else {
+          EClass _eClass_1 = line.eClass();
+          String _name_1 = _eClass_1.getName();
+          boolean _equals_1 = _name_1.equals("Instruction");
+          if (_equals_1) {
+            Instruction instr = ((Instruction) line);
+            String label_1 = instr.getLabel();
+            boolean _notEquals_1 = (!Objects.equal(label_1, null));
+            if (_notEquals_1) {
+              String _replace_1 = label_1.replace(":", "");
+              this.labelTable.put(_replace_1, Integer.valueOf(this.offset));
+            }
+          }
+        }
+        this.offset++;
+      }
+    }
+  }
+  
   public void compileProgram(final Program root) {
     EList<EObject> lines = root.getLines();
     for (final EObject line : lines) {
-      EClass _eClass = line.eClass();
-      String _name = _eClass.getName();
-      boolean _equals = _name.equals("Directive");
-      if (_equals) {
-        this.compileDirective(((Directive) line));
-      } else {
-        EClass _eClass_1 = line.eClass();
-        String _name_1 = _eClass_1.getName();
-        boolean _equals_1 = _name_1.equals("Instruction");
-        if (_equals_1) {
-          this.compileInstruction(((Instruction) line));
+      {
+        EClass _eClass = line.eClass();
+        String _name = _eClass.getName();
+        boolean _equals = _name.equals("Directive");
+        if (_equals) {
+          this.compileDirective(((Directive) line));
+        } else {
+          EClass _eClass_1 = line.eClass();
+          String _name_1 = _eClass_1.getName();
+          boolean _equals_1 = _name_1.equals("Instruction");
+          if (_equals_1) {
+            this.compileInstruction(((Instruction) line));
+          }
         }
+        this.offset++;
       }
     }
   }
@@ -172,10 +215,18 @@ public class LC2200Generator extends AbstractGenerator {
       String immBin = "";
       boolean _equals = op.equals("beq");
       if (_equals) {
-        immBin = "label";
+        Integer labelLine = this.labelTable.get(imm);
+        boolean _notEquals = (!Objects.equal(labelLine, null));
+        if (_notEquals) {
+          String _string = Integer.toString(((labelLine).intValue() - this.offset));
+          String _immToBinary = this.immToBinary(_string, 5);
+          immBin = _immToBinary;
+        } else {
+          immBin = "00000";
+        }
       } else {
-        String _immToBinary = this.immToBinary(imm, 5);
-        immBin = _immToBinary;
+        String _immToBinary_1 = this.immToBinary(imm, 5);
+        immBin = _immToBinary_1;
       }
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(opBin, "");
@@ -321,7 +372,10 @@ public class LC2200Generator extends AbstractGenerator {
     int _length = immBin.length();
     boolean _greaterThan = (_length > bitLength);
     if (_greaterThan) {
-      String _substring = immBin.substring(0, bitLength);
+      int _length_1 = immBin.length();
+      int _minus = (_length_1 - bitLength);
+      int _length_2 = immBin.length();
+      String _substring = immBin.substring(_minus, _length_2);
       immBin = _substring;
     } else {
       while (((immBin.length() - bitLength) < 0)) {

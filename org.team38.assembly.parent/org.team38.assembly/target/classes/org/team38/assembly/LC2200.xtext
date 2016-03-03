@@ -4,7 +4,7 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	lines+=(Instruction | Directive)* 
+	{Program} lines+=(Instruction | Directive)* 
 ;
 
 Instruction:

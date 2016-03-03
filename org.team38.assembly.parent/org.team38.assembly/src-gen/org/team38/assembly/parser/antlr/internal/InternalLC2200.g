@@ -77,41 +77,50 @@ ruleProgram returns [EObject current=null]
 }:
 	(
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_0_0());
-				}
-				lv_lines_0_1=ruleInstruction
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"lines",
-						lv_lines_0_1,
-						"org.team38.assembly.LC2200.Instruction");
-					afterParserOrEnumRuleCall();
-				}
-				    |
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_0_1());
-				}
-				lv_lines_0_2=ruleDirective
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"lines",
-						lv_lines_0_2,
-						"org.team38.assembly.LC2200.Directive");
-					afterParserOrEnumRuleCall();
-				}
-			)
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getProgramAccess().getProgramAction_0(),
+					$current);
+			}
 		)
-	)*
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0());
+					}
+					lv_lines_1_1=ruleInstruction
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProgramRule());
+						}
+						add(
+							$current,
+							"lines",
+							lv_lines_1_1,
+							"org.team38.assembly.LC2200.Instruction");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1());
+					}
+					lv_lines_1_2=ruleDirective
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProgramRule());
+						}
+						add(
+							$current,
+							"lines",
+							lv_lines_1_2,
+							"org.team38.assembly.LC2200.Directive");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
 ;
 
 // Entry rule entryRuleInstruction
