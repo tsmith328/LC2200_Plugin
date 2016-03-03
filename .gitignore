@@ -9,9 +9,13 @@ tmp/
 local.properties
 .settings/
 .loadpath
+target/
 
-# Eclipse Core
-#.project
+*.xtendbin
+
+#All Java class files
+*.class
+
 
 # External tool builders
 .externalToolBuilders/
@@ -25,8 +29,6 @@ local.properties
 # CDT-specific (C/C++ Development Tooling)
 .cproject
 
-# JDT-specific (Eclipse Java Development Tools)
-#.classpath
 
 # Java annotation processor (APT)
 .factorypath
@@ -48,3 +50,4 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+*.xtendbin
