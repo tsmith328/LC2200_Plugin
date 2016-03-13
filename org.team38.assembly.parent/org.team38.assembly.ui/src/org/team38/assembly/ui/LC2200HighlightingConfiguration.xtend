@@ -19,19 +19,19 @@ public class LC2200HighlightingConfiguration implements IHighlightingConfigurati
 		//.word
 		acceptor.acceptDefaultHighlighting(
 			WORD_ID, ".word",
-			keywordTextStyle(200, 0, 0, NORMAL)
+			keywordTextStyle(240, 46, 224, NORMAL)
 		);
 		
 		//Instructions
 		acceptor.acceptDefaultHighlighting(
 			INSTRUCTION_ID, "Instruction",
-			keywordTextStyle(200, 0, 0, NORMAL)
+			keywordTextStyle(20, 110, 12, NORMAL)
 		);
 
 		//Registers
 		acceptor.acceptDefaultHighlighting(
 			REG_ID, "Register",
-			keywordTextStyle(0, 200, 0, NORMAL)
+			keywordTextStyle(145, 54, 168, NORMAL)
 		);
 
 		//Labels
