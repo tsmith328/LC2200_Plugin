@@ -30,7 +30,9 @@
           class="org.team38.assembly.wizards.LC2200ProjectNewWizard"
           finalPerspective="org.team38.assembly.lc2200perspective"
           id="org.team38.assembly.wizard.new.lc2200"
-          name="LC-2200 Project">
+          name="LC-2200 Project"
+          project="true">
+          <description>This is a Wizard Description!</description>
     </wizard>
  </extension>
  <extension
