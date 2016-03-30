@@ -33,10 +33,39 @@
 
    <features>
       <feature id="org.team38.assembly.feature" version="1.0.0.qualifier"/>
-      <feature id="org.eclipse.xtext.runtime" version="2.9.1.v201512180746"/>
+      <feature id="org.eclipse.e4.rcp" version="1.4.0.v20150903-1804"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.ecf.core.feature" version="1.1.0.v20150810-1719"/>
       <feature id="org.eclipse.platform" version="4.5.1.v20150904-0015"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.cvs" version="1.4.200.v20150904-0015"/>
+      <feature id="org.eclipse.ecf.core.source.feature" version="1.1.0.v20150810-1719"/>
+      <feature id="org.eclipse.ecf.core.ssl.source.feature" version="1.0.0.v20150810-1719"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.source.feature" version="3.10.1.v20150810-1719"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.source.feature" version="1.0.0.v20150810-1719"/>
+      <feature id="org.eclipse.ecf.filetransfer.source.feature" version="3.10.1.v20150810-1719"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.source.feature" version="1.0.0.v20150810-1719"/>
+      <feature id="org.eclipse.jdt" version="3.11.1.v20150904-0015"/>
+      <feature id="org.eclipse.m2e.feature" version="1.6.2.20150902-0002"/>
+      <feature id="org.eclipse.m2e.logback.feature" version="1.6.2.20150902-0002"/>
+      <feature id="org.eclipse.pde" version="3.11.1.v20150904-0345"/>
+      <feature id="org.eclipse.xtext.runtime" version="2.9.1.v201512180746"/>
+      <feature id="org.eclipse.xtext.xbase.lib" version="2.9.1.v201512180746"/>
+      <feature id="org.eclipse.xtext.xtext.ui" version="2.9.1.v201512180746"/>
+      <feature id="org.eclipse.xtext.xbase"/>
+      <feature id="org.eclipse.xtext.ui"/>
+      <feature id="org.eclipse.xtext.xbase.lib.source"/>
    </features>
 
    <configurations>

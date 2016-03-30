@@ -121,6 +121,11 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
         return createWordDirectiveAdapter();
       }
       @Override
+      public Adapter caseLADirective(LADirective object)
+      {
+        return createLADirectiveAdapter();
+      }
+      @Override
       public Adapter caseRInstructionTrans(RInstructionTrans object)
       {
         return createRInstructionTransAdapter();
@@ -149,6 +154,11 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
       public Adapter caseWordTrans(WordTrans object)
       {
         return createWordTransAdapter();
+      }
+      @Override
+      public Adapter caseLATrans(LATrans object)
+      {
+        return createLATransAdapter();
       }
       @Override
       public Adapter caseCommentTrans(CommentTrans object)
@@ -328,6 +338,21 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.LADirective <em>LA Directive</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.LADirective
+   * @generated
+   */
+  public Adapter createLADirectiveAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.RInstructionTrans <em>RInstruction Trans</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -413,6 +438,21 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWordTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.LATrans <em>LA Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.LATrans
+   * @generated
+   */
+  public Adapter createLATransAdapter()
   {
     return null;
   }

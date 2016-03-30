@@ -47,6 +47,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//WordDirective/w_dir"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//WordDirective/imm"/>
     </genClasses>
+    <genClasses ecoreClass="LC2200.ecore#//LADirective">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//LADirective/la_dir"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//LADirective/reg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//LADirective/label"/>
+    </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//RInstructionTrans">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RInstructionTrans/r_opcode"/>
     </genClasses>
@@ -64,6 +69,9 @@
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//WordTrans">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//WordTrans/word"/>
+    </genClasses>
+    <genClasses ecoreClass="LC2200.ecore#//LATrans">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//LATrans/la"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//CommentTrans">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//CommentTrans/comment"/>

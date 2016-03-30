@@ -19,6 +19,8 @@ import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
+import org.team38.assembly.lC2200.LADirective;
+import org.team38.assembly.lC2200.LATrans;
 import org.team38.assembly.lC2200.LC2200Factory;
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.LabelBeg;
@@ -108,6 +110,13 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass laDirectiveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass rInstructionTransEClass = null;
 
   /**
@@ -144,6 +153,13 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * @generated
    */
   private EClass wordTransEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass laTransEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -561,6 +577,46 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getLADirective()
+  {
+    return laDirectiveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLADirective_La_dir()
+  {
+    return (EReference)laDirectiveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLADirective_Reg()
+  {
+    return (EReference)laDirectiveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLADirective_Label()
+  {
+    return (EReference)laDirectiveEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRInstructionTrans()
   {
     return rInstructionTransEClass;
@@ -674,6 +730,26 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
   public EAttribute getWordTrans_Word()
   {
     return (EAttribute)wordTransEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLATrans()
+  {
+    return laTransEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLATrans_La()
+  {
+    return (EAttribute)laTransEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -827,6 +903,11 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     createEReference(wordDirectiveEClass, WORD_DIRECTIVE__WDIR);
     createEAttribute(wordDirectiveEClass, WORD_DIRECTIVE__IMM);
 
+    laDirectiveEClass = createEClass(LA_DIRECTIVE);
+    createEReference(laDirectiveEClass, LA_DIRECTIVE__LA_DIR);
+    createEReference(laDirectiveEClass, LA_DIRECTIVE__REG);
+    createEReference(laDirectiveEClass, LA_DIRECTIVE__LABEL);
+
     rInstructionTransEClass = createEClass(RINSTRUCTION_TRANS);
     createEAttribute(rInstructionTransEClass, RINSTRUCTION_TRANS__ROPCODE);
 
@@ -844,6 +925,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     wordTransEClass = createEClass(WORD_TRANS);
     createEAttribute(wordTransEClass, WORD_TRANS__WORD);
+
+    laTransEClass = createEClass(LA_TRANS);
+    createEAttribute(laTransEClass, LA_TRANS__LA);
 
     commentTransEClass = createEClass(COMMENT_TRANS);
     createEAttribute(commentTransEClass, COMMENT_TRANS__COMMENT);
@@ -930,6 +1014,11 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
     initEReference(getWordDirective_W_dir(), this.getWordTrans(), null, "w_dir", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWordDirective_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, WordDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(laDirectiveEClass, LADirective.class, "LADirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLADirective_La_dir(), this.getLATrans(), null, "la_dir", null, 0, 1, LADirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLADirective_Reg(), this.getRegTrans(), null, "reg", null, 0, 1, LADirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLADirective_Label(), this.getLabelEnd(), null, "label", null, 0, 1, LADirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(rInstructionTransEClass, RInstructionTrans.class, "RInstructionTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRInstructionTrans_R_opcode(), ecorePackage.getEString(), "r_opcode", null, 0, 1, RInstructionTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -947,6 +1036,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     initEClass(wordTransEClass, WordTrans.class, "WordTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWordTrans_Word(), ecorePackage.getEString(), "word", null, 0, 1, WordTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(laTransEClass, LATrans.class, "LATrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLATrans_La(), ecorePackage.getEString(), "la", null, 0, 1, LATrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commentTransEClass, CommentTrans.class, "CommentTrans", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCommentTrans_Comment(), ecorePackage.getEString(), "comment", null, 0, 1, CommentTrans.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

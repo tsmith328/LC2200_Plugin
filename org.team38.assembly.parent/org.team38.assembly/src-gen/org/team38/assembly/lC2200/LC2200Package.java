@@ -436,6 +436,52 @@ public interface LC2200Package extends EPackage
   int WORD_DIRECTIVE_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.LADirectiveImpl <em>LA Directive</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.LADirectiveImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLADirective()
+   * @generated
+   */
+  int LA_DIRECTIVE = 9;
+
+  /**
+   * The feature id for the '<em><b>La dir</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_DIRECTIVE__LA_DIR = 0;
+
+  /**
+   * The feature id for the '<em><b>Reg</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_DIRECTIVE__REG = 1;
+
+  /**
+   * The feature id for the '<em><b>Label</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_DIRECTIVE__LABEL = 2;
+
+  /**
+   * The number of structural features of the '<em>LA Directive</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_DIRECTIVE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.RInstructionTransImpl <em>RInstruction Trans</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -443,7 +489,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRInstructionTrans()
    * @generated
    */
-  int RINSTRUCTION_TRANS = 9;
+  int RINSTRUCTION_TRANS = 10;
 
   /**
    * The feature id for the '<em><b>Ropcode</b></em>' attribute.
@@ -471,7 +517,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionImmTrans()
    * @generated
    */
-  int IINSTRUCTION_IMM_TRANS = 10;
+  int IINSTRUCTION_IMM_TRANS = 11;
 
   /**
    * The feature id for the '<em><b>Iopcode</b></em>' attribute.
@@ -499,7 +545,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionOffsetTrans()
    * @generated
    */
-  int IINSTRUCTION_OFFSET_TRANS = 11;
+  int IINSTRUCTION_OFFSET_TRANS = 12;
 
   /**
    * The feature id for the '<em><b>Iopcode</b></em>' attribute.
@@ -527,7 +573,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getIInstructionLabelTrans()
    * @generated
    */
-  int IINSTRUCTION_LABEL_TRANS = 12;
+  int IINSTRUCTION_LABEL_TRANS = 13;
 
   /**
    * The feature id for the '<em><b>Iopcode</b></em>' attribute.
@@ -555,7 +601,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getJInstructionTrans()
    * @generated
    */
-  int JINSTRUCTION_TRANS = 13;
+  int JINSTRUCTION_TRANS = 14;
 
   /**
    * The feature id for the '<em><b>Jopcode</b></em>' attribute.
@@ -583,7 +629,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getWordTrans()
    * @generated
    */
-  int WORD_TRANS = 14;
+  int WORD_TRANS = 15;
 
   /**
    * The feature id for the '<em><b>Word</b></em>' attribute.
@@ -604,6 +650,34 @@ public interface LC2200Package extends EPackage
   int WORD_TRANS_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.team38.assembly.lC2200.impl.LATransImpl <em>LA Trans</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.team38.assembly.lC2200.impl.LATransImpl
+   * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLATrans()
+   * @generated
+   */
+  int LA_TRANS = 16;
+
+  /**
+   * The feature id for the '<em><b>La</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_TRANS__LA = 0;
+
+  /**
+   * The number of structural features of the '<em>LA Trans</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LA_TRANS_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.CommentTransImpl <em>Comment Trans</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -611,7 +685,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getCommentTrans()
    * @generated
    */
-  int COMMENT_TRANS = 15;
+  int COMMENT_TRANS = 17;
 
   /**
    * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -639,7 +713,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getRegTrans()
    * @generated
    */
-  int REG_TRANS = 16;
+  int REG_TRANS = 18;
 
   /**
    * The feature id for the '<em><b>Reg</b></em>' attribute.
@@ -667,7 +741,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelBeg()
    * @generated
    */
-  int LABEL_BEG = 17;
+  int LABEL_BEG = 19;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -695,7 +769,7 @@ public interface LC2200Package extends EPackage
    * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLabelEnd()
    * @generated
    */
-  int LABEL_END = 18;
+  int LABEL_END = 20;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -1060,6 +1134,49 @@ public interface LC2200Package extends EPackage
   EAttribute getWordDirective_Imm();
 
   /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.LADirective <em>LA Directive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LA Directive</em>'.
+   * @see org.team38.assembly.lC2200.LADirective
+   * @generated
+   */
+  EClass getLADirective();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.LADirective#getLa_dir <em>La dir</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>La dir</em>'.
+   * @see org.team38.assembly.lC2200.LADirective#getLa_dir()
+   * @see #getLADirective()
+   * @generated
+   */
+  EReference getLADirective_La_dir();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.LADirective#getReg <em>Reg</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Reg</em>'.
+   * @see org.team38.assembly.lC2200.LADirective#getReg()
+   * @see #getLADirective()
+   * @generated
+   */
+  EReference getLADirective_Reg();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.team38.assembly.lC2200.LADirective#getLabel <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Label</em>'.
+   * @see org.team38.assembly.lC2200.LADirective#getLabel()
+   * @see #getLADirective()
+   * @generated
+   */
+  EReference getLADirective_Label();
+
+  /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.RInstructionTrans <em>RInstruction Trans</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1184,6 +1301,27 @@ public interface LC2200Package extends EPackage
    * @generated
    */
   EAttribute getWordTrans_Word();
+
+  /**
+   * Returns the meta object for class '{@link org.team38.assembly.lC2200.LATrans <em>LA Trans</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LA Trans</em>'.
+   * @see org.team38.assembly.lC2200.LATrans
+   * @generated
+   */
+  EClass getLATrans();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.team38.assembly.lC2200.LATrans#getLa <em>La</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>La</em>'.
+   * @see org.team38.assembly.lC2200.LATrans#getLa()
+   * @see #getLATrans()
+   * @generated
+   */
+  EAttribute getLATrans_La();
 
   /**
    * Returns the meta object for class '{@link org.team38.assembly.lC2200.CommentTrans <em>Comment Trans</em>}'.
@@ -1567,6 +1705,40 @@ public interface LC2200Package extends EPackage
     EAttribute WORD_DIRECTIVE__IMM = eINSTANCE.getWordDirective_Imm();
 
     /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.LADirectiveImpl <em>LA Directive</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.LADirectiveImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLADirective()
+     * @generated
+     */
+    EClass LA_DIRECTIVE = eINSTANCE.getLADirective();
+
+    /**
+     * The meta object literal for the '<em><b>La dir</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LA_DIRECTIVE__LA_DIR = eINSTANCE.getLADirective_La_dir();
+
+    /**
+     * The meta object literal for the '<em><b>Reg</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LA_DIRECTIVE__REG = eINSTANCE.getLADirective_Reg();
+
+    /**
+     * The meta object literal for the '<em><b>Label</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LA_DIRECTIVE__LABEL = eINSTANCE.getLADirective_Label();
+
+    /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.RInstructionTransImpl <em>RInstruction Trans</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1673,6 +1845,24 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EAttribute WORD_TRANS__WORD = eINSTANCE.getWordTrans_Word();
+
+    /**
+     * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.LATransImpl <em>LA Trans</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.team38.assembly.lC2200.impl.LATransImpl
+     * @see org.team38.assembly.lC2200.impl.LC2200PackageImpl#getLATrans()
+     * @generated
+     */
+    EClass LA_TRANS = eINSTANCE.getLATrans();
+
+    /**
+     * The meta object literal for the '<em><b>La</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LA_TRANS__LA = eINSTANCE.getLATrans_La();
 
     /**
      * The meta object literal for the '{@link org.team38.assembly.lC2200.impl.CommentTransImpl <em>Comment Trans</em>}' class.

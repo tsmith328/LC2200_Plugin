@@ -50,6 +50,7 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getIInstructionAccess().getGroup_2(), "rule__IInstruction__Group_2__0");
 					put(grammarAccess.getJInstructionAccess().getGroup(), "rule__JInstruction__Group__0");
 					put(grammarAccess.getWordDirectiveAccess().getGroup(), "rule__WordDirective__Group__0");
+					put(grammarAccess.getLADirectiveAccess().getGroup(), "rule__LADirective__Group__0");
 					put(grammarAccess.getProgramAccess().getLinesAssignment_1(), "rule__Program__LinesAssignment_1");
 					put(grammarAccess.getInstructionAccess().getLabelAssignment_0(), "rule__Instruction__LabelAssignment_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAssignment_1(), "rule__Instruction__InstructionAssignment_1");
@@ -80,12 +81,16 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getNOOPDirectiveAccess().getN_dirAssignment(), "rule__NOOPDirective__N_dirAssignment");
 					put(grammarAccess.getWordDirectiveAccess().getW_dirAssignment_0(), "rule__WordDirective__W_dirAssignment_0");
 					put(grammarAccess.getWordDirectiveAccess().getImmAssignment_1(), "rule__WordDirective__ImmAssignment_1");
+					put(grammarAccess.getLADirectiveAccess().getLa_dirAssignment_0(), "rule__LADirective__La_dirAssignment_0");
+					put(grammarAccess.getLADirectiveAccess().getRegAssignment_1(), "rule__LADirective__RegAssignment_1");
+					put(grammarAccess.getLADirectiveAccess().getLabelAssignment_3(), "rule__LADirective__LabelAssignment_3");
 					put(grammarAccess.getRInstructionTransAccess().getR_opcodeAssignment(), "rule__RInstructionTrans__R_opcodeAssignment");
 					put(grammarAccess.getIInstructionImmTransAccess().getI_opcodeAssignment(), "rule__IInstructionImmTrans__I_opcodeAssignment");
 					put(grammarAccess.getIInstructionOffsetTransAccess().getI_opcodeAssignment(), "rule__IInstructionOffsetTrans__I_opcodeAssignment");
 					put(grammarAccess.getIInstructionLabelTransAccess().getI_opcodeAssignment(), "rule__IInstructionLabelTrans__I_opcodeAssignment");
 					put(grammarAccess.getJInstructionTransAccess().getJ_opcodeAssignment(), "rule__JInstructionTrans__J_opcodeAssignment");
 					put(grammarAccess.getWordTransAccess().getWordAssignment(), "rule__WordTrans__WordAssignment");
+					put(grammarAccess.getLATransAccess().getLaAssignment(), "rule__LATrans__LaAssignment");
 					put(grammarAccess.getCommentTransAccess().getCommentAssignment(), "rule__CommentTrans__CommentAssignment");
 					put(grammarAccess.getRegTransAccess().getRegAssignment(), "rule__RegTrans__RegAssignment");
 					put(grammarAccess.getLabelBegAccess().getLabelAssignment(), "rule__LabelBeg__LabelAssignment");

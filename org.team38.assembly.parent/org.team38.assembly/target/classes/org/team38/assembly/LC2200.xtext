@@ -12,7 +12,7 @@ Instruction:
 ;
 
 Directive:
-	label=LabelBeg? directive=(NOOPDirective | WordDirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
+	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
 ;
 	
 RInstruction:
@@ -40,6 +40,9 @@ WordDirective:
 	w_dir=WordTrans imm=IMMEDIATE
 ;
 
+LADirective:
+	la_dir=LATrans reg=RegTrans COMMA label=LabelEnd
+;
 
 //Transition Rules
 //Used for Syntax Coloring
@@ -67,6 +70,10 @@ WordTrans:
 	word=WORD
 ;
 
+LATrans:
+	la=LA
+;
+
 CommentTrans:
 	comment=COMMENT
 ;
@@ -84,6 +91,10 @@ LabelEnd:
 ;
 
 //Tokens
+terminal LA:
+	'la'
+;
+
 terminal WORD:
 	'.word'
 ;

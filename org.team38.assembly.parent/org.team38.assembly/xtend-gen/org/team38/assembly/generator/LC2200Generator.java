@@ -21,6 +21,7 @@ import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
+import org.team38.assembly.lC2200.LADirective;
 import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
@@ -156,6 +157,15 @@ public class LC2200Generator extends AbstractGenerator {
         boolean _equals_1 = _name_1.equals("WordDirective");
         if (_equals_1) {
           _xifexpression_1 = this.compileWord(((WordDirective) dirType));
+        } else {
+          StringBuffer _xifexpression_2 = null;
+          EClass _eClass_2 = dirType.eClass();
+          String _name_2 = _eClass_2.getName();
+          boolean _equals_2 = _name_2.equals("LADirective");
+          if (_equals_2) {
+            _xifexpression_2 = this.compileLA(((LADirective) dirType));
+          }
+          _xifexpression_1 = _xifexpression_2;
         }
         _xifexpression = _xifexpression_1;
       }
@@ -203,6 +213,46 @@ public class LC2200Generator extends AbstractGenerator {
         _xifexpression = _xifexpression_1;
       }
       _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  public StringBuffer compileLA(final LADirective la) {
+    StringBuffer _xblockexpression = null;
+    {
+      LabelEnd labelTrans = la.getLabel();
+      RegTrans regTrans = la.getReg();
+      String reg = regTrans.getReg();
+      String immBin = "";
+      boolean _notEquals = (!Objects.equal(labelTrans, null));
+      if (_notEquals) {
+        String label = labelTrans.getLabel();
+        boolean _notEquals_1 = (!Objects.equal(label, null));
+        if (_notEquals_1) {
+          Integer labelLine = this.labelTable.get(label);
+          boolean _notEquals_2 = (!Objects.equal(labelLine, null));
+          if (_notEquals_2) {
+            String _string = Integer.toString((labelLine).intValue());
+            String _immToBinary = this.immToBinary(_string, 5);
+            immBin = _immToBinary;
+          } else {
+            immBin = "00000";
+          }
+        }
+      }
+      String reg1Bin = this.regToBinary(reg);
+      String reg2Bin = this.regToBinary("$zero");
+      String opBin = this.opToBinary("addi");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(immBin, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
   }

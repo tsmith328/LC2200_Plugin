@@ -105,6 +105,15 @@ public interface LC2200Factory extends EFactory
   WordDirective createWordDirective();
 
   /**
+   * Returns a new object of class '<em>LA Directive</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LA Directive</em>'.
+   * @generated
+   */
+  LADirective createLADirective();
+
+  /**
    * Returns a new object of class '<em>RInstruction Trans</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,6 +166,15 @@ public interface LC2200Factory extends EFactory
    * @generated
    */
   WordTrans createWordTrans();
+
+  /**
+   * Returns a new object of class '<em>LA Trans</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LA Trans</em>'.
+   * @generated
+   */
+  LATrans createLATrans();
 
   /**
    * Returns a new object of class '<em>Comment Trans</em>'.

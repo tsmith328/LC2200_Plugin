@@ -136,6 +136,13 @@ public class LC2200Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LC2200Package.LA_DIRECTIVE:
+      {
+        LADirective laDirective = (LADirective)theEObject;
+        T result = caseLADirective(laDirective);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LC2200Package.RINSTRUCTION_TRANS:
       {
         RInstructionTrans rInstructionTrans = (RInstructionTrans)theEObject;
@@ -175,6 +182,13 @@ public class LC2200Switch<T> extends Switch<T>
       {
         WordTrans wordTrans = (WordTrans)theEObject;
         T result = caseWordTrans(wordTrans);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LC2200Package.LA_TRANS:
+      {
+        LATrans laTrans = (LATrans)theEObject;
+        T result = caseLATrans(laTrans);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -355,6 +369,22 @@ public class LC2200Switch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>LA Directive</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LA Directive</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLADirective(LADirective object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>RInstruction Trans</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -446,6 +476,22 @@ public class LC2200Switch<T> extends Switch<T>
    * @generated
    */
   public T caseWordTrans(WordTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LA Trans</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LA Trans</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLATrans(LATrans object)
   {
     return null;
   }

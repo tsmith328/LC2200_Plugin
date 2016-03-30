@@ -6,6 +6,15 @@ package org.team38.assembly.ui.labeling;
 import com.google.inject.Inject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.team38.assembly.lC2200.Directive;
+import org.team38.assembly.lC2200.IInstruction;
+import org.team38.assembly.lC2200.Instruction;
+import org.team38.assembly.lC2200.JInstruction;
+import org.team38.assembly.lC2200.LADirective;
+import org.team38.assembly.lC2200.NOOPDirective;
+import org.team38.assembly.lC2200.OInstruction;
+import org.team38.assembly.lC2200.RInstruction;
+import org.team38.assembly.lC2200.WordDirective;
 
 /**
  * Provides labels for EObjects.
@@ -17,5 +26,41 @@ public class LC2200LabelProvider extends DefaultEObjectLabelProvider {
   @Inject
   public LC2200LabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
+  }
+  
+  public String text(final Instruction instr) {
+    return "Instruction";
+  }
+  
+  public String text(final Directive dir) {
+    return "Directive";
+  }
+  
+  public String text(final NOOPDirective noop) {
+    return "Noop";
+  }
+  
+  public String text(final WordDirective word) {
+    return "Word";
+  }
+  
+  public String text(final LADirective la) {
+    return "Load Address";
+  }
+  
+  public String text(final OInstruction oinstr) {
+    return "O-Instruction";
+  }
+  
+  public String text(final IInstruction iinstr) {
+    return "I-Instruction";
+  }
+  
+  public String text(final RInstruction rinstr) {
+    return "R-Instruction";
+  }
+  
+  public String text(final JInstruction jinstr) {
+    return "J-Instruction";
   }
 }

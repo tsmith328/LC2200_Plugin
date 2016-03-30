@@ -121,6 +121,7 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     comment=CommentTrans (ambiguity) (rule end)
+	 *     directive=LADirective (ambiguity) (rule end)
 	 *     directive=NOOPDirective (ambiguity) (rule end)
 	 *     directive=WordDirective (ambiguity) (rule end)
 	 */

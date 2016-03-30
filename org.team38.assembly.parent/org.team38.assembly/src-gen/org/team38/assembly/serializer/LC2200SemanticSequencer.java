@@ -23,6 +23,8 @@ import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
+import org.team38.assembly.lC2200.LADirective;
+import org.team38.assembly.lC2200.LATrans;
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
@@ -76,6 +78,12 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case LC2200Package.JINSTRUCTION_TRANS:
 				sequence_JInstructionTrans(context, (JInstructionTrans) semanticObject); 
+				return; 
+			case LC2200Package.LA_DIRECTIVE:
+				sequence_LADirective(context, (LADirective) semanticObject); 
+				return; 
+			case LC2200Package.LA_TRANS:
+				sequence_LATrans(context, (LATrans) semanticObject); 
 				return; 
 			case LC2200Package.LABEL_BEG:
 				sequence_LabelBeg(context, (LabelBeg) semanticObject); 
@@ -135,7 +143,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Directive returns Directive
 	 *
 	 * Constraint:
-	 *     (label=LabelBeg? (directive=NOOPDirective | directive=WordDirective) comment=CommentTrans?)
+	 *     (label=LabelBeg? (directive=NOOPDirective | directive=WordDirective | directive=LADirective) comment=CommentTrans?)
 	 */
 	protected void sequence_Directive(ISerializationContext context, Directive semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -266,6 +274,48 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 		feeder.accept(grammarAccess.getJInstructionAccess().getJ_opcodeJInstructionTransParserRuleCall_0_0(), semanticObject.getJ_opcode());
 		feeder.accept(grammarAccess.getJInstructionAccess().getReg1RegTransParserRuleCall_1_0(), semanticObject.getReg1());
 		feeder.accept(grammarAccess.getJInstructionAccess().getReg2RegTransParserRuleCall_3_0(), semanticObject.getReg2());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LADirective returns LADirective
+	 *
+	 * Constraint:
+	 *     (la_dir=LATrans reg=RegTrans label=LabelEnd)
+	 */
+	protected void sequence_LADirective(ISerializationContext context, LADirective semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__LA_DIR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__LA_DIR));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__REG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__REG));
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__LABEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.LA_DIRECTIVE__LABEL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLADirectiveAccess().getLa_dirLATransParserRuleCall_0_0(), semanticObject.getLa_dir());
+		feeder.accept(grammarAccess.getLADirectiveAccess().getRegRegTransParserRuleCall_1_0(), semanticObject.getReg());
+		feeder.accept(grammarAccess.getLADirectiveAccess().getLabelLabelEndParserRuleCall_3_0(), semanticObject.getLabel());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LATrans returns LATrans
+	 *
+	 * Constraint:
+	 *     la=LA
+	 */
+	protected void sequence_LATrans(ISerializationContext context, LATrans semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.LA_TRANS__LA) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.LA_TRANS__LA));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLATransAccess().getLaLATerminalRuleCall_0(), semanticObject.getLa());
 		feeder.finish();
 	}
 	

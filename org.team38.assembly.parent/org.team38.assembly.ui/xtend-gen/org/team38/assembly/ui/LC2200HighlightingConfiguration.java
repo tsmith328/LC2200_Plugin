@@ -20,13 +20,13 @@ public class LC2200HighlightingConfiguration implements IHighlightingConfigurati
   
   @Override
   public void configure(final IHighlightingConfigurationAcceptor acceptor) {
-    TextStyle _keywordTextStyle = this.keywordTextStyle(200, 0, 0, SWT.NORMAL);
+    TextStyle _keywordTextStyle = this.keywordTextStyle(240, 46, 224, SWT.NORMAL);
     acceptor.acceptDefaultHighlighting(
       LC2200HighlightingConfiguration.WORD_ID, ".word", _keywordTextStyle);
-    TextStyle _keywordTextStyle_1 = this.keywordTextStyle(200, 0, 0, SWT.NORMAL);
+    TextStyle _keywordTextStyle_1 = this.keywordTextStyle(20, 110, 12, SWT.NORMAL);
     acceptor.acceptDefaultHighlighting(
       LC2200HighlightingConfiguration.INSTRUCTION_ID, "Instruction", _keywordTextStyle_1);
-    TextStyle _keywordTextStyle_2 = this.keywordTextStyle(0, 200, 0, SWT.NORMAL);
+    TextStyle _keywordTextStyle_2 = this.keywordTextStyle(145, 54, 168, SWT.NORMAL);
     acceptor.acceptDefaultHighlighting(
       LC2200HighlightingConfiguration.REG_ID, "Register", _keywordTextStyle_2);
     TextStyle _keywordTextStyle_3 = this.keywordTextStyle(0, 0, 200, SWT.NORMAL);

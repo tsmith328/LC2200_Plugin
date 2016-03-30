@@ -329,6 +329,22 @@ ruleDirective returns [EObject current=null]
 							"org.team38.assembly.LC2200.WordDirective");
 						afterParserOrEnumRuleCall();
 					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getDirectiveAccess().getDirectiveLADirectiveParserRuleCall_1_0_2());
+					}
+					lv_directive_1_3=ruleLADirective
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDirectiveRule());
+						}
+						set(
+							$current,
+							"directive",
+							lv_directive_1_3,
+							"org.team38.assembly.LC2200.LADirective");
+						afterParserOrEnumRuleCall();
+					}
 				)
 			)
 		)
@@ -955,6 +971,86 @@ ruleWordDirective returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleLADirective
+entryRuleLADirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLADirectiveRule()); }
+	iv_ruleLADirective=ruleLADirective
+	{ $current=$iv_ruleLADirective.current; }
+	EOF;
+
+// Rule LADirective
+ruleLADirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLADirectiveAccess().getLa_dirLATransParserRuleCall_0_0());
+				}
+				lv_la_dir_0_0=ruleLATrans
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLADirectiveRule());
+					}
+					set(
+						$current,
+						"la_dir",
+						lv_la_dir_0_0,
+						"org.team38.assembly.LC2200.LATrans");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLADirectiveAccess().getRegRegTransParserRuleCall_1_0());
+				}
+				lv_reg_1_0=ruleRegTrans
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLADirectiveRule());
+					}
+					set(
+						$current,
+						"reg",
+						lv_reg_1_0,
+						"org.team38.assembly.LC2200.RegTrans");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		this_COMMA_2=RULE_COMMA
+		{
+			newLeafNode(this_COMMA_2, grammarAccess.getLADirectiveAccess().getCOMMATerminalRuleCall_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLADirectiveAccess().getLabelLabelEndParserRuleCall_3_0());
+				}
+				lv_label_3_0=ruleLabelEnd
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLADirectiveRule());
+					}
+					set(
+						$current,
+						"label",
+						lv_label_3_0,
+						"org.team38.assembly.LC2200.LabelEnd");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleRInstructionTrans
 entryRuleRInstructionTrans returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getRInstructionTransRule()); }
@@ -1165,6 +1261,41 @@ ruleWordTrans returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleLATrans
+entryRuleLATrans returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLATransRule()); }
+	iv_ruleLATrans=ruleLATrans
+	{ $current=$iv_ruleLATrans.current; }
+	EOF;
+
+// Rule LATrans
+ruleLATrans returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_la_0_0=RULE_LA
+			{
+				newLeafNode(lv_la_0_0, grammarAccess.getLATransAccess().getLaLATerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getLATransRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"la",
+					lv_la_0_0,
+					"org.team38.assembly.LC2200.LA");
+			}
+		)
+	)
+;
+
 // Entry rule entryRuleCommentTrans
 entryRuleCommentTrans returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getCommentTransRule()); }
@@ -1304,6 +1435,8 @@ ruleLabelEnd returns [EObject current=null]
 		)
 	)
 ;
+
+RULE_LA : 'la';
 
 RULE_WORD : '.word';
 

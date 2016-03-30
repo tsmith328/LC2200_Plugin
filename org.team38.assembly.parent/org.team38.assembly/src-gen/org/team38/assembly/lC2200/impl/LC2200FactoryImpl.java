@@ -74,12 +74,14 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
       case LC2200Package.OINSTRUCTION: return createOInstruction();
       case LC2200Package.NOOP_DIRECTIVE: return createNOOPDirective();
       case LC2200Package.WORD_DIRECTIVE: return createWordDirective();
+      case LC2200Package.LA_DIRECTIVE: return createLADirective();
       case LC2200Package.RINSTRUCTION_TRANS: return createRInstructionTrans();
       case LC2200Package.IINSTRUCTION_IMM_TRANS: return createIInstructionImmTrans();
       case LC2200Package.IINSTRUCTION_OFFSET_TRANS: return createIInstructionOffsetTrans();
       case LC2200Package.IINSTRUCTION_LABEL_TRANS: return createIInstructionLabelTrans();
       case LC2200Package.JINSTRUCTION_TRANS: return createJInstructionTrans();
       case LC2200Package.WORD_TRANS: return createWordTrans();
+      case LC2200Package.LA_TRANS: return createLATrans();
       case LC2200Package.COMMENT_TRANS: return createCommentTrans();
       case LC2200Package.REG_TRANS: return createRegTrans();
       case LC2200Package.LABEL_BEG: return createLabelBeg();
@@ -193,6 +195,17 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
    * <!-- end-user-doc -->
    * @generated
    */
+  public LADirective createLADirective()
+  {
+    LADirectiveImpl laDirective = new LADirectiveImpl();
+    return laDirective;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RInstructionTrans createRInstructionTrans()
   {
     RInstructionTransImpl rInstructionTrans = new RInstructionTransImpl();
@@ -252,6 +265,17 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
   {
     WordTransImpl wordTrans = new WordTransImpl();
     return wordTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LATrans createLATrans()
+  {
+    LATransImpl laTrans = new LATransImpl();
+    return laTrans;
   }
 
   /**

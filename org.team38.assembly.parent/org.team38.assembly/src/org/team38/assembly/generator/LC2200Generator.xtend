@@ -12,6 +12,7 @@ import org.team38.assembly.lC2200.Directive
 import org.team38.assembly.lC2200.Instruction
 import org.team38.assembly.lC2200.NOOPDirective
 import org.team38.assembly.lC2200.WordDirective
+import org.team38.assembly.lC2200.LADirective
 import org.team38.assembly.lC2200.OInstruction
 import org.team38.assembly.lC2200.RInstruction
 import org.team38.assembly.lC2200.JInstruction
@@ -101,6 +102,9 @@ class LC2200Generator extends AbstractGenerator {
 			else if (dirType.eClass().getName().equals("WordDirective")) {
 				compileWord(dirType as WordDirective)
 			}
+			else if (dirType.eClass().getName().equals("LADirective")) {
+				compileLA(dirType as LADirective)
+			}
 	}
 	
 	def compileInstruction(Instruction instr) {
@@ -117,6 +121,32 @@ class LC2200Generator extends AbstractGenerator {
 			else if(instrType.eClass().getName().equals("OInstruction")) {
 				compileOInstruction(instrType as OInstruction)
 			}			
+	}
+	
+	def compileLA(LADirective la) {
+		var labelTrans = la.getLabel()
+		var regTrans = la.getReg()
+		var reg = regTrans.getReg()
+		var immBin = ""
+		if (labelTrans != null) {
+			var label = labelTrans.getLabel()
+			if (label != null) {
+				var labelLine = labelTable.get(label)
+				if(labelLine != null) {
+					immBin = immToBinary(Integer.toString(labelLine), 5)
+				} else {
+					immBin = "00000"
+				}
+			}
+		}
+		var reg1Bin = regToBinary(reg)
+		var reg2Bin = regToBinary("$zero")
+		var opBin = opToBinary("addi")
+		
+		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
+		''')
+		
+		
 	}
 	
 	def compileNOOP(NOOPDirective noop) {
