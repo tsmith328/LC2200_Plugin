@@ -14,6 +14,7 @@ import org.team38.assembly.lC2200.IInstructionImmTrans;
 import org.team38.assembly.lC2200.IInstructionLabelTrans;
 import org.team38.assembly.lC2200.IInstructionOffsetTrans;
 import org.team38.assembly.lC2200.JInstructionTrans;
+import org.team38.assembly.lC2200.LATrans;
 import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
@@ -56,42 +57,49 @@ public class LC2200HighlightingCalculator implements ISemanticHighlightingCalcul
         boolean _or_4 = false;
         boolean _or_5 = false;
         boolean _or_6 = false;
+        boolean _or_7 = false;
         EObject _semanticElement_1 = node.getSemanticElement();
         if ((_semanticElement_1 instanceof RInstructionTrans)) {
-          _or_6 = true;
+          _or_7 = true;
         } else {
           EObject _semanticElement_2 = node.getSemanticElement();
-          _or_6 = (_semanticElement_2 instanceof IInstructionImmTrans);
+          _or_7 = (_semanticElement_2 instanceof IInstructionImmTrans);
+        }
+        if (_or_7) {
+          _or_6 = true;
+        } else {
+          EObject _semanticElement_3 = node.getSemanticElement();
+          _or_6 = (_semanticElement_3 instanceof IInstructionOffsetTrans);
         }
         if (_or_6) {
           _or_5 = true;
         } else {
-          EObject _semanticElement_3 = node.getSemanticElement();
-          _or_5 = (_semanticElement_3 instanceof IInstructionOffsetTrans);
+          EObject _semanticElement_4 = node.getSemanticElement();
+          _or_5 = (_semanticElement_4 instanceof IInstructionLabelTrans);
         }
         if (_or_5) {
           _or_4 = true;
         } else {
-          EObject _semanticElement_4 = node.getSemanticElement();
-          _or_4 = (_semanticElement_4 instanceof IInstructionLabelTrans);
+          EObject _semanticElement_5 = node.getSemanticElement();
+          _or_4 = (_semanticElement_5 instanceof JInstructionTrans);
         }
         if (_or_4) {
           _or_3 = true;
         } else {
-          EObject _semanticElement_5 = node.getSemanticElement();
-          _or_3 = (_semanticElement_5 instanceof JInstructionTrans);
+          EObject _semanticElement_6 = node.getSemanticElement();
+          _or_3 = (_semanticElement_6 instanceof OInstruction);
         }
         if (_or_3) {
           _or_2 = true;
         } else {
-          EObject _semanticElement_6 = node.getSemanticElement();
-          _or_2 = (_semanticElement_6 instanceof OInstruction);
+          EObject _semanticElement_7 = node.getSemanticElement();
+          _or_2 = (_semanticElement_7 instanceof NOOPDirective);
         }
         if (_or_2) {
           _or_1 = true;
         } else {
-          EObject _semanticElement_7 = node.getSemanticElement();
-          _or_1 = (_semanticElement_7 instanceof NOOPDirective);
+          EObject _semanticElement_8 = node.getSemanticElement();
+          _or_1 = (_semanticElement_8 instanceof LATrans);
         }
         if (_or_1) {
           int _offset_1 = node.getOffset();
@@ -99,29 +107,29 @@ public class LC2200HighlightingCalculator implements ISemanticHighlightingCalcul
           acceptor.addPosition(_offset_1, _length_1, 
             LC2200HighlightingConfiguration.INSTRUCTION_ID);
         } else {
-          EObject _semanticElement_8 = node.getSemanticElement();
-          if ((_semanticElement_8 instanceof RegTrans)) {
+          EObject _semanticElement_9 = node.getSemanticElement();
+          if ((_semanticElement_9 instanceof RegTrans)) {
             int _offset_2 = node.getOffset();
             int _length_2 = node.getLength();
             acceptor.addPosition(_offset_2, _length_2, 
               LC2200HighlightingConfiguration.REG_ID);
           } else {
-            boolean _or_7 = false;
-            EObject _semanticElement_9 = node.getSemanticElement();
-            if ((_semanticElement_9 instanceof LabelBeg)) {
-              _or_7 = true;
+            boolean _or_8 = false;
+            EObject _semanticElement_10 = node.getSemanticElement();
+            if ((_semanticElement_10 instanceof LabelBeg)) {
+              _or_8 = true;
             } else {
-              EObject _semanticElement_10 = node.getSemanticElement();
-              _or_7 = (_semanticElement_10 instanceof LabelEnd);
+              EObject _semanticElement_11 = node.getSemanticElement();
+              _or_8 = (_semanticElement_11 instanceof LabelEnd);
             }
-            if (_or_7) {
+            if (_or_8) {
               int _offset_3 = node.getOffset();
               int _length_3 = node.getLength();
               acceptor.addPosition(_offset_3, _length_3, 
                 LC2200HighlightingConfiguration.LABEL_ID);
             } else {
-              EObject _semanticElement_11 = node.getSemanticElement();
-              if ((_semanticElement_11 instanceof CommentTrans)) {
+              EObject _semanticElement_12 = node.getSemanticElement();
+              if ((_semanticElement_12 instanceof CommentTrans)) {
                 int _offset_4 = node.getOffset();
                 int _length_4 = node.getLength();
                 acceptor.addPosition(_offset_4, _length_4, 

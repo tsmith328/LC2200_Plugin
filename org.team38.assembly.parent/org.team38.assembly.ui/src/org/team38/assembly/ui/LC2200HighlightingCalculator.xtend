@@ -17,6 +17,7 @@ import org.team38.assembly.lC2200.OInstruction
 import org.team38.assembly.lC2200.RInstructionTrans
 import org.team38.assembly.lC2200.RegTrans
 import org.team38.assembly.lC2200.WordTrans
+import org.team38.assembly.lC2200.LATrans
 
 public class LC2200HighlightingCalculator implements ISemanticHighlightingCalculator {
 	
@@ -39,7 +40,8 @@ public class LC2200HighlightingCalculator implements ISemanticHighlightingCalcul
     			node.getSemanticElement() instanceof IInstructionLabelTrans ||
     			node.getSemanticElement() instanceof JInstructionTrans ||
     			node.getSemanticElement() instanceof OInstruction ||
-    			node.getSemanticElement() instanceof NOOPDirective) {
+    			node.getSemanticElement() instanceof NOOPDirective ||
+    			node.getSemanticElement() instanceof LATrans) {
       			acceptor.addPosition(node.getOffset(), node.getLength(), 
         			LC2200HighlightingConfiguration.INSTRUCTION_ID);
         	//Registers
