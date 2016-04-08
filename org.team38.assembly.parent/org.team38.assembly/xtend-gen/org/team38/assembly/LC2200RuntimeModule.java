@@ -3,11 +3,16 @@
  */
 package org.team38.assembly;
 
+import org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider;
 import org.team38.assembly.AbstractLC2200RuntimeModule;
+import org.team38.assembly.CustomMessageProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
 public class LC2200RuntimeModule extends AbstractLC2200RuntimeModule {
+  public Class<? extends ISyntaxErrorMessageProvider> bindISyntaxErrorMessageProvider() {
+    return CustomMessageProvider.class;
+  }
 }

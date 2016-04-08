@@ -3,9 +3,15 @@
  */
 package org.team38.assembly
 
+import org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class LC2200RuntimeModule extends AbstractLC2200RuntimeModule {
+	
+	def Class<? extends ISyntaxErrorMessageProvider> bindISyntaxErrorMessageProvider() {
+		return CustomMessageProvider;
+	}
+	
 }
