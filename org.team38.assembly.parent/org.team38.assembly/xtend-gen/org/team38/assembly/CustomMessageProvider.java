@@ -12,6 +12,8 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
   
   public final static String COMMA = "comma";
   
+  public final static String INSTR_START = "start_instruction";
+  
   public final static String INSTR_END = "end_instruction";
   
   public final static String LABEL = "label";
@@ -29,23 +31,38 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
       } else {
         boolean _contains_1 = msgDefault.contains("RULE_REG");
         if (_contains_1) {
-          return new SyntaxErrorMessage("Expecting a register.", CustomMessageProvider.RULE_REG);
+          return new SyntaxErrorMessage("Expecting a valid register, e.g. $t0.", CustomMessageProvider.RULE_REG);
         } else {
           boolean _contains_2 = msgDefault.contains("COMMA");
           if (_contains_2) {
             return new SyntaxErrorMessage("Expecting a comma.", CustomMessageProvider.COMMA);
           } else {
-            boolean _contains_3 = msgDefault.contains("EOF");
+            boolean _contains_3 = msgDefault.contains("LABEL_IMM");
             if (_contains_3) {
-              return new SyntaxErrorMessage("Expected end of instruction.", CustomMessageProvider.INSTR_END);
+              return new SyntaxErrorMessage("Missing label", CustomMessageProvider.LABEL);
             } else {
-              boolean _contains_4 = msgDefault.contains("LABEL");
+              boolean _contains_4 = msgDefault.contains("extraneous");
               if (_contains_4) {
-                return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
+                return new SyntaxErrorMessage("Expecting label or instruction.", CustomMessageProvider.INSTR_START);
               } else {
-                boolean _contains_5 = msgDefault.contains("PAREN");
+                boolean _contains_5 = msgDefault.contains("EOF");
                 if (_contains_5) {
-                  return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
+                  return new SyntaxErrorMessage("Expecting end of instruction.", CustomMessageProvider.INSTR_END);
+                } else {
+                  boolean _contains_6 = msgDefault.contains("LABEL");
+                  if (_contains_6) {
+                    return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
+                  } else {
+                    boolean _contains_7 = msgDefault.contains("PAREN");
+                    if (_contains_7) {
+                      return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
+                    } else {
+                      boolean _contains_8 = msgDefault.contains("viable");
+                      if (_contains_8) {
+                        return new SyntaxErrorMessage("Expecting instruction afterwards", CustomMessageProvider.LABEL);
+                      }
+                    }
+                  }
                 }
               }
             }

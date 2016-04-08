@@ -136,8 +136,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNEWLINETerminalRuleCall_3_1 = (RuleCall)cAlternatives_3.eContents().get(1);
 		
 		//Directive:
-		//	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT |
-		//	NEWLINE)?;
+		//	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
@@ -269,9 +268,9 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLabelLabelEndParserRuleCall_2_5_0 = (RuleCall)cLabelAssignment_2_5.eContents().get(0);
 		
 		//IInstruction:
-		//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE |
-		//	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN |
-		//	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd;
+		//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE | i_opcode=IInstructionOffsetTrans
+		//	reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN | i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA
+		//	reg2=RegTrans COMMA label=LabelEnd;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE | i_opcode=IInstructionOffsetTrans
@@ -827,8 +826,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Directive:
-	//	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT |
-	//	NEWLINE)?;
+	//	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?;
 	public DirectiveElements getDirectiveAccess() {
 		return pDirective;
 	}
@@ -848,9 +846,9 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IInstruction:
-	//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE |
-	//	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN |
-	//	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd;
+	//	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE | i_opcode=IInstructionOffsetTrans
+	//	reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN | i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA
+	//	reg2=RegTrans COMMA label=LabelEnd;
 	public IInstructionElements getIInstructionAccess() {
 		return pIInstruction;
 	}
@@ -1168,7 +1166,8 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	}
