@@ -146,7 +146,6 @@ class LC2200Generator extends AbstractGenerator {
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
 		''')
 		
-		
 	}
 	
 	def compileNOOP(NOOPDirective noop) {
@@ -316,7 +315,7 @@ class LC2200Generator extends AbstractGenerator {
 		var immBin = Integer.toBinaryString(Integer.parseInt(imm))
 
 		if(immBin.length() > bitLength) {
-			immBin = immBin.substring(immBin.length()-bitLength, immBin.length())
+			immBin = immBin.substring(immBin.length() - bitLength, immBin.length())
 		}
 		else {
 			while(immBin.length() - bitLength < 0) {

@@ -244,8 +244,14 @@ public class LC2200Generator extends AbstractGenerator {
       String reg2Bin = this.regToBinary("$zero");
       String opBin = this.opToBinary("addi");
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�opBin� �reg1Bin� �reg2Bin� �immBin�");
-      _builder.newLine();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(immBin, "");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
@@ -264,8 +270,8 @@ public class LC2200Generator extends AbstractGenerator {
       String wordImm = word.getImm();
       String wordImmBin = this.immToBinary(wordImm, 16);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�wordImmBin�");
-      _builder.newLine();
+      _builder.append(wordImmBin, "");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
@@ -326,8 +332,14 @@ public class LC2200Generator extends AbstractGenerator {
         immBin = _immToBinary_1;
       }
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�opBin� �reg1Bin� �reg2Bin� �immBin�");
-      _builder.newLine();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(immBin, "");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
@@ -353,8 +365,15 @@ public class LC2200Generator extends AbstractGenerator {
       String _string_3 = reg3.toString();
       String reg3Bin = this.regToBinary(_string_3);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�opBin� �reg1Bin� �reg2Bin� �reg3Bin� 0");
-      _builder.newLine();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" ");
+      _builder.append(reg3Bin, "");
+      _builder.append(" 0");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
@@ -376,8 +395,13 @@ public class LC2200Generator extends AbstractGenerator {
       String _string_2 = reg2.toString();
       String reg2Bin = this.regToBinary(_string_2);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�opBin� �reg1Bin� �reg2Bin� 00000");
-      _builder.newLine();
+      _builder.append(opBin, "");
+      _builder.append(" ");
+      _builder.append(reg1Bin, "");
+      _builder.append(" ");
+      _builder.append(reg2Bin, "");
+      _builder.append(" 00000");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;
@@ -389,8 +413,9 @@ public class LC2200Generator extends AbstractGenerator {
       String op = oInstr.getO_opcode();
       String opBin = this.opToBinary(op);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�opBin� 00000000000 0");
-      _builder.newLine();
+      _builder.append(opBin, "");
+      _builder.append(" 00000000000 0");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = this.assembledOutput.append(_builder);
     }
     return _xblockexpression;

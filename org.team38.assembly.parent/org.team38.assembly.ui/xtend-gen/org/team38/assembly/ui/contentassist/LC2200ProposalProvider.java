@@ -3,12 +3,32 @@
  */
 package org.team38.assembly.ui.contentassist;
 
+import java.util.Collections;
+import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.team38.assembly.ui.contentassist.AbstractLC2200ProposalProvider;
 
 /**
- * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
- * on how to customize the content assistant.
+ * Custom content assistant proposals
  */
 @SuppressWarnings("all")
 public class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
+  /**
+   * Constant arrays of proposals for registers
+   */
+  private final List<String> REGTRANS_PROPOSALS = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("$zero", "$at", "$v0", "$a0", "$a1", "$a2", "$t0", "$t1", "$t2", "$s0", "$s1", "$s2", "$k0", "$sp", "$fp", "$ra"));
+  
+  @Override
+  public void complete_RegTrans(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    super.complete_RegTrans(model, ruleCall, context, acceptor);
+    for (final String proposal : this.REGTRANS_PROPOSALS) {
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
+    }
+  }
 }
