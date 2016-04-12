@@ -28,16 +28,39 @@ import org.eclipse.emf.ecore.EObject;
 import java.util.HashMap;
 
 /**
- * Generates code from your model files on save.
+ * Generates binary output from the assembled instructions
  * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class LC2200Generator extends AbstractGenerator {
+	/**
+	 * A buffer which will accumulate the generated binary
+	 */
 	private StringBuffer assembledOutput;
+	
+	/**
+	 * A hash map storing the location of all labels for calculating branches
+	 */
 	private HashMap<String, Integer> labelTable;
+	
+	/**
+	 * An integer used to keep track of current line being assembled
+	 */
 	private int offset;
+	
+	/**
+	 * The name of the generated file
+	 */
 	private String filename;
 
+	/**
+	 * doGenerate is called when user saves their assembly code and will
+	 * save generated binary output to a file. The code is scanned to obtain
+	 * label locations, and then compiled line by line.
+	 * 
+	 * @param resource
+	 * @param fsa
+	 * @param context
+	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		assembledOutput = new StringBuffer()
 		labelTable = new HashMap<String, Integer>()
@@ -53,7 +76,11 @@ class LC2200Generator extends AbstractGenerator {
 		fsa.generateFile(filename, assembledOutput.toString().trim())
 	}
 	
-	//TODO add collision checks for label
+	/**
+	 * Stores labels and their position into a hash map
+	 * 
+	 * @param root
+	 */
 	def populateLabels(Program root) {
 		var EList<EObject> lines = root.getLines();
 		for(line : lines) {

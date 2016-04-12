@@ -33,20 +33,39 @@ import org.team38.assembly.lC2200.RegTrans;
 import org.team38.assembly.lC2200.WordDirective;
 
 /**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
+ * Generates binary output from the assembled instructions
  */
 @SuppressWarnings("all")
 public class LC2200Generator extends AbstractGenerator {
+  /**
+   * A buffer which will accumulate the generated binary
+   */
   private StringBuffer assembledOutput;
   
+  /**
+   * A hash map storing the location of all labels for calculating branches
+   */
   private HashMap<String, Integer> labelTable;
   
+  /**
+   * An integer used to keep track of current line being assembled
+   */
   private int offset;
   
+  /**
+   * The name of the generated file
+   */
   private String filename;
   
+  /**
+   * doGenerate is called when user saves their assembly code and will
+   * save generated binary output to a file. The code is scanned to obtain
+   * label locations, and then compiled line by line.
+   * 
+   * @param resource
+   * @param fsa
+   * @param context
+   */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     StringBuffer _stringBuffer = new StringBuffer();
@@ -76,6 +95,11 @@ public class LC2200Generator extends AbstractGenerator {
     fsa.generateFile(this.filename, _trim);
   }
   
+  /**
+   * Stores labels and their position into a hash map
+   * 
+   * @param root
+   */
   public void populateLabels(final Program root) {
     EList<EObject> lines = root.getLines();
     for (final EObject line : lines) {
