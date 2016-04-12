@@ -3,6 +3,11 @@
  */
 package org.team38.assembly.validation;
 
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.team38.assembly.lC2200.IInstruction;
+import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.WordDirective;
 import org.team38.assembly.validation.AbstractLC2200Validator;
 
 /**
@@ -12,4 +17,59 @@ import org.team38.assembly.validation.AbstractLC2200Validator;
  */
 @SuppressWarnings("all")
 public class LC2200Validator extends AbstractLC2200Validator {
+  @Check
+  public void checkInstructionImmediate(final IInstruction instr) {
+    String imm = instr.getImm();
+    int immInt = 0;
+    try {
+      int _indexOf = imm.indexOf("0x");
+      boolean _notEquals = (_indexOf != (-1));
+      if (_notEquals) {
+        String _substring = imm.substring(2);
+        int _parseInt = Integer.parseInt(_substring, 16);
+        immInt = _parseInt;
+      } else {
+        int _parseInt_1 = Integer.parseInt(imm);
+        immInt = _parseInt_1;
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        this.warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    if (((immInt < (-16)) || (immInt > 15))) {
+      this.warning("signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM);
+    }
+  }
+  
+  @Check
+  public void checkWordImmediate(final WordDirective word) {
+    String imm = word.getImm();
+    int immInt = 0;
+    try {
+      int _indexOf = imm.indexOf("0x");
+      boolean _notEquals = (_indexOf != (-1));
+      if (_notEquals) {
+        String _substring = imm.substring(2);
+        int _parseInt = Integer.parseInt(_substring, 16);
+        immInt = _parseInt;
+      } else {
+        int _parseInt_1 = Integer.parseInt(imm);
+        immInt = _parseInt_1;
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        this.warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    if (((immInt < (-65536)) || (immInt > 65535))) {
+      this.warning("signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM);
+    }
+  }
 }

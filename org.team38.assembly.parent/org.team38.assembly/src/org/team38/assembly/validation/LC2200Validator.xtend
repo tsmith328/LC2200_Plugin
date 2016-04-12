@@ -3,6 +3,10 @@
  */
 package org.team38.assembly.validation
 
+import org.team38.assembly.lC2200.IInstruction
+import org.eclipse.xtext.validation.Check
+import org.team38.assembly.lC2200.LC2200Package
+import org.team38.assembly.lC2200.WordDirective
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +15,40 @@ package org.team38.assembly.validation
  */
 class LC2200Validator extends AbstractLC2200Validator {
 	
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					LC2200Package.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+	def checkInstructionImmediate(IInstruction instr) {
+		var imm = instr.getImm();
+		var immInt = 0;
+		try {
+			if(imm.indexOf("0x") != -1) {
+				immInt = Integer.parseInt(imm.substring(2), 16)
+			} else {
+				immInt = Integer.parseInt(imm)			
+			}
+		} catch(Exception e) {		
+			warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM)	
+		}
+		if(immInt < -16 || immInt > 15) {
+			warning("signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM)	
+		}
+	}
+	
+	@Check
+	def checkWordImmediate(WordDirective word) {
+		var imm = word.getImm();
+		var immInt = 0;
+		try {
+			if(imm.indexOf("0x") != -1) {
+				immInt = Integer.parseInt(imm.substring(2), 16)
+			} else {
+				immInt = Integer.parseInt(imm)			
+			}
+		} catch(Exception e) {		
+			warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
+		}
+		if(immInt < -65536 || immInt > 65535) {
+			warning("signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
+		}
+	}
 	
 }

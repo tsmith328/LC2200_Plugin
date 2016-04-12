@@ -62,18 +62,22 @@ class LC2200Generator extends AbstractGenerator {
 	 * @param context
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		assembledOutput = new StringBuffer()
-		labelTable = new HashMap<String, Integer>()
-		var e_root = resource.getContents().get(0)
+		assembledOutput = new StringBuffer();
+		labelTable = new HashMap<String, Integer>();
+		
+		var e_root = resource.getContents().get(0);
+		
 		if (e_root.eClass().getName().equals("Program")) {
-			offset = 0
-			populateLabels(e_root as Program)
-			offset = 0
-			compileProgram(e_root as Program)
+			offset = 0;
+			populateLabels(e_root as Program);
+			offset = 0;
+			compileProgram(e_root as Program);
 		}
+		
 		filename = resource.toString();
 		filename = filename.substring(0, filename.length() - 2) + "bin";
-		fsa.generateFile(filename, assembledOutput.toString().trim())
+		
+		fsa.generateFile(filename, assembledOutput.toString().trim());
 	}
 	
 	/**
@@ -83,24 +87,25 @@ class LC2200Generator extends AbstractGenerator {
 	 */
 	def populateLabels(Program root) {
 		var EList<EObject> lines = root.getLines();
+		
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {
-				var dir = (line as Directive)
-				var labelBeg = dir.getLabel()
+				var dir = (line as Directive);
+				var labelBeg = dir.getLabel();
 				if(labelBeg != null) {
-					var label = labelBeg.getLabel()
+					var label = labelBeg.getLabel();
 					if (label != null) {
-						labelTable.put(label.replace(":",""), offset)
+						labelTable.put(label.replace(":",""), offset);
 					}
 				}
 			}
 			else if (line.eClass().getName().equals("Instruction")) {
-				var instr = (line as Instruction)
-				var labelBeg = instr.getLabel()
+				var instr = (line as Instruction);
+				var labelBeg = instr.getLabel();
 				if(labelBeg != null) {
-					var label = labelBeg.getLabel()
+					var label = labelBeg.getLabel();
 					if (label !=null) {
-						labelTable.put(label.replace(":",""), offset)
+						labelTable.put(label.replace(":",""), offset);
 					}
 				}
 			}
@@ -110,169 +115,170 @@ class LC2200Generator extends AbstractGenerator {
 	
 	def compileProgram(Program root) {
 		var EList<EObject> lines = root.getLines();
+		
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {
-				compileDirective(line as Directive)
+				compileDirective(line as Directive);
 			}
 			else if (line.eClass().getName().equals("Instruction")) {
-				compileInstruction(line as Instruction)
+				compileInstruction(line as Instruction);
 			}
-			offset++
+			offset++;
 		}	
 	}
 	
 	def compileDirective(Directive dir) {
 		var dirType = dir.getDirective()
-			if (dirType.eClass().getName().equals("NOOPDirective")) {
-				compileNOOP(dirType as NOOPDirective)
-			}
-			else if (dirType.eClass().getName().equals("WordDirective")) {
-				compileWord(dirType as WordDirective)
-			}
-			else if (dirType.eClass().getName().equals("LADirective")) {
-				compileLA(dirType as LADirective)
-			}
+		if (dirType.eClass().getName().equals("NOOPDirective")) {
+			compileNOOP(dirType as NOOPDirective);
+		}
+		else if (dirType.eClass().getName().equals("WordDirective")) {
+			compileWord(dirType as WordDirective);
+		}
+		else if (dirType.eClass().getName().equals("LADirective")) {
+			compileLA(dirType as LADirective);
+		}
 	}
 	
 	def compileInstruction(Instruction instr) {
 		var instrType = instr.getInstruction()
-			if(instrType.eClass().getName().equals("IInstruction")) {
-				compileIInstruction(instrType as IInstruction)
-			}
-			else if(instrType.eClass().getName().equals("RInstruction")) {
-				compileRInstruction(instrType as RInstruction)
-			}	
-			else if(instrType.eClass().getName().equals("JInstruction")) {
-				compileJInstruction(instrType as JInstruction)
-			}	
-			else if(instrType.eClass().getName().equals("OInstruction")) {
-				compileOInstruction(instrType as OInstruction)
-			}			
+		if(instrType.eClass().getName().equals("IInstruction")) {
+			compileIInstruction(instrType as IInstruction);
+		}
+		else if(instrType.eClass().getName().equals("RInstruction")) {
+			compileRInstruction(instrType as RInstruction);
+		}	
+		else if(instrType.eClass().getName().equals("JInstruction")) {
+			compileJInstruction(instrType as JInstruction);
+		}	
+		else if(instrType.eClass().getName().equals("OInstruction")) {
+			compileOInstruction(instrType as OInstruction);
+		}			
 	}
 	
 	def compileLA(LADirective la) {
-		var labelTrans = la.getLabel()
-		var regTrans = la.getReg()
-		var reg = regTrans.getReg()
-		var immBin = ""
+		var labelTrans = la.getLabel();
+		var regTrans = la.getReg();
+		var reg = regTrans.getReg();
+		var immBin = "";
 		if (labelTrans != null) {
-			var label = labelTrans.getLabel()
+			var label = labelTrans.getLabel();
 			if (label != null) {
-				var labelLine = labelTable.get(label)
+				var labelLine = labelTable.get(label);
 				if(labelLine != null) {
-					immBin = immToBinary(Integer.toString(labelLine), 5)
+					immBin = immToBinary(Integer.toString(labelLine), 5);
 				} else {
-					immBin = "00000"
+					immBin = "00000";
 				}
 			}
 		}
-		var reg1Bin = regToBinary(reg)
-		var reg2Bin = regToBinary("$zero")
-		var opBin = opToBinary("addi")
+		var reg1Bin = regToBinary(reg);
+		var reg2Bin = regToBinary("$zero");
+		var opBin = opToBinary("addi");
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
-		''')
+		''');
 		
 	}
 	
 	def compileNOOP(NOOPDirective noop) {
 		assembledOutput.append('''0000000000000000
-		''')
+		''');
 	}
 	
 	def compileWord(WordDirective word) {		
-		var wordImm = word.getImm()
+		var wordImm = word.getImm();
 		
 		var wordImmBin = immToBinary(wordImm, 16)
 		assembledOutput.append('''«wordImmBin»
-		''')
+		''');
 	}
 	
 	def compileIInstruction(IInstruction iInstr) {
-		var opTrans = iInstr.getI_opcode()
-		var op = ""
+		var opTrans = iInstr.getI_opcode();
+		var op = "";
 		if(opTrans instanceof IInstructionImmTrans) {
-			op = (opTrans as IInstructionImmTrans).getI_opcode()	
+			op = (opTrans as IInstructionImmTrans).getI_opcode();
 		} else if(opTrans instanceof IInstructionOffsetTrans) {
-			op = (opTrans as IInstructionOffsetTrans).getI_opcode()
+			op = (opTrans as IInstructionOffsetTrans).getI_opcode();
 		}		
 		else if (opTrans instanceof IInstructionLabelTrans){
-			op = (opTrans as IInstructionLabelTrans).getI_opcode()
+			op = (opTrans as IInstructionLabelTrans).getI_opcode();
 		}
-		var reg1Trans = iInstr.getReg1()
-		var reg1 = (reg1Trans as RegTrans).getReg()
-		var reg2Trans = iInstr.getReg2()
-		var reg2 = (reg2Trans as RegTrans).getReg()
-		var imm = iInstr.getImm()
-		var labelTrans = iInstr.getLabel()
+		var reg1Trans = iInstr.getReg1();
+		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg2Trans = iInstr.getReg2();
+		var reg2 = (reg2Trans as RegTrans).getReg();
+		var imm = iInstr.getImm();
+		var labelTrans = iInstr.getLabel();
 		
-		var opBin = opToBinary(op.toString())
-		var reg1Bin = regToBinary(reg1.toString())
-		var reg2Bin = regToBinary(reg2.toString())
-		var immBin = ""
+		var opBin = opToBinary(op.toString());
+		var reg1Bin = regToBinary(reg1.toString());
+		var reg2Bin = regToBinary(reg2.toString());
+		var immBin = "";
 		
 		if(op.equals("beq")) {
 			if (labelTrans != null) {
-				var label = labelTrans.getLabel()
+				var label = labelTrans.getLabel();
 				if (label != null) {
-					var labelLine = labelTable.get(label)
+					var labelLine = labelTable.get(label);
 					if(labelLine != null) {
-						immBin = immToBinary(Integer.toString(labelLine - offset), 5)
+						immBin = immToBinary(Integer.toString(labelLine - offset), 5);
 					} else {
-						immBin = "00000"
+						immBin = "00000";
 					}
 				}
 			}
 			
 		} else {
-			immBin = immToBinary(imm, 5)
+			immBin = immToBinary(imm, 5);
 		}		
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
-		''')
+		''');
 	}
 	
 	def compileRInstruction(RInstruction rInstr) {
-		var opTrans = rInstr.getR_opcode()
-		var op = (opTrans as RInstructionTrans).getR_opcode()
-		var reg1Trans = rInstr.getReg1()
-		var reg1 = (reg1Trans as RegTrans).getReg()
-		var reg2Trans = rInstr.getReg2()
-		var reg2 = (reg2Trans as RegTrans).getReg()
-		var reg3Trans = rInstr.getReg3()
-		var reg3 = (reg3Trans as RegTrans).getReg()
+		var opTrans = rInstr.getR_opcode();
+		var op = (opTrans as RInstructionTrans).getR_opcode();
+		var reg1Trans = rInstr.getReg1();
+		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg2Trans = rInstr.getReg2();
+		var reg2 = (reg2Trans as RegTrans).getReg();
+		var reg3Trans = rInstr.getReg3();
+		var reg3 = (reg3Trans as RegTrans).getReg();
 		
-		var opBin = opToBinary(op.toString())
-		var reg1Bin = regToBinary(reg1.toString())
-		var reg2Bin = regToBinary(reg2.toString())
-		var reg3Bin = regToBinary(reg3.toString())
+		var opBin = opToBinary(op.toString());
+		var reg1Bin = regToBinary(reg1.toString());
+		var reg2Bin = regToBinary(reg2.toString());
+		var reg3Bin = regToBinary(reg3.toString());
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «reg3Bin» 0
-		''')
+		''');
 	}
 	
 	def compileJInstruction(JInstruction jInstr) {
-		var opTrans = jInstr.getJ_opcode()
-		var op = (opTrans as JInstructionTrans).getJ_opcode()
-		var reg1Trans = jInstr.getReg1()
-		var reg1 = (reg1Trans as RegTrans).getReg()
-		var reg2Trans = jInstr.getReg2()
-		var reg2 = (reg2Trans as RegTrans).getReg()
+		var opTrans = jInstr.getJ_opcode();
+		var op = (opTrans as JInstructionTrans).getJ_opcode();
+		var reg1Trans = jInstr.getReg1();
+		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg2Trans = jInstr.getReg2();
+		var reg2 = (reg2Trans as RegTrans).getReg();
 		
-		var opBin = opToBinary(op.toString())
-		var reg1Bin = regToBinary(reg1.toString())
-		var reg2Bin = regToBinary(reg2.toString())
+		var opBin = opToBinary(op.toString());
+		var reg1Bin = regToBinary(reg1.toString());
+		var reg2Bin = regToBinary(reg2.toString());
 		
 		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» 00000
-		''')
+		''');
 	}
 	
 	def compileOInstruction(OInstruction oInstr) {
-		var op = oInstr.getO_opcode()
+		var op = oInstr.getO_opcode();
 		
-		var opBin = opToBinary(op)
+		var opBin = opToBinary(op);
 		assembledOutput.append('''«opBin» 00000000000 0
-		''')
+		''');
 	}
 	
 	def opToBinary(String op) {
@@ -337,10 +343,20 @@ class LC2200Generator extends AbstractGenerator {
 		}
 	}
 	
-	//TODO bounds checking to make sure within 5 bits
 	def immToBinary(String imm, int bitLength) {
-		var immBin = Integer.toBinaryString(Integer.parseInt(imm))
-
+		var immBin = ""		
+		//Handle Hex or Decimal separately
+		try {
+			if(imm.indexOf("0x") != -1) {
+				immBin = Integer.toBinaryString(Integer.parseInt(imm.substring(2), 16));
+			} else {
+				immBin = Integer.toBinaryString(Integer.parseInt(imm));
+			}
+		} catch(NumberFormatException e) {			
+			immBin = "xxxxx";
+		}		
+		
+		//Get string 5 bits long
 		if(immBin.length() > bitLength) {
 			immBin = immBin.substring(immBin.length() - bitLength, immBin.length())
 		}
@@ -349,6 +365,7 @@ class LC2200Generator extends AbstractGenerator {
 				immBin = "0" + immBin
 			}
 		}
+		
 		return immBin
 		
 	}

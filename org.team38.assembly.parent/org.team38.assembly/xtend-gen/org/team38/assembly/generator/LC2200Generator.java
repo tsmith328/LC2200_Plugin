@@ -13,6 +13,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.IInstructionImmTrans;
@@ -508,16 +509,36 @@ public class LC2200Generator extends AbstractGenerator {
   }
   
   public String immToBinary(final String imm, final int bitLength) {
-    int _parseInt = Integer.parseInt(imm);
-    String immBin = Integer.toBinaryString(_parseInt);
+    String immBin = "";
+    try {
+      int _indexOf = imm.indexOf("0x");
+      boolean _notEquals = (_indexOf != (-1));
+      if (_notEquals) {
+        String _substring = imm.substring(2);
+        int _parseInt = Integer.parseInt(_substring, 16);
+        String _binaryString = Integer.toBinaryString(_parseInt);
+        immBin = _binaryString;
+      } else {
+        int _parseInt_1 = Integer.parseInt(imm);
+        String _binaryString_1 = Integer.toBinaryString(_parseInt_1);
+        immBin = _binaryString_1;
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof NumberFormatException) {
+        final NumberFormatException e = (NumberFormatException)_t;
+        immBin = "xxxxx";
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
     int _length = immBin.length();
     boolean _greaterThan = (_length > bitLength);
     if (_greaterThan) {
       int _length_1 = immBin.length();
       int _minus = (_length_1 - bitLength);
       int _length_2 = immBin.length();
-      String _substring = immBin.substring(_minus, _length_2);
-      immBin = _substring;
+      String _substring_1 = immBin.substring(_minus, _length_2);
+      immBin = _substring_1;
     } else {
       while (((immBin.length() - bitLength) < 0)) {
         immBin = ("0" + immBin);

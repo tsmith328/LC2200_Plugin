@@ -178,7 +178,7 @@ terminal REG:
 ;
 
 terminal IMMEDIATE:
-	('0x' | '-')?(INT)
+	'0x'(('0'..'9')|('a'|'b'|'c'|'d'|'e'|'f'))+ | '-'?(INT)
 ;
 
 terminal LABEL_IMM:

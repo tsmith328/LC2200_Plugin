@@ -1138,7 +1138,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal IMMEDIATE:
-	//	('0x' | '-')? INT;
+	//	'0x' ('0'..'9' | ('a' | 'b' | 'c' | 'd' | 'e' | 'f'))+ | '-'? INT;
 	public TerminalRule getIMMEDIATERule() {
 		return tIMMEDIATE;
 	}

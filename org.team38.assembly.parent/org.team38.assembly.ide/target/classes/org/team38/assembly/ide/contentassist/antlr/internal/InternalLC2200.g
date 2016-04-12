@@ -2631,7 +2631,7 @@ RULE_NEWLINE : '\n';
 
 RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 
-RULE_IMMEDIATE : ('0x'|'-')? RULE_INT;
+RULE_IMMEDIATE : ('0x' ('0'..'9'|('a'|'b'|'c'|'d'|'e'|'f'))+|'-'? RULE_INT);
 
 RULE_LABEL_IMM : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
