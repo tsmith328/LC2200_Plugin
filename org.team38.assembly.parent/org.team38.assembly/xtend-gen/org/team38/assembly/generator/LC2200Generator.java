@@ -348,7 +348,7 @@ public class LC2200Generator extends AbstractGenerator {
               String _immToBinary = this.immToBinary(_string_3, 5);
               immBin = _immToBinary;
             } else {
-              immBin = "00000";
+              immBin = "xxxxx";
             }
           }
         }

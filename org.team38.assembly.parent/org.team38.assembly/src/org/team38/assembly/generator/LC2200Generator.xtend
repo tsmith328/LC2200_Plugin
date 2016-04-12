@@ -104,7 +104,7 @@ class LC2200Generator extends AbstractGenerator {
 				var labelBeg = instr.getLabel();
 				if(labelBeg != null) {
 					var label = labelBeg.getLabel();
-					if (label !=null) {
+					if (label != null) {
 						labelTable.put(label.replace(":",""), offset);
 					}
 				}
@@ -225,7 +225,7 @@ class LC2200Generator extends AbstractGenerator {
 					if(labelLine != null) {
 						immBin = immToBinary(Integer.toString(labelLine - offset), 5);
 					} else {
-						immBin = "00000";
+						immBin = "xxxxx";
 					}
 				}
 			}

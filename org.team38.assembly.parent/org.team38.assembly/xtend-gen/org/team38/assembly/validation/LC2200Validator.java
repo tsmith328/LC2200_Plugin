@@ -3,6 +3,9 @@
  */
 package org.team38.assembly.validation;
 
+import com.google.common.base.Objects;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.team38.assembly.lC2200.IInstruction;
@@ -19,6 +22,13 @@ import org.team38.assembly.validation.AbstractLC2200Validator;
 public class LC2200Validator extends AbstractLC2200Validator {
   @Check
   public void checkInstructionImmediate(final IInstruction instr) {
+    EObject _i_opcode = instr.getI_opcode();
+    EClass _eClass = _i_opcode.eClass();
+    String _name = _eClass.getName();
+    boolean _equals = _name.equals("IInstructionLabelTrans");
+    if (_equals) {
+      return;
+    }
     String imm = instr.getImm();
     int immInt = 0;
     try {
@@ -70,6 +80,15 @@ public class LC2200Validator extends AbstractLC2200Validator {
     }
     if (((immInt < (-65536)) || (immInt > 65535))) {
       this.warning("signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM);
+    }
+  }
+  
+  @Check
+  public void checkLabelExists(final IInstruction instr) {
+    EObject root = ((EObject) instr);
+    while ((!Objects.equal(root.eContainer(), null))) {
+      EObject _eContainer = root.eContainer();
+      root = _eContainer;
     }
   }
 }

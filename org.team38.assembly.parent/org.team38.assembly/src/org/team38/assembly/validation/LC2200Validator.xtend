@@ -7,6 +7,7 @@ import org.team38.assembly.lC2200.IInstruction
 import org.eclipse.xtext.validation.Check
 import org.team38.assembly.lC2200.LC2200Package
 import org.team38.assembly.lC2200.WordDirective
+import org.eclipse.emf.ecore.EObject
 
 /**
  * This class contains custom validation rules. 
@@ -17,8 +18,14 @@ class LC2200Validator extends AbstractLC2200Validator {
 	
 	@Check
 	def checkInstructionImmediate(IInstruction instr) {
+		//Ignore label I-Instructions
+		if(instr.getI_opcode().eClass().getName().equals("IInstructionLabelTrans")) {
+			return
+		}
+		
 		var imm = instr.getImm();
 		var immInt = 0;
+		
 		try {
 			if(imm.indexOf("0x") != -1) {
 				immInt = Integer.parseInt(imm.substring(2), 16)
@@ -28,6 +35,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 		} catch(Exception e) {		
 			warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM)	
 		}
+		
 		if(immInt < -16 || immInt > 15) {
 			warning("signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM)	
 		}
@@ -37,6 +45,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 	def checkWordImmediate(WordDirective word) {
 		var imm = word.getImm();
 		var immInt = 0;
+		
 		try {
 			if(imm.indexOf("0x") != -1) {
 				immInt = Integer.parseInt(imm.substring(2), 16)
@@ -46,9 +55,21 @@ class LC2200Validator extends AbstractLC2200Validator {
 		} catch(Exception e) {		
 			warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
 		}
+		
 		if(immInt < -65536 || immInt > 65535) {
 			warning("signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
 		}
+	}
+	
+	@Check
+	def checkLabelExists(IInstruction instr) {
+		var root = (instr as EObject);
+		while(root.eContainer() != null) {
+			root = root.eContainer();
+		}
+		
+		//populate hash map
+		//check
 	}
 	
 }
