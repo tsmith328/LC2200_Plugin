@@ -15,6 +15,7 @@ import org.team38.assembly.LabelHandler;
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.Program;
@@ -117,25 +118,53 @@ public class LC2200Validator extends AbstractLC2200Validator {
         if (_equals_2) {
           this.warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
         } else {
-          EList<Line> lines = ((Program) root).getLines();
-          int offset = 0;
-          boolean found = false;
-          for (int i = 0; ((i < ((Object[])Conversions.unwrapArray(lines, Object.class)).length) && (!found)); i++) {
-            {
-              Line _get_1 = lines.get(i);
-              boolean _equals_3 = parent.equals(_get_1);
-              if (_equals_3) {
-                found = true;
-                Integer _get_2 = labelTable.get(label);
-                int dif = ((_get_2).intValue() - offset);
-                if (((dif > 15) || (dif < (-16)))) {
-                  this.warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL);
+          Integer _get_1 = labelTable.get(label);
+          boolean _notEquals = ((_get_1).intValue() != (-1));
+          if (_notEquals) {
+            EList<Line> lines = ((Program) root).getLines();
+            int offset = 0;
+            boolean found = false;
+            for (int i = 0; ((i < ((Object[])Conversions.unwrapArray(lines, Object.class)).length) && (!found)); i++) {
+              {
+                Line _get_2 = lines.get(i);
+                boolean _equals_3 = parent.equals(_get_2);
+                if (_equals_3) {
+                  found = true;
+                  Integer _get_3 = labelTable.get(label);
+                  int dif = ((_get_3).intValue() - offset);
+                  if (((dif > 15) || (dif < (-16)))) {
+                    this.warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL);
+                  }
                 }
+                offset++;
               }
-              offset++;
             }
           }
         }
+      }
+    }
+  }
+  
+  @Check
+  public void checkDuplicateLabel(final Line line) {
+    LabelBeg labelBeg = line.getLabel();
+    String label = labelBeg.getLabel();
+    String _replaceAll = label.replaceAll(":", "");
+    label = _replaceAll;
+    EObject root = ((EObject) line);
+    while ((!Objects.equal(root.eContainer(), null))) {
+      EObject _eContainer = root.eContainer();
+      root = _eContainer;
+    }
+    EClass _eClass = root.eClass();
+    String _name = _eClass.getName();
+    boolean _equals = _name.equals("Program");
+    if (_equals) {
+      HashMap<String, Integer> labelTable = LabelHandler.populateLabels(((Program) root));
+      Integer _get = labelTable.get(label);
+      boolean _equals_1 = ((_get).intValue() == (-1));
+      if (_equals_1) {
+        this.warning("Duplicate label", LC2200Package.Literals.LINE__LABEL);
       }
     }
   }

@@ -83,7 +83,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 				var labelTable = LabelHandler.populateLabels(root as Program);
 				if(labelTable.get(label) == null) {
 					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
-				} else {
+				} else if(labelTable.get(label) != -1) {					
 					var EList<Line> lines = (root as Program).getLines();
 					var offset = 0;
 					var found = false
@@ -96,10 +96,30 @@ class LC2200Validator extends AbstractLC2200Validator {
 							}
 						}
 						offset++;
-					}	
+					}		
 				}
 			}
 		}			
+	}
+	
+	@Check
+	def checkDuplicateLabel(Line line) {
+		var labelBeg = line.getLabel()
+		var label = labelBeg.getLabel()
+		label = label.replaceAll(":", "")
+		
+		var root = (line as EObject);		
+				
+		while(root.eContainer() != null) {
+			root = root.eContainer();
+		}
+		
+		if (root.eClass().getName().equals("Program")) {
+			var labelTable = LabelHandler.populateLabels(root as Program);
+			if(labelTable.get(label) == -1) {
+				warning("Duplicate label", LC2200Package.Literals.LINE__LABEL)
+			}
+		}
 	}
 	
 }

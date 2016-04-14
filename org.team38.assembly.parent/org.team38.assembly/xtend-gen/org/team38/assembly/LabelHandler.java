@@ -29,15 +29,7 @@ public class LabelHandler {
         if (_equals) {
           Directive dir = ((Directive) line);
           LabelBeg labelBeg = dir.getLabel();
-          boolean _notEquals = (!Objects.equal(labelBeg, null));
-          if (_notEquals) {
-            String label = labelBeg.getLabel();
-            boolean _notEquals_1 = (!Objects.equal(label, null));
-            if (_notEquals_1) {
-              String _replace = label.replace(":", "");
-              labelTable.put(_replace, Integer.valueOf(offset));
-            }
-          }
+          LabelHandler.addLabel(labelBeg, labelTable, offset);
         } else {
           EClass _eClass_1 = line.eClass();
           String _name_1 = _eClass_1.getName();
@@ -45,20 +37,45 @@ public class LabelHandler {
           if (_equals_1) {
             Instruction instr = ((Instruction) line);
             LabelBeg labelBeg_1 = instr.getLabel();
-            boolean _notEquals_2 = (!Objects.equal(labelBeg_1, null));
-            if (_notEquals_2) {
-              String label_1 = labelBeg_1.getLabel();
-              boolean _notEquals_3 = (!Objects.equal(label_1, null));
-              if (_notEquals_3) {
-                String _replace_1 = label_1.replace(":", "");
-                labelTable.put(_replace_1, Integer.valueOf(offset));
-              }
-            }
+            LabelHandler.addLabel(labelBeg_1, labelTable, offset);
           }
         }
         offset++;
       }
     }
     return labelTable;
+  }
+  
+  public static Integer addLabel(final LabelBeg labelBeg, final HashMap<String, Integer> labelTable, final int offset) {
+    Integer _xifexpression = null;
+    boolean _notEquals = (!Objects.equal(labelBeg, null));
+    if (_notEquals) {
+      Integer _xblockexpression = null;
+      {
+        String label = labelBeg.getLabel();
+        Integer _xifexpression_1 = null;
+        boolean _notEquals_1 = (!Objects.equal(label, null));
+        if (_notEquals_1) {
+          Integer _xblockexpression_1 = null;
+          {
+            String _replace = label.replace(":", "");
+            label = _replace;
+            Integer _xifexpression_2 = null;
+            Integer _get = labelTable.get(label);
+            boolean _equals = Objects.equal(_get, null);
+            if (_equals) {
+              _xifexpression_2 = labelTable.put(label, Integer.valueOf(offset));
+            } else {
+              _xifexpression_2 = labelTable.put(label, Integer.valueOf((-1)));
+            }
+            _xblockexpression_1 = _xifexpression_2;
+          }
+          _xifexpression_1 = _xblockexpression_1;
+        }
+        _xblockexpression = _xifexpression_1;
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
 }

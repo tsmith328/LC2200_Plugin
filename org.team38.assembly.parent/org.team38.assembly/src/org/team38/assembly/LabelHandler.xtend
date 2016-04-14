@@ -6,6 +6,7 @@ import org.team38.assembly.lC2200.Directive
 import org.team38.assembly.lC2200.Instruction
 import java.util.HashMap
 import org.team38.assembly.lC2200.Line
+import org.team38.assembly.lC2200.LabelBeg
 
 class LabelHandler {
 	
@@ -24,26 +25,28 @@ class LabelHandler {
 			if (line.eClass().getName().equals("Directive")) {
 				var dir = (line as Directive);
 				var labelBeg = dir.getLabel();
-				if(labelBeg != null) {
-					var label = labelBeg.getLabel();
-					if (label != null) {
-						labelTable.put(label.replace(":",""), offset);
-					}
-				}
+				addLabel(labelBeg, labelTable, offset);
 			}
 			else if (line.eClass().getName().equals("Instruction")) {
 				var instr = (line as Instruction);
 				var labelBeg = instr.getLabel();
-				if(labelBeg != null) {
-					var label = labelBeg.getLabel();
-					if (label != null) {
-						labelTable.put(label.replace(":",""), offset);
-					}
-				}
+				addLabel(labelBeg, labelTable, offset);
 			}
 			offset++
 		}	
-		
 		return labelTable
+	}
+	def static addLabel(LabelBeg labelBeg, HashMap<String, Integer> labelTable, int offset) {
+		if(labelBeg != null) {
+			var label = labelBeg.getLabel();
+			if (label != null) {
+				label = label.replace(":","")
+				if(labelTable.get(label) == null) {
+					labelTable.put(label, offset);
+				} else {
+					labelTable.put(label, -1);
+				}
+			}
+		}
 	}
 }
