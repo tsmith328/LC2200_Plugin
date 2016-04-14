@@ -45,23 +45,13 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
               if (_contains_4) {
                 return new SyntaxErrorMessage("Expecting label or instruction.", CustomMessageProvider.INSTR_START);
               } else {
-                boolean _contains_5 = msgDefault.contains("EOF");
+                boolean _contains_5 = msgDefault.contains("LABEL");
                 if (_contains_5) {
-                  return new SyntaxErrorMessage("Expecting end of instruction.", CustomMessageProvider.INSTR_END);
+                  return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
                 } else {
-                  boolean _contains_6 = msgDefault.contains("LABEL");
+                  boolean _contains_6 = msgDefault.contains("PAREN");
                   if (_contains_6) {
-                    return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
-                  } else {
-                    boolean _contains_7 = msgDefault.contains("PAREN");
-                    if (_contains_7) {
-                      return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
-                    } else {
-                      boolean _contains_8 = msgDefault.contains("viable");
-                      if (_contains_8) {
-                        return new SyntaxErrorMessage("Expecting instruction afterwards", CustomMessageProvider.LABEL);
-                      }
-                    }
+                    return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
                   }
                 }
               }

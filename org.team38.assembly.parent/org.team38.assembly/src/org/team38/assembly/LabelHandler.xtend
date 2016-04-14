@@ -1,11 +1,11 @@
 package org.team38.assembly
 
 import org.team38.assembly.lC2200.Program
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.common.util.EList
 import org.team38.assembly.lC2200.Directive
 import org.team38.assembly.lC2200.Instruction
 import java.util.HashMap
+import org.team38.assembly.lC2200.Line
 
 class LabelHandler {
 	
@@ -18,8 +18,8 @@ class LabelHandler {
 		var offset = 0;
 		var HashMap<String, Integer> labelTable = new HashMap<String, Integer>();
 		
-		var EList<EObject> lines = root.getLines();
-		
+		var EList<Line> lines = root.getLines();
+
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {
 				var dir = (line as Directive);

@@ -80,10 +80,18 @@ public class LC2200Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LC2200Package.LINE:
+      {
+        Line line = (Line)theEObject;
+        T result = caseLine(line);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LC2200Package.INSTRUCTION:
       {
         Instruction instruction = (Instruction)theEObject;
         T result = caseInstruction(instruction);
+        if (result == null) result = caseLine(instruction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,6 +99,7 @@ public class LC2200Switch<T> extends Switch<T>
       {
         Directive directive = (Directive)theEObject;
         T result = caseDirective(directive);
+        if (result == null) result = caseLine(directive);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,6 +208,13 @@ public class LC2200Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LC2200Package.LINE_END:
+      {
+        LineEnd lineEnd = (LineEnd)theEObject;
+        T result = caseLineEnd(lineEnd);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LC2200Package.REG_TRANS:
       {
         RegTrans regTrans = (RegTrans)theEObject;
@@ -236,6 +252,22 @@ public class LC2200Switch<T> extends Switch<T>
    * @generated
    */
   public T caseProgram(Program object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Line</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Line</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLine(Line object)
   {
     return null;
   }
@@ -508,6 +540,22 @@ public class LC2200Switch<T> extends Switch<T>
    * @generated
    */
   public T caseCommentTrans(CommentTrans object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Line End</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Line End</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLineEnd(LineEnd object)
   {
     return null;
   }

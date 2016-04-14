@@ -81,6 +81,11 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
         return createProgramAdapter();
       }
       @Override
+      public Adapter caseLine(Line object)
+      {
+        return createLineAdapter();
+      }
+      @Override
       public Adapter caseInstruction(Instruction object)
       {
         return createInstructionAdapter();
@@ -166,6 +171,11 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
         return createCommentTransAdapter();
       }
       @Override
+      public Adapter caseLineEnd(LineEnd object)
+      {
+        return createLineEndAdapter();
+      }
+      @Override
       public Adapter caseRegTrans(RegTrans object)
       {
         return createRegTransAdapter();
@@ -213,6 +223,21 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProgramAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.Line <em>Line</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.Line
+   * @generated
+   */
+  public Adapter createLineAdapter()
   {
     return null;
   }
@@ -468,6 +493,21 @@ public class LC2200AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommentTransAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.team38.assembly.lC2200.LineEnd <em>Line End</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.team38.assembly.lC2200.LineEnd
+   * @generated
+   */
+  public Adapter createLineEndAdapter()
   {
     return null;
   }

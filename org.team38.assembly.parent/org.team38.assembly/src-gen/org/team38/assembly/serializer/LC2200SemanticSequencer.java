@@ -28,6 +28,7 @@ import org.team38.assembly.lC2200.LATrans;
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
+import org.team38.assembly.lC2200.LineEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
@@ -91,6 +92,9 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case LC2200Package.LABEL_END:
 				sequence_LabelEnd(context, (LabelEnd) semanticObject); 
 				return; 
+			case LC2200Package.LINE_END:
+				sequence_LineEnd(context, (LineEnd) semanticObject); 
+				return; 
 			case LC2200Package.NOOP_DIRECTIVE:
 				sequence_NOOPDirective(context, (NOOPDirective) semanticObject); 
 				return; 
@@ -125,25 +129,20 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     CommentTrans returns CommentTrans
 	 *
 	 * Constraint:
-	 *     comment=COMMENT
+	 *     {CommentTrans}
 	 */
 	protected void sequence_CommentTrans(ISerializationContext context, CommentTrans semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LC2200Package.Literals.COMMENT_TRANS__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LC2200Package.Literals.COMMENT_TRANS__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0(), semanticObject.getComment());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Line returns Directive
 	 *     Directive returns Directive
 	 *
 	 * Constraint:
-	 *     (label=LabelBeg? (directive=NOOPDirective | directive=WordDirective | directive=LADirective) comment=CommentTrans?)
+	 *     (label=LabelBeg? (directive=NOOPDirective | directive=WordDirective | directive=LADirective))
 	 */
 	protected void sequence_Directive(ISerializationContext context, Directive semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -222,14 +221,11 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     Line returns Instruction
 	 *     Instruction returns Instruction
 	 *
 	 * Constraint:
-	 *     (
-	 *         label=LabelBeg? 
-	 *         (instruction=RInstruction | instruction=IInstruction | instruction=JInstruction | instruction=OInstruction) 
-	 *         comment=CommentTrans?
-	 *     )
+	 *     (label=LabelBeg? (instruction=RInstruction | instruction=IInstruction | instruction=JInstruction | instruction=OInstruction))
 	 */
 	protected void sequence_Instruction(ISerializationContext context, Instruction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -358,6 +354,18 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     LineEnd returns LineEnd
+	 *
+	 * Constraint:
+	 *     comment=CommentTrans?
+	 */
+	protected void sequence_LineEnd(ISerializationContext context, LineEnd semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     NOOPDirective returns NOOPDirective
 	 *
 	 * Constraint:
@@ -397,7 +405,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (lines+=Instruction | lines+=Directive)*
+	 *     (lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* lines+=Line?)
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

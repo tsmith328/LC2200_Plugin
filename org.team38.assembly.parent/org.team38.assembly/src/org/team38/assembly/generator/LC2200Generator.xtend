@@ -24,9 +24,9 @@ import org.team38.assembly.lC2200.IInstructionLabelTrans
 import org.team38.assembly.lC2200.JInstructionTrans
 import org.team38.assembly.lC2200.RegTrans
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import java.util.HashMap;
 import org.team38.assembly.LabelHandler
+import org.team38.assembly.lC2200.Line
 
 /**
  * Generates binary output from the assembled instructions
@@ -84,7 +84,7 @@ class LC2200Generator extends AbstractGenerator {
 	
 	
 	def compileProgram(Program root) {
-		var EList<EObject> lines = root.getLines();
+		var EList<Line> lines = root.getLines();
 		
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {

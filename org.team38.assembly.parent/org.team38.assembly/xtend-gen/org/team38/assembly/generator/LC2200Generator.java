@@ -25,6 +25,7 @@ import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.LADirective;
 import org.team38.assembly.lC2200.LabelEnd;
+import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
@@ -98,8 +99,8 @@ public class LC2200Generator extends AbstractGenerator {
   }
   
   public void compileProgram(final Program root) {
-    EList<EObject> lines = root.getLines();
-    for (final EObject line : lines) {
+    EList<Line> lines = root.getLines();
+    for (final Line line : lines) {
       {
         EClass _eClass = line.eClass();
         String _name = _eClass.getName();

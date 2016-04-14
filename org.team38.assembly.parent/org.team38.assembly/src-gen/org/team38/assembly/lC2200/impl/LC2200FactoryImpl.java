@@ -66,6 +66,7 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
     switch (eClass.getClassifierID())
     {
       case LC2200Package.PROGRAM: return createProgram();
+      case LC2200Package.LINE: return createLine();
       case LC2200Package.INSTRUCTION: return createInstruction();
       case LC2200Package.DIRECTIVE: return createDirective();
       case LC2200Package.RINSTRUCTION: return createRInstruction();
@@ -83,6 +84,7 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
       case LC2200Package.WORD_TRANS: return createWordTrans();
       case LC2200Package.LA_TRANS: return createLATrans();
       case LC2200Package.COMMENT_TRANS: return createCommentTrans();
+      case LC2200Package.LINE_END: return createLineEnd();
       case LC2200Package.REG_TRANS: return createRegTrans();
       case LC2200Package.LABEL_BEG: return createLabelBeg();
       case LC2200Package.LABEL_END: return createLabelEnd();
@@ -100,6 +102,17 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
   {
     ProgramImpl program = new ProgramImpl();
     return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Line createLine()
+  {
+    LineImpl line = new LineImpl();
+    return line;
   }
 
   /**
@@ -287,6 +300,17 @@ public class LC2200FactoryImpl extends EFactoryImpl implements LC2200Factory
   {
     CommentTransImpl commentTrans = new CommentTransImpl();
     return commentTrans;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LineEnd createLineEnd()
+  {
+    LineEndImpl lineEnd = new LineEndImpl();
+    return lineEnd;
   }
 
   /**

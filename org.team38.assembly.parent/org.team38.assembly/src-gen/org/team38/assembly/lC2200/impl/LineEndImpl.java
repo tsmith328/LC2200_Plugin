@@ -7,45 +7,46 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.team38.assembly.lC2200.Directive;
+import org.team38.assembly.lC2200.CommentTrans;
 import org.team38.assembly.lC2200.LC2200Package;
+import org.team38.assembly.lC2200.LineEnd;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Directive</b></em>'.
+ * An implementation of the model object '<em><b>Line End</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.team38.assembly.lC2200.impl.DirectiveImpl#getDirective <em>Directive</em>}</li>
+ *   <li>{@link org.team38.assembly.lC2200.impl.LineEndImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DirectiveImpl extends LineImpl implements Directive
+public class LineEndImpl extends MinimalEObjectImpl.Container implements LineEnd
 {
   /**
-   * The cached value of the '{@link #getDirective() <em>Directive</em>}' containment reference.
+   * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDirective()
+   * @see #getComment()
    * @generated
    * @ordered
    */
-  protected EObject directive;
+  protected CommentTrans comment;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DirectiveImpl()
+  protected LineEndImpl()
   {
     super();
   }
@@ -58,7 +59,7 @@ public class DirectiveImpl extends LineImpl implements Directive
   @Override
   protected EClass eStaticClass()
   {
-    return LC2200Package.Literals.DIRECTIVE;
+    return LC2200Package.Literals.LINE_END;
   }
 
   /**
@@ -66,9 +67,9 @@ public class DirectiveImpl extends LineImpl implements Directive
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getDirective()
+  public CommentTrans getComment()
   {
-    return directive;
+    return comment;
   }
 
   /**
@@ -76,13 +77,13 @@ public class DirectiveImpl extends LineImpl implements Directive
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDirective(EObject newDirective, NotificationChain msgs)
+  public NotificationChain basicSetComment(CommentTrans newComment, NotificationChain msgs)
   {
-    EObject oldDirective = directive;
-    directive = newDirective;
+    CommentTrans oldComment = comment;
+    comment = newComment;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.DIRECTIVE__DIRECTIVE, oldDirective, newDirective);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LC2200Package.LINE_END__COMMENT, oldComment, newComment);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -93,20 +94,20 @@ public class DirectiveImpl extends LineImpl implements Directive
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDirective(EObject newDirective)
+  public void setComment(CommentTrans newComment)
   {
-    if (newDirective != directive)
+    if (newComment != comment)
     {
       NotificationChain msgs = null;
-      if (directive != null)
-        msgs = ((InternalEObject)directive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.DIRECTIVE__DIRECTIVE, null, msgs);
-      if (newDirective != null)
-        msgs = ((InternalEObject)newDirective).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.DIRECTIVE__DIRECTIVE, null, msgs);
-      msgs = basicSetDirective(newDirective, msgs);
+      if (comment != null)
+        msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LC2200Package.LINE_END__COMMENT, null, msgs);
+      if (newComment != null)
+        msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LC2200Package.LINE_END__COMMENT, null, msgs);
+      msgs = basicSetComment(newComment, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.DIRECTIVE__DIRECTIVE, newDirective, newDirective));
+      eNotify(new ENotificationImpl(this, Notification.SET, LC2200Package.LINE_END__COMMENT, newComment, newComment));
   }
 
   /**
@@ -119,8 +120,8 @@ public class DirectiveImpl extends LineImpl implements Directive
   {
     switch (featureID)
     {
-      case LC2200Package.DIRECTIVE__DIRECTIVE:
-        return basicSetDirective(null, msgs);
+      case LC2200Package.LINE_END__COMMENT:
+        return basicSetComment(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +136,8 @@ public class DirectiveImpl extends LineImpl implements Directive
   {
     switch (featureID)
     {
-      case LC2200Package.DIRECTIVE__DIRECTIVE:
-        return getDirective();
+      case LC2200Package.LINE_END__COMMENT:
+        return getComment();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -151,8 +152,8 @@ public class DirectiveImpl extends LineImpl implements Directive
   {
     switch (featureID)
     {
-      case LC2200Package.DIRECTIVE__DIRECTIVE:
-        setDirective((EObject)newValue);
+      case LC2200Package.LINE_END__COMMENT:
+        setComment((CommentTrans)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +169,8 @@ public class DirectiveImpl extends LineImpl implements Directive
   {
     switch (featureID)
     {
-      case LC2200Package.DIRECTIVE__DIRECTIVE:
-        setDirective((EObject)null);
+      case LC2200Package.LINE_END__COMMENT:
+        setComment((CommentTrans)null);
         return;
     }
     super.eUnset(featureID);
@@ -185,10 +186,10 @@ public class DirectiveImpl extends LineImpl implements Directive
   {
     switch (featureID)
     {
-      case LC2200Package.DIRECTIVE__DIRECTIVE:
-        return directive != null;
+      case LC2200Package.LINE_END__COMMENT:
+        return comment != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //DirectiveImpl
+} //LineEndImpl

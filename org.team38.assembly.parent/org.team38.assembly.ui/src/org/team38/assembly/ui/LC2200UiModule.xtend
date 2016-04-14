@@ -6,8 +6,6 @@ package org.team38.assembly.ui
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
-import com.google.inject.Binder
-import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.

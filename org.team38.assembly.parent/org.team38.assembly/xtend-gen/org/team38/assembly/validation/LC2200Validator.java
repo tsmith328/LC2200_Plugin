@@ -16,6 +16,7 @@ import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.LC2200Package;
 import org.team38.assembly.lC2200.LabelEnd;
+import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.Program;
 import org.team38.assembly.lC2200.WordDirective;
 import org.team38.assembly.validation.AbstractLC2200Validator;
@@ -116,12 +117,12 @@ public class LC2200Validator extends AbstractLC2200Validator {
         if (_equals_2) {
           this.warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
         } else {
-          EList<EObject> lines = ((Program) root).getLines();
+          EList<Line> lines = ((Program) root).getLines();
           int offset = 0;
           boolean found = false;
           for (int i = 0; ((i < ((Object[])Conversions.unwrapArray(lines, Object.class)).length) && (!found)); i++) {
             {
-              EObject _get_1 = lines.get(i);
+              Line _get_1 = lines.get(i);
               boolean _equals_3 = parent.equals(_get_1);
               if (_equals_3) {
                 found = true;

@@ -85,11 +85,30 @@ ruleProgram returns [EObject current=null]
 		)
 		(
 			(
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0());
+				}
+				lv_lineEnds_1_0=ruleLineEnd
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					add(
+						$current,
+						"lineEnds",
+						lv_lineEnds_1_0,
+						"org.team38.assembly.LC2200.LineEnd");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
 				(
 					{
-						newCompositeNode(grammarAccess.getProgramAccess().getLinesInstructionParserRuleCall_1_0_0());
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_2_0_0());
 					}
-					lv_lines_1_1=ruleInstruction
+					lv_lines_2_0=ruleLine
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getProgramRule());
@@ -97,29 +116,87 @@ ruleProgram returns [EObject current=null]
 						add(
 							$current,
 							"lines",
-							lv_lines_1_1,
-							"org.team38.assembly.LC2200.Instruction");
-						afterParserOrEnumRuleCall();
-					}
-					    |
-					{
-						newCompositeNode(grammarAccess.getProgramAccess().getLinesDirectiveParserRuleCall_1_0_1());
-					}
-					lv_lines_1_2=ruleDirective
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProgramRule());
-						}
-						add(
-							$current,
-							"lines",
-							lv_lines_1_2,
-							"org.team38.assembly.LC2200.Directive");
+							lv_lines_2_0,
+							"org.team38.assembly.LC2200.Line");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0());
+					}
+					lv_lineEnds_3_0=ruleLineEnd
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProgramRule());
+						}
+						add(
+							$current,
+							"lineEnds",
+							lv_lineEnds_3_0,
+							"org.team38.assembly.LC2200.LineEnd");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
 		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0());
+				}
+				lv_lines_4_0=ruleLine
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					add(
+						$current,
+						"lines",
+						lv_lines_4_0,
+						"org.team38.assembly.LC2200.Line");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleLine
+entryRuleLine returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLineRule()); }
+	iv_ruleLine=ruleLine
+	{ $current=$iv_ruleLine.current; }
+	EOF;
+
+// Rule Line
+ruleLine returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getLineAccess().getInstructionParserRuleCall_0());
+		}
+		this_Instruction_0=ruleInstruction
+		{
+			$current = $this_Instruction_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLineAccess().getDirectiveParserRuleCall_1());
+		}
+		this_Directive_1=ruleDirective
+		{
+			$current = $this_Directive_1.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -227,36 +304,6 @@ ruleInstruction returns [EObject current=null]
 				)
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getInstructionAccess().getCommentCommentTransParserRuleCall_2_0());
-				}
-				lv_comment_2_0=ruleCommentTrans
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInstructionRule());
-					}
-					set(
-						$current,
-						"comment",
-						lv_comment_2_0,
-						"org.team38.assembly.LC2200.CommentTrans");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			this_ML_COMMENT_3=RULE_ML_COMMENT
-			{
-				newLeafNode(this_ML_COMMENT_3, grammarAccess.getInstructionAccess().getML_COMMENTTerminalRuleCall_3_0());
-			}
-			    |
-			this_NEWLINE_4=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_4, grammarAccess.getInstructionAccess().getNEWLINETerminalRuleCall_3_1());
-			}
-		)?
 	)
 ;
 
@@ -348,36 +395,6 @@ ruleDirective returns [EObject current=null]
 				)
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDirectiveAccess().getCommentCommentTransParserRuleCall_2_0());
-				}
-				lv_comment_2_0=ruleCommentTrans
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDirectiveRule());
-					}
-					set(
-						$current,
-						"comment",
-						lv_comment_2_0,
-						"org.team38.assembly.LC2200.CommentTrans");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			this_ML_COMMENT_3=RULE_ML_COMMENT
-			{
-				newLeafNode(this_ML_COMMENT_3, grammarAccess.getDirectiveAccess().getML_COMMENTTerminalRuleCall_3_0());
-			}
-			    |
-			this_NEWLINE_4=RULE_NEWLINE
-			{
-				newLeafNode(this_NEWLINE_4, grammarAccess.getDirectiveAccess().getNEWLINETerminalRuleCall_3_1());
-			}
-		)?
 	)
 ;
 
@@ -1313,21 +1330,65 @@ ruleCommentTrans returns [EObject current=null]
 }:
 	(
 		(
-			lv_comment_0_0=RULE_COMMENT
 			{
-				newLeafNode(lv_comment_0_0, grammarAccess.getCommentTransAccess().getCommentCOMMENTTerminalRuleCall_0());
-			}
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getCommentTransRule());
-				}
-				setWithLastConsumed(
-					$current,
-					"comment",
-					lv_comment_0_0,
-					"org.team38.assembly.LC2200.COMMENT");
+				$current = forceCreateModelElement(
+					grammarAccess.getCommentTransAccess().getCommentTransAction_0(),
+					$current);
 			}
 		)
+		this_COMMENT_1=RULE_COMMENT
+		{
+			newLeafNode(this_COMMENT_1, grammarAccess.getCommentTransAccess().getCOMMENTTerminalRuleCall_1());
+		}
+	)
+;
+
+// Entry rule entryRuleLineEnd
+entryRuleLineEnd returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLineEndRule()); }
+	iv_ruleLineEnd=ruleLineEnd
+	{ $current=$iv_ruleLineEnd.current; }
+	EOF;
+
+// Rule LineEnd
+ruleLineEnd returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getLineEndAccess().getLineEndAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLineEndAccess().getCommentCommentTransParserRuleCall_1_0());
+				}
+				lv_comment_1_0=ruleCommentTrans
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLineEndRule());
+					}
+					set(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"org.team38.assembly.LC2200.CommentTrans");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		this_NEWLINE_2=RULE_NEWLINE
+		{
+			newLeafNode(this_NEWLINE_2, grammarAccess.getLineEndAccess().getNEWLINETerminalRuleCall_2());
+		}
 	)
 ;
 
@@ -1436,6 +1497,8 @@ ruleLabelEnd returns [EObject current=null]
 	)
 ;
 
+RULE_WS : (' '|'\t')+;
+
 RULE_LA : 'la';
 
 RULE_WORD : '.word';
@@ -1460,11 +1523,9 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_COMMENT : ';' ~(('\n'|'\r'))* '\r'? '\n'?;
+RULE_COMMENT : '!' ~(('\n'|'\r'))*;
 
-RULE_ML_COMMENT : EOF;
-
-RULE_NEWLINE : '\n';
+RULE_NEWLINE : ' '* '\r'? '\n';
 
 RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 
@@ -1480,8 +1541,8 @@ fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
-RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
+RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
-RULE_WS : (' '|'\t'|'\r'|'\n')+;
+RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_ANY_OTHER : .;

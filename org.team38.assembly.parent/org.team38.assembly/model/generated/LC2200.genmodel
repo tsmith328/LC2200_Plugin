@@ -7,17 +7,17 @@
   <genPackages prefix="LC2200" basePackage="org.team38.assembly" disposableProviderFactory="true"
       fileExtensions="s" ecorePackage="LC2200.ecore#/">
     <genClasses ecoreClass="LC2200.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/lineEnds"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/lines"/>
     </genClasses>
+    <genClasses ecoreClass="LC2200.ecore#//Line">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Line/label"/>
+    </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//Instruction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Instruction/label"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Instruction/instruction"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Instruction/comment"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//Directive">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Directive/label"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Directive/directive"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Directive/comment"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//RInstruction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//RInstruction/r_opcode"/>
@@ -73,8 +73,9 @@
     <genClasses ecoreClass="LC2200.ecore#//LATrans">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//LATrans/la"/>
     </genClasses>
-    <genClasses ecoreClass="LC2200.ecore#//CommentTrans">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//CommentTrans/comment"/>
+    <genClasses ecoreClass="LC2200.ecore#//CommentTrans"/>
+    <genClasses ecoreClass="LC2200.ecore#//LineEnd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//LineEnd/comment"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//RegTrans">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LC2200.ecore#//RegTrans/reg"/>

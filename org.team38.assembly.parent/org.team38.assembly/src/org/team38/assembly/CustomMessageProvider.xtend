@@ -28,14 +28,14 @@ class CustomMessageProvider extends SyntaxErrorMessageProvider {
 			return new SyntaxErrorMessage("Missing label", LABEL)
 		} else if (msgDefault.contains('extraneous')) {
 			return new SyntaxErrorMessage("Expecting label or instruction.", INSTR_START)
-		} else if (msgDefault.contains('EOF')) {
-			return new SyntaxErrorMessage("Expecting end of instruction.", INSTR_END)
+		//} else if (msgDefault.contains('EOF')) {
+			//return new SyntaxErrorMessage("Expecting end of instruction.", INSTR_END)
 		} else if (msgDefault.contains('LABEL')) {
 			return new SyntaxErrorMessage("Expecting a pre-defined label.", LABEL)
 		} else if (msgDefault.contains('PAREN')) {
 			return new SyntaxErrorMessage("Missing a parenthesis.", PAREN)
-		} else if (msgDefault.contains('viable')) {
-			return new SyntaxErrorMessage("Expecting instruction afterwards", LABEL)
+		//} else if (msgDefault.contains('viable')) {
+			//return new SyntaxErrorMessage("Expecting instruction afterwards", LABEL)
 		}
 
         super.getSyntaxErrorMessage(context)

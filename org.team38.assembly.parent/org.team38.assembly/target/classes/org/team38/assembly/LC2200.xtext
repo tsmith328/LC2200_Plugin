@@ -4,15 +4,19 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	{Program} lines+=(Instruction| Directive)*
+	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* (lines+=Line)?
+;
+
+Line: 
+	(Instruction | Directive) 
 ;
 
 Instruction:
-	label=LabelBeg? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
+	label=LabelBeg? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction)
 ;
 
 Directive:
-	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective) comment=CommentTrans? (ML_COMMENT | NEWLINE)?
+	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective)
 ;
 	
 RInstruction:
@@ -74,8 +78,12 @@ LATrans:
 	la=LA
 ;
 
-CommentTrans:
-	comment=COMMENT
+CommentTrans returns CommentTrans:
+	{CommentTrans} COMMENT
+;
+
+LineEnd:
+	{LineEnd} comment=CommentTrans? NEWLINE
 ;
 
 RegTrans:
@@ -90,7 +98,11 @@ LabelEnd:
 	label=LABEL_IMM
 ;
 
+
 //Tokens
+terminal WS: 
+    (' '|'\t')+;
+    
 terminal LA:
 	'la'
 ;
@@ -145,17 +157,11 @@ terminal COMMA:
 ;
 
 terminal COMMENT:
-	';' !('\n'|'\r')* '\r'? '\n'?
-;
-
-//Do this for now so default Multi-line
-//comments aren't highlighted in editor
-terminal ML_COMMENT:
-	EOF
+	'!' !('\n'|'\r')*
 ;
 
 terminal NEWLINE:
-	'\n'
+	(' '* '\r'? '\n')
 ;
 
 terminal REG:

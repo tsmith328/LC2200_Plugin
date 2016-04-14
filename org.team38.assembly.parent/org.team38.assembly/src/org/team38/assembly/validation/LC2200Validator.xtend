@@ -8,11 +8,11 @@ import org.eclipse.xtext.validation.Check
 import org.team38.assembly.lC2200.LC2200Package
 import org.team38.assembly.lC2200.WordDirective
 import org.eclipse.emf.ecore.EObject
-import java.util.HashMap
 import org.team38.assembly.LabelHandler
 import org.team38.assembly.lC2200.Program
 import org.team38.assembly.lC2200.Instruction
 import org.eclipse.emf.common.util.EList
+import org.team38.assembly.lC2200.Line
 
 /**
  * This class contains custom validation rules. 
@@ -84,7 +84,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 				if(labelTable.get(label) == null) {
 					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
 				} else {
-					var EList<EObject> lines = (root as Program).getLines();
+					var EList<Line> lines = (root as Program).getLines();
 					var offset = 0;
 					var found = false
 					for(var i = 0; i < lines.length() && !found; i++) {

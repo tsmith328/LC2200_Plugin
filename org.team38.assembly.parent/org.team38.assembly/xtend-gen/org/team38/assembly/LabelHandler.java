@@ -4,10 +4,10 @@ import com.google.common.base.Objects;
 import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.LabelBeg;
+import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.Program;
 
 @SuppressWarnings("all")
@@ -20,8 +20,8 @@ public class LabelHandler {
   public static HashMap<String, Integer> populateLabels(final Program root) {
     int offset = 0;
     HashMap<String, Integer> labelTable = new HashMap<String, Integer>();
-    EList<EObject> lines = root.getLines();
-    for (final EObject line : lines) {
+    EList<Line> lines = root.getLines();
+    for (final Line line : lines) {
       {
         EClass _eClass = line.eClass();
         String _name = _eClass.getName();

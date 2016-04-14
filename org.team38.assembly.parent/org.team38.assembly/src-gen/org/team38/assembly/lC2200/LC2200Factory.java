@@ -33,6 +33,15 @@ public interface LC2200Factory extends EFactory
   Program createProgram();
 
   /**
+   * Returns a new object of class '<em>Line</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Line</em>'.
+   * @generated
+   */
+  Line createLine();
+
+  /**
    * Returns a new object of class '<em>Instruction</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -184,6 +193,15 @@ public interface LC2200Factory extends EFactory
    * @generated
    */
   CommentTrans createCommentTrans();
+
+  /**
+   * Returns a new object of class '<em>Line End</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Line End</em>'.
+   * @generated
+   */
+  LineEnd createLineEnd();
 
   /**
    * Returns a new object of class '<em>Reg Trans</em>'.

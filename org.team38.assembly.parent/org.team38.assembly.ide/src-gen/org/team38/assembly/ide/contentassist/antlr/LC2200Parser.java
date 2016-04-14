@@ -35,13 +35,12 @@ public class LC2200Parser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getProgramAccess().getLinesAlternatives_1_0(), "rule__Program__LinesAlternatives_1_0");
+					put(grammarAccess.getLineAccess().getAlternatives(), "rule__Line__Alternatives");
 					put(grammarAccess.getInstructionAccess().getInstructionAlternatives_1_0(), "rule__Instruction__InstructionAlternatives_1_0");
-					put(grammarAccess.getInstructionAccess().getAlternatives_3(), "rule__Instruction__Alternatives_3");
 					put(grammarAccess.getDirectiveAccess().getDirectiveAlternatives_1_0(), "rule__Directive__DirectiveAlternatives_1_0");
-					put(grammarAccess.getDirectiveAccess().getAlternatives_3(), "rule__Directive__Alternatives_3");
 					put(grammarAccess.getIInstructionAccess().getAlternatives(), "rule__IInstruction__Alternatives");
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
+					put(grammarAccess.getProgramAccess().getGroup_2(), "rule__Program__Group_2__0");
 					put(grammarAccess.getInstructionAccess().getGroup(), "rule__Instruction__Group__0");
 					put(grammarAccess.getDirectiveAccess().getGroup(), "rule__Directive__Group__0");
 					put(grammarAccess.getRInstructionAccess().getGroup(), "rule__RInstruction__Group__0");
@@ -51,13 +50,16 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getJInstructionAccess().getGroup(), "rule__JInstruction__Group__0");
 					put(grammarAccess.getWordDirectiveAccess().getGroup(), "rule__WordDirective__Group__0");
 					put(grammarAccess.getLADirectiveAccess().getGroup(), "rule__LADirective__Group__0");
-					put(grammarAccess.getProgramAccess().getLinesAssignment_1(), "rule__Program__LinesAssignment_1");
+					put(grammarAccess.getCommentTransAccess().getGroup(), "rule__CommentTrans__Group__0");
+					put(grammarAccess.getLineEndAccess().getGroup(), "rule__LineEnd__Group__0");
+					put(grammarAccess.getProgramAccess().getLineEndsAssignment_1(), "rule__Program__LineEndsAssignment_1");
+					put(grammarAccess.getProgramAccess().getLinesAssignment_2_0(), "rule__Program__LinesAssignment_2_0");
+					put(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1(), "rule__Program__LineEndsAssignment_2_1");
+					put(grammarAccess.getProgramAccess().getLinesAssignment_3(), "rule__Program__LinesAssignment_3");
 					put(grammarAccess.getInstructionAccess().getLabelAssignment_0(), "rule__Instruction__LabelAssignment_0");
 					put(grammarAccess.getInstructionAccess().getInstructionAssignment_1(), "rule__Instruction__InstructionAssignment_1");
-					put(grammarAccess.getInstructionAccess().getCommentAssignment_2(), "rule__Instruction__CommentAssignment_2");
 					put(grammarAccess.getDirectiveAccess().getLabelAssignment_0(), "rule__Directive__LabelAssignment_0");
 					put(grammarAccess.getDirectiveAccess().getDirectiveAssignment_1(), "rule__Directive__DirectiveAssignment_1");
-					put(grammarAccess.getDirectiveAccess().getCommentAssignment_2(), "rule__Directive__CommentAssignment_2");
 					put(grammarAccess.getRInstructionAccess().getR_opcodeAssignment_0(), "rule__RInstruction__R_opcodeAssignment_0");
 					put(grammarAccess.getRInstructionAccess().getReg1Assignment_1(), "rule__RInstruction__Reg1Assignment_1");
 					put(grammarAccess.getRInstructionAccess().getReg2Assignment_3(), "rule__RInstruction__Reg2Assignment_3");
@@ -91,7 +93,7 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getJInstructionTransAccess().getJ_opcodeAssignment(), "rule__JInstructionTrans__J_opcodeAssignment");
 					put(grammarAccess.getWordTransAccess().getWordAssignment(), "rule__WordTrans__WordAssignment");
 					put(grammarAccess.getLATransAccess().getLaAssignment(), "rule__LATrans__LaAssignment");
-					put(grammarAccess.getCommentTransAccess().getCommentAssignment(), "rule__CommentTrans__CommentAssignment");
+					put(grammarAccess.getLineEndAccess().getCommentAssignment_1(), "rule__LineEnd__CommentAssignment_1");
 					put(grammarAccess.getRegTransAccess().getRegAssignment(), "rule__RegTrans__RegAssignment");
 					put(grammarAccess.getLabelBegAccess().getLabelAssignment(), "rule__LabelBeg__LabelAssignment");
 					put(grammarAccess.getLabelEndAccess().getLabelAssignment(), "rule__LabelEnd__LabelAssignment");
