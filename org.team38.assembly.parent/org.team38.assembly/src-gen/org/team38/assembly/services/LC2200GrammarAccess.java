@@ -1154,7 +1154,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal COMMENT:
-	//	'!' !('\n' | '\r')*;
+	//	';' !('\n' | '\r')*;
 	public TerminalRule getCOMMENTRule() {
 		return tCOMMENT;
 	}

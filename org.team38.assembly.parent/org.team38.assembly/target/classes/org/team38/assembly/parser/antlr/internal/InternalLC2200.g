@@ -1523,7 +1523,7 @@ RULE_RPAREN : ')';
 
 RULE_COMMA : ',';
 
-RULE_COMMENT : '!' ~(('\n'|'\r'))*;
+RULE_COMMENT : ';' ~(('\n'|'\r'))*;
 
 RULE_NEWLINE : ' '* '\r'? '\n';
 

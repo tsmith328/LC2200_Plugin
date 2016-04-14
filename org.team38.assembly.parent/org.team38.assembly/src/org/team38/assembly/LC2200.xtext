@@ -157,7 +157,7 @@ terminal COMMA:
 ;
 
 terminal COMMENT:
-	'!' !('\n'|'\r')*
+	';' !('\n'|'\r')*
 ;
 
 terminal NEWLINE:

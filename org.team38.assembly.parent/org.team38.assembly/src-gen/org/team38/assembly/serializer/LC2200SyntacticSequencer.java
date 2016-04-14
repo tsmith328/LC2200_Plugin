@@ -52,13 +52,13 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * terminal COMMENT:
-	 * 	'!' !('\n'|'\r')*
+	 * 	';' !('\n'|'\r')*
 	 * ;
 	 */
 	protected String getCOMMENTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
-		return "!";
+		return ";";
 	}
 	
 	/**
