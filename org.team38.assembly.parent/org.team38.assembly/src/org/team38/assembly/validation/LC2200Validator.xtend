@@ -8,6 +8,11 @@ import org.eclipse.xtext.validation.Check
 import org.team38.assembly.lC2200.LC2200Package
 import org.team38.assembly.lC2200.WordDirective
 import org.eclipse.emf.ecore.EObject
+import java.util.HashMap
+import org.team38.assembly.LabelHandler
+import org.team38.assembly.lC2200.Program
+import org.team38.assembly.lC2200.Instruction
+import org.eclipse.emf.common.util.EList
 
 /**
  * This class contains custom validation rules. 
@@ -37,7 +42,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 		}
 		
 		if(immInt < -16 || immInt > 15) {
-			warning("signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM)	
+			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM)	
 		}
 	}
 	
@@ -57,19 +62,44 @@ class LC2200Validator extends AbstractLC2200Validator {
 		}
 		
 		if(immInt < -65536 || immInt > 65535) {
-			warning("signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
+			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
 		}
 	}
 	
 	@Check
-	def checkLabelExists(IInstruction instr) {
-		var root = (instr as EObject);
-		while(root.eContainer() != null) {
-			root = root.eContainer();
-		}
-		
-		//populate hash map
-		//check
+	def checkLabelIsValid(IInstruction instr) {
+		if(instr.getI_opcode().eClass().getName().equals("IInstructionLabelTrans")) {	
+			var labelTrans = instr.getLabel();
+			var label = labelTrans.getLabel();
+			
+			var root = (instr as EObject);
+			var parent = instr.eContainer() as Instruction;
+			
+			while(root.eContainer() != null) {
+				root = root.eContainer();
+			}
+			
+			if (root.eClass().getName().equals("Program")) {
+				var labelTable = LabelHandler.populateLabels(root as Program);
+				if(labelTable.get(label) == null) {
+					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
+				} else {
+					var EList<EObject> lines = (root as Program).getLines();
+					var offset = 0;
+					var found = false
+					for(var i = 0; i < lines.length() && !found; i++) {
+						if(parent.equals(lines.get(i))) {
+							found = true;			
+							var dif = labelTable.get(label) - offset;
+							if(dif > 15 || dif < -16) {
+								warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL)
+							}
+						}
+						offset++;
+					}	
+				}
+			}
+		}			
 	}
 	
 }

@@ -14,6 +14,7 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.team38.assembly.LabelHandler;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
 import org.team38.assembly.lC2200.IInstructionImmTrans;
@@ -23,7 +24,6 @@ import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.LADirective;
-import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.LabelEnd;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
@@ -71,18 +71,19 @@ public class LC2200Generator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     StringBuffer _stringBuffer = new StringBuffer();
     this.assembledOutput = _stringBuffer;
-    HashMap<String, Integer> _hashMap = new HashMap<String, Integer>();
-    this.labelTable = _hashMap;
+    this.offset = 0;
     EList<EObject> _contents = resource.getContents();
     EObject e_root = _contents.get(0);
-    EClass _eClass = e_root.eClass();
-    String _name = _eClass.getName();
-    boolean _equals = _name.equals("Program");
-    if (_equals) {
-      this.offset = 0;
-      this.populateLabels(((Program) e_root));
-      this.offset = 0;
-      this.compileProgram(((Program) e_root));
+    boolean _notEquals = (!Objects.equal(e_root, null));
+    if (_notEquals) {
+      EClass _eClass = e_root.eClass();
+      String _name = _eClass.getName();
+      boolean _equals = _name.equals("Program");
+      if (_equals) {
+        HashMap<String, Integer> _populateLabels = LabelHandler.populateLabels(((Program) e_root));
+        this.labelTable = _populateLabels;
+        this.compileProgram(((Program) e_root));
+      }
     }
     String _string = resource.toString();
     this.filename = _string;
@@ -94,53 +95,6 @@ public class LC2200Generator extends AbstractGenerator {
     String _string_1 = this.assembledOutput.toString();
     String _trim = _string_1.trim();
     fsa.generateFile(this.filename, _trim);
-  }
-  
-  /**
-   * Stores labels and their position into a hash map
-   * 
-   * @param root
-   */
-  public void populateLabels(final Program root) {
-    EList<EObject> lines = root.getLines();
-    for (final EObject line : lines) {
-      {
-        EClass _eClass = line.eClass();
-        String _name = _eClass.getName();
-        boolean _equals = _name.equals("Directive");
-        if (_equals) {
-          Directive dir = ((Directive) line);
-          LabelBeg labelBeg = dir.getLabel();
-          boolean _notEquals = (!Objects.equal(labelBeg, null));
-          if (_notEquals) {
-            String label = labelBeg.getLabel();
-            boolean _notEquals_1 = (!Objects.equal(label, null));
-            if (_notEquals_1) {
-              String _replace = label.replace(":", "");
-              this.labelTable.put(_replace, Integer.valueOf(this.offset));
-            }
-          }
-        } else {
-          EClass _eClass_1 = line.eClass();
-          String _name_1 = _eClass_1.getName();
-          boolean _equals_1 = _name_1.equals("Instruction");
-          if (_equals_1) {
-            Instruction instr = ((Instruction) line);
-            LabelBeg labelBeg_1 = instr.getLabel();
-            boolean _notEquals_2 = (!Objects.equal(labelBeg_1, null));
-            if (_notEquals_2) {
-              String label_1 = labelBeg_1.getLabel();
-              boolean _notEquals_3 = (!Objects.equal(label_1, null));
-              if (_notEquals_3) {
-                String _replace_1 = label_1.replace(":", "");
-                this.labelTable.put(_replace_1, Integer.valueOf(this.offset));
-              }
-            }
-          }
-        }
-        this.offset++;
-      }
-    }
   }
   
   public void compileProgram(final Program root) {
@@ -344,9 +298,14 @@ public class LC2200Generator extends AbstractGenerator {
             Integer labelLine = this.labelTable.get(label);
             boolean _notEquals_2 = (!Objects.equal(labelLine, null));
             if (_notEquals_2) {
-              String _string_3 = Integer.toString(((labelLine).intValue() - this.offset));
-              String _immToBinary = this.immToBinary(_string_3, 5);
-              immBin = _immToBinary;
+              int dif = ((labelLine).intValue() - this.offset);
+              if (((dif < 15) && (dif > (-16)))) {
+                String _string_3 = Integer.toString(dif);
+                String _immToBinary = this.immToBinary(_string_3, 5);
+                immBin = _immToBinary;
+              } else {
+                immBin = "xxxxx";
+              }
             } else {
               immBin = "xxxxx";
             }

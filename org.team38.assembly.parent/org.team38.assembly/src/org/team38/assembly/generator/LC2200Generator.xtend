@@ -26,6 +26,7 @@ import org.team38.assembly.lC2200.RegTrans
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import java.util.HashMap;
+import org.team38.assembly.LabelHandler
 
 /**
  * Generates binary output from the assembled instructions
@@ -36,7 +37,7 @@ class LC2200Generator extends AbstractGenerator {
 	 * A buffer which will accumulate the generated binary
 	 */
 	private StringBuffer assembledOutput;
-	
+	 
 	/**
 	 * A hash map storing the location of all labels for calculating branches
 	 */
@@ -62,16 +63,16 @@ class LC2200Generator extends AbstractGenerator {
 	 * @param context
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		assembledOutput = new StringBuffer();
-		labelTable = new HashMap<String, Integer>();
+		assembledOutput = new StringBuffer();		
+		offset = 0;
 		
 		var e_root = resource.getContents().get(0);
 		
-		if (e_root.eClass().getName().equals("Program")) {
-			offset = 0;
-			populateLabels(e_root as Program);
-			offset = 0;
-			compileProgram(e_root as Program);
+		if(e_root != null) {			
+			if (e_root.eClass().getName().equals("Program")) {
+				labelTable = LabelHandler.populateLabels(e_root as Program);
+				compileProgram(e_root as Program);
+			}		
 		}
 		
 		filename = resource.toString();
@@ -80,38 +81,7 @@ class LC2200Generator extends AbstractGenerator {
 		fsa.generateFile(filename, assembledOutput.toString().trim());
 	}
 	
-	/**
-	 * Stores labels and their position into a hash map
-	 * 
-	 * @param root
-	 */
-	def populateLabels(Program root) {
-		var EList<EObject> lines = root.getLines();
-		
-		for(line : lines) {
-			if (line.eClass().getName().equals("Directive")) {
-				var dir = (line as Directive);
-				var labelBeg = dir.getLabel();
-				if(labelBeg != null) {
-					var label = labelBeg.getLabel();
-					if (label != null) {
-						labelTable.put(label.replace(":",""), offset);
-					}
-				}
-			}
-			else if (line.eClass().getName().equals("Instruction")) {
-				var instr = (line as Instruction);
-				var labelBeg = instr.getLabel();
-				if(labelBeg != null) {
-					var label = labelBeg.getLabel();
-					if (label != null) {
-						labelTable.put(label.replace(":",""), offset);
-					}
-				}
-			}
-			offset++
-		}	
-	}
+	
 	
 	def compileProgram(Program root) {
 		var EList<EObject> lines = root.getLines();
@@ -223,7 +193,12 @@ class LC2200Generator extends AbstractGenerator {
 				if (label != null) {
 					var labelLine = labelTable.get(label);
 					if(labelLine != null) {
-						immBin = immToBinary(Integer.toString(labelLine - offset), 5);
+						var dif = labelLine - offset;
+						if(dif < 15 && dif > -16) {
+							immBin = immToBinary(Integer.toString(dif), 5);
+						} else {
+							immBin = "xxxxx";
+						}		
 					} else {
 						immBin = "xxxxx";
 					}
