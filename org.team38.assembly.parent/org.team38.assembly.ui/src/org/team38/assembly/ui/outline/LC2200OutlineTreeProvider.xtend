@@ -4,6 +4,11 @@
 package org.team38.assembly.ui.outline
 
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
+import org.team38.assembly.lC2200.Program
+import org.eclipse.emf.ecore.EObject
+import org.team38.assembly.lC2200.Instruction
+import org.team38.assembly.lC2200.Directive
 
 /**
  * Customization of the default outline structure.
@@ -11,6 +16,20 @@ import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#outline
  */
 class LC2200OutlineTreeProvider extends DefaultOutlineTreeProvider {
-
-	
+	def _createChildren(DocumentRootNode parentNode, Program program) {
+    	for (EObject element : program.eContents()) {
+    		var className = element.eClass().getName()
+    		if(className.equals("Instruction")) {
+    			var labelTrans = (element as Instruction).getLabel()
+    			if(labelTrans != null) {
+    				createNode(parentNode, labelTrans);    				
+    			}        		        	
+        	} else if(className.equals("Directive")) {
+    			var labelTrans = (element as Directive).getLabel()
+    			if(labelTrans != null) {
+    				createNode(parentNode, labelTrans);    				
+    			}        		        	
+        	}
+     	}
+	}		
 }
