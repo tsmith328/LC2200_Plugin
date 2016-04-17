@@ -7,13 +7,15 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.RuleCall
+import org.team38.assembly.LabelHandler
+import org.team38.assembly.lC2200.Program
 
 /**
  * Custom content assistant proposals
  * 
  */
 class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
-	/*
+	/**
 	 * Constant arrays of proposals for registers
 	 */
 	val REGTRANS_PROPOSALS = #[
@@ -35,7 +37,7 @@ class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
 		'$ra'
 	]		
 	
-	/*
+	/**
 	 * 
 	 */
 	override 	
@@ -46,5 +48,23 @@ class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
 		}		
 	}
 	
+	/**
+	 * 
+	 */
+	 override
+	 def complete_LabelEnd(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor){
+	 	super.complete_LabelEnd(model, ruleCall, context, acceptor);
+	 	
+	 	var root = model;				
+		while(root.eContainer() != null) {
+			root = root.eContainer();
+		}
+		
+	 	var labels = LabelHandler.populateLabels(root as Program);
+	 	
+	 	for(label : labels.keySet()) {
+	 		acceptor.accept(createCompletionProposal(label, context));
+	 	}
+	 }
 	
 }

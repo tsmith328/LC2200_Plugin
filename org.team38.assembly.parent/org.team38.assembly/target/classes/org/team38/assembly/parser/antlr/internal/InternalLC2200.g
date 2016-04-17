@@ -142,25 +142,6 @@ ruleProgram returns [EObject current=null]
 				)
 			)+
 		)*
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0());
-				}
-				lv_lines_4_0=ruleLine
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"lines",
-						lv_lines_4_0,
-						"org.team38.assembly.LC2200.Line");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
 	)
 ;
 
@@ -1525,7 +1506,7 @@ RULE_COMMA : ',';
 
 RULE_COMMENT : ';' ~(('\n'|'\r'))*;
 
-RULE_NEWLINE : ' '* '\r'? '\n';
+RULE_NEWLINE : (EOF|'\r'? '\n');
 
 RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 

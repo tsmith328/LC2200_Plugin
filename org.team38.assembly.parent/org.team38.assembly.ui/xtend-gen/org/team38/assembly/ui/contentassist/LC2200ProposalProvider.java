@@ -3,14 +3,19 @@
  */
 package org.team38.assembly.ui.contentassist;
 
+import com.google.common.base.Objects;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.team38.assembly.LabelHandler;
+import org.team38.assembly.lC2200.Program;
 import org.team38.assembly.ui.contentassist.AbstractLC2200ProposalProvider;
 
 /**
@@ -28,6 +33,22 @@ public class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
     super.complete_RegTrans(model, ruleCall, context, acceptor);
     for (final String proposal : this.REGTRANS_PROPOSALS) {
       ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
+    }
+  }
+  
+  @Override
+  public void complete_LabelEnd(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    super.complete_LabelEnd(model, ruleCall, context, acceptor);
+    EObject root = model;
+    while ((!Objects.equal(root.eContainer(), null))) {
+      EObject _eContainer = root.eContainer();
+      root = _eContainer;
+    }
+    HashMap<String, Integer> labels = LabelHandler.populateLabels(((Program) root));
+    Set<String> _keySet = labels.keySet();
+    for (final String label : _keySet) {
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(label, context);
       acceptor.accept(_createCompletionProposal);
     }
   }

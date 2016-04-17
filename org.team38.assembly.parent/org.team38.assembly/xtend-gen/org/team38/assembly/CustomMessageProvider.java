@@ -1,5 +1,8 @@
 package org.team38.assembly;
 
+import org.antlr.runtime.RecognitionException;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.SyntaxErrorMessage;
 import org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider;
 import org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider;
@@ -45,13 +48,23 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
               if (_contains_4) {
                 return new SyntaxErrorMessage("Expecting label or instruction.", CustomMessageProvider.INSTR_START);
               } else {
-                boolean _contains_5 = msgDefault.contains("LABEL");
+                boolean _contains_5 = msgDefault.contains("EOF");
                 if (_contains_5) {
-                  return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
+                  return new SyntaxErrorMessage("Expecting end of instruction.", CustomMessageProvider.INSTR_END);
                 } else {
-                  boolean _contains_6 = msgDefault.contains("PAREN");
+                  boolean _contains_6 = msgDefault.contains("LABEL");
                   if (_contains_6) {
-                    return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
+                    return new SyntaxErrorMessage("Expecting a pre-defined label.", CustomMessageProvider.LABEL);
+                  } else {
+                    boolean _contains_7 = msgDefault.contains("PAREN");
+                    if (_contains_7) {
+                      return new SyntaxErrorMessage("Missing a parenthesis.", CustomMessageProvider.PAREN);
+                    } else {
+                      boolean _contains_8 = msgDefault.contains("viable");
+                      if (_contains_8) {
+                        return new SyntaxErrorMessage("Expecting instruction afterwards", CustomMessageProvider.LABEL);
+                      }
+                    }
                   }
                 }
               }
@@ -59,6 +72,17 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
           }
         }
       }
+      String[] tokens = context.getTokenNames();
+      for (final String token : tokens) {
+        System.out.println(token);
+      }
+      System.out.println(context);
+      INode _currentNode = context.getCurrentNode();
+      System.out.println(_currentNode);
+      EObject _currentContext = context.getCurrentContext();
+      System.out.println(_currentContext);
+      RecognitionException _recognitionException = context.getRecognitionException();
+      System.out.println(_recognitionException);
       _xblockexpression = super.getSyntaxErrorMessage(context);
     }
     return _xblockexpression;

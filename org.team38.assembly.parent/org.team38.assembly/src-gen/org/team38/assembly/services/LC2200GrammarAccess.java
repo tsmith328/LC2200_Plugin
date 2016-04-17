@@ -33,15 +33,13 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLinesLineParserRuleCall_2_0_0 = (RuleCall)cLinesAssignment_2_0.eContents().get(0);
 		private final Assignment cLineEndsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cLineEndsLineEndParserRuleCall_2_1_0 = (RuleCall)cLineEndsAssignment_2_1.eContents().get(0);
-		private final Assignment cLinesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLinesLineParserRuleCall_3_0 = (RuleCall)cLinesAssignment_3.eContents().get(0);
 		
 		////Rules
 		//Program:
-		//	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* lines+=Line?;
+		//	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* lines+=Line?
+		//{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)*
 		public Group getGroup() { return cGroup; }
 		
 		//{Program}
@@ -67,12 +65,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LineEnd
 		public RuleCall getLineEndsLineEndParserRuleCall_2_1_0() { return cLineEndsLineEndParserRuleCall_2_1_0; }
-		
-		//lines+=Line?
-		public Assignment getLinesAssignment_3() { return cLinesAssignment_3; }
-		
-		//Line
-		public RuleCall getLinesLineParserRuleCall_3_0() { return cLinesLineParserRuleCall_3_0; }
 	}
 	public class LineElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Line");
@@ -837,7 +829,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	////Rules
 	//Program:
-	//	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* lines+=Line?;
+	//	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)*;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -1160,7 +1152,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal NEWLINE:
-	//	' '* '\r'? '\n';
+	//	EOF | '\r'? '\n';
 	public TerminalRule getNEWLINERule() {
 		return tNEWLINE;
 	}
