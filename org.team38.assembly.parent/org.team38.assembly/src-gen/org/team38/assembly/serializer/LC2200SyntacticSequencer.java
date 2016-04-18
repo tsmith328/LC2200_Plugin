@@ -74,13 +74,13 @@ public class LC2200SyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * terminal NEWLINE:
-	 * 	EOF | ('\r'? '\n')
+	 * 	(' '* '\r'? '\n')
 	 * ;
 	 */
 	protected String getNEWLINEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
-		return "";
+		return "\n";
 	}
 	
 	/**

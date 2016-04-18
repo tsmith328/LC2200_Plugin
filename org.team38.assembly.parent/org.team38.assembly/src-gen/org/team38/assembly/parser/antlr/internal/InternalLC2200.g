@@ -86,17 +86,17 @@ ruleProgram returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0());
 				}
-				lv_lineEnds_1_0=ruleLineEnd
+				lv_lines_1_0=ruleLineEnd
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProgramRule());
 					}
 					add(
 						$current,
-						"lineEnds",
-						lv_lineEnds_1_0,
+						"lines",
+						lv_lines_1_0,
 						"org.team38.assembly.LC2200.LineEnd");
 					afterParserOrEnumRuleCall();
 				}
@@ -125,23 +125,42 @@ ruleProgram returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0());
 					}
-					lv_lineEnds_3_0=ruleLineEnd
+					lv_lines_3_0=ruleLineEnd
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getProgramRule());
 						}
 						add(
 							$current,
-							"lineEnds",
-							lv_lineEnds_3_0,
+							"lines",
+							lv_lines_3_0,
 							"org.team38.assembly.LC2200.LineEnd");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
 		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0());
+				}
+				lv_lines_4_0=ruleLine
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					add(
+						$current,
+						"lines",
+						lv_lines_4_0,
+						"org.team38.assembly.LC2200.Line");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
 	)
 ;
 
@@ -1484,17 +1503,17 @@ RULE_LA : 'la';
 
 RULE_WORD : '.word';
 
-RULE_OOP : ('halt'|'ei'|'di'|'reti');
+RULE_OOP : ('halt'|'ei'|'di'|'reti'|'bono');
 
 RULE_NOOP : 'noop';
 
-RULE_JOP : 'jalr';
+RULE_JOP : ('jalr'|'bonj');
 
-RULE_ROP : ('add'|'nand');
+RULE_ROP : ('add'|'nand'|'bonr');
 
 RULE_IOP_IMM : 'addi';
 
-RULE_IOP_OFFSET : ('lw'|'sw');
+RULE_IOP_OFFSET : ('lw'|'sw'|'boni');
 
 RULE_IOP_LABEL : 'beq';
 
@@ -1506,7 +1525,7 @@ RULE_COMMA : ',';
 
 RULE_COMMENT : ';' ~(('\n'|'\r'))*;
 
-RULE_NEWLINE : (EOF|'\r'? '\n');
+RULE_NEWLINE : ' '* '\r'? '\n';
 
 RULE_REG : ('$zero'|'$at'|'$v0'|'$a0'|'$a1'|'$a2'|'$t0'|'$t1'|'$t2'|'$s0'|'$s1'|'$s2'|'$k0'|'$sp'|'$fp'|'$ra');
 

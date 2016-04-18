@@ -1,12 +1,12 @@
 package org.team38.assembly
 
-import org.team38.assembly.lC2200.Program
+import java.util.HashMap
 import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EObject
 import org.team38.assembly.lC2200.Directive
 import org.team38.assembly.lC2200.Instruction
-import java.util.HashMap
-import org.team38.assembly.lC2200.Line
 import org.team38.assembly.lC2200.LabelBeg
+import org.team38.assembly.lC2200.Program
 
 class LabelHandler {
 	
@@ -19,7 +19,7 @@ class LabelHandler {
 		var offset = 0;
 		var HashMap<String, Integer> labelTable = new HashMap<String, Integer>();
 		
-		var EList<Line> lines = root.getLines();
+		var EList<EObject> lines = root.getLines();
 
 		for(line : lines) {
 			if (line.eClass().getName().equals("Directive")) {
@@ -32,11 +32,13 @@ class LabelHandler {
 				var labelBeg = instr.getLabel();
 				addLabel(labelBeg, labelTable, offset);
 			}
-			offset++
+			if(!line.eClass().getName().equals("LineEnd")) {
+				offset++
+			}
 		}	
 		return labelTable
 	}
-	def static addLabel(LabelBeg labelBeg, HashMap<String, Integer> labelTable, int offset) {
+	def private static addLabel(LabelBeg labelBeg, HashMap<String, Integer> labelTable, int offset) {
 		if(labelBeg != null) {
 			var label = labelBeg.getLabel();
 			if (label != null) {

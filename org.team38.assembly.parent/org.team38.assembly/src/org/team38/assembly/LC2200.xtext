@@ -4,7 +4,7 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	{Program} lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)* (lines+=Line)?
+	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* (lines+=Line)?
 ;
 
 Line: 
@@ -115,7 +115,8 @@ terminal OOP:
 	'halt' 	|
 	'ei'	|
 	'di'	|
-	'reti'
+	'reti'	|
+	'bono'
 ;
 
 terminal NOOP:
@@ -123,12 +124,14 @@ terminal NOOP:
 ;
 
 terminal JOP:
-	'jalr'
+	'jalr' |
+	'bonj'
 ;
 
 terminal ROP:
 	'add'	|
-	'nand'
+	'nand'	|
+	'bonr'
 ;
 
 terminal IOP_IMM:
@@ -137,7 +140,8 @@ terminal IOP_IMM:
 
 terminal IOP_OFFSET:
 	'lw' |
-	'sw'
+	'sw' |
+	'boni'
 ;
 
 terminal IOP_LABEL:

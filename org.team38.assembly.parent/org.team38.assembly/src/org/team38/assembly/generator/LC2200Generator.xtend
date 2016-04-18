@@ -3,30 +3,30 @@
  */
 package org.team38.assembly.generator
 
+import java.util.HashMap
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.team38.assembly.lC2200.Program
-import org.team38.assembly.lC2200.Directive
-import org.team38.assembly.lC2200.Instruction
-import org.team38.assembly.lC2200.NOOPDirective
-import org.team38.assembly.lC2200.WordDirective
-import org.team38.assembly.lC2200.LADirective
-import org.team38.assembly.lC2200.OInstruction
-import org.team38.assembly.lC2200.RInstruction
-import org.team38.assembly.lC2200.JInstruction
-import org.team38.assembly.lC2200.IInstruction
-import org.team38.assembly.lC2200.RInstructionTrans
-import org.team38.assembly.lC2200.IInstructionImmTrans
-import org.team38.assembly.lC2200.IInstructionOffsetTrans
-import org.team38.assembly.lC2200.IInstructionLabelTrans
-import org.team38.assembly.lC2200.JInstructionTrans
-import org.team38.assembly.lC2200.RegTrans
-import org.eclipse.emf.common.util.EList;
-import java.util.HashMap;
 import org.team38.assembly.LabelHandler
-import org.team38.assembly.lC2200.Line
+import org.team38.assembly.lC2200.Directive
+import org.team38.assembly.lC2200.IInstruction
+import org.team38.assembly.lC2200.IInstructionImmTrans
+import org.team38.assembly.lC2200.IInstructionLabelTrans
+import org.team38.assembly.lC2200.IInstructionOffsetTrans
+import org.team38.assembly.lC2200.Instruction
+import org.team38.assembly.lC2200.JInstruction
+import org.team38.assembly.lC2200.JInstructionTrans
+import org.team38.assembly.lC2200.LADirective
+import org.team38.assembly.lC2200.NOOPDirective
+import org.team38.assembly.lC2200.OInstruction
+import org.team38.assembly.lC2200.Program
+import org.team38.assembly.lC2200.RInstruction
+import org.team38.assembly.lC2200.RInstructionTrans
+import org.team38.assembly.lC2200.RegTrans
+import org.team38.assembly.lC2200.WordDirective
 
 /**
  * Generates binary output from the assembled instructions
@@ -34,9 +34,19 @@ import org.team38.assembly.lC2200.Line
  */
 class LC2200Generator extends AbstractGenerator {
 	/**
-	 * A buffer which will accumulate the generated binary
+	 * A buffer which will accumulate the pretty print generated binary
 	 */
 	private StringBuffer assembledOutput;
+	
+	/**
+	 * A buffer which will accumulate the 16 bit generated hex
+	 */
+	private StringBuffer hex16Output;
+	
+	/**
+	 * A buffer which will accumulate the 32 bit generated hex
+	 */
+	private StringBuffer hex32Output;
 	 
 	/**
 	 * A hash map storing the location of all labels for calculating branches
@@ -63,7 +73,9 @@ class LC2200Generator extends AbstractGenerator {
 	 * @param context - Unused 
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		assembledOutput = new StringBuffer();		
+		assembledOutput = new StringBuffer();			
+		hex16Output = new StringBuffer();
+		hex32Output = new StringBuffer();
 		offset = 0;
 		
 		var e_root = resource.getContents().get(0);
@@ -76,9 +88,12 @@ class LC2200Generator extends AbstractGenerator {
 		}
 		
 		filename = resource.toString();
-		filename = filename.substring(0, filename.length() - 2) + "bin";
-		
-		fsa.generateFile(filename, assembledOutput.toString().trim());
+		var binFile = filename.substring(filename.lastIndexOf("/"), filename.length() - 2) + "bin";
+		var hex16File = filename.substring(filename.lastIndexOf("/"), filename.length() - 3) + "-16.lc";
+		var hex32File = filename.substring(filename.lastIndexOf("/"), filename.length() - 3) + "-32.lc";
+		fsa.generateFile(binFile, assembledOutput.toString().trim());
+		fsa.generateFile(hex16File, hex16Output.toString().trim());
+		fsa.generateFile(hex32File, hex16Output.toString().trim());
 	}
 	
 	
@@ -88,17 +103,19 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param root - The root of the parse tree
 	 */
-	def compileProgram(Program root) {
-		var EList<Line> lines = root.getLines();
+	def private compileProgram(Program root) {
+		var EList<EObject> nodes = root.eContents();
 		
-		for(line : lines) {
-			if (line.eClass().getName().equals("Directive")) {
-				compileDirective(line as Directive);
-			}
-			else if (line.eClass().getName().equals("Instruction")) {
-				compileInstruction(line as Instruction);
-			}
-			offset++;
+		for(node : nodes) {
+			if (node.eClass().getName().equals("Directive")) {
+				compileDirective(node as Directive);
+				offset++;
+			} else if (node.eClass().getName().equals("Instruction")) {
+				compileInstruction(node as Instruction);
+				offset++;
+			} else if(node.eClass().getName().equals("LineEnd")) {
+				assembledOutput.append("\n");
+			}			
 		}	
 	}
 	
@@ -109,8 +126,8 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param dir - The directive node of the parse tree
 	 */
-	def compileDirective(Directive dir) {
-		var dirType = dir.getDirective()
+	def private compileDirective(Directive dir) {
+		var dirType = dir.getDirective();
 		if (dirType.eClass().getName().equals("NOOPDirective")) {
 			compileNOOP(dirType as NOOPDirective);
 		}
@@ -128,7 +145,7 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param instr - The instruction node of the parse tree
 	 */
-	def compileInstruction(Instruction instr) {
+	def private compileInstruction(Instruction instr) {
 		var instrType = instr.getInstruction()
 		if(instrType.eClass().getName().equals("IInstruction")) {
 			compileIInstruction(instrType as IInstruction);
@@ -150,13 +167,17 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param la - The node to generate binary for
 	 */
-	def compileLA(LADirective la) {
+	def private compileLA(LADirective la) {
 		var labelTrans = la.getLabel();
 		var regTrans = la.getReg();
+		
 		var reg = regTrans.getReg();
 		var immBin = "";
+		var label = "";
+		
+		//Get address of label for immediate value
 		if (labelTrans != null) {
-			var label = labelTrans.getLabel();
+			label = labelTrans.getLabel();
 			if (label != null) {
 				var labelLine = labelTable.get(label);
 				if(labelLine != null) {
@@ -164,14 +185,27 @@ class LC2200Generator extends AbstractGenerator {
 				} else {
 					immBin = "00000";
 				}
+			} else {
+				label = "";
 			}
 		}
+		
 		var reg1Bin = regToBinary(reg);
 		var reg2Bin = regToBinary("$zero");
-		var opBin = opToBinary("addi");
+		var opBin16 = opToBinary16("addi");
+		var opBin32 = opToBinary32("addi");
 		
-		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
-		''');
+		if(opBin16 != "") {
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin»''');
+						
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin»''');
+			hex16Output.append(hex16 + " ");
+		} else {
+			assembledOutput.append('''Not supported in 16-bit architecture''');
+		}		
+		
+		var hex32 = binToHex('''''');
+		hex32Output.append(hex32 + " ")
 		
 	}
 	
@@ -180,9 +214,12 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param noop - The noop node
 	 */
-	def compileNOOP(NOOPDirective noop) {
-		assembledOutput.append('''0000000000000000
-		''');
+	def private compileNOOP(NOOPDirective noop) {
+
+		assembledOutput.append('''NOOP: 0000000000000000''');
+		
+		hex16Output.append("0000 ");
+		hex32Output.append("00000000 ");
 	}
 	
 	/**
@@ -191,12 +228,19 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param word - The word node
 	 */
-	def compileWord(WordDirective word) {		
+	def private compileWord(WordDirective word) {		
 		var wordImm = word.getImm();
 		
-		var wordImmBin = immToBinary(wordImm, 16)
-		assembledOutput.append('''«wordImmBin»
-		''');
+		var wordImmBin16 = immToBinary(wordImm, 16);
+		var wordImmBin32 = immToBinary(wordImm, 32);
+		
+		assembledOutput.append('''WORD: «wordImmBin16»''');
+		
+		var hex16 = binToHex('''«wordImmBin16»''');
+		hex16Output.append(hex16 + " ");
+		
+		var hex32 = binToHex('''«wordImmBin32»''');
+		hex32Output.append(hex32 + " ");
 	}
 	
 	/**
@@ -205,29 +249,32 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param iInstr - The IInstruction node
 	 */
-	def compileIInstruction(IInstruction iInstr) {
-		var opTrans = iInstr.getI_opcode();
+	def private compileIInstruction(IInstruction iInstr) {		
 		var op = "";
+		var opTrans = iInstr.getI_opcode();
+		
 		if(opTrans instanceof IInstructionImmTrans) {
 			op = (opTrans as IInstructionImmTrans).getI_opcode();
 		} else if(opTrans instanceof IInstructionOffsetTrans) {
 			op = (opTrans as IInstructionOffsetTrans).getI_opcode();
-		}		
-		else if (opTrans instanceof IInstructionLabelTrans){
+		} else if (opTrans instanceof IInstructionLabelTrans){
 			op = (opTrans as IInstructionLabelTrans).getI_opcode();
 		}
-		var reg1Trans = iInstr.getReg1();
-		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg1Trans = iInstr.getReg1();		
 		var reg2Trans = iInstr.getReg2();
-		var reg2 = (reg2Trans as RegTrans).getReg();
-		var imm = iInstr.getImm();
 		var labelTrans = iInstr.getLabel();
 		
-		var opBin = opToBinary(op.toString());
+		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg2 = (reg2Trans as RegTrans).getReg();
+		var imm = iInstr.getImm();
+		
+		var opBin16 = opToBinary16(op.toString());
+		var opBin32 = opToBinary32(op.toString());
 		var reg1Bin = regToBinary(reg1.toString());
 		var reg2Bin = regToBinary(reg2.toString());
 		var immBin = "";
 		
+		//Find offset to branched label
 		if(op.equals("beq")) {
 			if (labelTrans != null) {
 				var label = labelTrans.getLabel();
@@ -235,23 +282,26 @@ class LC2200Generator extends AbstractGenerator {
 					var labelLine = labelTable.get(label);
 					if(labelLine != null) {
 						var dif = labelLine - offset;
-						if(dif < 15 && dif > -16) {
-							immBin = immToBinary(Integer.toString(dif), 5);
-						} else {
-							immBin = "xxxxx";
-						}		
+						immBin = immToBinary(Integer.toString(dif), 5);
 					} else {
 						immBin = "xxxxx";
 					}
 				}
-			}
-			
+			}			
 		} else {
 			immBin = immToBinary(imm, 5);
 		}		
 		
-		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «immBin»
-		''');
+		if(opBin16 != "") {
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin»''');			
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin»''')
+			hex16Output.append(hex16 + " ");
+		} else {
+			assembledOutput.append('''Not supported in 16-bit architecture''');
+		}	
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«immBin»''')
+		hex32Output.append(hex32 + " ");
+		
 	}
 	
 	/**
@@ -260,23 +310,34 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param rInstr - The RInstruction node
 	 */
-	def compileRInstruction(RInstruction rInstr) {
-		var opTrans = rInstr.getR_opcode();
-		var op = (opTrans as RInstructionTrans).getR_opcode();
-		var reg1Trans = rInstr.getReg1();
-		var reg1 = (reg1Trans as RegTrans).getReg();
-		var reg2Trans = rInstr.getReg2();
-		var reg2 = (reg2Trans as RegTrans).getReg();
+	def private compileRInstruction(RInstruction rInstr) {
+		var opTrans = rInstr.getR_opcode();		
+		var reg1Trans = rInstr.getReg1();		
+		var reg2Trans = rInstr.getReg2();		
 		var reg3Trans = rInstr.getReg3();
+		
+		var op = (opTrans as RInstructionTrans).getR_opcode();
+		var reg1 = (reg1Trans as RegTrans).getReg();
+		var reg2 = (reg2Trans as RegTrans).getReg();
 		var reg3 = (reg3Trans as RegTrans).getReg();
 		
-		var opBin = opToBinary(op.toString());
+		var opBin16 = opToBinary16(op.toString());
+		var opBin32 = opToBinary32(op.toString());
 		var reg1Bin = regToBinary(reg1.toString());
 		var reg2Bin = regToBinary(reg2.toString());
 		var reg3Bin = regToBinary(reg3.toString());
 		
-		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» «reg3Bin» 0
-		''');
+		if(opBin16 != "") {
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  RZ: «reg3Bin»  UNUSED: 0''');
+			
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«reg3Bin»0''')
+			hex16Output.append(hex16 + " ");
+		} else {
+			assembledOutput.append('''Not supported in 16-bit architecture''');
+		}	
+		
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«reg3Bin»0''');
+		hex32Output.append(hex32 + " ");
 	}
 	
 	/**
@@ -285,20 +346,32 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param jInstr - The JInstruction node
 	 */
-	def compileJInstruction(JInstruction jInstr) {
-		var opTrans = jInstr.getJ_opcode();
-		var op = (opTrans as JInstructionTrans).getJ_opcode();
-		var reg1Trans = jInstr.getReg1();
-		var reg1 = (reg1Trans as RegTrans).getReg();
+	def private compileJInstruction(JInstruction jInstr) {
+		var opTrans = jInstr.getJ_opcode();		
+		var reg1Trans = jInstr.getReg1();		
 		var reg2Trans = jInstr.getReg2();
+		
+		
+		var op = (opTrans as JInstructionTrans).getJ_opcode();
+		var reg1 = (reg1Trans as RegTrans).getReg();
 		var reg2 = (reg2Trans as RegTrans).getReg();
 		
-		var opBin = opToBinary(op.toString());
+		var opBin16 = opToBinary16(op.toString());
+		var opBin32 = opToBinary32(op.toString());
 		var reg1Bin = regToBinary(reg1.toString());
 		var reg2Bin = regToBinary(reg2.toString());
 		
-		assembledOutput.append('''«opBin» «reg1Bin» «reg2Bin» 00000
-		''');
+		if(opBin16 != "") {
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  Unused: 00000''');
+			
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»00000''')
+			hex16Output.append(hex16 + " ");
+		} else {
+			assembledOutput.append('''Not supported in 16-bit architecture''');
+		}		
+		
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»00000''');
+		hex32Output.append(hex32 + " ");
 	}
 	
 	/**
@@ -307,20 +380,74 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param oInstr - The OInstruction node
 	 */
-	def compileOInstruction(OInstruction oInstr) {
+	def private compileOInstruction(OInstruction oInstr) {
 		var op = oInstr.getO_opcode();
 		
-		var opBin = opToBinary(op);
-		assembledOutput.append('''«opBin» 00000000000 0
-		''');
+		var opBin16 = opToBinary16(op);
+		var opBin32 = opToBinary32(op);
+		
+		//Don't show unsupported 16 bit instructions
+		if(opBin16 != "") {			
+			assembledOutput.append('''OP: «opBin16»  UNUSED: 000000000000''');		
+			
+			var hex16 = binToHex('''«opBin16»0000000000000''')
+			hex16Output.append(hex16 + " ");
+		} else {
+			assembledOutput.append('''Not supported in 16-bit architecture''');
+		}
+				
+		var hex32 = binToHex('''«opBin32»000000000000''')
+		hex32Output.append(hex32 + " ");
 	}
 	
 	/**
-	 * Helper method to convert opcodes into binary form.
+	 * Helper method to convert opcodes into 32-bit binary form.
 	 * 
 	 * @param op - The opcode to be converted to binary
 	 */
-	def opToBinary(String op) {
+	def private opToBinary32(String op) {
+		switch (op) {
+			case "add":
+				return "0000"
+			case "nand":
+				return "0001"
+			case "addi":
+				return "0010"
+			case "lw":
+				return "0011"
+			case "sw":
+				return "0100"
+			case "beq":
+				return "0101"
+			case "jalr":
+				return "0110"
+			case "halt":
+				return "0111"
+			case "ei":
+				return "1100"
+			case "di":
+				return "1101"
+			case "reti":
+				return "1100"
+			case "boni":
+				return "1101"
+			case "bonj":
+				return "1110"
+			case "bonr":
+				return "1000"
+			case "bono":
+				return "1001"
+			default:
+				return ""
+		}
+	}
+	
+	/**
+	 * Helper method to convert opcodes into 16-bit binary form.
+	 * 
+	 * @param op - The opcode to be converted to binary
+	 */
+	def private opToBinary16(String op) {
 		switch (op) {
 			case "add":
 				return "000"
@@ -348,7 +475,7 @@ class LC2200Generator extends AbstractGenerator {
 	 * 
 	 * @param reg - The register to convert to binary
 	 */
-	def regToBinary(String reg) {
+	def private regToBinary(String reg) {
 		switch (reg) {
 			case "$zero":
 				return "0000"
@@ -359,7 +486,7 @@ class LC2200Generator extends AbstractGenerator {
 			case "$a0":	
 				return "0011"
 			case "$a1":	
-				return "0010"
+				return "0100"
 			case "$a2":	
 				return "0101"
 			case "$t0":	
@@ -393,20 +520,23 @@ class LC2200Generator extends AbstractGenerator {
 	 * @param imm - The immediate to convert
 	 * @param bitLength - The length of the final bit string
 	 */
-	def immToBinary(String imm, int bitLength) {
+	def private immToBinary(String imm, int bitLength) {
 		var immBin = ""		
-		//Handle Hex or Decimal separately
+		
 		try {
+			var immInt = 0;
+			//Handle Hex or Decimal separately
 			if(imm.indexOf("0x") != -1) {
-				immBin = Integer.toBinaryString(Integer.parseInt(imm.substring(2), 16));
+				immInt = Integer.parseInt(imm.substring(2), 16);				
 			} else {
-				immBin = Integer.toBinaryString(Integer.parseInt(imm));
-			}
+				immInt =Integer.parseInt(imm);
+			}			
+			immBin = Integer.toBinaryString(immInt);
 		} catch(NumberFormatException e) {			
 			immBin = "xxxxx";
 		}		
 		
-		//Get string 5 bits long
+		//Shorten negative number bit strings
 		if(immBin.length() > bitLength) {
 			immBin = immBin.substring(immBin.length() - bitLength, immBin.length())
 		}
@@ -416,9 +546,36 @@ class LC2200Generator extends AbstractGenerator {
 			}
 		}
 		
-		return immBin
-		
+		return immBin		
 	}
+	
+	/**
+	 * Helper method to convert binary into hex string.
+	 * 
+	 * @param bin - The binary string
+	 */
+	 def private binToHex(String bin) {
+	 	var hex = ""
+
+	 	if(bin.length() == 16 || bin.length() == 32) {
+	 		try {
+			 	var binInt = Integer.parseInt(bin,2);
+			 	hex = Integer.toString(binInt, 16);
+			 	
+			 	while(hex.length() < bin.length()/4) {
+			 		hex = "0" + hex;
+			 	}		 	
+		 	} catch(NumberFormatException e) {
+		 		if(bin.length() == 16) {
+		 			hex = "xxxx"
+		 		} else {
+		 			hex = "xxxxxxxx"
+		 		}
+		 	}	 	
+	 	}	
+	 	 	
+	 	return hex	 	
+	 }
 	
 
     

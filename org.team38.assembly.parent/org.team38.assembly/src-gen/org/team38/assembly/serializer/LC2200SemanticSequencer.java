@@ -405,7 +405,7 @@ public class LC2200SemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (lineEnds+=LineEnd* (lines+=Line lineEnds+=LineEnd+)*)
+	 *     (lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?)
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

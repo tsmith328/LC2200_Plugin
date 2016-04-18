@@ -7,7 +7,6 @@
   <genPackages prefix="LC2200" basePackage="org.team38.assembly" disposableProviderFactory="true"
       fileExtensions="s" ecorePackage="LC2200.ecore#/">
     <genClasses ecoreClass="LC2200.ecore#//Program">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/lineEnds"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LC2200.ecore#//Program/lines"/>
     </genClasses>
     <genClasses ecoreClass="LC2200.ecore#//Line">
