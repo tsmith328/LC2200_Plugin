@@ -11,7 +11,7 @@ import org.team38.assembly.LabelHandler
 import org.team38.assembly.lC2200.Program
 
 /**
- * Custom content assistant proposals
+ * Provides custom content assistant proposals
  * 
  */
 class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
@@ -38,7 +38,13 @@ class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
 	]		
 	
 	/**
+	 * Displays register names when prompted to code assist 
+	 * on a RegTrans grammar element.
 	 * 
+	 * @param model - The RegTrans node
+	 * @param ruleCall - The rule call that the RegTrans is contained in
+	 * @param context - Current context
+	 * @param acceptor - Adds valid proposals to be displayed
 	 */
 	override 	
 	def complete_RegTrans(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -49,7 +55,13 @@ class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
 	}
 	
 	/**
+	 * Displays existing label names when prompted to code
+	 * assist on a LabelEnd grammar element.
 	 * 
+	 * @param model - The LabelEnd node
+	 * @param ruleCall - The rule call that the LabelEnd is contained in
+	 * @param context - Current context
+	 * @param acceptor - Adds valid proposals to be displayed
 	 */
 	 override
 	 def complete_LabelEnd(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor){

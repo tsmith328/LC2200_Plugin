@@ -15,12 +15,17 @@ import org.eclipse.emf.common.util.EList
 import org.team38.assembly.lC2200.Line
 
 /**
- * This class contains custom validation rules. 
- *
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * Provide various semantic checks for written LC-2200 code.
+ * 
  */
 class LC2200Validator extends AbstractLC2200Validator {
 	
+	/**
+	 * Checks whether I-instruction immediate values can be
+	 * represented in 5 bits (for 16-bit instructions)
+	 * 
+	 * @param instr - The IInstruction to check
+	 */
 	@Check
 	def checkInstructionImmediate(IInstruction instr) {
 		//Ignore label I-Instructions
@@ -46,6 +51,12 @@ class LC2200Validator extends AbstractLC2200Validator {
 		}
 	}
 	
+	/**
+	 * Check whether word immediate values can fit
+	 * within 16 bits.
+	 * 
+	 * @param word - The word directive to check
+	 */
 	@Check
 	def checkWordImmediate(WordDirective word) {
 		var imm = word.getImm();
@@ -66,6 +77,12 @@ class LC2200Validator extends AbstractLC2200Validator {
 		}
 	}
 	
+	/**
+	 * Check whether the offset to a label in a branching
+	 * I-type instruction can fit into the 5 bit immediate.
+	 * 
+	 * @param instr - The IInstruction to check
+	 */
 	@Check
 	def checkLabelIsValid(IInstruction instr) {
 		if(instr.getI_opcode().eClass().getName().equals("IInstructionLabelTrans")) {	
@@ -102,6 +119,11 @@ class LC2200Validator extends AbstractLC2200Validator {
 		}			
 	}
 	
+	/**
+	 * Check whether there are duplicate label declarations
+	 * 
+	 * @param line - The line to check
+	 */
 	@Check
 	def checkDuplicateLabel(Line line) {
 		var labelBeg = line.getLabel()

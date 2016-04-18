@@ -28,38 +28,83 @@ public class LC2200LabelProvider extends DefaultEObjectLabelProvider {
     super(delegate);
   }
   
+  /**
+   * Label to be shown for Instruction node
+   * 
+   * @param instr - The Instruction node
+   */
   public String text(final Instruction instr) {
     return "Instruction";
   }
   
+  /**
+   * Label to be shown for Directive node
+   * 
+   * @param dir - The Directive node
+   */
   public String text(final Directive dir) {
     return "Directive";
   }
   
+  /**
+   * Label to be shown for NOOPDirective node
+   * 
+   * @param noop - The NOOPDirective node
+   */
   public String text(final NOOPDirective noop) {
     return "Noop";
   }
   
+  /**
+   * Label to be shown for WordDirective node
+   * 
+   * @param word - The WordDirective node
+   */
   public String text(final WordDirective word) {
     return "Word";
   }
   
+  /**
+   * Label to be shown for LADirective node
+   * 
+   * @param la - The LADirective node
+   */
   public String text(final LADirective la) {
     return "Load Address";
   }
   
+  /**
+   * Label to be shown for OInstruction node
+   * 
+   * @param oinstr - The OInstruction node
+   */
   public String text(final OInstruction oinstr) {
     return "O-Instruction";
   }
   
+  /**
+   * Label to be shown for IInstruction node
+   * 
+   * @param iinstr - The IInstruction node
+   */
   public String text(final IInstruction iinstr) {
     return "I-Instruction";
   }
   
+  /**
+   * Label to be shown for RInstruction node
+   * 
+   * @param rinstr - The RInstruction node
+   */
   public String text(final RInstruction rinstr) {
     return "R-Instruction";
   }
   
+  /**
+   * Label to be shown for JInstruction node
+   * 
+   * @param jinstr - The JInstruction node
+   */
   public String text(final JInstruction jinstr) {
     return "J-Instruction";
   }

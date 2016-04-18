@@ -19,7 +19,7 @@ import org.team38.assembly.lC2200.Program;
 import org.team38.assembly.ui.contentassist.AbstractLC2200ProposalProvider;
 
 /**
- * Custom content assistant proposals
+ * Provides custom content assistant proposals
  */
 @SuppressWarnings("all")
 public class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
@@ -28,6 +28,15 @@ public class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
    */
   private final List<String> REGTRANS_PROPOSALS = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("$zero", "$at", "$v0", "$a0", "$a1", "$a2", "$t0", "$t1", "$t2", "$s0", "$s1", "$s2", "$k0", "$sp", "$fp", "$ra"));
   
+  /**
+   * Displays register names when prompted to code assist
+   * on a RegTrans grammar element.
+   * 
+   * @param model - The RegTrans node
+   * @param ruleCall - The rule call that the RegTrans is contained in
+   * @param context - Current context
+   * @param acceptor - Adds valid proposals to be displayed
+   */
   @Override
   public void complete_RegTrans(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     super.complete_RegTrans(model, ruleCall, context, acceptor);
@@ -37,6 +46,15 @@ public class LC2200ProposalProvider extends AbstractLC2200ProposalProvider {
     }
   }
   
+  /**
+   * Displays existing label names when prompted to code
+   * assist on a LabelEnd grammar element.
+   * 
+   * @param model - The LabelEnd node
+   * @param ruleCall - The rule call that the LabelEnd is contained in
+   * @param context - Current context
+   * @param acceptor - Adds valid proposals to be displayed
+   */
   @Override
   public void complete_LabelEnd(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     super.complete_LabelEnd(model, ruleCall, context, acceptor);

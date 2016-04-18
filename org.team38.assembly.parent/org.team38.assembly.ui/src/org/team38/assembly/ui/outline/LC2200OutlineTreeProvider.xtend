@@ -11,11 +11,18 @@ import org.team38.assembly.lC2200.Instruction
 import org.team38.assembly.lC2200.Directive
 
 /**
- * Customization of the default outline structure.
+ * Customizes the Eclipse outline view to show labels
  *
- * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#outline
  */
 class LC2200OutlineTreeProvider extends DefaultOutlineTreeProvider {
+	
+	/**
+	 * Only adds labels to the outline view. Labels are found by
+	 * traversing the parse tree
+	 * 
+	 * @param parentNode - The document root node
+	 * @param program - The parse tree root node
+	 */
 	def _createChildren(DocumentRootNode parentNode, Program program) {
     	for (EObject element : program.eContents()) {
     		var className = element.eClass().getName()

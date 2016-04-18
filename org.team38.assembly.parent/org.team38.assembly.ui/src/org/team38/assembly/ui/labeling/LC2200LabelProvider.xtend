@@ -28,50 +28,85 @@ class LC2200LabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 	
+	/**
+	 * Label to be shown for Instruction node
+	 * 
+	 * @param instr - The Instruction node
+	 */
 	def text(Instruction instr) {
 		'Instruction'
 	}
 	
+	/**
+	 * Label to be shown for Directive node
+	 * 
+	 * @param dir - The Directive node
+	 */
 	def text(Directive dir) {
 		'Directive'
 	}
 	
+	/**
+	 * Label to be shown for NOOPDirective node
+	 * 
+	 * @param noop - The NOOPDirective node
+	 */	
 	def text(NOOPDirective noop) {
 		'Noop'
 	}
 	
+	/**
+	 * Label to be shown for WordDirective node
+	 * 
+	 * @param word - The WordDirective node
+	 */	
 	def text(WordDirective word) {
 		'Word'
 	}
 	
+	/**
+	 * Label to be shown for LADirective node
+	 * 
+	 * @param la - The LADirective node
+	 */	
 	def text(LADirective la) {
 		'Load Address'
 	}
 	
+	/**
+	 * Label to be shown for OInstruction node
+	 * 
+	 * @param oinstr - The OInstruction node
+	 */	
 	def text(OInstruction oinstr) {
 		'O-Instruction'
 	}
 	
+	/**
+	 * Label to be shown for IInstruction node
+	 * 
+	 * @param iinstr - The IInstruction node
+	 */	
 	def text(IInstruction iinstr) {
 		'I-Instruction'
 	}
 	
+	/**
+	 * Label to be shown for RInstruction node
+	 * 
+	 * @param rinstr - The RInstruction node
+	 */	
 	def text(RInstruction rinstr) {
 		'R-Instruction'
 	}
 	
+	/**
+	 * Label to be shown for JInstruction node
+	 * 
+	 * @param jinstr - The JInstruction node
+	 */	
 	def text(JInstruction jinstr) {
 		'J-Instruction'
 	}
 	
-
-	// Labels and icons can be computed like this:
-	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
 }

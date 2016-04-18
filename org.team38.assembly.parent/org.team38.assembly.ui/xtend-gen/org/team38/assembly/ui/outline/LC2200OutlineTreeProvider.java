@@ -15,12 +15,17 @@ import org.team38.assembly.lC2200.LabelBeg;
 import org.team38.assembly.lC2200.Program;
 
 /**
- * Customization of the default outline structure.
- * 
- * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#outline
+ * Customizes the Eclipse outline view to show labels
  */
 @SuppressWarnings("all")
 public class LC2200OutlineTreeProvider extends DefaultOutlineTreeProvider {
+  /**
+   * Only adds labels to the outline view. Labels are found by
+   * traversing the parse tree
+   * 
+   * @param parentNode - The document root node
+   * @param program - The parse tree root node
+   */
   public void _createChildren(final DocumentRootNode parentNode, final Program program) {
     EList<EObject> _eContents = program.eContents();
     for (final EObject element : _eContents) {

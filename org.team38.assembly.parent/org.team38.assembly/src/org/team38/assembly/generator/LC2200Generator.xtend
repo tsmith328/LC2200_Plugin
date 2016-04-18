@@ -58,9 +58,9 @@ class LC2200Generator extends AbstractGenerator {
 	 * save generated binary output to a file. The code is scanned to obtain
 	 * label locations, and then compiled line by line.
 	 * 
-	 * @param resource
-	 * @param fsa
-	 * @param context
+	 * @param resource - Used to obtain the parse tree
+	 * @param fsa - Used to save the file to disk
+	 * @param context - Unused 
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		assembledOutput = new StringBuffer();		
@@ -82,7 +82,12 @@ class LC2200Generator extends AbstractGenerator {
 	}
 	
 	
-	
+	/**
+	 * Handle the root of the parse tree. Call appropriate
+	 * method for Directives and Instructions respectively
+	 * 
+	 * @param root - The root of the parse tree
+	 */
 	def compileProgram(Program root) {
 		var EList<Line> lines = root.getLines();
 		
@@ -97,6 +102,13 @@ class LC2200Generator extends AbstractGenerator {
 		}	
 	}
 	
+	/**
+	 * Handle the Directive node of the parse tree. Call the 
+	 * method for NOOPDirective, WordDirective, and LADirective 
+	 * node types.
+	 * 
+	 * @param dir - The directive node of the parse tree
+	 */
 	def compileDirective(Directive dir) {
 		var dirType = dir.getDirective()
 		if (dirType.eClass().getName().equals("NOOPDirective")) {
@@ -110,6 +122,12 @@ class LC2200Generator extends AbstractGenerator {
 		}
 	}
 	
+	/**
+	 * Handle the Instruction node of the parse tree. Call the method corresponding
+	 * to the instruction type.
+	 * 
+	 * @param instr - The instruction node of the parse tree
+	 */
 	def compileInstruction(Instruction instr) {
 		var instrType = instr.getInstruction()
 		if(instrType.eClass().getName().equals("IInstruction")) {
@@ -126,6 +144,12 @@ class LC2200Generator extends AbstractGenerator {
 		}			
 	}
 	
+	/**
+	 * Generate the binary output for an LADirective node. Use helper
+	 * methods to convert labels/registers/opcode to binary form.
+	 * 
+	 * @param la - The node to generate binary for
+	 */
 	def compileLA(LADirective la) {
 		var labelTrans = la.getLabel();
 		var regTrans = la.getReg();
@@ -151,11 +175,22 @@ class LC2200Generator extends AbstractGenerator {
 		
 	}
 	
+	/**
+	 * Generate the binary output for the NOOP node.
+	 * 
+	 * @param noop - The noop node
+	 */
 	def compileNOOP(NOOPDirective noop) {
 		assembledOutput.append('''0000000000000000
 		''');
 	}
 	
+	/**
+	 * Generate the binary for the WordDirective node.
+	 * Use a helper method to convert the immediate to binary.
+	 * 
+	 * @param word - The word node
+	 */
 	def compileWord(WordDirective word) {		
 		var wordImm = word.getImm();
 		
@@ -164,6 +199,12 @@ class LC2200Generator extends AbstractGenerator {
 		''');
 	}
 	
+	/**
+	 * Generate the binary for the I-type instruction node. Use
+	 * helper methods to convert registers/opcode/immediate to binary.
+	 * 
+	 * @param iInstr - The IInstruction node
+	 */
 	def compileIInstruction(IInstruction iInstr) {
 		var opTrans = iInstr.getI_opcode();
 		var op = "";
@@ -213,6 +254,12 @@ class LC2200Generator extends AbstractGenerator {
 		''');
 	}
 	
+	/**
+	 * Generate the binary for the R-type instruction. Use
+	 * helper methods to convert registers/opcode/immediate to binary.
+	 * 
+	 * @param rInstr - The RInstruction node
+	 */
 	def compileRInstruction(RInstruction rInstr) {
 		var opTrans = rInstr.getR_opcode();
 		var op = (opTrans as RInstructionTrans).getR_opcode();
@@ -232,6 +279,12 @@ class LC2200Generator extends AbstractGenerator {
 		''');
 	}
 	
+	/**
+	 * Generate the binary for the J-type instruction. Use
+	 * helper methods to convert registers/opcode/immediate to binary.
+	 * 
+	 * @param jInstr - The JInstruction node
+	 */
 	def compileJInstruction(JInstruction jInstr) {
 		var opTrans = jInstr.getJ_opcode();
 		var op = (opTrans as JInstructionTrans).getJ_opcode();
@@ -248,6 +301,12 @@ class LC2200Generator extends AbstractGenerator {
 		''');
 	}
 	
+	/**
+	 * Generate the binary for the O-type instruction. Use
+	 * helper methods to convert the opcode to binary.
+	 * 
+	 * @param oInstr - The OInstruction node
+	 */
 	def compileOInstruction(OInstruction oInstr) {
 		var op = oInstr.getO_opcode();
 		
@@ -256,6 +315,11 @@ class LC2200Generator extends AbstractGenerator {
 		''');
 	}
 	
+	/**
+	 * Helper method to convert opcodes into binary form.
+	 * 
+	 * @param op - The opcode to be converted to binary
+	 */
 	def opToBinary(String op) {
 		switch (op) {
 			case "add":
@@ -279,6 +343,11 @@ class LC2200Generator extends AbstractGenerator {
 		}
 	}
 	
+	/**
+	 * Helper method to convert registers to binary.
+	 * 
+	 * @param reg - The register to convert to binary
+	 */
 	def regToBinary(String reg) {
 		switch (reg) {
 			case "$zero":
@@ -318,6 +387,12 @@ class LC2200Generator extends AbstractGenerator {
 		}
 	}
 	
+	/**
+	 * Helper method to convert immediate values into a binary string.
+	 * 
+	 * @param imm - The immediate to convert
+	 * @param bitLength - The length of the final bit string
+	 */
 	def immToBinary(String imm, int bitLength) {
 		var immBin = ""		
 		//Handle Hex or Decimal separately

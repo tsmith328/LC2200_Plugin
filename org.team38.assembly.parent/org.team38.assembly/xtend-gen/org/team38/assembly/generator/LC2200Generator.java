@@ -64,9 +64,9 @@ public class LC2200Generator extends AbstractGenerator {
    * save generated binary output to a file. The code is scanned to obtain
    * label locations, and then compiled line by line.
    * 
-   * @param resource
-   * @param fsa
-   * @param context
+   * @param resource - Used to obtain the parse tree
+   * @param fsa - Used to save the file to disk
+   * @param context - Unused
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -98,6 +98,12 @@ public class LC2200Generator extends AbstractGenerator {
     fsa.generateFile(this.filename, _trim);
   }
   
+  /**
+   * Handle the root of the parse tree. Call appropriate
+   * method for Directives and Instructions respectively
+   * 
+   * @param root - The root of the parse tree
+   */
   public void compileProgram(final Program root) {
     EList<Line> lines = root.getLines();
     for (final Line line : lines) {
@@ -120,6 +126,13 @@ public class LC2200Generator extends AbstractGenerator {
     }
   }
   
+  /**
+   * Handle the Directive node of the parse tree. Call the
+   * method for NOOPDirective, WordDirective, and LADirective
+   * node types.
+   * 
+   * @param dir - The directive node of the parse tree
+   */
   public StringBuffer compileDirective(final Directive dir) {
     StringBuffer _xblockexpression = null;
     {
@@ -154,6 +167,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Handle the Instruction node of the parse tree. Call the method corresponding
+   * to the instruction type.
+   * 
+   * @param instr - The instruction node of the parse tree
+   */
   public StringBuffer compileInstruction(final Instruction instr) {
     StringBuffer _xblockexpression = null;
     {
@@ -197,6 +216,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary output for an LADirective node. Use helper
+   * methods to convert labels/registers/opcode to binary form.
+   * 
+   * @param la - The node to generate binary for
+   */
   public StringBuffer compileLA(final LADirective la) {
     StringBuffer _xblockexpression = null;
     {
@@ -237,6 +262,11 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary output for the NOOP node.
+   * 
+   * @param noop - The noop node
+   */
   public StringBuffer compileNOOP(final NOOPDirective noop) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("0000000000000000");
@@ -244,6 +274,12 @@ public class LC2200Generator extends AbstractGenerator {
     return this.assembledOutput.append(_builder);
   }
   
+  /**
+   * Generate the binary for the WordDirective node.
+   * Use a helper method to convert the immediate to binary.
+   * 
+   * @param word - The word node
+   */
   public StringBuffer compileWord(final WordDirective word) {
     StringBuffer _xblockexpression = null;
     {
@@ -257,6 +293,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary for the I-type instruction node. Use
+   * helper methods to convert registers/opcode/immediate to binary.
+   * 
+   * @param iInstr - The IInstruction node
+   */
   public StringBuffer compileIInstruction(final IInstruction iInstr) {
     StringBuffer _xblockexpression = null;
     {
@@ -330,6 +372,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary for the R-type instruction. Use
+   * helper methods to convert registers/opcode/immediate to binary.
+   * 
+   * @param rInstr - The RInstruction node
+   */
   public StringBuffer compileRInstruction(final RInstruction rInstr) {
     StringBuffer _xblockexpression = null;
     {
@@ -364,6 +412,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary for the J-type instruction. Use
+   * helper methods to convert registers/opcode/immediate to binary.
+   * 
+   * @param jInstr - The JInstruction node
+   */
   public StringBuffer compileJInstruction(final JInstruction jInstr) {
     StringBuffer _xblockexpression = null;
     {
@@ -392,6 +446,12 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Generate the binary for the O-type instruction. Use
+   * helper methods to convert the opcode to binary.
+   * 
+   * @param oInstr - The OInstruction node
+   */
   public StringBuffer compileOInstruction(final OInstruction oInstr) {
     StringBuffer _xblockexpression = null;
     {
@@ -406,6 +466,11 @@ public class LC2200Generator extends AbstractGenerator {
     return _xblockexpression;
   }
   
+  /**
+   * Helper method to convert opcodes into binary form.
+   * 
+   * @param op - The opcode to be converted to binary
+   */
   public String opToBinary(final String op) {
     switch (op) {
       case "add":
@@ -429,6 +494,11 @@ public class LC2200Generator extends AbstractGenerator {
     }
   }
   
+  /**
+   * Helper method to convert registers to binary.
+   * 
+   * @param reg - The register to convert to binary
+   */
   public String regToBinary(final String reg) {
     switch (reg) {
       case "$zero":
@@ -468,6 +538,12 @@ public class LC2200Generator extends AbstractGenerator {
     }
   }
   
+  /**
+   * Helper method to convert immediate values into a binary string.
+   * 
+   * @param imm - The immediate to convert
+   * @param bitLength - The length of the final bit string
+   */
   public String immToBinary(final String imm, final int bitLength) {
     String immBin = "";
     try {
