@@ -15,6 +15,7 @@ import org.eclipse.xtext.builder.nature.ToggleXtextNatureAction;
 
 /**
  * @author Sven Efftinge - Initial contribution and API
+ * @author Matthew Moreno - Replaced aftrCreatePartControl method and Changed Class name
  */
 public class LC2200NatureAdder extends IXtextEditorCallback.NullImpl {
 	@Inject
