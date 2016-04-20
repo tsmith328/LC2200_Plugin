@@ -24,12 +24,10 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 
 	public LC2200ProjectNewWizard() {
 		setWindowTitle("New LC-2200 Project");
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -63,7 +61,6 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 	@Override
 	public void setInitializationData(IConfigurationElement config, String propertyName, Object data)
 			throws CoreException {
-		// TODO Auto-generated method stub
 		configElement = config;
 		
 	}

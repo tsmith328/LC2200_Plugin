@@ -25,8 +25,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ViewPart;
 
-public class AssembledView extends ViewPart {
+public class AssembledView extends ViewPart implements IResourceChangeListener {
+	Label label;
 	String defaultContents = "";
+	IResourceChangeEvent event;
 	public AssembledView() {
 		super();
 	}
@@ -34,47 +36,12 @@ public class AssembledView extends ViewPart {
 	
 	@Override
 	public void createPartControl(Composite parent) {
-		Label label = new Label(parent, SWT.WRAP);
+		label = new Label(parent, SWT.WRAP);
 		label.setText(defaultContents);
 		
 		// Add listener to editor to know when to change contents of the view
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IResourceChangeListener listener = new IResourceChangeListener() {
-			public void resourceChanged(IResourceChangeEvent event) {
-				// Update view with contents of binary file
-				IWorkbench workbench = PlatformUI.getWorkbench();
-				if (workbench == null) return;
-				IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-				if (window == null) return;
-				IWorkbenchPage page = window.getActivePage();
-				if (page == null) return;
-				IEditorPart editor = page.getActiveEditor();
-				if (editor == null) return;
-				IEditorInput input = editor.getEditorInput();
-				if (input == null) return;
-				IPath path = ((FileEditorInput)input).getPath();
-				String pathString = path.toString();
-				String name = pathString.substring(pathString.lastIndexOf("/"),
-						pathString.length()-1);
-				String newPath = pathString.substring(0, pathString.lastIndexOf("/")) + 
-						"/src-gen" + name + "bin";
-
-				try {
-					IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-					IFile binaryFile = root.getFileForLocation(new Path(newPath));
-					InputStream binary = new FileInputStream(binaryFile.getLocation().toOSString());
-					Scanner s = new Scanner(binary, "UTF-8");
-					s.useDelimiter("\\A");
-					String contents = s.hasNext() ? s.next() : "";
-					s.close();
-					label.setText(contents);
-				} catch (FileNotFoundException e) {
-					label.setText("");
-					e.printStackTrace();
-				}
-			}
-		};
-		workspace.addResourceChangeListener(listener, IResourceChangeEvent.POST_CHANGE);
+		workspace.addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
 	}
 
 	@Override
@@ -82,8 +49,47 @@ public class AssembledView extends ViewPart {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	@Override
+	public void dispose() {
+		super.dispose();
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
+	}
+	
+	@Override
+	public void resourceChanged(IResourceChangeEvent event) {
+		// Update view with contents of binary file
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		if (workbench == null) return;
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		if (window == null) return;
+		IWorkbenchPage page = window.getActivePage();
+		if (page == null) return;
+		IEditorPart editor = page.getActiveEditor();
+		if (editor == null) return;
+		IEditorInput input = editor.getEditorInput();
+		if (input == null) return;
+		IPath path = ((FileEditorInput)input).getPath();
+		String pathString = path.toString();
+		String name = pathString.substring(pathString.lastIndexOf("/"),
+				pathString.length()-1);
+		String newPath = pathString.substring(0, pathString.lastIndexOf("/")) + 
+				"/src-gen" + name + "bin";
 
-
+		try {
+			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			IFile binaryFile = root.getFileForLocation(new Path(newPath));
+			InputStream binary = new FileInputStream(binaryFile.getLocation().toOSString());
+			Scanner s = new Scanner(binary, "UTF-8");
+			s.useDelimiter("\\A");
+			String contents = s.hasNext() ? s.next() : "";
+			s.close();
+			label.setText(contents);
+		} catch (FileNotFoundException e) {
+			label.setText("");
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

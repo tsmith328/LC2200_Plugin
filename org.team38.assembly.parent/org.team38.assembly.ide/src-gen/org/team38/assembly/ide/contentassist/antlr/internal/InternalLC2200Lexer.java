@@ -275,10 +275,8 @@ public class InternalLC2200Lexer extends Lexer {
         try {
             int _type = RULE_JOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-
             // InternalLC2200.g:2777:10: ( ( 'jalr' | 'bonj' ) )
             // InternalLC2200.g:2777:12: ( 'jalr' | 'bonj' )
-
             {
             // InternalLC2200.g:2777:12: ( 'jalr' | 'bonj' )
             int alt3=2;
@@ -332,7 +330,6 @@ public class InternalLC2200Lexer extends Lexer {
         try {
             int _type = RULE_ROP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-
             // InternalLC2200.g:2779:10: ( ( 'add' | 'nand' | 'bonr' ) )
             // InternalLC2200.g:2779:12: ( 'add' | 'nand' | 'bonr' )
             {
@@ -355,7 +352,6 @@ public class InternalLC2200Lexer extends Lexer {
                 }
                 break;
             default:
-
                 NoViableAltException nvae =
                     new NoViableAltException("", 4, 0, input);
 
@@ -427,7 +423,6 @@ public class InternalLC2200Lexer extends Lexer {
         try {
             int _type = RULE_IOP_OFFSET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-
             // InternalLC2200.g:2783:17: ( ( 'lw' | 'sw' | 'boni' ) )
             // InternalLC2200.g:2783:19: ( 'lw' | 'sw' | 'boni' )
             {
@@ -450,7 +445,6 @@ public class InternalLC2200Lexer extends Lexer {
                 }
                 break;
             default:
-
                 NoViableAltException nvae =
                     new NoViableAltException("", 5, 0, input);
 
@@ -587,9 +581,7 @@ public class InternalLC2200Lexer extends Lexer {
             {
             match(';'); 
             // InternalLC2200.g:2793:20: (~ ( ( '\\n' | '\\r' ) ) )*
-
             loop6:
-
             do {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
@@ -641,7 +633,6 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2795:16: ( ' ' )* ( '\\r' )? '\\n'
             {
             // InternalLC2200.g:2795:16: ( ' ' )*
-
             loop7:
             do {
                 int alt7=2;
@@ -674,7 +665,6 @@ public class InternalLC2200Lexer extends Lexer {
                 alt8=1;
             }
             switch (alt8) {
-
                 case 1 :
                     // InternalLC2200.g:2795:21: '\\r'
                     {
@@ -706,11 +696,9 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2797:12: ( '$zero' | '$at' | '$v0' | '$a0' | '$a1' | '$a2' | '$t0' | '$t1' | '$t2' | '$s0' | '$s1' | '$s2' | '$k0' | '$sp' | '$fp' | '$ra' )
             {
             // InternalLC2200.g:2797:12: ( '$zero' | '$at' | '$v0' | '$a0' | '$a1' | '$a2' | '$t0' | '$t1' | '$t2' | '$s0' | '$s1' | '$s2' | '$k0' | '$sp' | '$fp' | '$ra' )
-
             int alt9=16;
             alt9 = dfa9.predict(input);
             switch (alt9) {
-
                 case 1 :
                     // InternalLC2200.g:2797:13: '$zero'
                     {
@@ -862,10 +850,8 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2799:18: ( '0x' ( '0' .. '9' | ( 'a' | 'b' | 'c' | 'd' | 'e' | 'f' ) )+ | ( '-' )? RULE_INT )
             {
             // InternalLC2200.g:2799:18: ( '0x' ( '0' .. '9' | ( 'a' | 'b' | 'c' | 'd' | 'e' | 'f' ) )+ | ( '-' )? RULE_INT )
-
             int alt12=2;
             int LA12_0 = input.LA(1);
-
 
             if ( (LA12_0=='0') ) {
                 int LA12_1 = input.LA(2);
@@ -892,10 +878,8 @@ public class InternalLC2200Lexer extends Lexer {
                     match("0x"); 
 
                     // InternalLC2200.g:2799:24: ( '0' .. '9' | ( 'a' | 'b' | 'c' | 'd' | 'e' | 'f' ) )+
-
                     int cnt10=0;
                     loop10:
-
                     do {
                         int alt10=2;
                         int LA10_0 = input.LA(1);
@@ -938,10 +922,8 @@ public class InternalLC2200Lexer extends Lexer {
                     // InternalLC2200.g:2799:62: ( '-' )? RULE_INT
                     {
                     // InternalLC2200.g:2799:62: ( '-' )?
-
                     int alt11=2;
                     int LA11_0 = input.LA(1);
-
 
                     if ( (LA11_0=='-') ) {
                         alt11=1;
@@ -993,9 +975,7 @@ public class InternalLC2200Lexer extends Lexer {
                 throw mse;}
 
             // InternalLC2200.g:2801:42: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
-
             loop13:
-
             do {
                 int alt13=2;
                 int LA13_0 = input.LA(1);
@@ -1068,10 +1048,8 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2805:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
             // InternalLC2200.g:2805:11: ( '^' )?
-
             int alt14=2;
             int LA14_0 = input.LA(1);
-
 
             if ( (LA14_0=='^') ) {
                 alt14=1;
@@ -1097,9 +1075,7 @@ public class InternalLC2200Lexer extends Lexer {
                 throw mse;}
 
             // InternalLC2200.g:2805:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
-
             loop15:
-
             do {
                 int alt15=2;
                 int LA15_0 = input.LA(1);
@@ -1149,10 +1125,8 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2807:21: ( '0' .. '9' )+
             {
             // InternalLC2200.g:2807:21: ( '0' .. '9' )+
-
             int cnt16=0;
             loop16:
-
             do {
                 int alt16=2;
                 int LA16_0 = input.LA(1);
@@ -1198,10 +1172,8 @@ public class InternalLC2200Lexer extends Lexer {
             // InternalLC2200.g:2809:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
             // InternalLC2200.g:2809:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-
             int alt19=2;
             int LA19_0 = input.LA(1);
-
 
             if ( (LA19_0=='\"') ) {
                 alt19=1;
@@ -1221,9 +1193,7 @@ public class InternalLC2200Lexer extends Lexer {
                     {
                     match('\"'); 
                     // InternalLC2200.g:2809:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
-
                     loop17:
-
                     do {
                         int alt17=3;
                         int LA17_0 = input.LA(1);
@@ -1275,9 +1245,7 @@ public class InternalLC2200Lexer extends Lexer {
                     {
                     match('\''); 
                     // InternalLC2200.g:2809:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
-
                     loop18:
-
                     do {
                         int alt18=3;
                         int LA18_0 = input.LA(1);
@@ -1349,9 +1317,7 @@ public class InternalLC2200Lexer extends Lexer {
             match("/*"); 
 
             // InternalLC2200.g:2811:24: ( options {greedy=false; } : . )*
-
             loop20:
-
             do {
                 int alt20=2;
                 int LA20_0 = input.LA(1);
@@ -1411,9 +1377,7 @@ public class InternalLC2200Lexer extends Lexer {
             match("//"); 
 
             // InternalLC2200.g:2813:24: (~ ( ( '\\n' | '\\r' ) ) )*
-
             loop21:
-
             do {
                 int alt21=2;
                 int LA21_0 = input.LA(1);
@@ -1446,10 +1410,8 @@ public class InternalLC2200Lexer extends Lexer {
             } while (true);
 
             // InternalLC2200.g:2813:40: ( ( '\\r' )? '\\n' )?
-
             int alt23=2;
             int LA23_0 = input.LA(1);
-
 
             if ( (LA23_0=='\n'||LA23_0=='\r') ) {
                 alt23=1;
@@ -1459,10 +1421,8 @@ public class InternalLC2200Lexer extends Lexer {
                     // InternalLC2200.g:2813:41: ( '\\r' )? '\\n'
                     {
                     // InternalLC2200.g:2813:41: ( '\\r' )?
-
                     int alt22=2;
                     int LA22_0 = input.LA(1);
-
 
                     if ( (LA22_0=='\r') ) {
                         alt22=1;
@@ -1766,7 +1726,6 @@ public class InternalLC2200Lexer extends Lexer {
             return "2797:12: ( '$zero' | '$at' | '$v0' | '$a0' | '$a1' | '$a2' | '$t0' | '$t1' | '$t2' | '$s0' | '$s1' | '$s2' | '$k0' | '$sp' | '$fp' | '$ra' )";
         }
     }
-
     static final String DFA24_eotS =
         "\1\uffff\1\36\1\43\1\35\11\43\5\uffff\1\35\1\uffff\1\35\1\uffff\1\35\1\uffff\1\43\4\35\3\uffff\1\36\1\74\1\75\1\uffff\1\43\2\uffff\1\43\2\77\7\43\1\75\14\uffff\1\43\1\uffff\2\43\1\115\3\43\1\122\3\77\1\123\1\122\1\75\1\uffff\1\124\1\122\1\123\1\125\4\uffff";
     static final String DFA24_eofS =
@@ -1793,13 +1752,11 @@ public class InternalLC2200Lexer extends Lexer {
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\1\57\31\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\3\44\1\60\26\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\26\44\1\61\3\44",
-
             "",
             "",
             "",
             "",
             "",
-
             "\1\37",
             "",
             "\1\66\4\uffff\1\66\4\uffff\1\66\6\uffff\3\66\1\uffff\1\66\3\uffff\1\66",
@@ -1811,21 +1768,16 @@ public class InternalLC2200Lexer extends Lexer {
             "\0\71",
             "\0\71",
             "\1\72\4\uffff\1\73",
-
             "",
             "",
-            "\1\40\2\uffff\1\40\22\uffff\1\37",
             "",
-
             "\1\37\2\uffff\1\37\22\uffff\1\40",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-
             "",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "",
             "",
-
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\13\44\1\76\16\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
@@ -1837,7 +1789,6 @@ public class InternalLC2200Lexer extends Lexer {
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\13\44\1\105\16\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\3\44\1\106\26\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-
             "",
             "",
             "",
@@ -1850,7 +1801,6 @@ public class InternalLC2200Lexer extends Lexer {
             "",
             "",
             "",
-
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\23\44\1\107\6\44",
             "",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\10\44\1\110\21\44",
@@ -1866,7 +1816,6 @@ public class InternalLC2200Lexer extends Lexer {
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-
             "",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "\12\44\1\45\6\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
@@ -1918,9 +1867,7 @@ public class InternalLC2200Lexer extends Lexer {
                         int LA24_26 = input.LA(1);
 
                         s = -1;
-
                         if ( ((LA24_26>='\u0000' && LA24_26<='\uFFFF')) ) {s = 57;}
-
 
                         else s = 29;
 
@@ -1930,17 +1877,13 @@ public class InternalLC2200Lexer extends Lexer {
                         int LA24_0 = input.LA(1);
 
                         s = -1;
-
                         if ( (LA24_0==' ') ) {s = 1;}
-
 
                         else if ( (LA24_0=='l') ) {s = 2;}
 
                         else if ( (LA24_0=='.') ) {s = 3;}
 
-
                         else if ( (LA24_0=='h') ) {s = 4;}
-
 
                         else if ( (LA24_0=='e') ) {s = 5;}
 
@@ -1972,9 +1915,7 @@ public class InternalLC2200Lexer extends Lexer {
 
                         else if ( (LA24_0=='\n') ) {s = 19;}
 
-
                         else if ( (LA24_0=='$') ) {s = 20;}
-
 
                         else if ( (LA24_0=='0') ) {s = 21;}
 
@@ -2002,9 +1943,7 @@ public class InternalLC2200Lexer extends Lexer {
                         s = -1;
                         if ( ((LA24_27>='\u0000' && LA24_27<='\uFFFF')) ) {s = 57;}
 
-
                         else s = 29;
-
 
                         if ( s>=0 ) return s;
                         break;

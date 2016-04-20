@@ -2149,21 +2149,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Program__LinesAssignment_3
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
-		ruleLine
-		{ after(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__Instruction__LabelAssignment_0
 	@init {
 		int stackSize = keepStackSize();

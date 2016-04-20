@@ -126,7 +126,6 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProgram"
-
     // InternalLC2200.g:71:1: ruleProgram returns [EObject current=null] : ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) ;
     public final EObject ruleProgram() throws RecognitionException {
         EObject current = null;
@@ -139,14 +138,11 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
         EObject lv_lines_4_0 = null;
 
-        EObject lv_lines_4_0 = null;
-
 
 
         	enterRule();
 
         try {
-
             // InternalLC2200.g:77:2: ( ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) )
             // InternalLC2200.g:78:2: ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? )
             {
@@ -3748,7 +3744,6 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-
             return "()* loopback of 105:3: ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )*";
         }
     }

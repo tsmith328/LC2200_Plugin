@@ -2815,14 +2815,12 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group_2__1__Impl"
-
     // InternalLC2200.g:881:1: rule__Program__Group_2__1__Impl : ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) ) ;
     public final void rule__Program__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-
             // InternalLC2200.g:885:1: ( ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) ) )
             // InternalLC2200.g:886:1: ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) )
             {
@@ -2865,7 +2863,6 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
                 switch (alt8) {
             	case 1 :
-
             	    // InternalLC2200.g:894:4: rule__Program__LinesAssignment_2_1
             	    {
             	    pushFollow(FOLLOW_4);
@@ -6475,7 +6472,6 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__LineEnd__Group__2__Impl"
 
 
-
     // $ANTLR start "rule__Program__LinesAssignment_1"
     // InternalLC2200.g:2092:1: rule__Program__LinesAssignment_1 : ( ruleLineEnd ) ;
     public final void rule__Program__LinesAssignment_1() throws RecognitionException {
@@ -6558,7 +6554,6 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Program__LinesAssignment_2_0"
 
 
-
     // $ANTLR start "rule__Program__LinesAssignment_2_1"
     // InternalLC2200.g:2122:1: rule__Program__LinesAssignment_2_1 : ( ruleLineEnd ) ;
     public final void rule__Program__LinesAssignment_2_1() throws RecognitionException {
@@ -6598,47 +6593,6 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "rule__Program__LinesAssignment_2_1"
-
-
-    // $ANTLR start "rule__Program__LinesAssignment_3"
-    // InternalLC2200.g:2137:1: rule__Program__LinesAssignment_3 : ( ruleLine ) ;
-    public final void rule__Program__LinesAssignment_3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalLC2200.g:2141:1: ( ( ruleLine ) )
-            // InternalLC2200.g:2142:2: ( ruleLine )
-            {
-            // InternalLC2200.g:2142:2: ( ruleLine )
-            // InternalLC2200.g:2143:3: ruleLine
-            {
-             before(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_2);
-            ruleLine();
-
-            state._fsp--;
-
-             after(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Program__LinesAssignment_3"
 
 
     // $ANTLR start "rule__Program__LinesAssignment_3"

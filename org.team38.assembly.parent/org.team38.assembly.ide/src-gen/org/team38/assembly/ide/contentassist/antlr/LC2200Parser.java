@@ -54,7 +54,6 @@ public class LC2200Parser extends AbstractContentAssistParser {
 					put(grammarAccess.getLineEndAccess().getGroup(), "rule__LineEnd__Group__0");
 					put(grammarAccess.getProgramAccess().getLinesAssignment_1(), "rule__Program__LinesAssignment_1");
 					put(grammarAccess.getProgramAccess().getLinesAssignment_2_0(), "rule__Program__LinesAssignment_2_0");
-
 					put(grammarAccess.getProgramAccess().getLinesAssignment_2_1(), "rule__Program__LinesAssignment_2_1");
 					put(grammarAccess.getProgramAccess().getLinesAssignment_3(), "rule__Program__LinesAssignment_3");
 					put(grammarAccess.getInstructionAccess().getLabelAssignment_0(), "rule__Instruction__LabelAssignment_0");

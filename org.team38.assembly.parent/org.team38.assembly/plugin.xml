@@ -61,18 +61,17 @@
              relative="org.eclipse.ui.editorss">
        </view>
        <view
-             id="org.eclipse.ui.views.ProblemView"
-             minimized="false"
-             ratio="0.75"
-             relationship="bottom"
-             relative="org.eclipse.ui.editorss">
-       </view>
-       <view
              id="org.team38.assembly.assembledview"
              minimized="false"
              relationship="right"
              relative="org.eclipse.ui.editorss">
        </view>
+       <newWizardShortcut
+             id="org.team38.assembly.wizard.new.lc2200">
+       </newWizardShortcut>
+       <newWizardShortcut
+             id="org.team38.assembly.wizard.new.lc2200file">
+       </newWizardShortcut>
     </perspectiveExtension>
     <perspectiveExtension
           targetID="org.eclipse.ui.resourcePerspective">

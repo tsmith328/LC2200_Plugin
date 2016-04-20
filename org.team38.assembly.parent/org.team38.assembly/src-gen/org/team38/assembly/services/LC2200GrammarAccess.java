@@ -31,7 +31,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Assignment cLinesAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
 		private final RuleCall cLinesLineParserRuleCall_2_0_0 = (RuleCall)cLinesAssignment_2_0.eContents().get(0);
-
 		private final Assignment cLinesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cLinesLineEndParserRuleCall_2_1_0 = (RuleCall)cLinesAssignment_2_1.eContents().get(0);
 		private final Assignment cLinesAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -39,7 +38,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		
 		////Rules
 		//Program:
-
 		//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -68,7 +66,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getLinesAssignment_2_1() { return cLinesAssignment_2_1; }
 		
 		//LineEnd
-
 		public RuleCall getLinesLineEndParserRuleCall_2_1_0() { return cLinesLineEndParserRuleCall_2_1_0; }
 		
 		//lines+=Line?
@@ -840,7 +837,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	////Rules
 	//Program:
-
 	//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
