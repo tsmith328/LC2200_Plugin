@@ -68,22 +68,13 @@ public interface LC2200Package extends EPackage
   int PROGRAM = 0;
 
   /**
-   * The feature id for the '<em><b>Line Ends</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROGRAM__LINE_ENDS = 0;
-
-  /**
    * The feature id for the '<em><b>Lines</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM__LINES = 1;
+  int PROGRAM__LINES = 0;
 
   /**
    * The number of structural features of the '<em>Program</em>' class.
@@ -92,7 +83,7 @@ public interface LC2200Package extends EPackage
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 2;
+  int PROGRAM_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.team38.assembly.lC2200.impl.LineImpl <em>Line</em>}' class.
@@ -839,17 +830,6 @@ public interface LC2200Package extends EPackage
   EClass getProgram();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.team38.assembly.lC2200.Program#getLineEnds <em>Line Ends</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Line Ends</em>'.
-   * @see org.team38.assembly.lC2200.Program#getLineEnds()
-   * @see #getProgram()
-   * @generated
-   */
-  EReference getProgram_LineEnds();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.team38.assembly.lC2200.Program#getLines <em>Lines</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1475,14 +1455,6 @@ public interface LC2200Package extends EPackage
      * @generated
      */
     EClass PROGRAM = eINSTANCE.getProgram();
-
-    /**
-     * The meta object literal for the '<em><b>Line Ends</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROGRAM__LINE_ENDS = eINSTANCE.getProgram_LineEnds();
 
     /**
      * The meta object literal for the '<em><b>Lines</b></em>' containment reference list feature.

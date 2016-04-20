@@ -101,7 +101,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 				if(labelTable.get(label) == null) {
 					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
 				} else if(labelTable.get(label) != -1) {					
-					var EList<Line> lines = (root as Program).getLines();
+					var EList<EObject> lines = (root as Program).getLines();
 					var offset = 0;
 					var found = false
 					for(var i = 0; i < lines.length() && !found; i++) {
@@ -112,7 +112,9 @@ class LC2200Validator extends AbstractLC2200Validator {
 								warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL)
 							}
 						}
-						offset++;
+						if(!lines.get(i).eClass().getName().equals("LineEnd")) {
+							offset++;						
+						}
 					}		
 				}
 			}
@@ -126,21 +128,23 @@ class LC2200Validator extends AbstractLC2200Validator {
 	 */
 	@Check
 	def checkDuplicateLabel(Line line) {
-		var labelBeg = line.getLabel()
-		var label = labelBeg.getLabel()
-		label = label.replaceAll(":", "")
-		
-		var root = (line as EObject);		
-				
-		while(root.eContainer() != null) {
-			root = root.eContainer();
-		}
-		
-		if (root.eClass().getName().equals("Program")) {
-			var labelTable = LabelHandler.populateLabels(root as Program);
-			if(labelTable.get(label) == -1) {
-				warning("Duplicate label", LC2200Package.Literals.LINE__LABEL)
+		if(line.eClass().getName().equals("Instruction") || line.eClass().getName().equals("Directive")) {
+			var labelBeg = line.getLabel()
+			var label = labelBeg.getLabel()
+			label = label.replaceAll(":", "")
+			
+			var root = (line as EObject);		
+					
+			while(root.eContainer() != null) {
+				root = root.eContainer();
 			}
+			
+			if (root.eClass().getName().equals("Program")) {
+				var labelTable = LabelHandler.populateLabels(root as Program);
+				if(labelTable.get(label) == -1) {
+					warning("Duplicate label", LC2200Package.Literals.LINE__LABEL)
+				}
+			}			
 		}
 	}
 	

@@ -283,19 +283,9 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_LineEnds()
-  {
-    return (EReference)programEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getProgram_Lines()
   {
-    return (EReference)programEClass.getEStructuralFeatures().get(1);
+    return (EReference)programEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -879,7 +869,6 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
-    createEReference(programEClass, PROGRAM__LINE_ENDS);
     createEReference(programEClass, PROGRAM__LINES);
 
     lineEClass = createEClass(LINE);
@@ -994,8 +983,7 @@ public class LC2200PackageImpl extends EPackageImpl implements LC2200Package
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProgram_LineEnds(), this.getLineEnd(), null, "lineEnds", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProgram_Lines(), this.getLine(), null, "lines", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Lines(), ecorePackage.getEObject(), null, "lines", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lineEClass, Line.class, "Line", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLine_Label(), this.getLabelBeg(), null, "label", null, 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -51,3 +51,4 @@ target/
 # Code Recommenders
 .recommenders/
 *.xtendbin
+org.team38.assembly.parent/org.team38.assembly.ide/src-gen/org/team38/assembly/ide/contentassist/antlr/internal/InternalLC2200Parser.java

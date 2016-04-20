@@ -25,7 +25,6 @@ import org.team38.assembly.lC2200.JInstruction;
 import org.team38.assembly.lC2200.JInstructionTrans;
 import org.team38.assembly.lC2200.LADirective;
 import org.team38.assembly.lC2200.LabelEnd;
-import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.NOOPDirective;
 import org.team38.assembly.lC2200.OInstruction;
 import org.team38.assembly.lC2200.Program;
@@ -40,9 +39,19 @@ import org.team38.assembly.lC2200.WordDirective;
 @SuppressWarnings("all")
 public class LC2200Generator extends AbstractGenerator {
   /**
-   * A buffer which will accumulate the generated binary
+   * A buffer which will accumulate the pretty print generated binary
    */
   private StringBuffer assembledOutput;
+  
+  /**
+   * A buffer which will accumulate the 16 bit generated hex
+   */
+  private StringBuffer hex16Output;
+  
+  /**
+   * A buffer which will accumulate the 32 bit generated hex
+   */
+  private StringBuffer hex32Output;
   
   /**
    * A hash map storing the location of all labels for calculating branches
@@ -72,6 +81,10 @@ public class LC2200Generator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     StringBuffer _stringBuffer = new StringBuffer();
     this.assembledOutput = _stringBuffer;
+    StringBuffer _stringBuffer_1 = new StringBuffer();
+    this.hex16Output = _stringBuffer_1;
+    StringBuffer _stringBuffer_2 = new StringBuffer();
+    this.hex32Output = _stringBuffer_2;
     this.offset = 0;
     EList<EObject> _contents = resource.getContents();
     EObject e_root = _contents.get(0);
@@ -92,11 +105,27 @@ public class LC2200Generator extends AbstractGenerator {
     int _length = this.filename.length();
     int _minus = (_length - 2);
     String _substring = this.filename.substring(_lastIndexOf, _minus);
-    String _plus = (_substring + "bin");
-    this.filename = _plus;
+
+    String binFile = (_substring + "bin");
+    int _lastIndexOf_1 = this.filename.lastIndexOf("/");
+    int _length_1 = this.filename.length();
+    int _minus_1 = (_length_1 - 3);
+    String _substring_1 = this.filename.substring(_lastIndexOf_1, _minus_1);
+    String hex16File = (_substring_1 + "-16.lc");
+    int _lastIndexOf_2 = this.filename.lastIndexOf("/");
+    int _length_2 = this.filename.length();
+    int _minus_2 = (_length_2 - 3);
+    String _substring_2 = this.filename.substring(_lastIndexOf_2, _minus_2);
+    String hex32File = (_substring_2 + "-32.lc");
     String _string_1 = this.assembledOutput.toString();
     String _trim = _string_1.trim();
-    fsa.generateFile(this.filename, _trim);
+    fsa.generateFile(binFile, _trim);
+    String _string_2 = this.hex16Output.toString();
+    String _trim_1 = _string_2.trim();
+    fsa.generateFile(hex16File, _trim_1);
+    String _string_3 = this.hex16Output.toString();
+    String _trim_2 = _string_3.trim();
+    fsa.generateFile(hex32File, _trim_2);
   }
   
   /**
@@ -105,24 +134,30 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param root - The root of the parse tree
    */
-  public void compileProgram(final Program root) {
-    EList<Line> lines = root.getLines();
-    for (final Line line : lines) {
-      {
-        EClass _eClass = line.eClass();
-        String _name = _eClass.getName();
-        boolean _equals = _name.equals("Directive");
-        if (_equals) {
-          this.compileDirective(((Directive) line));
+  private void compileProgram(final Program root) {
+    EList<EObject> nodes = root.eContents();
+    for (final EObject node : nodes) {
+      EClass _eClass = node.eClass();
+      String _name = _eClass.getName();
+      boolean _equals = _name.equals("Directive");
+      if (_equals) {
+        this.compileDirective(((Directive) node));
+        this.offset++;
+      } else {
+        EClass _eClass_1 = node.eClass();
+        String _name_1 = _eClass_1.getName();
+        boolean _equals_1 = _name_1.equals("Instruction");
+        if (_equals_1) {
+          this.compileInstruction(((Instruction) node));
+          this.offset++;
         } else {
-          EClass _eClass_1 = line.eClass();
-          String _name_1 = _eClass_1.getName();
-          boolean _equals_1 = _name_1.equals("Instruction");
-          if (_equals_1) {
-            this.compileInstruction(((Instruction) line));
+          EClass _eClass_2 = node.eClass();
+          String _name_2 = _eClass_2.getName();
+          boolean _equals_2 = _name_2.equals("LineEnd");
+          if (_equals_2) {
+            this.assembledOutput.append("\n");
           }
         }
-        this.offset++;
       }
     }
   }
@@ -134,7 +169,7 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param dir - The directive node of the parse tree
    */
-  public StringBuffer compileDirective(final Directive dir) {
+  private StringBuffer compileDirective(final Directive dir) {
     StringBuffer _xblockexpression = null;
     {
       EObject dirType = dir.getDirective();
@@ -174,7 +209,7 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param instr - The instruction node of the parse tree
    */
-  public StringBuffer compileInstruction(final Instruction instr) {
+  private StringBuffer compileInstruction(final Instruction instr) {
     StringBuffer _xblockexpression = null;
     {
       EObject instrType = instr.getInstruction();
@@ -223,16 +258,18 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param la - The node to generate binary for
    */
-  public StringBuffer compileLA(final LADirective la) {
+  private StringBuffer compileLA(final LADirective la) {
     StringBuffer _xblockexpression = null;
     {
       LabelEnd labelTrans = la.getLabel();
       RegTrans regTrans = la.getReg();
       String reg = regTrans.getReg();
       String immBin = "";
+      String label = "";
       boolean _notEquals = (!Objects.equal(labelTrans, null));
       if (_notEquals) {
-        String label = labelTrans.getLabel();
+        String _label = labelTrans.getLabel();
+        label = _label;
         boolean _notEquals_1 = (!Objects.equal(label, null));
         if (_notEquals_1) {
           Integer labelLine = this.labelTable.get(label);
@@ -244,21 +281,41 @@ public class LC2200Generator extends AbstractGenerator {
           } else {
             immBin = "00000";
           }
+        } else {
+          label = "";
         }
       }
       String reg1Bin = this.regToBinary(reg);
       String reg2Bin = this.regToBinary("$zero");
-      String opBin = this.opToBinary("addi");
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(opBin, "");
-      _builder.append(" ");
-      _builder.append(reg1Bin, "");
-      _builder.append(" ");
-      _builder.append(reg2Bin, "");
-      _builder.append(" ");
-      _builder.append(immBin, "");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      String opBin16 = this.opToBinary16("addi");
+      String opBin32 = this.opToBinary32("addi");
+      boolean _notEquals_3 = (!Objects.equal(opBin16, ""));
+      if (_notEquals_3) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OP: ");
+        _builder.append(opBin16, "");
+        _builder.append("  RX: ");
+        _builder.append(reg1Bin, "");
+        _builder.append("  RY: ");
+        _builder.append(reg2Bin, "");
+        _builder.append("  IM: ");
+        _builder.append(immBin, "");
+        this.assembledOutput.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(opBin16, "");
+        _builder_1.append(reg1Bin, "");
+        _builder_1.append(reg2Bin, "");
+        _builder_1.append(immBin, "");
+        String hex16 = this.binToHex(_builder_1.toString());
+        this.hex16Output.append((hex16 + " "));
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Not supported in 16-bit architecture");
+        this.assembledOutput.append(_builder_2);
+      }
+      StringConcatenation _builder_3 = new StringConcatenation();
+      String hex32 = this.binToHex(_builder_3.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
@@ -268,11 +325,16 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param noop - The noop node
    */
-  public StringBuffer compileNOOP(final NOOPDirective noop) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("0000000000000000");
-    _builder.newLine();
-    return this.assembledOutput.append(_builder);
+  private StringBuffer compileNOOP(final NOOPDirective noop) {
+    StringBuffer _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("NOOP: 0000000000000000");
+      this.assembledOutput.append(_builder);
+      this.hex16Output.append("0000 ");
+      _xblockexpression = this.hex32Output.append("00000000 ");
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -281,15 +343,24 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param word - The word node
    */
-  public StringBuffer compileWord(final WordDirective word) {
+  private StringBuffer compileWord(final WordDirective word) {
     StringBuffer _xblockexpression = null;
     {
       String wordImm = word.getImm();
-      String wordImmBin = this.immToBinary(wordImm, 16);
+      String wordImmBin16 = this.immToBinary(wordImm, 16);
+      String wordImmBin32 = this.immToBinary(wordImm, 32);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append(wordImmBin, "");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      _builder.append("WORD: ");
+      _builder.append(wordImmBin16, "");
+      this.assembledOutput.append(_builder);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(wordImmBin16, "");
+      String hex16 = this.binToHex(_builder_1.toString());
+      this.hex16Output.append((hex16 + " "));
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append(wordImmBin32, "");
+      String hex32 = this.binToHex(_builder_2.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
@@ -300,11 +371,11 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param iInstr - The IInstruction node
    */
-  public StringBuffer compileIInstruction(final IInstruction iInstr) {
+  private StringBuffer compileIInstruction(final IInstruction iInstr) {
     StringBuffer _xblockexpression = null;
     {
-      EObject opTrans = iInstr.getI_opcode();
       String op = "";
+      EObject opTrans = iInstr.getI_opcode();
       if ((opTrans instanceof IInstructionImmTrans)) {
         String _i_opcode = ((IInstructionImmTrans) opTrans).getI_opcode();
         op = _i_opcode;
@@ -320,17 +391,19 @@ public class LC2200Generator extends AbstractGenerator {
         }
       }
       RegTrans reg1Trans = iInstr.getReg1();
-      String reg1 = ((RegTrans) reg1Trans).getReg();
       RegTrans reg2Trans = iInstr.getReg2();
+      LabelEnd labelTrans = iInstr.getLabel();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
       String reg2 = ((RegTrans) reg2Trans).getReg();
       String imm = iInstr.getImm();
-      LabelEnd labelTrans = iInstr.getLabel();
       String _string = op.toString();
-      String opBin = this.opToBinary(_string);
-      String _string_1 = reg1.toString();
-      String reg1Bin = this.regToBinary(_string_1);
-      String _string_2 = reg2.toString();
-      String reg2Bin = this.regToBinary(_string_2);
+      String opBin16 = this.opToBinary16(_string);
+      String _string_1 = op.toString();
+      String opBin32 = this.opToBinary32(_string_1);
+      String _string_2 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_2);
+      String _string_3 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_3);
       String immBin = "";
       boolean _equals = op.equals("beq");
       if (_equals) {
@@ -343,13 +416,9 @@ public class LC2200Generator extends AbstractGenerator {
             boolean _notEquals_2 = (!Objects.equal(labelLine, null));
             if (_notEquals_2) {
               int dif = ((labelLine).intValue() - this.offset);
-              if (((dif < 15) && (dif > (-16)))) {
-                String _string_3 = Integer.toString(dif);
-                String _immToBinary = this.immToBinary(_string_3, 5);
-                immBin = _immToBinary;
-              } else {
-                immBin = "xxxxx";
-              }
+              String _string_4 = Integer.toString(dif);
+              String _immToBinary = this.immToBinary(_string_4, 5);
+              immBin = _immToBinary;
             } else {
               immBin = "xxxxx";
             }
@@ -359,16 +428,37 @@ public class LC2200Generator extends AbstractGenerator {
         String _immToBinary_1 = this.immToBinary(imm, 5);
         immBin = _immToBinary_1;
       }
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(opBin, "");
-      _builder.append(" ");
-      _builder.append(reg1Bin, "");
-      _builder.append(" ");
-      _builder.append(reg2Bin, "");
-      _builder.append(" ");
-      _builder.append(immBin, "");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      boolean _notEquals_3 = (!Objects.equal(opBin16, ""));
+      if (_notEquals_3) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OP: ");
+        _builder.append(opBin16, "");
+        _builder.append("  RX: ");
+        _builder.append(reg1Bin, "");
+        _builder.append("  RY: ");
+        _builder.append(reg2Bin, "");
+        _builder.append("  IM: ");
+        _builder.append(immBin, "");
+        this.assembledOutput.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(opBin16, "");
+        _builder_1.append(reg1Bin, "");
+        _builder_1.append(reg2Bin, "");
+        _builder_1.append(immBin, "");
+        String hex16 = this.binToHex(_builder_1.toString());
+        this.hex16Output.append((hex16 + " "));
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Not supported in 16-bit architecture");
+        this.assembledOutput.append(_builder_2);
+      }
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append(opBin32, "");
+      _builder_3.append(reg1Bin, "");
+      _builder_3.append(reg2Bin, "");
+      _builder_3.append(immBin, "");
+      String hex32 = this.binToHex(_builder_3.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
@@ -379,36 +469,61 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param rInstr - The RInstruction node
    */
-  public StringBuffer compileRInstruction(final RInstruction rInstr) {
+  private StringBuffer compileRInstruction(final RInstruction rInstr) {
     StringBuffer _xblockexpression = null;
     {
       RInstructionTrans opTrans = rInstr.getR_opcode();
-      String op = ((RInstructionTrans) opTrans).getR_opcode();
       RegTrans reg1Trans = rInstr.getReg1();
-      String reg1 = ((RegTrans) reg1Trans).getReg();
       RegTrans reg2Trans = rInstr.getReg2();
-      String reg2 = ((RegTrans) reg2Trans).getReg();
       RegTrans reg3Trans = rInstr.getReg3();
+      String op = ((RInstructionTrans) opTrans).getR_opcode();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
+      String reg2 = ((RegTrans) reg2Trans).getReg();
       String reg3 = ((RegTrans) reg3Trans).getReg();
       String _string = op.toString();
-      String opBin = this.opToBinary(_string);
-      String _string_1 = reg1.toString();
-      String reg1Bin = this.regToBinary(_string_1);
-      String _string_2 = reg2.toString();
-      String reg2Bin = this.regToBinary(_string_2);
-      String _string_3 = reg3.toString();
-      String reg3Bin = this.regToBinary(_string_3);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(opBin, "");
-      _builder.append(" ");
-      _builder.append(reg1Bin, "");
-      _builder.append(" ");
-      _builder.append(reg2Bin, "");
-      _builder.append(" ");
-      _builder.append(reg3Bin, "");
-      _builder.append(" 0");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      String opBin16 = this.opToBinary16(_string);
+      String _string_1 = op.toString();
+      String opBin32 = this.opToBinary32(_string_1);
+      String _string_2 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_2);
+      String _string_3 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_3);
+      String _string_4 = reg3.toString();
+      String reg3Bin = this.regToBinary(_string_4);
+      boolean _notEquals = (!Objects.equal(opBin16, ""));
+      if (_notEquals) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OP: ");
+        _builder.append(opBin16, "");
+        _builder.append("  RX: ");
+        _builder.append(reg1Bin, "");
+        _builder.append("  RY: ");
+        _builder.append(reg2Bin, "");
+        _builder.append("  RZ: ");
+        _builder.append(reg3Bin, "");
+        _builder.append("  UNUSED: 0");
+        this.assembledOutput.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(opBin16, "");
+        _builder_1.append(reg1Bin, "");
+        _builder_1.append(reg2Bin, "");
+        _builder_1.append(reg3Bin, "");
+        _builder_1.append("0");
+        String hex16 = this.binToHex(_builder_1.toString());
+        this.hex16Output.append((hex16 + " "));
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Not supported in 16-bit architecture");
+        this.assembledOutput.append(_builder_2);
+      }
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append(opBin32, "");
+      _builder_3.append(reg1Bin, "");
+      _builder_3.append(reg2Bin, "");
+      _builder_3.append(reg3Bin, "");
+      _builder_3.append("0");
+      String hex32 = this.binToHex(_builder_3.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
@@ -419,30 +534,53 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param jInstr - The JInstruction node
    */
-  public StringBuffer compileJInstruction(final JInstruction jInstr) {
+  private StringBuffer compileJInstruction(final JInstruction jInstr) {
     StringBuffer _xblockexpression = null;
     {
       JInstructionTrans opTrans = jInstr.getJ_opcode();
-      String op = ((JInstructionTrans) opTrans).getJ_opcode();
       RegTrans reg1Trans = jInstr.getReg1();
-      String reg1 = ((RegTrans) reg1Trans).getReg();
       RegTrans reg2Trans = jInstr.getReg2();
+      String op = ((JInstructionTrans) opTrans).getJ_opcode();
+      String reg1 = ((RegTrans) reg1Trans).getReg();
       String reg2 = ((RegTrans) reg2Trans).getReg();
       String _string = op.toString();
-      String opBin = this.opToBinary(_string);
-      String _string_1 = reg1.toString();
-      String reg1Bin = this.regToBinary(_string_1);
-      String _string_2 = reg2.toString();
-      String reg2Bin = this.regToBinary(_string_2);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(opBin, "");
-      _builder.append(" ");
-      _builder.append(reg1Bin, "");
-      _builder.append(" ");
-      _builder.append(reg2Bin, "");
-      _builder.append(" 00000");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      String opBin16 = this.opToBinary16(_string);
+      String _string_1 = op.toString();
+      String opBin32 = this.opToBinary32(_string_1);
+      String _string_2 = reg1.toString();
+      String reg1Bin = this.regToBinary(_string_2);
+      String _string_3 = reg2.toString();
+      String reg2Bin = this.regToBinary(_string_3);
+      boolean _notEquals = (!Objects.equal(opBin16, ""));
+      if (_notEquals) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OP: ");
+        _builder.append(opBin16, "");
+        _builder.append("  RX: ");
+        _builder.append(reg1Bin, "");
+        _builder.append("  RY: ");
+        _builder.append(reg2Bin, "");
+        _builder.append("  Unused: 00000");
+        this.assembledOutput.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(opBin16, "");
+        _builder_1.append(reg1Bin, "");
+        _builder_1.append(reg2Bin, "");
+        _builder_1.append("00000");
+        String hex16 = this.binToHex(_builder_1.toString());
+        this.hex16Output.append((hex16 + " "));
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Not supported in 16-bit architecture");
+        this.assembledOutput.append(_builder_2);
+      }
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append(opBin32, "");
+      _builder_3.append(reg1Bin, "");
+      _builder_3.append(reg2Bin, "");
+      _builder_3.append("00000");
+      String hex32 = this.binToHex(_builder_3.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
@@ -453,26 +591,86 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param oInstr - The OInstruction node
    */
-  public StringBuffer compileOInstruction(final OInstruction oInstr) {
+  private StringBuffer compileOInstruction(final OInstruction oInstr) {
     StringBuffer _xblockexpression = null;
     {
       String op = oInstr.getO_opcode();
-      String opBin = this.opToBinary(op);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(opBin, "");
-      _builder.append(" 00000000000 0");
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.assembledOutput.append(_builder);
+      String opBin16 = this.opToBinary16(op);
+      String opBin32 = this.opToBinary32(op);
+      boolean _notEquals = (!Objects.equal(opBin16, ""));
+      if (_notEquals) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OP: ");
+        _builder.append(opBin16, "");
+        _builder.append("  UNUSED: 000000000000");
+        this.assembledOutput.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(opBin16, "");
+        _builder_1.append("0000000000000");
+        String hex16 = this.binToHex(_builder_1.toString());
+        this.hex16Output.append((hex16 + " "));
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Not supported in 16-bit architecture");
+        this.assembledOutput.append(_builder_2);
+      }
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append(opBin32, "");
+      _builder_3.append("000000000000");
+      String hex32 = this.binToHex(_builder_3.toString());
+      _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
     return _xblockexpression;
   }
   
   /**
-   * Helper method to convert opcodes into binary form.
+   * Helper method to convert opcodes into 32-bit binary form.
    * 
    * @param op - The opcode to be converted to binary
    */
-  public String opToBinary(final String op) {
+  private String opToBinary32(final String op) {
+    switch (op) {
+      case "add":
+        return "0000";
+      case "nand":
+        return "0001";
+      case "addi":
+        return "0010";
+      case "lw":
+        return "0011";
+      case "sw":
+        return "0100";
+      case "beq":
+        return "0101";
+      case "jalr":
+        return "0110";
+      case "halt":
+        return "0111";
+      case "ei":
+        return "1100";
+      case "di":
+        return "1101";
+      case "reti":
+        return "1100";
+      case "boni":
+        return "1101";
+      case "bonj":
+        return "1110";
+      case "bonr":
+        return "1000";
+      case "bono":
+        return "1001";
+      default:
+        return "";
+    }
+  }
+  
+  /**
+   * Helper method to convert opcodes into 16-bit binary form.
+   * 
+   * @param op - The opcode to be converted to binary
+   */
+  private String opToBinary16(final String op) {
     switch (op) {
       case "add":
         return "000";
@@ -500,7 +698,7 @@ public class LC2200Generator extends AbstractGenerator {
    * 
    * @param reg - The register to convert to binary
    */
-  public String regToBinary(final String reg) {
+  private String regToBinary(final String reg) {
     switch (reg) {
       case "$zero":
         return "0000";
@@ -511,7 +709,7 @@ public class LC2200Generator extends AbstractGenerator {
       case "$a0":
         return "0011";
       case "$a1":
-        return "0010";
+        return "0100";
       case "$a2":
         return "0101";
       case "$t0":
@@ -545,21 +743,22 @@ public class LC2200Generator extends AbstractGenerator {
    * @param imm - The immediate to convert
    * @param bitLength - The length of the final bit string
    */
-  public String immToBinary(final String imm, final int bitLength) {
+  private String immToBinary(final String imm, final int bitLength) {
     String immBin = "";
     try {
+      int immInt = 0;
       int _indexOf = imm.indexOf("0x");
       boolean _notEquals = (_indexOf != (-1));
       if (_notEquals) {
         String _substring = imm.substring(2);
         int _parseInt = Integer.parseInt(_substring, 16);
-        String _binaryString = Integer.toBinaryString(_parseInt);
-        immBin = _binaryString;
+        immInt = _parseInt;
       } else {
         int _parseInt_1 = Integer.parseInt(imm);
-        String _binaryString_1 = Integer.toBinaryString(_parseInt_1);
-        immBin = _binaryString_1;
+        immInt = _parseInt_1;
       }
+      String _binaryString = Integer.toBinaryString(immInt);
+      immBin = _binaryString;
     } catch (final Throwable _t) {
       if (_t instanceof NumberFormatException) {
         final NumberFormatException e = (NumberFormatException)_t;
@@ -582,5 +781,48 @@ public class LC2200Generator extends AbstractGenerator {
       }
     }
     return immBin;
+  }
+  
+  /**
+   * Helper method to convert binary into hex string.
+   * 
+   * @param bin - The binary string
+   */
+  private String binToHex(final String bin) {
+    String hex = "";
+    boolean _or = false;
+    int _length = bin.length();
+    boolean _equals = (_length == 16);
+    if (_equals) {
+      _or = true;
+    } else {
+      int _length_1 = bin.length();
+      boolean _equals_1 = (_length_1 == 32);
+      _or = _equals_1;
+    }
+    if (_or) {
+      try {
+        int binInt = Integer.parseInt(bin, 2);
+        String _string = Integer.toString(binInt, 16);
+        hex = _string;
+        while ((hex.length() < (bin.length() / 4))) {
+          hex = ("0" + hex);
+        }
+      } catch (final Throwable _t) {
+        if (_t instanceof NumberFormatException) {
+          final NumberFormatException e = (NumberFormatException)_t;
+          int _length_2 = bin.length();
+          boolean _equals_2 = (_length_2 == 16);
+          if (_equals_2) {
+            hex = "xxxx";
+          } else {
+            hex = "xxxxxxxx";
+          }
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    }
+    return hex;
   }
 }

@@ -777,9 +777,9 @@ rule__Program__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getProgramAccess().getLineEndsAssignment_1()); }
-	(rule__Program__LineEndsAssignment_1)*
-	{ after(grammarAccess.getProgramAccess().getLineEndsAssignment_1()); }
+	{ before(grammarAccess.getProgramAccess().getLinesAssignment_1()); }
+	(rule__Program__LinesAssignment_1)*
+	{ after(grammarAccess.getProgramAccess().getLinesAssignment_1()); }
 )
 ;
 finally {
@@ -885,14 +885,14 @@ rule__Program__Group_2__1__Impl
 :
 (
 	(
-		{ before(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); }
-		(rule__Program__LineEndsAssignment_2_1)
-		{ after(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); }
+		{ before(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); }
+		(rule__Program__LinesAssignment_2_1)
+		{ after(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); }
 	)
 	(
-		{ before(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); }
-		(rule__Program__LineEndsAssignment_2_1)*
-		{ after(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); }
+		{ before(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); }
+		(rule__Program__LinesAssignment_2_1)*
+		{ after(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); }
 	)
 )
 ;
@@ -2089,15 +2089,15 @@ finally {
 }
 
 
-rule__Program__LineEndsAssignment_1
+rule__Program__LinesAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0()); }
+		{ before(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0()); }
 		ruleLineEnd
-		{ after(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0()); }
+		{ after(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0()); }
 	)
 ;
 finally {
@@ -2119,15 +2119,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Program__LineEndsAssignment_2_1
+rule__Program__LinesAssignment_2_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0()); }
+		{ before(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); }
 		ruleLineEnd
-		{ after(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0()); }
+		{ after(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Program__LinesAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
+		ruleLine
+		{ after(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -2770,17 +2785,17 @@ RULE_LA : 'la';
 
 RULE_WORD : '.word';
 
-RULE_OOP : ('halt'|'ei'|'di'|'reti');
+RULE_OOP : ('halt'|'ei'|'di'|'reti'|'bono');
 
 RULE_NOOP : 'noop';
 
-RULE_JOP : 'jalr';
+RULE_JOP : ('jalr'|'bonj');
 
-RULE_ROP : ('add'|'nand');
+RULE_ROP : ('add'|'nand'|'bonr');
 
 RULE_IOP_IMM : 'addi';
 
-RULE_IOP_OFFSET : ('lw'|'sw');
+RULE_IOP_OFFSET : ('lw'|'sw'|'boni');
 
 RULE_IOP_LABEL : 'beq';
 

@@ -4,10 +4,10 @@ import com.google.common.base.Objects;
 import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.Instruction;
 import org.team38.assembly.lC2200.LabelBeg;
-import org.team38.assembly.lC2200.Line;
 import org.team38.assembly.lC2200.Program;
 
 @SuppressWarnings("all")
@@ -20,8 +20,8 @@ public class LabelHandler {
   public static HashMap<String, Integer> populateLabels(final Program root) {
     int offset = 0;
     HashMap<String, Integer> labelTable = new HashMap<String, Integer>();
-    EList<Line> lines = root.getLines();
-    for (final Line line : lines) {
+    EList<EObject> lines = root.getLines();
+    for (final EObject line : lines) {
       {
         EClass _eClass = line.eClass();
         String _name = _eClass.getName();
@@ -40,13 +40,19 @@ public class LabelHandler {
             LabelHandler.addLabel(labelBeg_1, labelTable, offset);
           }
         }
-        offset++;
+        EClass _eClass_2 = line.eClass();
+        String _name_2 = _eClass_2.getName();
+        boolean _equals_2 = _name_2.equals("LineEnd");
+        boolean _not = (!_equals_2);
+        if (_not) {
+          offset++;
+        }
       }
     }
     return labelTable;
   }
   
-  public static Integer addLabel(final LabelBeg labelBeg, final HashMap<String, Integer> labelTable, final int offset) {
+  private static Integer addLabel(final LabelBeg labelBeg, final HashMap<String, Integer> labelTable, final int offset) {
     Integer _xifexpression = null;
     boolean _notEquals = (!Objects.equal(labelBeg, null));
     if (_notEquals) {

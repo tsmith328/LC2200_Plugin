@@ -2444,20 +2444,20 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__1__Impl"
-    // InternalLC2200.g:774:1: rule__Program__Group__1__Impl : ( ( rule__Program__LineEndsAssignment_1 )* ) ;
+    // InternalLC2200.g:774:1: rule__Program__Group__1__Impl : ( ( rule__Program__LinesAssignment_1 )* ) ;
     public final void rule__Program__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:778:1: ( ( ( rule__Program__LineEndsAssignment_1 )* ) )
-            // InternalLC2200.g:779:1: ( ( rule__Program__LineEndsAssignment_1 )* )
+            // InternalLC2200.g:778:1: ( ( ( rule__Program__LinesAssignment_1 )* ) )
+            // InternalLC2200.g:779:1: ( ( rule__Program__LinesAssignment_1 )* )
             {
-            // InternalLC2200.g:779:1: ( ( rule__Program__LineEndsAssignment_1 )* )
-            // InternalLC2200.g:780:2: ( rule__Program__LineEndsAssignment_1 )*
+            // InternalLC2200.g:779:1: ( ( rule__Program__LinesAssignment_1 )* )
+            // InternalLC2200.g:780:2: ( rule__Program__LinesAssignment_1 )*
             {
-             before(grammarAccess.getProgramAccess().getLineEndsAssignment_1()); 
-            // InternalLC2200.g:781:2: ( rule__Program__LineEndsAssignment_1 )*
+             before(grammarAccess.getProgramAccess().getLinesAssignment_1()); 
+            // InternalLC2200.g:781:2: ( rule__Program__LinesAssignment_1 )*
             loop5:
             do {
                 int alt5=2;
@@ -2470,10 +2470,10 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalLC2200.g:781:3: rule__Program__LineEndsAssignment_1
+            	    // InternalLC2200.g:781:3: rule__Program__LinesAssignment_1
             	    {
             	    pushFollow(FOLLOW_4);
-            	    rule__Program__LineEndsAssignment_1();
+            	    rule__Program__LinesAssignment_1();
 
             	    state._fsp--;
 
@@ -2486,7 +2486,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getProgramAccess().getLineEndsAssignment_1()); 
+             after(grammarAccess.getProgramAccess().getLinesAssignment_1()); 
 
             }
 
@@ -2815,42 +2815,44 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group_2__1__Impl"
-    // InternalLC2200.g:881:1: rule__Program__Group_2__1__Impl : ( ( ( rule__Program__LineEndsAssignment_2_1 ) ) ( ( rule__Program__LineEndsAssignment_2_1 )* ) ) ;
+
+    // InternalLC2200.g:881:1: rule__Program__Group_2__1__Impl : ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) ) ;
     public final void rule__Program__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalLC2200.g:885:1: ( ( ( ( rule__Program__LineEndsAssignment_2_1 ) ) ( ( rule__Program__LineEndsAssignment_2_1 )* ) ) )
-            // InternalLC2200.g:886:1: ( ( ( rule__Program__LineEndsAssignment_2_1 ) ) ( ( rule__Program__LineEndsAssignment_2_1 )* ) )
+
+            // InternalLC2200.g:885:1: ( ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) ) )
+            // InternalLC2200.g:886:1: ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) )
             {
-            // InternalLC2200.g:886:1: ( ( ( rule__Program__LineEndsAssignment_2_1 ) ) ( ( rule__Program__LineEndsAssignment_2_1 )* ) )
-            // InternalLC2200.g:887:2: ( ( rule__Program__LineEndsAssignment_2_1 ) ) ( ( rule__Program__LineEndsAssignment_2_1 )* )
+            // InternalLC2200.g:886:1: ( ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* ) )
+            // InternalLC2200.g:887:2: ( ( rule__Program__LinesAssignment_2_1 ) ) ( ( rule__Program__LinesAssignment_2_1 )* )
             {
-            // InternalLC2200.g:887:2: ( ( rule__Program__LineEndsAssignment_2_1 ) )
-            // InternalLC2200.g:888:3: ( rule__Program__LineEndsAssignment_2_1 )
+            // InternalLC2200.g:887:2: ( ( rule__Program__LinesAssignment_2_1 ) )
+            // InternalLC2200.g:888:3: ( rule__Program__LinesAssignment_2_1 )
             {
-             before(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); 
-            // InternalLC2200.g:889:3: ( rule__Program__LineEndsAssignment_2_1 )
-            // InternalLC2200.g:889:4: rule__Program__LineEndsAssignment_2_1
+             before(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); 
+            // InternalLC2200.g:889:3: ( rule__Program__LinesAssignment_2_1 )
+            // InternalLC2200.g:889:4: rule__Program__LinesAssignment_2_1
             {
             pushFollow(FOLLOW_4);
-            rule__Program__LineEndsAssignment_2_1();
+            rule__Program__LinesAssignment_2_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); 
+             after(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); 
 
             }
 
-            // InternalLC2200.g:892:2: ( ( rule__Program__LineEndsAssignment_2_1 )* )
-            // InternalLC2200.g:893:3: ( rule__Program__LineEndsAssignment_2_1 )*
+            // InternalLC2200.g:892:2: ( ( rule__Program__LinesAssignment_2_1 )* )
+            // InternalLC2200.g:893:3: ( rule__Program__LinesAssignment_2_1 )*
             {
-             before(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); 
-            // InternalLC2200.g:894:3: ( rule__Program__LineEndsAssignment_2_1 )*
+             before(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); 
+            // InternalLC2200.g:894:3: ( rule__Program__LinesAssignment_2_1 )*
             loop8:
             do {
                 int alt8=2;
@@ -2863,10 +2865,11 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalLC2200.g:894:4: rule__Program__LineEndsAssignment_2_1
+
+            	    // InternalLC2200.g:894:4: rule__Program__LinesAssignment_2_1
             	    {
             	    pushFollow(FOLLOW_4);
-            	    rule__Program__LineEndsAssignment_2_1();
+            	    rule__Program__LinesAssignment_2_1();
 
             	    state._fsp--;
 
@@ -2879,7 +2882,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getProgramAccess().getLineEndsAssignment_2_1()); 
+             after(grammarAccess.getProgramAccess().getLinesAssignment_2_1()); 
 
             }
 
@@ -6472,9 +6475,10 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__LineEnd__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Program__LineEndsAssignment_1"
-    // InternalLC2200.g:2092:1: rule__Program__LineEndsAssignment_1 : ( ruleLineEnd ) ;
-    public final void rule__Program__LineEndsAssignment_1() throws RecognitionException {
+
+    // $ANTLR start "rule__Program__LinesAssignment_1"
+    // InternalLC2200.g:2092:1: rule__Program__LinesAssignment_1 : ( ruleLineEnd ) ;
+    public final void rule__Program__LinesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -6485,13 +6489,13 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
             // InternalLC2200.g:2097:2: ( ruleLineEnd )
             // InternalLC2200.g:2098:3: ruleLineEnd
             {
-             before(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0()); 
+             before(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
             ruleLineEnd();
 
             state._fsp--;
 
-             after(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0()); 
+             after(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0()); 
 
             }
 
@@ -6510,7 +6514,7 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Program__LineEndsAssignment_1"
+    // $ANTLR end "rule__Program__LinesAssignment_1"
 
 
     // $ANTLR start "rule__Program__LinesAssignment_2_0"
@@ -6554,9 +6558,10 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Program__LinesAssignment_2_0"
 
 
-    // $ANTLR start "rule__Program__LineEndsAssignment_2_1"
-    // InternalLC2200.g:2122:1: rule__Program__LineEndsAssignment_2_1 : ( ruleLineEnd ) ;
-    public final void rule__Program__LineEndsAssignment_2_1() throws RecognitionException {
+
+    // $ANTLR start "rule__Program__LinesAssignment_2_1"
+    // InternalLC2200.g:2122:1: rule__Program__LinesAssignment_2_1 : ( ruleLineEnd ) ;
+    public final void rule__Program__LinesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -6567,13 +6572,13 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
             // InternalLC2200.g:2127:2: ( ruleLineEnd )
             // InternalLC2200.g:2128:3: ruleLineEnd
             {
-             before(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0()); 
+             before(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
             ruleLineEnd();
 
             state._fsp--;
 
-             after(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0()); 
+             after(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); 
 
             }
 
@@ -6592,7 +6597,48 @@ public class InternalLC2200Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Program__LineEndsAssignment_2_1"
+    // $ANTLR end "rule__Program__LinesAssignment_2_1"
+
+
+    // $ANTLR start "rule__Program__LinesAssignment_3"
+    // InternalLC2200.g:2137:1: rule__Program__LinesAssignment_3 : ( ruleLine ) ;
+    public final void rule__Program__LinesAssignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalLC2200.g:2141:1: ( ( ruleLine ) )
+            // InternalLC2200.g:2142:2: ( ruleLine )
+            {
+            // InternalLC2200.g:2142:2: ( ruleLine )
+            // InternalLC2200.g:2143:3: ruleLine
+            {
+             before(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_2);
+            ruleLine();
+
+            state._fsp--;
+
+             after(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Program__LinesAssignment_3"
 
 
     // $ANTLR start "rule__Program__LinesAssignment_3"

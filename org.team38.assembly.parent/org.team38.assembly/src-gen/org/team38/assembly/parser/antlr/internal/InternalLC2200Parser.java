@@ -126,15 +126,18 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProgram"
-    // InternalLC2200.g:71:1: ruleProgram returns [EObject current=null] : ( () ( (lv_lineEnds_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) ;
+
+    // InternalLC2200.g:71:1: ruleProgram returns [EObject current=null] : ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) ;
     public final EObject ruleProgram() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_lineEnds_1_0 = null;
+        EObject lv_lines_1_0 = null;
 
         EObject lv_lines_2_0 = null;
 
-        EObject lv_lineEnds_3_0 = null;
+        EObject lv_lines_3_0 = null;
+
+        EObject lv_lines_4_0 = null;
 
         EObject lv_lines_4_0 = null;
 
@@ -143,11 +146,12 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalLC2200.g:77:2: ( ( () ( (lv_lineEnds_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) )
-            // InternalLC2200.g:78:2: ( () ( (lv_lineEnds_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? )
+
+            // InternalLC2200.g:77:2: ( ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? ) )
+            // InternalLC2200.g:78:2: ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? )
             {
-            // InternalLC2200.g:78:2: ( () ( (lv_lineEnds_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? )
-            // InternalLC2200.g:79:3: () ( (lv_lineEnds_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )?
+            // InternalLC2200.g:78:2: ( () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )? )
+            // InternalLC2200.g:79:3: () ( (lv_lines_1_0= ruleLineEnd ) )* ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )* ( (lv_lines_4_0= ruleLine ) )?
             {
             // InternalLC2200.g:79:3: ()
             // InternalLC2200.g:80:4: 
@@ -160,7 +164,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalLC2200.g:86:3: ( (lv_lineEnds_1_0= ruleLineEnd ) )*
+            // InternalLC2200.g:86:3: ( (lv_lines_1_0= ruleLineEnd ) )*
             loop1:
             do {
                 int alt1=2;
@@ -173,16 +177,16 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalLC2200.g:87:4: (lv_lineEnds_1_0= ruleLineEnd )
+            	    // InternalLC2200.g:87:4: (lv_lines_1_0= ruleLineEnd )
             	    {
-            	    // InternalLC2200.g:87:4: (lv_lineEnds_1_0= ruleLineEnd )
-            	    // InternalLC2200.g:88:5: lv_lineEnds_1_0= ruleLineEnd
+            	    // InternalLC2200.g:87:4: (lv_lines_1_0= ruleLineEnd )
+            	    // InternalLC2200.g:88:5: lv_lines_1_0= ruleLineEnd
             	    {
 
-            	    					newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_1_0());
+            	    					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_1_0());
             	    				
             	    pushFollow(FOLLOW_3);
-            	    lv_lineEnds_1_0=ruleLineEnd();
+            	    lv_lines_1_0=ruleLineEnd();
 
             	    state._fsp--;
 
@@ -192,8 +196,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             	    					}
             	    					add(
             	    						current,
-            	    						"lineEnds",
-            	    						lv_lineEnds_1_0,
+            	    						"lines",
+            	    						lv_lines_1_0,
             	    						"org.team38.assembly.LC2200.LineEnd");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -209,14 +213,14 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalLC2200.g:105:3: ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )*
+            // InternalLC2200.g:105:3: ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )*
             loop3:
             do {
                 int alt3=2;
                 alt3 = dfa3.predict(input);
                 switch (alt3) {
             	case 1 :
-            	    // InternalLC2200.g:106:4: ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+
+            	    // InternalLC2200.g:106:4: ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+
             	    {
             	    // InternalLC2200.g:106:4: ( (lv_lines_2_0= ruleLine ) )
             	    // InternalLC2200.g:107:5: (lv_lines_2_0= ruleLine )
@@ -249,7 +253,7 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalLC2200.g:125:4: ( (lv_lineEnds_3_0= ruleLineEnd ) )+
+            	    // InternalLC2200.g:125:4: ( (lv_lines_3_0= ruleLineEnd ) )+
             	    int cnt2=0;
             	    loop2:
             	    do {
@@ -263,16 +267,16 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
 
             	        switch (alt2) {
             	    	case 1 :
-            	    	    // InternalLC2200.g:126:5: (lv_lineEnds_3_0= ruleLineEnd )
+            	    	    // InternalLC2200.g:126:5: (lv_lines_3_0= ruleLineEnd )
             	    	    {
-            	    	    // InternalLC2200.g:126:5: (lv_lineEnds_3_0= ruleLineEnd )
-            	    	    // InternalLC2200.g:127:6: lv_lineEnds_3_0= ruleLineEnd
+            	    	    // InternalLC2200.g:126:5: (lv_lines_3_0= ruleLineEnd )
+            	    	    // InternalLC2200.g:127:6: lv_lines_3_0= ruleLineEnd
             	    	    {
 
-            	    	    						newCompositeNode(grammarAccess.getProgramAccess().getLineEndsLineEndParserRuleCall_2_1_0());
+            	    	    						newCompositeNode(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0());
             	    	    					
             	    	    pushFollow(FOLLOW_3);
-            	    	    lv_lineEnds_3_0=ruleLineEnd();
+            	    	    lv_lines_3_0=ruleLineEnd();
 
             	    	    state._fsp--;
 
@@ -282,8 +286,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             	    	    						}
             	    	    						add(
             	    	    							current,
-            	    	    							"lineEnds",
-            	    	    							lv_lineEnds_3_0,
+            	    	    							"lines",
+            	    	    							lv_lines_3_0,
             	    	    							"org.team38.assembly.LC2200.LineEnd");
             	    	    						afterParserOrEnumRuleCall();
             	    	    					
@@ -3744,7 +3748,8 @@ public class InternalLC2200Parser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "()* loopback of 105:3: ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lineEnds_3_0= ruleLineEnd ) )+ )*";
+
+            return "()* loopback of 105:3: ( ( (lv_lines_2_0= ruleLine ) ) ( (lv_lines_3_0= ruleLineEnd ) )+ )*";
         }
     }
  

@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.team38.assembly.lC2200.Program#getLineEnds <em>Line Ends</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.Program#getLines <em>Lines</em>}</li>
  * </ul>
  * </p>
@@ -27,24 +26,8 @@ import org.eclipse.emf.ecore.EObject;
 public interface Program extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Line Ends</b></em>' containment reference list.
-   * The list contents are of type {@link org.team38.assembly.lC2200.LineEnd}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Line Ends</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Line Ends</em>' containment reference list.
-   * @see org.team38.assembly.lC2200.LC2200Package#getProgram_LineEnds()
-   * @model containment="true"
-   * @generated
-   */
-  EList<LineEnd> getLineEnds();
-
-  /**
    * Returns the value of the '<em><b>Lines</b></em>' containment reference list.
-   * The list contents are of type {@link org.team38.assembly.lC2200.Line}.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Lines</em>' containment reference list isn't clear,
@@ -56,6 +39,6 @@ public interface Program extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Line> getLines();
+  EList<EObject> getLines();
 
 } // Program

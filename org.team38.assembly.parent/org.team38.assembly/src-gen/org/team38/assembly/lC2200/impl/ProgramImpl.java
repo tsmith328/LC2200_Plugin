@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -18,8 +19,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.team38.assembly.lC2200.LC2200Package;
-import org.team38.assembly.lC2200.Line;
-import org.team38.assembly.lC2200.LineEnd;
 import org.team38.assembly.lC2200.Program;
 
 /**
@@ -29,7 +28,6 @@ import org.team38.assembly.lC2200.Program;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.team38.assembly.lC2200.impl.ProgramImpl#getLineEnds <em>Line Ends</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.ProgramImpl#getLines <em>Lines</em>}</li>
  * </ul>
  * </p>
@@ -39,16 +37,6 @@ import org.team38.assembly.lC2200.Program;
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
   /**
-   * The cached value of the '{@link #getLineEnds() <em>Line Ends</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLineEnds()
-   * @generated
-   * @ordered
-   */
-  protected EList<LineEnd> lineEnds;
-
-  /**
    * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -56,7 +44,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    * @ordered
    */
-  protected EList<Line> lines;
+  protected EList<EObject> lines;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,25 +72,11 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<LineEnd> getLineEnds()
-  {
-    if (lineEnds == null)
-    {
-      lineEnds = new EObjectContainmentEList<LineEnd>(LineEnd.class, this, LC2200Package.PROGRAM__LINE_ENDS);
-    }
-    return lineEnds;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Line> getLines()
+  public EList<EObject> getLines()
   {
     if (lines == null)
     {
-      lines = new EObjectContainmentEList<Line>(Line.class, this, LC2200Package.PROGRAM__LINES);
+      lines = new EObjectContainmentEList<EObject>(EObject.class, this, LC2200Package.PROGRAM__LINES);
     }
     return lines;
   }
@@ -117,8 +91,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__LINE_ENDS:
-        return ((InternalEList<?>)getLineEnds()).basicRemove(otherEnd, msgs);
       case LC2200Package.PROGRAM__LINES:
         return ((InternalEList<?>)getLines()).basicRemove(otherEnd, msgs);
     }
@@ -135,8 +107,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__LINE_ENDS:
-        return getLineEnds();
       case LC2200Package.PROGRAM__LINES:
         return getLines();
     }
@@ -154,13 +124,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__LINE_ENDS:
-        getLineEnds().clear();
-        getLineEnds().addAll((Collection<? extends LineEnd>)newValue);
-        return;
       case LC2200Package.PROGRAM__LINES:
         getLines().clear();
-        getLines().addAll((Collection<? extends Line>)newValue);
+        getLines().addAll((Collection<? extends EObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -176,9 +142,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__LINE_ENDS:
-        getLineEnds().clear();
-        return;
       case LC2200Package.PROGRAM__LINES:
         getLines().clear();
         return;
@@ -196,8 +159,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case LC2200Package.PROGRAM__LINE_ENDS:
-        return lineEnds != null && !lineEnds.isEmpty();
       case LC2200Package.PROGRAM__LINES:
         return lines != null && !lines.isEmpty();
     }

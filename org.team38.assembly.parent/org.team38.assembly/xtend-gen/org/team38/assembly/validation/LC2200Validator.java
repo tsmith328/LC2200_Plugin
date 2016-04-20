@@ -137,12 +137,12 @@ public class LC2200Validator extends AbstractLC2200Validator {
           Integer _get_1 = labelTable.get(label);
           boolean _notEquals = ((_get_1).intValue() != (-1));
           if (_notEquals) {
-            EList<Line> lines = ((Program) root).getLines();
+            EList<EObject> lines = ((Program) root).getLines();
             int offset = 0;
             boolean found = false;
             for (int i = 0; ((i < ((Object[])Conversions.unwrapArray(lines, Object.class)).length) && (!found)); i++) {
               {
-                Line _get_2 = lines.get(i);
+                EObject _get_2 = lines.get(i);
                 boolean _equals_3 = parent.equals(_get_2);
                 if (_equals_3) {
                   found = true;
@@ -152,7 +152,14 @@ public class LC2200Validator extends AbstractLC2200Validator {
                     this.warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL);
                   }
                 }
-                offset++;
+                EObject _get_4 = lines.get(i);
+                EClass _eClass_2 = _get_4.eClass();
+                String _name_2 = _eClass_2.getName();
+                boolean _equals_4 = _name_2.equals("LineEnd");
+                boolean _not = (!_equals_4);
+                if (_not) {
+                  offset++;
+                }
               }
             }
           }
@@ -168,24 +175,38 @@ public class LC2200Validator extends AbstractLC2200Validator {
    */
   @Check
   public void checkDuplicateLabel(final Line line) {
-    LabelBeg labelBeg = line.getLabel();
-    String label = labelBeg.getLabel();
-    String _replaceAll = label.replaceAll(":", "");
-    label = _replaceAll;
-    EObject root = ((EObject) line);
-    while ((!Objects.equal(root.eContainer(), null))) {
-      EObject _eContainer = root.eContainer();
-      root = _eContainer;
-    }
-    EClass _eClass = root.eClass();
+    boolean _or = false;
+    EClass _eClass = line.eClass();
     String _name = _eClass.getName();
-    boolean _equals = _name.equals("Program");
+    boolean _equals = _name.equals("Instruction");
     if (_equals) {
-      HashMap<String, Integer> labelTable = LabelHandler.populateLabels(((Program) root));
-      Integer _get = labelTable.get(label);
-      boolean _equals_1 = ((_get).intValue() == (-1));
-      if (_equals_1) {
-        this.warning("Duplicate label", LC2200Package.Literals.LINE__LABEL);
+      _or = true;
+    } else {
+      EClass _eClass_1 = line.eClass();
+      String _name_1 = _eClass_1.getName();
+      boolean _equals_1 = _name_1.equals("Directive");
+      _or = _equals_1;
+    }
+    if (_or) {
+      LabelBeg labelBeg = line.getLabel();
+      String label = labelBeg.getLabel();
+      String _replaceAll = label.replaceAll(":", "");
+      label = _replaceAll;
+      EObject root = ((EObject) line);
+      while ((!Objects.equal(root.eContainer(), null))) {
+        EObject _eContainer = root.eContainer();
+        root = _eContainer;
+      }
+      EClass _eClass_2 = root.eClass();
+      String _name_2 = _eClass_2.getName();
+      boolean _equals_2 = _name_2.equals("Program");
+      if (_equals_2) {
+        HashMap<String, Integer> labelTable = LabelHandler.populateLabels(((Program) root));
+        Integer _get = labelTable.get(label);
+        boolean _equals_3 = ((_get).intValue() == (-1));
+        if (_equals_3) {
+          this.warning("Duplicate label", LC2200Package.Literals.LINE__LABEL);
+        }
       }
     }
   }
