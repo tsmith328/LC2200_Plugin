@@ -24,12 +24,12 @@ import org.team38.assembly.lC2200.RegTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.LADirectiveImpl#getLa_dir <em>La dir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.LADirectiveImpl#getReg <em>Reg</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.LADirectiveImpl#getLabel <em>Label</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

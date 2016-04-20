@@ -32,7 +32,13 @@
           id="org.team38.assembly.wizard.new.lc2200"
           name="LC-2200 Project"
           project="true">
-          <description>This is a Wizard Description!</description>
+          <description>Create a new LC-2200 Project.</description>
+    </wizard>
+    <wizard
+          category="org.team38.assembly.wizards"
+          class="org.team38.assembly.wizards.LC2200FileNewWizard"
+          id="org.team38.assembly.wizard.new.lc2200file"
+          name="LC-2200 File">
     </wizard>
  </extension>
  <extension
@@ -61,6 +67,12 @@
              relationship="bottom"
              relative="org.eclipse.ui.editorss">
        </view>
+       <view
+             id="org.team38.assembly.assembledview"
+             minimized="false"
+             relationship="right"
+             relative="org.eclipse.ui.editorss">
+       </view>
     </perspectiveExtension>
     <perspectiveExtension
           targetID="org.eclipse.ui.resourcePerspective">
@@ -79,6 +91,12 @@
           icon="icons/sample.gif"
           id="org.team38.assembly.navigator"
           name="LC-2200">
+    </view>
+    <view
+          class="org.team38.assembly.AssembledView"
+          id="org.team38.assembly.assembledview"
+          name="Assembled Code"
+          restorable="true">
     </view>
  </extension>
  <extension

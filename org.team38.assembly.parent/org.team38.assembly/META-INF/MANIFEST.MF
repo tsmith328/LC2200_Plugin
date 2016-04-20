@@ -32,4 +32,5 @@ Export-Package: org.team38.assembly,
  org.team38.assembly.serializer,
  org.team38.assembly.services,
  org.team38.assembly.validation
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.jface.text

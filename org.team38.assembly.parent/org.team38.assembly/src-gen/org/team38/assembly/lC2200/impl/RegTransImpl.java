@@ -19,10 +19,10 @@ import org.team38.assembly.lC2200.RegTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.RegTransImpl#getReg <em>Reg</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

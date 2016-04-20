@@ -76,7 +76,7 @@ class LC2200Generator extends AbstractGenerator {
 		}
 		
 		filename = resource.toString();
-		filename = filename.substring(0, filename.length() - 2) + "bin";
+		filename = filename.substring(filename.lastIndexOf("/"), filename.length() - 2) + "bin";
 		
 		fsa.generateFile(filename, assembledOutput.toString().trim());
 	}

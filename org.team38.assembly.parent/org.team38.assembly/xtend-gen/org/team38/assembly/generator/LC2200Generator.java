@@ -88,9 +88,10 @@ public class LC2200Generator extends AbstractGenerator {
     }
     String _string = resource.toString();
     this.filename = _string;
+    int _lastIndexOf = this.filename.lastIndexOf("/");
     int _length = this.filename.length();
     int _minus = (_length - 2);
-    String _substring = this.filename.substring(0, _minus);
+    String _substring = this.filename.substring(_lastIndexOf, _minus);
     String _plus = (_substring + "bin");
     this.filename = _plus;
     String _string_1 = this.assembledOutput.toString();

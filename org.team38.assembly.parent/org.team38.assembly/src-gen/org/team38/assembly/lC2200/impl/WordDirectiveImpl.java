@@ -22,11 +22,11 @@ import org.team38.assembly.lC2200.WordTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getW_dir <em>Wdir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordDirectiveImpl#getImm <em>Imm</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

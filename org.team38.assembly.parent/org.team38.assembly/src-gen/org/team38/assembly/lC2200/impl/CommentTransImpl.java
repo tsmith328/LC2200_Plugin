@@ -14,6 +14,8 @@ import org.team38.assembly.lC2200.LC2200Package;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Comment Trans</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

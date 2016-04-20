@@ -23,7 +23,7 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 	private IConfigurationElement configElement;
 
 	public LC2200ProjectNewWizard() {
-		setWindowTitle("Window Title");
+		setWindowTitle("New LC-2200 Project");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,9 +53,9 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
     public void addPages() {
         super.addPages();
 
-        pageOne = new WizardNewProjectCreationPage("From Scratch Project Wizard");
-        pageOne.setTitle("From Scratch Project");
-        pageOne.setDescription("Create something from scratch.");
+        pageOne = new WizardNewProjectCreationPage("Create an LC-2200 Project");
+        pageOne.setTitle("LC-2200 Project");
+        pageOne.setDescription("Create a new LC-2200 Project.");
 
         addPage(pageOne);
     }
@@ -89,7 +89,7 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 		}
 		
 		try {
-			String[] paths = { "src" };
+			String[] paths = { /*"src"*/ };
 			addToProjectStructure(project, paths);
 		} catch (CoreException e) {
 			e.printStackTrace();
