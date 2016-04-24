@@ -33,15 +33,13 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLinesLineParserRuleCall_2_0_0 = (RuleCall)cLinesAssignment_2_0.eContents().get(0);
 		private final Assignment cLinesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cLinesLineEndParserRuleCall_2_1_0 = (RuleCall)cLinesAssignment_2_1.eContents().get(0);
-		private final Assignment cLinesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLinesLineParserRuleCall_3_0 = (RuleCall)cLinesAssignment_3.eContents().get(0);
 		
 		////Rules
 		//Program:
-		//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?;
+		//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?
+		//{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)*
 		public Group getGroup() { return cGroup; }
 		
 		//{Program}
@@ -67,12 +65,6 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LineEnd
 		public RuleCall getLinesLineEndParserRuleCall_2_1_0() { return cLinesLineEndParserRuleCall_2_1_0; }
-		
-		//lines+=Line?
-		public Assignment getLinesAssignment_3() { return cLinesAssignment_3; }
-		
-		//Line
-		public RuleCall getLinesLineParserRuleCall_3_0() { return cLinesLineParserRuleCall_3_0; }
 	}
 	public class LineElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.team38.assembly.LC2200.Line");
@@ -837,7 +829,7 @@ public class LC2200GrammarAccess extends AbstractGrammarElementFinder {
 	
 	////Rules
 	//Program:
-	//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* lines+=Line?;
+	//	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)*;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}

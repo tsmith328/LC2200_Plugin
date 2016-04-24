@@ -142,25 +142,6 @@ ruleProgram returns [EObject current=null]
 				)
 			)+
 		)*
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0());
-				}
-				lv_lines_4_0=ruleLine
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProgramRule());
-					}
-					add(
-						$current,
-						"lines",
-						lv_lines_4_0,
-						"org.team38.assembly.LC2200.Line");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
 	)
 ;
 

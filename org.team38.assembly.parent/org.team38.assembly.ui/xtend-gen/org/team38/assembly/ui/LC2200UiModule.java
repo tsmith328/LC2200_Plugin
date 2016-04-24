@@ -6,10 +6,12 @@ package org.team38.assembly.ui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.team38.assembly.ui.AbstractLC2200UiModule;
 import org.team38.assembly.ui.LC2200HighlightingCalculator;
 import org.team38.assembly.ui.LC2200HighlightingConfiguration;
+import org.team38.assembly.ui.LC2200NatureAdder;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -23,6 +25,11 @@ public class LC2200UiModule extends AbstractLC2200UiModule {
   
   public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
     return LC2200HighlightingCalculator.class;
+  }
+  
+  @Override
+  public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+    return LC2200NatureAdder.class;
   }
   
   public LC2200UiModule(final AbstractUIPlugin plugin) {

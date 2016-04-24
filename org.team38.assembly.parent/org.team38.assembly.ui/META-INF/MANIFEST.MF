@@ -18,7 +18,6 @@ Require-Bundle: org.team38.assembly,
  org.eclipse.xtend.lib;resolution:=optional,
  org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.team38.assembly.ui.internal,
  org.team38.assembly.ui.quickfix,
  org.team38.assembly.ui.contentassist

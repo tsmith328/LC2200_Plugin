@@ -4,7 +4,7 @@ generate lC2200 "http://www.team38.org/assembly/LC2200"
 
 //Rules
 Program:
-	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* (lines+=Line)?
+	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* 
 ;
 
 Line: 

@@ -792,7 +792,6 @@ rule__Program__Group__2
 	}
 :
 	rule__Program__Group__2__Impl
-	rule__Program__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -807,32 +806,6 @@ rule__Program__Group__2__Impl
 	{ before(grammarAccess.getProgramAccess().getGroup_2()); }
 	(rule__Program__Group_2__0)*
 	{ after(grammarAccess.getProgramAccess().getGroup_2()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Program__Group__3
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Program__Group__3__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Program__Group__3__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getProgramAccess().getLinesAssignment_3()); }
-	(rule__Program__LinesAssignment_3)?
-	{ after(grammarAccess.getProgramAccess().getLinesAssignment_3()); }
 )
 ;
 finally {
@@ -2128,21 +2101,6 @@ rule__Program__LinesAssignment_2_1
 		{ before(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); }
 		ruleLineEnd
 		{ after(grammarAccess.getProgramAccess().getLinesLineEndParserRuleCall_2_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Program__LinesAssignment_3
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
-		ruleLine
-		{ after(grammarAccess.getProgramAccess().getLinesLineParserRuleCall_3_0()); }
 	)
 ;
 finally {

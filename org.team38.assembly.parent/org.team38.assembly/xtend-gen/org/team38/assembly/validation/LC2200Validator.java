@@ -5,6 +5,7 @@ package org.team38.assembly.validation;
 
 import com.google.common.base.Objects;
 import java.util.HashMap;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +28,19 @@ import org.team38.assembly.validation.AbstractLC2200Validator;
  */
 @SuppressWarnings("all")
 public class LC2200Validator extends AbstractLC2200Validator {
+  /**
+   * Warning Codes
+   */
+  public final static String DECIMAL_IMMEDIATE_VALUE = "Immediate Value is decimal";
+  
+  public final static String EXTREME_IMMEDIATE_VALUE = "Immediate Value is too extreme";
+  
+  public final static String INVALID_LABEL = "Label is invalid";
+  
+  public final static String OUT_OF_RANGE_LABEL = "Label is out of range";
+  
+  public final static String DUPLICATE_LABEL = "Label already exists";
+  
   /**
    * Checks whether I-instruction immediate values can be
    * represented in 5 bits (for 16-bit instructions)
@@ -58,13 +72,16 @@ public class LC2200Validator extends AbstractLC2200Validator {
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
-        this.warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM);
+        this.warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM, LC2200Validator.DECIMAL_IMMEDIATE_VALUE);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    if (((immInt < (-16)) || (immInt > 15))) {
-      this.warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM);
+    if ((immInt < (-16))) {
+      this.warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, LC2200Validator.EXTREME_IMMEDIATE_VALUE, "-16");
+    }
+    if ((immInt > 15)) {
+      this.warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, LC2200Validator.EXTREME_IMMEDIATE_VALUE, "15");
     }
   }
   
@@ -92,13 +109,16 @@ public class LC2200Validator extends AbstractLC2200Validator {
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
-        this.warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM);
+        this.warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM, LC2200Validator.DECIMAL_IMMEDIATE_VALUE);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    if (((immInt < (-65536)) || (immInt > 65535))) {
-      this.warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM);
+    if ((immInt < (-65536))) {
+      this.warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, LC2200Validator.EXTREME_IMMEDIATE_VALUE, "-65536");
+    }
+    if ((immInt > 65535)) {
+      this.warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, LC2200Validator.EXTREME_IMMEDIATE_VALUE, "65535");
     }
   }
   
@@ -132,7 +152,8 @@ public class LC2200Validator extends AbstractLC2200Validator {
         Integer _get = labelTable.get(label);
         boolean _equals_2 = Objects.equal(_get, null);
         if (_equals_2) {
-          this.warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
+          Set<String> _keySet = labelTable.keySet();
+          this.warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL, LC2200Validator.INVALID_LABEL, ((String[])Conversions.unwrapArray(_keySet, String.class)));
         } else {
           Integer _get_1 = labelTable.get(label);
           boolean _notEquals = ((_get_1).intValue() != (-1));
@@ -149,7 +170,7 @@ public class LC2200Validator extends AbstractLC2200Validator {
                   Integer _get_3 = labelTable.get(label);
                   int dif = ((_get_3).intValue() - offset);
                   if (((dif > 15) || (dif < (-16)))) {
-                    this.warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL);
+                    this.warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL, LC2200Validator.OUT_OF_RANGE_LABEL);
                   }
                 }
                 EObject _get_4 = lines.get(i);
@@ -205,7 +226,7 @@ public class LC2200Validator extends AbstractLC2200Validator {
         Integer _get = labelTable.get(label);
         boolean _equals_3 = ((_get).intValue() == (-1));
         if (_equals_3) {
-          this.warning("Duplicate label", LC2200Package.Literals.LINE__LABEL);
+          this.warning("Duplicate label", LC2200Package.Literals.LINE__LABEL, LC2200Validator.DUPLICATE_LABEL);
         }
       }
     }
