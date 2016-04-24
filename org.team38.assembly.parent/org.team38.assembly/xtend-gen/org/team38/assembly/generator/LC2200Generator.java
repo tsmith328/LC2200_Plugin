@@ -122,7 +122,7 @@ public class LC2200Generator extends AbstractGenerator {
     String _string_2 = this.hex16Output.toString();
     String _trim_1 = _string_2.trim();
     fsa.generateFile(hex16File, _trim_1);
-    String _string_3 = this.hex16Output.toString();
+    String _string_3 = this.hex32Output.toString();
     String _trim_2 = _string_3.trim();
     fsa.generateFile(hex32File, _trim_2);
   }
@@ -263,7 +263,8 @@ public class LC2200Generator extends AbstractGenerator {
       LabelEnd labelTrans = la.getLabel();
       RegTrans regTrans = la.getReg();
       String reg = regTrans.getReg();
-      String immBin = "";
+      String immBin16 = "";
+      String immBin32 = "";
       String label = "";
       boolean _notEquals = (!Objects.equal(labelTrans, null));
       if (_notEquals) {
@@ -276,9 +277,13 @@ public class LC2200Generator extends AbstractGenerator {
           if (_notEquals_2) {
             String _string = Integer.toString((labelLine).intValue());
             String _immToBinary = this.immToBinary(_string, 5);
-            immBin = _immToBinary;
+            immBin16 = _immToBinary;
+            String _string_1 = Integer.toString((labelLine).intValue());
+            String _immToBinary_1 = this.immToBinary(_string_1, 20);
+            immBin32 = _immToBinary_1;
           } else {
-            immBin = "00000";
+            immBin16 = "xxxxx";
+            immBin32 = "xxxxxxxxxxxxxxxxxxxx";
           }
         } else {
           label = "";
@@ -298,13 +303,13 @@ public class LC2200Generator extends AbstractGenerator {
         _builder.append("  RY: ");
         _builder.append(reg2Bin, "");
         _builder.append("  IM: ");
-        _builder.append(immBin, "");
+        _builder.append(immBin16, "");
         this.assembledOutput.append(_builder);
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append(opBin16, "");
         _builder_1.append(reg1Bin, "");
         _builder_1.append(reg2Bin, "");
-        _builder_1.append(immBin, "");
+        _builder_1.append(immBin16, "");
         String hex16 = this.binToHex(_builder_1.toString());
         this.hex16Output.append((hex16 + " "));
       } else {
@@ -313,6 +318,10 @@ public class LC2200Generator extends AbstractGenerator {
         this.assembledOutput.append(_builder_2);
       }
       StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append(opBin32, "");
+      _builder_3.append(reg1Bin, "");
+      _builder_3.append(reg2Bin, "");
+      _builder_3.append(immBin32, "");
       String hex32 = this.binToHex(_builder_3.toString());
       _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
@@ -403,7 +412,8 @@ public class LC2200Generator extends AbstractGenerator {
       String reg1Bin = this.regToBinary(_string_2);
       String _string_3 = reg2.toString();
       String reg2Bin = this.regToBinary(_string_3);
-      String immBin = "";
+      String immBin16 = "";
+      String immBin32 = "";
       boolean _equals = op.equals("beq");
       if (_equals) {
         boolean _notEquals = (!Objects.equal(labelTrans, null));
@@ -417,15 +427,21 @@ public class LC2200Generator extends AbstractGenerator {
               int dif = ((labelLine).intValue() - this.offset);
               String _string_4 = Integer.toString(dif);
               String _immToBinary = this.immToBinary(_string_4, 5);
-              immBin = _immToBinary;
+              immBin16 = _immToBinary;
+              String _string_5 = Integer.toString(dif);
+              String _immToBinary_1 = this.immToBinary(_string_5, 20);
+              immBin32 = _immToBinary_1;
             } else {
-              immBin = "xxxxx";
+              immBin16 = "xxxxx";
+              immBin32 = "xxxxxxxxxxxxxxxxxxxx";
             }
           }
         }
       } else {
-        String _immToBinary_1 = this.immToBinary(imm, 5);
-        immBin = _immToBinary_1;
+        String _immToBinary_2 = this.immToBinary(imm, 5);
+        immBin16 = _immToBinary_2;
+        String _immToBinary_3 = this.immToBinary(imm, 20);
+        immBin32 = _immToBinary_3;
       }
       boolean _notEquals_3 = (!Objects.equal(opBin16, ""));
       if (_notEquals_3) {
@@ -437,13 +453,13 @@ public class LC2200Generator extends AbstractGenerator {
         _builder.append("  RY: ");
         _builder.append(reg2Bin, "");
         _builder.append("  IM: ");
-        _builder.append(immBin, "");
+        _builder.append(immBin16, "");
         this.assembledOutput.append(_builder);
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append(opBin16, "");
         _builder_1.append(reg1Bin, "");
         _builder_1.append(reg2Bin, "");
-        _builder_1.append(immBin, "");
+        _builder_1.append(immBin16, "");
         String hex16 = this.binToHex(_builder_1.toString());
         this.hex16Output.append((hex16 + " "));
       } else {
@@ -455,7 +471,7 @@ public class LC2200Generator extends AbstractGenerator {
       _builder_3.append(opBin32, "");
       _builder_3.append(reg1Bin, "");
       _builder_3.append(reg2Bin, "");
-      _builder_3.append(immBin, "");
+      _builder_3.append(immBin32, "");
       String hex32 = this.binToHex(_builder_3.toString());
       _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
@@ -519,8 +535,8 @@ public class LC2200Generator extends AbstractGenerator {
       _builder_3.append(opBin32, "");
       _builder_3.append(reg1Bin, "");
       _builder_3.append(reg2Bin, "");
+      _builder_3.append("0000000000000000");
       _builder_3.append(reg3Bin, "");
-      _builder_3.append("0");
       String hex32 = this.binToHex(_builder_3.toString());
       _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
@@ -577,7 +593,7 @@ public class LC2200Generator extends AbstractGenerator {
       _builder_3.append(opBin32, "");
       _builder_3.append(reg1Bin, "");
       _builder_3.append(reg2Bin, "");
-      _builder_3.append("00000");
+      _builder_3.append("00000000000000000000");
       String hex32 = this.binToHex(_builder_3.toString());
       _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
@@ -615,7 +631,7 @@ public class LC2200Generator extends AbstractGenerator {
       }
       StringConcatenation _builder_3 = new StringConcatenation();
       _builder_3.append(opBin32, "");
-      _builder_3.append("000000000000");
+      _builder_3.append("0000000000000000000000000000");
       String hex32 = this.binToHex(_builder_3.toString());
       _xblockexpression = this.hex32Output.append((hex32 + " "));
     }
@@ -745,18 +761,18 @@ public class LC2200Generator extends AbstractGenerator {
   private String immToBinary(final String imm, final int bitLength) {
     String immBin = "";
     try {
-      int immInt = 0;
+      long immLong = 0l;
       int _indexOf = imm.indexOf("0x");
       boolean _notEquals = (_indexOf != (-1));
       if (_notEquals) {
         String _substring = imm.substring(2);
-        int _parseInt = Integer.parseInt(_substring, 16);
-        immInt = _parseInt;
+        long _parseLong = Long.parseLong(_substring, 16);
+        immLong = _parseLong;
       } else {
-        int _parseInt_1 = Integer.parseInt(imm);
-        immInt = _parseInt_1;
+        long _parseLong_1 = Long.parseLong(imm);
+        immLong = _parseLong_1;
       }
-      String _binaryString = Integer.toBinaryString(immInt);
+      String _binaryString = Long.toBinaryString(immLong);
       immBin = _binaryString;
     } catch (final Throwable _t) {
       if (_t instanceof NumberFormatException) {
@@ -801,8 +817,8 @@ public class LC2200Generator extends AbstractGenerator {
     }
     if (_or) {
       try {
-        int binInt = Integer.parseInt(bin, 2);
-        String _string = Integer.toString(binInt, 16);
+        long binLong = Long.parseLong(bin, 2);
+        String _string = Long.toString(binLong, 16);
         hex = _string;
         while ((hex.length() < (bin.length() / 4))) {
           hex = ("0" + hex);

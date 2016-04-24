@@ -22,10 +22,10 @@ import org.team38.assembly.lC2200.Line;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.LineImpl#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

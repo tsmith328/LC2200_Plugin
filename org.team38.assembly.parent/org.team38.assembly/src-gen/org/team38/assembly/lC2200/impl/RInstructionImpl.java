@@ -23,13 +23,13 @@ import org.team38.assembly.lC2200.RegTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getR_opcode <em>Ropcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg2 <em>Reg2</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.impl.RInstructionImpl#getReg3 <em>Reg3</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

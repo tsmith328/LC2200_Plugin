@@ -27,10 +27,10 @@ import org.team38.assembly.lC2200.Program;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.ProgramImpl#getLines <em>Lines</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.WordDirective#getW_dir <em>Wdir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.WordDirective#getImm <em>Imm</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getWordDirective()
  * @model

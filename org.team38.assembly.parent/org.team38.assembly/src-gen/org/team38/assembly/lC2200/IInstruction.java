@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.IInstruction#getI_opcode <em>Iopcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.IInstruction#getReg1 <em>Reg1</em>}</li>
@@ -19,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.team38.assembly.lC2200.IInstruction#getImm <em>Imm</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.IInstruction#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getIInstruction()
  * @model

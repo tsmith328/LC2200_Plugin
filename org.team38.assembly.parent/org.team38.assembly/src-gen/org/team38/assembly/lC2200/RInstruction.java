@@ -12,13 +12,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.RInstruction#getR_opcode <em>Ropcode</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.RInstruction#getReg1 <em>Reg1</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.RInstruction#getReg2 <em>Reg2</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.RInstruction#getReg3 <em>Reg3</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getRInstruction()
  * @model

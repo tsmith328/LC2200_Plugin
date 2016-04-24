@@ -19,10 +19,10 @@ import org.team38.assembly.lC2200.WordTrans;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.WordTransImpl#getWord <em>Word</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

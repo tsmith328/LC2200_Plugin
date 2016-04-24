@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.LADirective#getLa_dir <em>La dir</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.LADirective#getReg <em>Reg</em>}</li>
  *   <li>{@link org.team38.assembly.lC2200.LADirective#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.team38.assembly.lC2200.LC2200Package#getLADirective()
  * @model

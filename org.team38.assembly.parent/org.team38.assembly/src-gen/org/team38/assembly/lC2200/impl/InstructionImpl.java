@@ -21,10 +21,10 @@ import org.team38.assembly.lC2200.LC2200Package;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.team38.assembly.lC2200.impl.InstructionImpl#getInstruction <em>Instruction</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

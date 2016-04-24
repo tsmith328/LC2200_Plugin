@@ -94,7 +94,7 @@ class LC2200Generator extends AbstractGenerator {
 		var hex32File = filename.substring(filename.lastIndexOf("/"), filename.length() - 3) + "-32.lc";
 		fsa.generateFile(binFile, assembledOutput.toString().trim());
 		fsa.generateFile(hex16File, hex16Output.toString().trim());
-		fsa.generateFile(hex32File, hex16Output.toString().trim());
+		fsa.generateFile(hex32File, hex32Output.toString().trim());
 	}
 	
 	
@@ -173,7 +173,8 @@ class LC2200Generator extends AbstractGenerator {
 		var regTrans = la.getReg();
 		
 		var reg = regTrans.getReg();
-		var immBin = "";
+		var immBin16 = "";
+		var immBin32 = "";
 		var label = "";
 		
 		//Get address of label for immediate value
@@ -182,9 +183,11 @@ class LC2200Generator extends AbstractGenerator {
 			if (label != null) {
 				var labelLine = labelTable.get(label);
 				if(labelLine != null) {
-					immBin = immToBinary(Integer.toString(labelLine), 5);
+					immBin16 = immToBinary(Integer.toString(labelLine), 5);
+					immBin32 = immToBinary(Integer.toString(labelLine), 20);
 				} else {
-					immBin = "00000";
+					immBin16 = "xxxxx";
+					immBin32 = "xxxxxxxxxxxxxxxxxxxx"
 				}
 			} else {
 				label = "";
@@ -197,15 +200,15 @@ class LC2200Generator extends AbstractGenerator {
 		var opBin32 = opToBinary32("addi");
 		
 		if(opBin16 != "") {
-			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin»''');
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin16»''');
 						
-			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin»''');
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin16»''');
 			hex16Output.append(hex16 + " ");
 		} else {
 			assembledOutput.append('''Not supported in 16-bit architecture''');
 		}		
 		
-		var hex32 = binToHex('''''');
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«immBin32»''');
 		hex32Output.append(hex32 + " ")
 		
 	}
@@ -273,7 +276,8 @@ class LC2200Generator extends AbstractGenerator {
 		var opBin32 = opToBinary32(op.toString());
 		var reg1Bin = regToBinary(reg1.toString());
 		var reg2Bin = regToBinary(reg2.toString());
-		var immBin = "";
+		var immBin16 = "";
+		var immBin32 = "";
 		
 		//Find offset to branched label
 		if(op.equals("beq")) {
@@ -283,24 +287,27 @@ class LC2200Generator extends AbstractGenerator {
 					var labelLine = labelTable.get(label);
 					if(labelLine != null) {
 						var dif = labelLine - offset;
-						immBin = immToBinary(Integer.toString(dif), 5);
+						immBin16 = immToBinary(Integer.toString(dif), 5);
+						immBin32 = immToBinary(Integer.toString(dif), 20);
 					} else {
-						immBin = "xxxxx";
+						immBin16 = "xxxxx";
+						immBin32 = "xxxxxxxxxxxxxxxxxxxx"
 					}
 				}
 			}			
 		} else {
-			immBin = immToBinary(imm, 5);
+			immBin16 = immToBinary(imm, 5);
+			immBin32 = immToBinary(imm, 20);
 		}		
 		
 		if(opBin16 != "") {
-			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin»''');			
-			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin»''')
+			assembledOutput.append('''OP: «opBin16»  RX: «reg1Bin»  RY: «reg2Bin»  IM: «immBin16»''');			
+			var hex16 = binToHex('''«opBin16»«reg1Bin»«reg2Bin»«immBin16»''')
 			hex16Output.append(hex16 + " ");
 		} else {
 			assembledOutput.append('''Not supported in 16-bit architecture''');
 		}	
-		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«immBin»''')
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«immBin32»''')
 		hex32Output.append(hex32 + " ");
 		
 	}
@@ -337,7 +344,7 @@ class LC2200Generator extends AbstractGenerator {
 			assembledOutput.append('''Not supported in 16-bit architecture''');
 		}	
 		
-		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»«reg3Bin»0''');
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»0000000000000000«reg3Bin»''');
 		hex32Output.append(hex32 + " ");
 	}
 	
@@ -371,7 +378,7 @@ class LC2200Generator extends AbstractGenerator {
 			assembledOutput.append('''Not supported in 16-bit architecture''');
 		}		
 		
-		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»00000''');
+		var hex32 = binToHex('''«opBin32»«reg1Bin»«reg2Bin»00000000000000000000''');
 		hex32Output.append(hex32 + " ");
 	}
 	
@@ -397,7 +404,7 @@ class LC2200Generator extends AbstractGenerator {
 			assembledOutput.append('''Not supported in 16-bit architecture''');
 		}
 				
-		var hex32 = binToHex('''«opBin32»000000000000''')
+		var hex32 = binToHex('''«opBin32»0000000000000000000000000000''')
 		hex32Output.append(hex32 + " ");
 	}
 	
@@ -525,14 +532,14 @@ class LC2200Generator extends AbstractGenerator {
 		var immBin = ""		
 		
 		try {
-			var immInt = 0;
+			var immLong = 0l;
 			//Handle Hex or Decimal separately
 			if(imm.indexOf("0x") != -1) {
-				immInt = Integer.parseInt(imm.substring(2), 16);				
+				immLong = Long.parseLong(imm.substring(2), 16);				
 			} else {
-				immInt =Integer.parseInt(imm);
+				immLong = Long.parseLong(imm);
 			}			
-			immBin = Integer.toBinaryString(immInt);
+			immBin = Long.toBinaryString(immLong);
 		} catch(NumberFormatException e) {			
 			immBin = "xxxxx";
 		}		
@@ -560,8 +567,8 @@ class LC2200Generator extends AbstractGenerator {
 
 	 	if(bin.length() == 16 || bin.length() == 32) {
 	 		try {
-			 	var binInt = Integer.parseInt(bin,2);
-			 	hex = Integer.toString(binInt, 16);
+			 	var binLong = Long.parseLong(bin,2);
+			 	hex = Long.toString(binLong, 16);
 			 	
 			 	while(hex.length() < bin.length()/4) {
 			 		hex = "0" + hex;
@@ -574,7 +581,6 @@ class LC2200Generator extends AbstractGenerator {
 		 		}
 		 	}	 	
 	 	}	
-	 	 	
 	 	return hex	 	
 	 }
 	
