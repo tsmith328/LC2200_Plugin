@@ -23,7 +23,37 @@ class LC2200QuickfixProvider extends DefaultQuickfixProvider {
 			val xtextDocument = context.xtextDocument
 			val number = xtextDocument.get(issue.offset, issue.length)
 			val decimalPoint = number.indexOf(".");
-			xtextDocument.replace(issue.offset, decimalPoint, "")
+			xtextDocument.replace(issue.offset + decimalPoint, issue.length - decimalPoint, "")
 		]
+	}
+	
+	@Fix(LC2200Validator.EXTREME_IMMEDIATE_VALUE)
+	def setWithinBounds(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, "Set to" + issue.data.head, "Set immediate value to nearest value within bounds.", "") [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, issue.data.head)
+		]
+	}
+	
+	@Fix(LC2200Validator.DUPLICATE_LABEL)
+	def renameLabel(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, "Rename Label", "Enter a new name for the label.", "") [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, "")
+		]
+	}
+	
+	@Fix(LC2200Validator.INVALID_LABEL)
+	def replaceLabel(Issue issue, IssueResolutionAcceptor acceptor) {
+		for(String str : issue.data)
+		{
+			acceptor.accept(issue, "Replace Label with " + str, "Replace with " + str + ".", "") [
+				context |
+				val xtextDocument = context.xtextDocument
+				xtextDocument.replace(issue.offset, issue.length, str)
+			]
+		}
 	}
 }

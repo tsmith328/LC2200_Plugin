@@ -53,8 +53,11 @@ class LC2200Validator extends AbstractLC2200Validator {
 			warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM, DECIMAL_IMMEDIATE_VALUE)	
 		}
 		
-		if(immInt < -16 || immInt > 15) {
-			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, EXTREME_IMMEDIATE_VALUE, "5")	
+		if(immInt < -16) {
+			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, EXTREME_IMMEDIATE_VALUE, "-16")	
+		}
+		if(immInt > 15) {
+			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, EXTREME_IMMEDIATE_VALUE, "15")	
 		}
 	}
 	
@@ -79,8 +82,11 @@ class LC2200Validator extends AbstractLC2200Validator {
 			warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM, DECIMAL_IMMEDIATE_VALUE)	
 		}
 		
-		if(immInt < -65536 || immInt > 65535) {
-			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, EXTREME_IMMEDIATE_VALUE, "16")	
+		if(immInt < -65536) {
+			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, EXTREME_IMMEDIATE_VALUE, "-65536")	
+		}
+		if(immInt > 65535) {
+			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, EXTREME_IMMEDIATE_VALUE, "65535")	
 		}
 	}
 	
@@ -106,7 +112,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 			if (root.eClass().getName().equals("Program")) {
 				var labelTable = LabelHandler.populateLabels(root as Program);
 				if(labelTable.get(label) == null) {
-					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL, INVALID_LABEL);
+					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL, INVALID_LABEL, labelTable.keySet);
 				} else if(labelTable.get(label) != -1) {					
 					var EList<EObject> lines = (root as Program).getLines();
 					var offset = 0;
