@@ -4,6 +4,10 @@
 package org.team38.assembly.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.team38.assembly.validation.LC2200Validator
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.ui.editor.quickfix.Fix
 
 /**
  * Custom quickfixes.
@@ -12,13 +16,14 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  */
 class LC2200QuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(LC2200Validator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	@Fix(LC2200Validator.DECIMAL_IMMEDIATE_VALUE)
+	def removeFractionalPart(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, "Remove Fractional Part", "Remove the digits after the decimal point.", "") [
+			context |
+			val xtextDocument = context.xtextDocument
+			val number = xtextDocument.get(issue.offset, issue.length)
+			val decimalPoint = number.indexOf(".");
+			xtextDocument.replace(issue.offset, decimalPoint, "")
+		]
+	}
 }

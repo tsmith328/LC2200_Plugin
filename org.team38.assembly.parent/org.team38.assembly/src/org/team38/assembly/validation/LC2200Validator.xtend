@@ -20,6 +20,13 @@ import org.team38.assembly.lC2200.Line
  */
 class LC2200Validator extends AbstractLC2200Validator {
 	
+	/** Warning Codes */
+	public static final val DECIMAL_IMMEDIATE_VALUE = "Immediate Value is decimal";
+	public static final val EXTREME_IMMEDIATE_VALUE = "Immediate Value is too extreme";
+	public static final val INVALID_LABEL = "Label is invalid";
+	public static final val OUT_OF_RANGE_LABEL = "Label is out of range";
+	public static final val DUPLICATE_LABEL = "Label already exists";
+	
 	/**
 	 * Checks whether I-instruction immediate values can be
 	 * represented in 5 bits (for 16-bit instructions)
@@ -43,11 +50,11 @@ class LC2200Validator extends AbstractLC2200Validator {
 				immInt = Integer.parseInt(imm)			
 			}
 		} catch(Exception e) {		
-			warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM)	
+			warning("Immediate values should be hex or decimal integers", LC2200Package.Literals.IINSTRUCTION__IMM, DECIMAL_IMMEDIATE_VALUE)	
 		}
 		
 		if(immInt < -16 || immInt > 15) {
-			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM)	
+			warning("Signed 5 bit immediate values should be between -16 and 15", LC2200Package.Literals.IINSTRUCTION__IMM, EXTREME_IMMEDIATE_VALUE, "5")	
 		}
 	}
 	
@@ -69,11 +76,11 @@ class LC2200Validator extends AbstractLC2200Validator {
 				immInt = Integer.parseInt(imm)			
 			}
 		} catch(Exception e) {		
-			warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
+			warning("Immediate values should be integers", LC2200Package.Literals.WORD_DIRECTIVE__IMM, DECIMAL_IMMEDIATE_VALUE)	
 		}
 		
 		if(immInt < -65536 || immInt > 65535) {
-			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM)	
+			warning("Signed 16 bit immediate values should be between -65536 and 65535", LC2200Package.Literals.WORD_DIRECTIVE__IMM, EXTREME_IMMEDIATE_VALUE, "16")	
 		}
 	}
 	
@@ -99,7 +106,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 			if (root.eClass().getName().equals("Program")) {
 				var labelTable = LabelHandler.populateLabels(root as Program);
 				if(labelTable.get(label) == null) {
-					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL);
+					warning("Label does not exist", LC2200Package.Literals.IINSTRUCTION__LABEL, INVALID_LABEL);
 				} else if(labelTable.get(label) != -1) {					
 					var EList<EObject> lines = (root as Program).getLines();
 					var offset = 0;
@@ -109,7 +116,7 @@ class LC2200Validator extends AbstractLC2200Validator {
 							found = true;			
 							var dif = labelTable.get(label) - offset;
 							if(dif > 15 || dif < -16) {
-								warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL)
+								warning("Label offset cannot fit into 5 bits", LC2200Package.Literals.IINSTRUCTION__LABEL, OUT_OF_RANGE_LABEL)
 							}
 						}
 						if(!lines.get(i).eClass().getName().equals("LineEnd")) {
@@ -142,10 +149,10 @@ class LC2200Validator extends AbstractLC2200Validator {
 			if (root.eClass().getName().equals("Program")) {
 				var labelTable = LabelHandler.populateLabels(root as Program);
 				if(labelTable.get(label) == -1) {
-					warning("Duplicate label", LC2200Package.Literals.LINE__LABEL)
+					warning("Duplicate label", LC2200Package.Literals.LINE__LABEL, DUPLICATE_LABEL)
 				}
 			}			
 		}
 	}
-	
 }
+
