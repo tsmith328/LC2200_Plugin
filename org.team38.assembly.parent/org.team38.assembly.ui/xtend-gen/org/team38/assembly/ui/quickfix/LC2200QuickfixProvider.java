@@ -18,9 +18,14 @@ import org.team38.assembly.validation.LC2200Validator;
  * Custom quickfixes.
  * 
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#quick-fixes
+ * 
+ * @author Matthew Moreno
  */
 @SuppressWarnings("all")
 public class LC2200QuickfixProvider extends DefaultQuickfixProvider {
+  /**
+   * Offers the quickfix option to remove the fractional part from immediate values
+   */
   @Fix(LC2200Validator.DECIMAL_IMMEDIATE_VALUE)
   public void removeFractionalPart(final Issue issue, final IssueResolutionAcceptor acceptor) {
     final IModification _function = (IModificationContext context) -> {
@@ -38,6 +43,9 @@ public class LC2200QuickfixProvider extends DefaultQuickfixProvider {
     acceptor.accept(issue, "Remove Fractional Part", "Remove the digits after the decimal point.", "", _function);
   }
   
+  /**
+   * Offers the quickfix option to set extreme immediate values to their closest valid value
+   */
   @Fix(LC2200Validator.EXTREME_IMMEDIATE_VALUE)
   public void setWithinBounds(final Issue issue, final IssueResolutionAcceptor acceptor) {
     String[] _data = issue.getData();
@@ -54,6 +62,9 @@ public class LC2200QuickfixProvider extends DefaultQuickfixProvider {
     acceptor.accept(issue, _plus, "Set immediate value to nearest value within bounds.", "", _function);
   }
   
+  /**
+   * Offers the quickfix option to rename a label
+   */
   @Fix(LC2200Validator.DUPLICATE_LABEL)
   public void renameLabel(final Issue issue, final IssueResolutionAcceptor acceptor) {
     final IModification _function = (IModificationContext context) -> {
@@ -65,6 +76,9 @@ public class LC2200QuickfixProvider extends DefaultQuickfixProvider {
     acceptor.accept(issue, "Rename Label", "Enter a new name for the label.", "", _function);
   }
   
+  /**
+   * Offers the quickfix option to replace an invalid label with a known valid label
+   */
   @Fix(LC2200Validator.INVALID_LABEL)
   public void replaceLabel(final Issue issue, final IssueResolutionAcceptor acceptor) {
     String[] _data = issue.getData();

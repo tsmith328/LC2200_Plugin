@@ -14,12 +14,14 @@ import com.google.inject.Inject;
 import org.eclipse.xtext.builder.nature.ToggleXtextNatureAction;
 
 /**
- * @author Sven Efftinge - Initial contribution and API
+ * @author Sven Efftinge - Initial contribution and API to IXtextEditorCallback class
+ * @author Matthew Moreno - Modified afterCreatePartControl to simply toggle the Xtext nature on
  */
 public class LC2200NatureAdder extends IXtextEditorCallback.NullImpl {
 	@Inject
 	private ToggleXtextNatureAction toggleNature;
-
+	
+	/** Called when creating an LC2200 file. Applies the LC2200 nature to the file always. */
 	override void afterCreatePartControl(XtextEditor editor) {
 		var resource = editor.getResource();
 		if (resource != null && !toggleNature.hasNature(resource.getProject()) && resource.getProject().isAccessible()
