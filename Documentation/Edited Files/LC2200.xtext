@@ -1,0 +1,202 @@
+grammar org.team38.assembly.LC2200 with org.eclipse.xtext.common.Terminals
+
+generate lC2200 "http://www.team38.org/assembly/LC2200"
+
+//Rules
+Program:
+	{Program} lines+=LineEnd* (lines+=Line lines+=LineEnd+)* 
+;
+
+Line: 
+	(Instruction | Directive) 
+;
+
+Instruction:
+	label=LabelBeg? instruction=(RInstruction  | IInstruction | JInstruction | OInstruction)
+;
+
+Directive:
+	label=LabelBeg? directive=(NOOPDirective | WordDirective | LADirective)
+;
+	
+RInstruction:
+	r_opcode=RInstructionTrans reg1=RegTrans COMMA reg2=RegTrans COMMA reg3=RegTrans;
+
+IInstruction:
+	i_opcode=IInstructionImmTrans reg1=RegTrans COMMA reg2=RegTrans COMMA imm=IMMEDIATE  |
+	i_opcode=IInstructionOffsetTrans reg1=RegTrans COMMA imm=IMMEDIATE LPAREN reg2=RegTrans RPAREN  |
+	i_opcode=IInstructionLabelTrans reg1=RegTrans COMMA reg2=RegTrans COMMA label=LabelEnd
+;
+
+JInstruction:
+	j_opcode=JInstructionTrans reg1=RegTrans COMMA reg2=RegTrans
+;
+
+OInstruction:
+	o_opcode=OOP
+;
+
+NOOPDirective:
+	n_dir=NOOP
+;
+
+WordDirective:
+	w_dir=WordTrans imm=IMMEDIATE
+;
+
+LADirective:
+	la_dir=LATrans reg=RegTrans COMMA label=LabelEnd
+;
+
+//Transition Rules
+//Used for Syntax Coloring
+RInstructionTrans:
+	r_opcode=ROP
+;
+
+IInstructionImmTrans:
+	i_opcode=IOP_IMM
+;
+
+IInstructionOffsetTrans:
+	i_opcode=IOP_OFFSET
+;
+
+IInstructionLabelTrans:
+	i_opcode=IOP_LABEL
+;
+
+JInstructionTrans:
+	j_opcode=JOP
+;
+
+WordTrans:
+	word=WORD
+;
+
+LATrans:
+	la=LA
+;
+
+CommentTrans returns CommentTrans:
+	{CommentTrans} COMMENT
+;
+
+LineEnd:
+	{LineEnd} comment=CommentTrans? NEWLINE
+;
+
+RegTrans:
+	reg=REG
+;
+
+LabelBeg:
+	label=LABEL
+;
+
+LabelEnd:
+	label=LABEL_IMM
+;
+
+
+//Tokens
+terminal WS: 
+    (' '|'\t')+;
+    
+terminal LA:
+	'la'
+;
+
+terminal WORD:
+	'.word'
+;
+
+terminal OOP:
+	'halt' 	|
+	'ei'	|
+	'di'	|
+	'reti'	|
+	'bono'
+;
+
+terminal NOOP:
+	'noop'
+;
+
+terminal JOP:
+	'jalr' |
+	'bonj'
+;
+
+terminal ROP:
+	'add'	|
+	'nand'	|
+	'bonr'
+;
+
+terminal IOP_IMM:
+	'addi'
+;
+
+terminal IOP_OFFSET:
+	'lw' |
+	'sw' |
+	'boni'
+;
+
+terminal IOP_LABEL:
+	'beq'
+;
+
+terminal LPAREN:
+	'('
+;
+
+terminal RPAREN:
+	')'
+;
+
+terminal COMMA:
+	','
+;
+
+terminal COMMENT:
+	';' !('\n'|'\r')*
+;
+
+terminal NEWLINE:
+	(' '* '\r'? '\n')
+;
+
+terminal REG:
+	'$zero' |
+	'$at'	|
+	'$v0'	|
+	'$a0'	|
+	'$a1'	|
+	'$a2'	|
+	'$t0'	|
+	'$t1'	|
+	'$t2'	|
+	'$s0'	|
+	'$s1'	|
+	'$s2'	|
+	'$k0'	|
+	'$sp'	|
+	'$fp'	|
+	'$ra'
+;
+
+terminal IMMEDIATE:
+	'0x'(('0'..'9')|('a'|'b'|'c'|'d'|'e'|'f'))+ | '-'?(INT)
+;
+
+terminal LABEL_IMM:
+	('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+;
+
+terminal LABEL:
+	LABEL_IMM':'
+;
+
+
