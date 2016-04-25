@@ -16,14 +16,17 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback
 @FinalFieldsConstructor
 class LC2200UiModule extends AbstractLC2200UiModule {
 	
+	/** Returns the configuration for Semantic Highlighting */
 	def Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration () {
 		return LC2200HighlightingConfiguration;
 	}
-
+	
+	/** Returns the calculator for Semantic Highlighting */
 	def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
 		return LC2200HighlightingCalculator;
 	}
 	
+	/** Replaces the default IXtextEditorCallback with LC2200NatureAdder */
 	override Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
     	return org.team38.assembly.ui.LC2200NatureAdder;
     }

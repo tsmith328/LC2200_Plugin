@@ -13,9 +13,12 @@ import org.eclipse.xtext.ui.editor.quickfix.Fix
  * Custom quickfixes.
  *
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#quick-fixes
+ * 
+ * @author Matthew Moreno
  */
 class LC2200QuickfixProvider extends DefaultQuickfixProvider {
-
+	
+	/** Offers the quickfix option to remove the fractional part from immediate values */
 	@Fix(LC2200Validator.DECIMAL_IMMEDIATE_VALUE)
 	def removeFractionalPart(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Remove Fractional Part", "Remove the digits after the decimal point.", "") [
@@ -27,6 +30,7 @@ class LC2200QuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 	
+	/** Offers the quickfix option to set extreme immediate values to their closest valid value */
 	@Fix(LC2200Validator.EXTREME_IMMEDIATE_VALUE)
 	def setWithinBounds(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Set to" + issue.data.head, "Set immediate value to nearest value within bounds.", "") [
@@ -36,6 +40,7 @@ class LC2200QuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 	
+	/** Offers the quickfix option to rename a label */
 	@Fix(LC2200Validator.DUPLICATE_LABEL)
 	def renameLabel(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Rename Label", "Enter a new name for the label.", "") [
@@ -45,6 +50,7 @@ class LC2200QuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 	
+	/** Offers the quickfix option to replace an invalid label with a known valid label */
 	@Fix(LC2200Validator.INVALID_LABEL)
 	def replaceLabel(Issue issue, IssueResolutionAcceptor acceptor) {
 		for(String str : issue.data)

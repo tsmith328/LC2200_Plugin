@@ -19,14 +19,23 @@ import org.team38.assembly.ui.LC2200NatureAdder;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class LC2200UiModule extends AbstractLC2200UiModule {
+  /**
+   * Returns the configuration for Semantic Highlighting
+   */
   public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
     return LC2200HighlightingConfiguration.class;
   }
   
+  /**
+   * Returns the calculator for Semantic Highlighting
+   */
   public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
     return LC2200HighlightingCalculator.class;
   }
   
+  /**
+   * Replaces the default IXtextEditorCallback with LC2200NatureAdder
+   */
   @Override
   public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
     return LC2200NatureAdder.class;

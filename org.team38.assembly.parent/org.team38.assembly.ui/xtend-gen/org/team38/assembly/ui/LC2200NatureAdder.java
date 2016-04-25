@@ -9,13 +9,17 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 
 /**
- * @author Sven Efftinge - Initial contribution and API
+ * @author Sven Efftinge - Initial contribution and API to IXtextEditorCallback class
+ * @author Matthew Moreno - Modified afterCreatePartControl to simply toggle the Xtext nature on
  */
 @SuppressWarnings("all")
 public class LC2200NatureAdder extends IXtextEditorCallback.NullImpl {
   @Inject
   private ToggleXtextNatureAction toggleNature;
   
+  /**
+   * Called when creating an LC2200 file. Applies the LC2200 nature to the file always.
+   */
   @Override
   public void afterCreatePartControl(final XtextEditor editor) {
     IResource resource = editor.getResource();
