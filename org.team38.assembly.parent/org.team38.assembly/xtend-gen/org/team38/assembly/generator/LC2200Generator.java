@@ -148,10 +148,10 @@ public class LC2200Generator extends AbstractGenerator {
       @Override
       public void run() {
         try {
-          IWorkbench _workbench = PlatformUI.getWorkbench();
-          IWorkbenchWindow _activeWorkbenchWindow = _workbench.getActiveWorkbenchWindow();
-          IWorkbenchPage _activePage = _activeWorkbenchWindow.getActivePage();
-          IViewPart _showView = _activePage.showView(LC2200Generator.this.ASSEMBLED_VIEW_ID);
+          IWorkbench wb = PlatformUI.getWorkbench();
+          IWorkbenchWindow active = wb.getActiveWorkbenchWindow();
+          IWorkbenchPage page = active.getActivePage();
+          IViewPart _showView = page.showView(LC2200Generator.this.ASSEMBLED_VIEW_ID);
           LC2200Generator.this.assembled = ((AssembledView) _showView);
           String _string = LC2200Generator.this.assembledOutput.toString();
           String _trim = _string.trim();

@@ -31,7 +31,7 @@ public class AssembledView extends ViewPart {
 	 */
 	@Override
 	public void setFocus() {
-		this.label.setFocus();
+		//this.label.setFocus();
 	}
 	
 	/**

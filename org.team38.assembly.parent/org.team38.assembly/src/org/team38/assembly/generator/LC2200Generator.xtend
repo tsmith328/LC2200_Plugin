@@ -111,8 +111,12 @@ class LC2200Generator extends AbstractGenerator {
 		// Updates the assembled code view to show updated assembly code
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 			override run() {
-				assembled = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(ASSEMBLED_VIEW_ID)
-								as AssembledView;
+				var wb = PlatformUI.getWorkbench();
+				var active = wb.getActiveWorkbenchWindow();
+				var page = active.getActivePage();
+				assembled = page.showView(ASSEMBLED_VIEW_ID) as AssembledView;
+				//assembled = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(ASSEMBLED_VIEW_ID)
+						//		as AssembledView;
 				assembled.updateView(assembledOutput.toString().trim());
 			}
 		});

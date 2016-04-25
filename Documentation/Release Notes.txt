@@ -10,7 +10,8 @@ Builds source files into 16-bit and 32-bit hex files for use in simulator
 Quick-fix support for common errors in source code
 
 
-
 Known Bugs:
 
 Assembled code view only shows 16-bit code, not 32-bit code
+Quick-fix deletes entire instruction when there is an error in one of its fields
+If assembled view does not update, try clicking in a different view to kickstart it.
