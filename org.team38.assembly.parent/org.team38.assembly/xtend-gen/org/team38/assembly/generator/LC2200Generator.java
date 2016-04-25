@@ -9,11 +9,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.team38.assembly.AssembledView;
 import org.team38.assembly.LabelHandler;
 import org.team38.assembly.lC2200.Directive;
 import org.team38.assembly.lC2200.IInstruction;
@@ -67,6 +74,11 @@ public class LC2200Generator extends AbstractGenerator {
    * The name of the generated file
    */
   private String filename;
+  
+  /**
+   * The view which shows the assembled code
+   */
+  private AssembledView assembled;
   
   /**
    * doGenerate is called when user saves their assembly code and will
@@ -125,6 +137,25 @@ public class LC2200Generator extends AbstractGenerator {
     String _string_3 = this.hex32Output.toString();
     String _trim_2 = _string_3.trim();
     fsa.generateFile(hex32File, _trim_2);
+    IWorkbench _workbench = PlatformUI.getWorkbench();
+    Display _display = _workbench.getDisplay();
+    _display.asyncExec(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          IWorkbench _workbench = PlatformUI.getWorkbench();
+          IWorkbenchWindow _activeWorkbenchWindow = _workbench.getActiveWorkbenchWindow();
+          IWorkbenchPage _activePage = _activeWorkbenchWindow.getActivePage();
+          IViewPart _showView = _activePage.showView("org.team38.assembly.assembledview");
+          LC2200Generator.this.assembled = ((AssembledView) _showView);
+          String _string = LC2200Generator.this.assembledOutput.toString();
+          String _trim = _string.trim();
+          LC2200Generator.this.assembled.updateView(_trim);
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
+        }
+      }
+    });
   }
   
   /**

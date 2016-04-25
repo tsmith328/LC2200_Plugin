@@ -17,9 +17,16 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 
+/**
+ * Implementation class for the New LC-2200 Project Wizard. Called when the new project
+ * wizard is opened.
+ * 
+ * @author Tyler Smith, Georgia Institute of Technology
+ *
+ */
 public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecutableExtension {
 	
-	private WizardNewProjectCreationPage pageOne;
+	private WizardNewProjectCreationPage mainPage;
 	private IConfigurationElement configElement;
 
 	public LC2200ProjectNewWizard() {
@@ -27,19 +34,21 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 	}
 
 	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
+	public void init(IWorkbench workbench, IStructuredSelection selection) {}
 
-	}
-
+	/**
+	 * Verifies that all necessary information is present: the project name.
+	 * Checks that the project name is not the empty string ("").
+	 */
 	@Override
 	public boolean performFinish() {
-		String projectName = pageOne.getProjectName();
+		String projectName = mainPage.getProjectName();
 		URI location = null;
 		if (projectName == null || projectName.length() == 0) {
 			return false;
 		}
-		if(!pageOne.useDefaults()) {
-			location = pageOne.getLocationURI();
+		if(!mainPage.useDefaults()) {
+			location = mainPage.getLocationURI();
 		}
 		createProject(projectName, location);
 		
@@ -47,26 +56,37 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 		return true;
 	}
 	
+	/**
+	 * Adds the main new project page to the wizard.
+	 */
 	@Override
     public void addPages() {
         super.addPages();
 
-        pageOne = new WizardNewProjectCreationPage("Create an LC-2200 Project");
-        pageOne.setTitle("LC-2200 Project");
-        pageOne.setDescription("Create a new LC-2200 Project.");
+        mainPage = new WizardNewProjectCreationPage("Create an LC-2200 Project");
+        mainPage.setTitle("LC-2200 Project");
+        mainPage.setDescription("Create a new LC-2200 Project.");
 
-        addPage(pageOne);
+        addPage(mainPage);
     }
 
 	@Override
 	public void setInitializationData(IConfigurationElement config, String propertyName, Object data)
 			throws CoreException {
 		configElement = config;
-		
 	}
 	
+	/**
+	 * Creates a project object in the Eclipse framework. Also creates the 
+	 * necessary file structure to house the project.
+	 * 
+	 * @param projectName -- The name of the project
+	 * @param location -- The location; the file location of the project
+	 * @return the IProject object representing this project
+	 */
 	private IProject createProject(String projectName, URI location) {
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		// Get project name from framework if it exists
 		if(!project.exists()) {
 			URI projectLocation = location;
 			IProjectDescription desc = project.getWorkspace().newProjectDescription(project.getName());
@@ -84,7 +104,8 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 				e.printStackTrace();
 			}
 		}
-		
+		// Used to add subfolders to the project. i.e. if source files should go into
+		// a src/ folder
 		try {
 			String[] paths = { /*"src"*/ };
 			addToProjectStructure(project, paths);
@@ -96,6 +117,13 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 		return project;
 	}
 	
+	/**
+	 * Adds paths to the project relative to the top-level directory for the project
+	 * 
+	 * @param project -- the project to which to add the paths
+	 * @param paths -- the paths to add
+	 * @throws CoreException
+	 */
 	private void addToProjectStructure(IProject project, String[] paths) throws CoreException {
 		for (String path : paths) {
 			IFolder etcFolders = project.getFolder(path);
@@ -103,6 +131,12 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
 		}
 	}
 	
+	/**
+	 * Creates a folder in the file structure
+	 * 
+	 * @param folder -- the folder to create
+	 * @throws CoreException
+	 */
 	private void createFolder(IFolder folder) throws CoreException {
 		IContainer parent = folder.getParent();
 		if (parent instanceof IFolder) {

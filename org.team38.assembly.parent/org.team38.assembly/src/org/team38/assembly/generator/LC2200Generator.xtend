@@ -27,6 +27,8 @@ import org.team38.assembly.lC2200.RInstruction
 import org.team38.assembly.lC2200.RInstructionTrans
 import org.team38.assembly.lC2200.RegTrans
 import org.team38.assembly.lC2200.WordDirective
+import org.eclipse.ui.PlatformUI
+import org.team38.assembly.AssembledView
 
 /**
  * Generates binary output from the assembled instructions
@@ -62,6 +64,11 @@ class LC2200Generator extends AbstractGenerator {
 	 * The name of the generated file
 	 */
 	private String filename;
+	
+	/**
+	 * The view which shows the assembled code
+	 */
+	private AssembledView assembled;
 
 	/**
 	 * doGenerate is called when user saves their assembly code and will
@@ -95,6 +102,15 @@ class LC2200Generator extends AbstractGenerator {
 		fsa.generateFile(binFile, assembledOutput.toString().trim());
 		fsa.generateFile(hex16File, hex16Output.toString().trim());
 		fsa.generateFile(hex32File, hex32Output.toString().trim());
+		
+		// Updates the assembled code view to show updated assembly code
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			override run() {
+				assembled = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.team38.assembly.assembledview")
+								as AssembledView;
+				assembled.updateView(assembledOutput.toString().trim());
+			}
+		});
 	}
 	
 	

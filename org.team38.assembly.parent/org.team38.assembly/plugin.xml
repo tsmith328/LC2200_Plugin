@@ -25,6 +25,7 @@
           id="org.team38.assembly.wizards"
           name="LC-2200">
     </category>
+    <!-- New LC-2200 Project Wizard -->
     <wizard
           category="org.team38.assembly.wizards"
           class="org.team38.assembly.wizards.LC2200ProjectNewWizard"
@@ -34,6 +35,7 @@
           project="true">
           <description>Create a new LC-2200 Project.</description>
     </wizard>
+    <!-- New LC-2200 File Wizard -->
     <wizard
           category="org.team38.assembly.wizards"
           class="org.team38.assembly.wizards.LC2200FileNewWizard"
@@ -43,6 +45,7 @@
  </extension>
  <extension
        point="org.eclipse.ui.perspectives">
+    <!-- LC-2200 Perspective -->
     <perspective
           class="org.team38.assembly.perspectives.Perspective"
           id="org.team38.assembly.lc2200perspective"
@@ -91,6 +94,7 @@
           id="org.team38.assembly.navigator"
           name="LC-2200">
     </view>
+    <!-- View for visualizing assembled LC-2200 code -->
     <view
           class="org.team38.assembly.AssembledView"
           id="org.team38.assembly.assembledview"
