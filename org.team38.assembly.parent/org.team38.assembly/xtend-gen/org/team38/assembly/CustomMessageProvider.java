@@ -7,8 +7,15 @@ import org.eclipse.xtext.nodemodel.SyntaxErrorMessage;
 import org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider;
 import org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider;
 
+/**
+ * Provides custom, user-readable error messages for incorrect
+ * pieces of LC2200 code
+ */
 @SuppressWarnings("all")
 public class CustomMessageProvider extends SyntaxErrorMessageProvider {
+  /**
+   * Global variables for distinguishing between different error types
+   */
   public final static String IMMEDIATE = "immediate";
   
   public final static String RULE_REG = "register";
@@ -23,6 +30,14 @@ public class CustomMessageProvider extends SyntaxErrorMessageProvider {
   
   public final static String PAREN = "parenthesis";
   
+  /**
+   * Gets the default message and updates it to a more
+   * readable message for the user.
+   * 
+   * @param context the current context in which the error
+   * 		  message shows up
+   * @return a new, custom error message
+   */
   @Override
   public SyntaxErrorMessage getSyntaxErrorMessage(final ISyntaxErrorMessageProvider.IParserErrorContext context) {
     SyntaxErrorMessage _xblockexpression = null;

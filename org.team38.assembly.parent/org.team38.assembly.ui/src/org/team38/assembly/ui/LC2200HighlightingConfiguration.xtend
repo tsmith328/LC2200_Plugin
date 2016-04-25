@@ -7,14 +7,25 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle
 
 import static org.eclipse.swt.SWT.*
 
+/*
+ * Specifies the syntax color for each type of element for an LC2200 program
+ */
 public class LC2200HighlightingConfiguration implements IHighlightingConfiguration {
 	
+	/*
+	 * Global variables for distinguishing between different elements
+	 */
 	public static final String INSTRUCTION_ID = "instruction";
 	public static final String WORD_ID = ".word";
 	public static final String REG_ID = "register";
 	public static final String LABEL_ID = "label";
 	public static final String COMMENT_ID = "comment";
 	
+	/*
+	 * Configuration method for specifying color of each element
+	 * 
+	 * @param acceptor binds the color info for an element
+	 */
 	override configure(IHighlightingConfigurationAcceptor acceptor) {
 		//.word
 		acceptor.acceptDefaultHighlighting(
@@ -47,6 +58,15 @@ public class LC2200HighlightingConfiguration implements IHighlightingConfigurati
 		);
 	}
 	
+	/*
+	 * Calculates syntax coloring info as a TextStyle
+	 * 
+	 * @param r red
+	 * @param g green
+	 * @param b blue
+	 * @param style text style i.e. bold, italics, etc.
+	 * @return the TextStyle
+	 */
 	def public TextStyle keywordTextStyle(int r, int g, int b, int style) {
 		var TextStyle textStyle = new TextStyle();
 		textStyle.setColor(new RGB(r, g, b));
