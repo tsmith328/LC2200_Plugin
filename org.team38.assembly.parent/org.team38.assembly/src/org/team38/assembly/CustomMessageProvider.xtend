@@ -3,8 +3,15 @@ package org.team38.assembly
 import org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider
 import org.eclipse.xtext.nodemodel.SyntaxErrorMessage
 
+/*
+ * Provides custom, user-readable error messages for incorrect 
+ * pieces of LC2200 code
+ */
 class CustomMessageProvider extends SyntaxErrorMessageProvider {
 	
+	/*
+	 * Global variables for distinguishing between different error types
+	 */
 	public static val String IMMEDIATE = "immediate"
 	public static val String RULE_REG = "register"
 	public static val String COMMA = "comma"
@@ -13,7 +20,14 @@ class CustomMessageProvider extends SyntaxErrorMessageProvider {
 	public static val String LABEL = "label"
 	public static val String PAREN = "parenthesis"
 	
-	
+	/*
+	 * Gets the default message and updates it to a more 
+	 * readable message for the user.
+	 * 
+	 * @param context the current context in which the error 
+	 * 		  message shows up
+	 * @return a new, custom error message
+	 */
 	override getSyntaxErrorMessage(IParserErrorContext context) {
 		
 		val String msgDefault = context.getDefaultMessage(); 

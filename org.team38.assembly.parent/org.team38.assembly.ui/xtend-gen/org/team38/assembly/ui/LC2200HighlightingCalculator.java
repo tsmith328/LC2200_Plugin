@@ -24,8 +24,19 @@ import org.team38.assembly.lC2200.RegTrans;
 import org.team38.assembly.lC2200.WordTrans;
 import org.team38.assembly.ui.LC2200HighlightingConfiguration;
 
+/**
+ * Parses the type of an element and binds the appropriate
+ * syntax highlighting configuration to it
+ */
 @SuppressWarnings("all")
 public class LC2200HighlightingCalculator implements ISemanticHighlightingCalculator {
+  /**
+   * Method for binding the highlighting configuration
+   * 
+   * @param resource the current Xtext resource
+   * @param acceptor an element's highlighting acceptor
+   * 		  for binding syntax color
+   */
   @Override
   public void provideHighlightingFor(final XtextResource resource, final IHighlightedPositionAcceptor acceptor, final CancelIndicator arg2) {
     boolean _or = false;
