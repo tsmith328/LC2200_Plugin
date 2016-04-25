@@ -69,6 +69,11 @@ class LC2200Generator extends AbstractGenerator {
 	 * The view which shows the assembled code
 	 */
 	private AssembledView assembled;
+	
+	/**
+	 * The ID for the view which shows assembled code
+	 */
+	private final String ASSEMBLED_VIEW_ID = "org.team38.assembly.assembledview"
 
 	/**
 	 * doGenerate is called when user saves their assembly code and will
@@ -106,7 +111,7 @@ class LC2200Generator extends AbstractGenerator {
 		// Updates the assembled code view to show updated assembly code
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 			override run() {
-				assembled = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.team38.assembly.assembledview")
+				assembled = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(ASSEMBLED_VIEW_ID)
 								as AssembledView;
 				assembled.updateView(assembledOutput.toString().trim());
 			}

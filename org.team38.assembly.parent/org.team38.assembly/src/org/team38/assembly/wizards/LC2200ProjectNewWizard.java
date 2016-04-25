@@ -25,12 +25,16 @@ import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
  *
  */
 public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecutableExtension {
+	// Constants
+	private final String WINDOW_TITLE = "New LC-2200 Project";
+	private final String PAGE_DESCRIPTION = "Create a new LC-2200 Project.";
+	private final String PAGE_TITLE = "Create a new LC-2200 Project.";
 	
 	private WizardNewProjectCreationPage mainPage;
 	private IConfigurationElement configElement;
 
 	public LC2200ProjectNewWizard() {
-		setWindowTitle("New LC-2200 Project");
+		setWindowTitle(WINDOW_TITLE);
 	}
 
 	@Override
@@ -63,9 +67,9 @@ public class LC2200ProjectNewWizard extends Wizard implements INewWizard, IExecu
     public void addPages() {
         super.addPages();
 
-        mainPage = new WizardNewProjectCreationPage("Create an LC-2200 Project");
-        mainPage.setTitle("LC-2200 Project");
-        mainPage.setDescription("Create a new LC-2200 Project.");
+        mainPage = new WizardNewProjectCreationPage(PAGE_DESCRIPTION);
+        mainPage.setTitle(PAGE_TITLE);
+        mainPage.setDescription(PAGE_DESCRIPTION);
 
         addPage(mainPage);
     }

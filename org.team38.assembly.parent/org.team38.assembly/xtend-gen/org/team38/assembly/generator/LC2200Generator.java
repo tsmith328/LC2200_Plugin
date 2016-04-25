@@ -81,6 +81,11 @@ public class LC2200Generator extends AbstractGenerator {
   private AssembledView assembled;
   
   /**
+   * The ID for the view which shows assembled code
+   */
+  private final String ASSEMBLED_VIEW_ID = "org.team38.assembly.assembledview";
+  
+  /**
    * doGenerate is called when user saves their assembly code and will
    * save generated binary output to a file. The code is scanned to obtain
    * label locations, and then compiled line by line.
@@ -146,7 +151,7 @@ public class LC2200Generator extends AbstractGenerator {
           IWorkbench _workbench = PlatformUI.getWorkbench();
           IWorkbenchWindow _activeWorkbenchWindow = _workbench.getActiveWorkbenchWindow();
           IWorkbenchPage _activePage = _activeWorkbenchWindow.getActivePage();
-          IViewPart _showView = _activePage.showView("org.team38.assembly.assembledview");
+          IViewPart _showView = _activePage.showView(LC2200Generator.this.ASSEMBLED_VIEW_ID);
           LC2200Generator.this.assembled = ((AssembledView) _showView);
           String _string = LC2200Generator.this.assembledOutput.toString();
           String _trim = _string.trim();

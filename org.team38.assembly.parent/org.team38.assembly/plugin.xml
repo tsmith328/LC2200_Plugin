@@ -90,7 +90,6 @@
        point="org.eclipse.ui.views">
     <view
           class="org.eclipse.ui.navigator.CommonNavigator"
-          icon="icons/sample.gif"
           id="org.team38.assembly.navigator"
           name="LC-2200">
     </view>
